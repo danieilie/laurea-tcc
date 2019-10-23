@@ -1,8 +1,8 @@
 package model;
 
 //import java.util.ArrayList;
-
 public class Aluno {
+
     private int idaluno;
     private String nome, cpf, rg, datanasc;
     private Responsavel responsavel;
@@ -87,21 +87,15 @@ public class Aluno {
     }
 
     /**
-    public ArrayList<Usuario> getAlunos() {
-        return alunos;
-    }
-
-    public void setAlunos(ArrayList<Usuario> alunos) {
-        this.alunos = alunos;
-    }
-
-    public ArrayList<Usuario> getNaoAlunos() {
-        return naoAlunos;
-    }
-
-    public void setNaoAlunos(ArrayList<Usuario> naoAlunos) {
-        this.naoAlunos = naoAlunos;
-    } 
-    **/
-    
+     * public ArrayList<Usuario> getAlunos() { return alunos; }
+     *
+     * public void setAlunos(ArrayList<Usuario> alunos) { this.alunos = alunos;
+     * }
+     *
+     * public ArrayList<Usuario> getNaoAlunos() { return naoAlunos; }
+     *
+     * public void setNaoAlunos(ArrayList<Usuario> naoAlunos) { this.naoAlunos =
+     * naoAlunos; }
+     *
+     */
 }

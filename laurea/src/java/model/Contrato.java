@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Contrato {
+
     private int idcontrato, parcela, status;
     private String serie, escola, datacontrato;
     private double preco;
     private Aluno aluno;
-    
+
     public Contrato() {
     }
 
@@ -23,15 +24,15 @@ public class Contrato {
         this.aluno = aluno;
     }
 
-    public String getDataContrato(){
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+    public String getDataContrato() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate data = LocalDate.parse(datacontrato, formato);
         return (formato.format(data));
     }
-    
+
     @Override
     public String toString() {
-        return  getSerie() + getEscola() + getDataContrato();
+        return getSerie() + getEscola() + getDataContrato();
     }
 
     public int getIdcontrato() {
@@ -97,9 +98,5 @@ public class Contrato {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
-    
-    
-    
 
 }

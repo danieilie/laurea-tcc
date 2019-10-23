@@ -17,7 +17,7 @@ public class Disciplina {
     public String toString() {
         return getMateria();
     }
-    
+
     public int getIddisciplina() {
         return iddisciplina;
     }

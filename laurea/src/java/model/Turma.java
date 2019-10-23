@@ -1,6 +1,7 @@
 package model;
 
 public class Turma {
+
     private int idturma;
     private String diasemana, datahora;
     private Professor professor;
@@ -51,6 +52,5 @@ public class Turma {
     public void setDatahora(String datahora) {
         this.datahora = datahora;
     }
-    
-    
+
 }

@@ -1,6 +1,7 @@
 package model;
 
 public class Responsavel {
+
     private int idresponsavel;
     private String nome, cpf, rg;
     private Usuario usuario;
@@ -20,6 +21,7 @@ public class Responsavel {
     public String toString() {
         return getNome() + getCpf() + getRg();
     }
+
     public int getIdresponsavel() {
         return idresponsavel;
     }
@@ -59,5 +61,5 @@ public class Responsavel {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
 }

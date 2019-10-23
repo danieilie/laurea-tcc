@@ -1,6 +1,7 @@
 package model;
 
 public class Professor {
+
     private int idprofessor;
     private String nome;
     private Disciplina disciplina;
@@ -20,7 +21,7 @@ public class Professor {
     public String toString() {
         return getNome();
     }
-    
+
     public int getIdprofessor() {
         return idprofessor;
     }

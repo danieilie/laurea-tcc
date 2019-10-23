@@ -23,7 +23,7 @@ public class Menu {
     public String toString() {
         return getMenu() + getLink() + getIcone();
     }
-    
+
     public int getExibir() {
         return exibir;
     }

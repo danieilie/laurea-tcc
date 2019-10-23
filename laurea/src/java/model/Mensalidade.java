@@ -4,11 +4,12 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Mensalidade {
+
     private int idmensalidade, status;
     private String mes, datav, datap;
     private double valor, multa, desconto;
     private Contrato contrato;
-    
+
     public Mensalidade() {
     }
 
@@ -23,22 +24,22 @@ public class Mensalidade {
         this.datav = datav;
         this.datap = datap;
     }
-    
-    public String getFormatDataVencimento(){
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+
+    public String getFormatDataVencimento() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate data = LocalDate.parse(datav, formato);
         return (formato.format(data));
     }
-    
-    public String getFormatDataPagamento(){
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+
+    public String getFormatDataPagamento() {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate data = LocalDate.parse(datap, formato);
         return (formato.format(data));
     }
-    
+
     @Override
     public String toString() {
-        return getMes() + getFormatDataVencimento() + getFormatDataPagamento() ;
+        return getMes() + getFormatDataVencimento() + getFormatDataPagamento();
     }
 
     public int getIdmensalidade() {
@@ -112,7 +113,5 @@ public class Mensalidade {
     public void setDatap(String datap) {
         this.datap = datap;
     }
-    
-    
-    
+
 }

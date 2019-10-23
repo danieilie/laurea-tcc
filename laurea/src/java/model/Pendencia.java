@@ -1,6 +1,7 @@
 package model;
 
 public class Pendencia {
+
     private int idpendencia;
     private double valor;
     private Aluno aluno;
@@ -13,7 +14,7 @@ public class Pendencia {
         this.valor = valor;
         this.aluno = aluno;
     }
-    
+
     @Override
     public String toString() {
         return "Valor a ser pago : " + getValor();
@@ -42,5 +43,5 @@ public class Pendencia {
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    
+
 }
