@@ -216,7 +216,23 @@
             <section id="contato" class="container-fluid m-p" data-anime="600">
             <div class="container">
                 <div class="tag ">CONTATO</div> 
-                <p>asdasdasd</p>
+                
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h4>De segunda a sexta, das 08 as 20h</h4>
+                        <ul>
+                            <li> <img src="assets/img/contato/telefone.png"/> 61-333-9999 </li>
+                            <li> <img src="assets/img/contato/whatsapp.png"/> 61-99999-9999</li>
+                            <li> <img src="assets/img/contato/email.png"/> qualquer@qualquer.com </li>
+                            <li> <img src="assets/img/contato/localizacao.png"/> Praça do Relógio - Taguatinga - Distrito Federal </li>
+                                  
+                        </ul>
+                    </div>
+                    <div class="col">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.444316797588!2d-48.05893754928808!3d-15.833228078076216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a32e923032cbf%3A0x55322540ab25f7c6!2zUHJhw6dhIGRvIFJlbMOzZ2lv!5e0!3m2!1spt-BR!2sbr!4v1571793044900!5m2!1spt-BR!2sbr" width="580" height="380" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+               
             </div>
             
             </section>
@@ -235,7 +251,7 @@
                     </div>
                 </div>
             </footer>
-            <div class="copy">
+            <div class="copy" data-anime="600">
                <div class="container">
                 Láurea 2010 - 2019. Todos os direitos reservados.
                </div>

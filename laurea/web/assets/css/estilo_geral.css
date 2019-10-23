@@ -267,7 +267,20 @@ font-family: 'Pontano Sans', sans-serif;*/
 /* CONTATO */
 #contato{
   background-color: #204571;
+  color: #FFF;
+  font-size: 18px;
+  font-family: 'Pontano Sans', sans-serif;
 }
+#contato ul{
+    padding: 20px;
+}
+#contato ul li{ 
+    padding: 10px;
+}
+#contato ul li img{
+    margin-right: 5px;
+} 
+
 /*DEPOIMENTOS*/
 
 .depoimentos{
