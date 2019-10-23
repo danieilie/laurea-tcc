@@ -23,9 +23,9 @@
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
             <h3>Novo Menu</h3>
-            
+
             <form action="gerenciar_menu.do" method="POST">
-                
+
                 <input type="hidden" name="idmenu" id="idmenu" value="${menu.idmenu}"/>
                 <div class="row">
                     <div class="form-group col-sm-8">
@@ -35,7 +35,7 @@
                                value="${menu.menu}"/>
                     </div>    
                 </div>    
-               <div class="row">
+                <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="link">Link</label>
                         <input type="text" class="form-control" id="link"
@@ -78,8 +78,8 @@
                     </a>    
                 </div>    
             </form>    
-            
+
         </div>
-        
+
     </body>
 </html>
