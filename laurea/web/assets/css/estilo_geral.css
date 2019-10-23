@@ -270,10 +270,12 @@ font-family: 'Pontano Sans', sans-serif;*/
   color: #FFF;
   font-size: 18px;
   font-family: 'Pontano Sans', sans-serif;
+ 
 }
-#contato ul{
-    padding: 20px;
+#contato .row{
+    padding: 30px;
 }
+
 #contato ul li{ 
     padding: 10px;
 }
@@ -452,6 +454,25 @@ font-family: 'Pontano Sans', sans-serif;*/
 }
 #sidebar button{
   margin-right: 5px;
+}
+.arrow img{
+	padding-top: 30px;
+
+}
+
+.back-to-top {
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	display: none;
+	background-color:rgba(63,126,254,.9);
+}
+.back-to-top img{
+	width:30px;
+}
+.back-to-top:hover{
+	background-color:#E64C3C;
+	color:white;
 }
 
 

@@ -221,8 +221,8 @@
                     <div class="col">
                         <h4>De segunda a sexta, das 08 as 20h</h4>
                         <ul>
-                            <li> <img src="assets/img/contato/telefone.png"/> 61-333-9999 </li>
-                            <li> <img src="assets/img/contato/whatsapp.png"/> 61-99999-9999</li>
+                            <li> <img src="assets/img/contato/telefone.png"/> (061) 3333-9999 </li>
+                            <li> <img src="assets/img/contato/whatsapp.png"/> (061) 99311-3336</li>
                             <li> <img src="assets/img/contato/email.png"/> qualquer@qualquer.com </li>
                             <li> <img src="assets/img/contato/localizacao.png"/> Praça do Relógio - Taguatinga - Distrito Federal </li>
                                   
@@ -256,6 +256,7 @@
                 Láurea 2010 - 2019. Todos os direitos reservados.
                </div>
             </div>
+    <a id="back-to-top" href="#" class="btn back-to-top" role="button"><img src="assets/img/arrow/arrow-up.gif"></a>
 
 
 
@@ -276,6 +277,27 @@
 		function toggleSidebar(){
 			document.getElementById("sidebar").classList.toggle('active');
 		}
+                
+                $(document).ready(function(){
+                  $(window).scroll(function () {
+                    if ($(this).scrollTop() > 500) {
+                      $('#back-to-top').fadeIn();
+                    } else {
+                     $('#back-to-top').fadeOut();
+                     }
+                    });
+                // scroll body to 0px on click
+                 $('#back-to-top').click(function () {
+                     $('body,html').animate({
+                        scrollTop: 0
+                       }, 400);
+                       return false;
+                      });
+                  });
+            
+                 
+
+
 	</script>
 </body>
 </html>
