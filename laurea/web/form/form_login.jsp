@@ -23,9 +23,9 @@
             <%
                }  //só pra fechar a chave do if
             %>
-            
+
             <h3>Login</h3>
-            
+
             <form action="gerenciar_login.do" method="POST">                
                 <div class="row">
                     <div class="form-group col-sm-8">
@@ -43,7 +43,7 @@
                     <button class="btn btn-success">Entrar</button>                   
                 </div>    
             </form>    
-            
+
         </div>        
     </body>
 </html>

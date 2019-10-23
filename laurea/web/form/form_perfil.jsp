@@ -22,9 +22,9 @@
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
             <h3>Novo Perfil</h3>
-            
+
             <form action="gerenciar_perfil.do" method="POST">
-                
+
                 <input type="hidden" name="idperfil" id="idperfil" value="${perfil.idperfil}"/>
                 <div class="row">
                     <div class="form-group col-sm-8">
@@ -41,8 +41,8 @@
                     </a>    
                 </div>    
             </form>    
-            
+
         </div>
-        
+
     </body>
 </html>
