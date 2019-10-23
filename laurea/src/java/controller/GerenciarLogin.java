@@ -13,12 +13,13 @@ import model.Menu;
 import model.Usuario;
 
 public class GerenciarLogin extends HttpServlet {
-    
+
     private static HttpServletResponse response;
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -27,15 +28,16 @@ public class GerenciarLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //redirecionamento do usuario após sair da sessão
         request.getSession().removeAttribute("ulogado"); //removendo o usuario logado da sessao
         response.sendRedirect("form_login.jsp"); //redirecionamento de logoff        
-        
+
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
+     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -43,131 +45,129 @@ public class GerenciarLogin extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         GerenciarLogin.response = response;
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
         ArrayList<String> erros = new ArrayList<String>();
-        if(login==null || login.trim().isEmpty()){ //trim é pra remover os espaços
+        if (login == null || login.trim().isEmpty()) { //trim é pra remover os espaços
             erros.add("\nLogin");
         }
-        if(senha==null || senha.trim().isEmpty()){ //trim é pra remover os espaços
+        if (senha == null || senha.trim().isEmpty()) { //trim é pra remover os espaços
             erros.add("\nSenha");
-        } 
-        if(erros.size() > 0){ //size pra pegar o tamanho da lista de erro
-            String campos="";
-            for(String erro: erros){
-                campos += "\\n"+erro;
+        }
+        if (erros.size() > 0) { //size pra pegar o tamanho da lista de erro
+            String campos = "";
+            for (String erro : erros) {
+                campos += "\\n" + erro;
             }
-            exibirMensagem("Preencha todos os campos "+campos);
-        }else{ //se achar o usuario
-            try{
+            exibirMensagem("Preencha todos os campos " + campos);
+        } else { //se achar o usuario
+            try {
                 Usuario u = new Usuario();
                 UsuarioDAO uDAO = new UsuarioDAO();
                 u = uDAO.getRecuperarUsuario(login);
-                if(u.getIdusuario() > 0  && u.getSenha().equals(senha)) {//validar o usuario e conferindo se as senhas sao iguais
+                if (u.getIdusuario() > 0 && u.getSenha().equals(senha)) {//validar o usuario e conferindo se as senhas sao iguais
                     HttpSession sessao = request.getSession(); //
                     sessao.setAttribute("ulogado", u);
                     response.sendRedirect("index2.jsp"); //redirecionar para index2                                       
-                }else{
+                } else {
                     exibirMensagem("Usuário ou senha inválidos!");
                 }
-            }catch(Exception e){
+            } catch (Exception e) {
                 exibirMensagem("Usuário ou Perfil não encontrado!");
             }
         }
     }
-    
-    public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response){
-        
+
+    public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response) {
+
         Usuario u = null;
         GerenciarLogin.response = response;
-        try{
+        try {
             HttpSession sessao = request.getSession();
-            if(sessao.getAttribute("ulogado") == null){
+            if (sessao.getAttribute("ulogado") == null) {
                 response.sendRedirect("form_login.jsp");
-            }else{
+            } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
-                if(queryString != null){
-                    uri += "?"+queryString;
+                if (queryString != null) {
+                    uri += "?" + queryString;
                 }
-                u = (Usuario)request.getSession().getAttribute("ulogado");
-                if(u == null){
+                u = (Usuario) request.getSession().getAttribute("ulogado");
+                if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
                     response.sendRedirect("form_login.jsp");
-                }else{
+                } else {
                     boolean possuiAcesso = false;
-                    for(Menu m: u.getPerfil().getMenus()){
-                        if(uri.contains(m.getLink())){
+                    for (Menu m : u.getPerfil().getMenus()) {
+                        if (uri.contains(m.getLink())) {
                             possuiAcesso = true;
                             break;
                         }
                     }
-                    if(!possuiAcesso){
+                    if (!possuiAcesso) {
                         exibirMensagem("Acesso Negado");
                     }
-                    
+
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             exibirMensagem(e.getMessage());
         }
         return u;
     }
-    
-    
-    public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse response){
-        
+
+    public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse response) {
+
         Usuario u = null;
         GerenciarLogin.response = response;
         boolean possuiAcesso = false;
-        try{
+        try {
             HttpSession sessao = request.getSession();
-            if(sessao.getAttribute("ulogado") == null){
+            if (sessao.getAttribute("ulogado") == null) {
                 response.sendRedirect("form_login.jsp");
-            }else{
+            } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
-                if(queryString != null){
-                    uri += "?"+queryString;
+                if (queryString != null) {
+                    uri += "?" + queryString;
                 }
-                u = (Usuario)request.getSession().getAttribute("ulogado");
-                if(u == null){
+                u = (Usuario) request.getSession().getAttribute("ulogado");
+                if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
                     response.sendRedirect("form_login.jsp");
-                }else{
-                    for(Menu m: u.getPerfil().getMenus()){
-                        if(uri.contains(m.getLink())){
+                } else {
+                    for (Menu m : u.getPerfil().getMenus()) {
+                        if (uri.contains(m.getLink())) {
                             possuiAcesso = true;
                             break;
                         }
-                    }                    
+                    }
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             exibirMensagem(e.getMessage());
         }
         return possuiAcesso;
     }
-    
-    
 
-    private static void exibirMensagem(String mensagem){
-        try{
+    private static void exibirMensagem(String mensagem) {
+        try {
             PrintWriter out = response.getWriter();
             out.print("<script>");
-            out.print("alert('"+mensagem+"');");
+            out.print("alert('" + mensagem + "');");
             out.print("history.back();");
-            out.print("</script>"); 
+            out.print("</script>");
             out.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    /** 
+
+    /**
      * Returns a short description of the servlet.
+     *
      * @return a String containing servlet description
      */
     @Override
