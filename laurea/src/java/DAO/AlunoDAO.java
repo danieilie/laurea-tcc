@@ -11,9 +11,9 @@ public class AlunoDAO extends DataBaseDAO {
 
     public AlunoDAO() throws Exception {
     }
-    
+
     public ArrayList<Aluno> getLista() throws Exception {
-    
+
         ArrayList<Aluno> lista = new ArrayList<Aluno>();
         String sql = "SELECT a.*, r.responsavel, u.usuario FROM aluno a "
                 + "INNER JOIN responsavel r ON "
@@ -33,8 +33,8 @@ public class AlunoDAO extends DataBaseDAO {
             Responsavel r = new Responsavel();
             r.setIdresponsavel(rs.getInt("a.idresponsavel"));
             r.setNome(rs.getString("r.nome"));
-            r.setCpf(rs.getString("r.cpf"));            
-            r.setRg(rs.getString("r.rg")); 
+            r.setCpf(rs.getString("r.cpf"));
+            r.setRg(rs.getString("r.rg"));
             Usuario u = new Usuario();
             u.setIdusuario(rs.getInt("a.idusuario"));
             u.setNome(rs.getString("u.nome"));
@@ -44,19 +44,19 @@ public class AlunoDAO extends DataBaseDAO {
             a.setResponsavel(r);
             a.setUsuario(u);
             lista.add(a);
-        }    
+        }
         this.desconectar();
         return lista;
     }
-    
-    public boolean gravar(Aluno a){
-        
-        try{
+
+    public boolean gravar(Aluno a) {
+
+        try {
             String sql;
             this.conectar();
-            if(a.getIdaluno() == 0){
+            if (a.getIdaluno() == 0) {
                 sql = "INSERT INTO aluno(nome, datanasc, cpf, rg, idresponsavel, idusuario) VALUES(?,?,?,?,?,?) ";
-            }else{
+            } else {
                 sql = "UPDATE aluno SET nome=?, datanasc=?, cpf=?, rg=?, idresponsavel=?, idusuario=? WHERE idaluno=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -66,29 +66,29 @@ public class AlunoDAO extends DataBaseDAO {
             pstm.setString(4, a.getRg());
             pstm.setInt(5, a.getResponsavel().getIdresponsavel());
             pstm.setInt(6, a.getUsuario().getIdusuario());
-            if(a.getIdaluno() > 0){
+            if (a.getIdaluno() > 0) {
                 pstm.setInt(7, a.getIdaluno());
-            }            
+            }
             pstm.execute();
             this.desconectar();
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-    
-    public Aluno getCarregaPorId(int idaluno) throws Exception{
-    
+
+    public Aluno getCarregaPorId(int idaluno) throws Exception {
+
         Aluno a = new Aluno();
         String sql = "SELECT a.*, r.responsavel, u.usuario FROM aluno a "
                 + "INNER JOIN responsavel r ON "
                 + "r.idresponsavel = a.idresponsavel WHERE a.idaluno=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1,idaluno);
+        pstm.setInt(1, idaluno);
         ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             a.setIdaluno(rs.getInt("a.idaluno"));
             a.setNome(rs.getString("a.nome"));
             a.setDatanasc(rs.getString("a.datanasc"));
@@ -97,8 +97,8 @@ public class AlunoDAO extends DataBaseDAO {
             Responsavel r = new Responsavel();
             r.setIdresponsavel(rs.getInt("idresponsavel"));
             r.setNome(rs.getString("r.nome"));
-            r.setCpf(rs.getString("r.cpf"));            
-            r.setRg(rs.getString("r.rg"));            
+            r.setCpf(rs.getString("r.cpf"));
+            r.setRg(rs.getString("r.rg"));
             Usuario u = new Usuario();
             u.setIdusuario(rs.getInt("u.idusuario"));
             u.setNome(rs.getString("u.nome"));
@@ -111,20 +111,20 @@ public class AlunoDAO extends DataBaseDAO {
         return a;
     }
 
-    public boolean excluir(Aluno a){
-        try{
+    public boolean excluir(Aluno a) {
+        try {
             this.conectar();
             String sql = "UPDATE aluno WHERE idaluno=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1,a.getIdaluno());
+            pstm.setInt(1, a.getIdaluno());
             pstm.execute();
             this.desconectar();
             return true;
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
-    }        
-    
+    }
+
 }

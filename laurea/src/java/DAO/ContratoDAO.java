@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import model.Aluno;
 import model.Contrato;
 
-public class ContratoDAO extends DataBaseDAO{
+public class ContratoDAO extends DataBaseDAO {
 
     public ContratoDAO() throws Exception {
     }
-    
-    public ArrayList<Contrato> getLista() throws Exception{
-        
+
+    public ArrayList<Contrato> getLista() throws Exception {
+
         ArrayList<Contrato> lista = new ArrayList<Contrato>();
         String sql = "SELECT c.*, a.aluno FROM contrato c "
                 + "INNER JOIN aluno a ON "
                 + "a.idaluno = c.idaluno ";
-        
+
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             Contrato c = new Contrato();
             c.setIdcontrato(rs.getInt("c.idcontrato"));
             c.setDatacontrato(rs.getString("c.datacontrato"));
@@ -39,18 +39,18 @@ public class ContratoDAO extends DataBaseDAO{
             c.setAluno(a);
             lista.add(c);
         }
-        this.desconectar();        
+        this.desconectar();
         return lista;
     }
-    
-    public boolean gravar(Contrato c){
-        
-        try{
+
+    public boolean gravar(Contrato c) {
+
+        try {
             String sql;
             this.conectar();
-            if(c.getIdcontrato()== 0){
+            if (c.getIdcontrato() == 0) {
                 sql = "INSERT INTO contrato(datacontrato, preco, parcela, status, serie, escola, idaluno) VALUES(?,?,?,?,?,?,?) ";
-            }else{
+            } else {
                 sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -60,30 +60,30 @@ public class ContratoDAO extends DataBaseDAO{
             pstm.setInt(4, c.getStatus());
             pstm.setString(5, c.getSerie());
             pstm.setString(6, c.getEscola());
-            pstm.setInt(7, c.getAluno().getIdaluno());            
-            if(c.getIdcontrato()> 0){
+            pstm.setInt(7, c.getAluno().getIdaluno());
+            if (c.getIdcontrato() > 0) {
                 pstm.setInt(8, c.getIdcontrato());
-            }            
+            }
             pstm.execute();
             this.desconectar();
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-    
-    public Contrato getCarregaPorId(int idcontrato) throws Exception{
-    
+
+    public Contrato getCarregaPorId(int idcontrato) throws Exception {
+
         Contrato c = new Contrato();
         String sql = "SELECT c.*, a.aluno FROM contrato c "
                 + "INNER JOIN aluno a ON "
                 + "a.idaluno = c.idaluno WHERE c.idcontrato=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1,idcontrato);
+        pstm.setInt(1, idcontrato);
         ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             c.setIdcontrato(rs.getInt("c.idcontrato"));
             c.setDatacontrato(rs.getString("c.datacontrato"));
             c.setPreco(rs.getDouble("c.preco"));
@@ -101,10 +101,10 @@ public class ContratoDAO extends DataBaseDAO{
         }
         this.desconectar();
         return c;
-    }  
-    
-    public boolean excluir(Contrato c){
-        try{
+    }
+
+    public boolean excluir(Contrato c) {
+        try {
             this.conectar();
             String sql = "UPDATE contrato WHERE idcontrato=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -112,11 +112,11 @@ public class ContratoDAO extends DataBaseDAO{
             pstm.execute();
             this.desconectar();
             return true;
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-    
+
 }

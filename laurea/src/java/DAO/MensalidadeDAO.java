@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import model.Contrato;
 import model.Mensalidade;
 
-public class MensalidadeDAO extends DataBaseDAO{
+public class MensalidadeDAO extends DataBaseDAO {
 
     public MensalidadeDAO() throws Exception {
     }
-    
-    public ArrayList<Mensalidade> getLista() throws Exception{
-        
+
+    public ArrayList<Mensalidade> getLista() throws Exception {
+
         ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
-        String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON "
-                + "a.idaluno = c.idaluno ";
-        
+        String sql = "SELECT m.*, c.contrato FROM mensalidade m "
+                + "INNER JOIN contrato c ON "
+                + "c.idcontrato = m.idcontrato ";
+
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
-        while(rs.next()){
+        while (rs.next()) {
             Mensalidade m = new Mensalidade();
             m.setIdmensalidade(rs.getInt("m.idmensalidade"));
             m.setMes(rs.getString("m.mes"));
@@ -42,18 +42,18 @@ public class MensalidadeDAO extends DataBaseDAO{
             m.setContrato(c);
             lista.add(m);
         }
-        this.desconectar();        
+        this.desconectar();
         return lista;
     }
-    
-    public boolean gravar(Mensalidade m){
-        
-        try{
+
+    public boolean gravar(Mensalidade m) {
+
+        try {
             String sql;
             this.conectar();
-            if(m.getIdmensalidade()== 0){
+            if (m.getIdmensalidade() == 0) {
                 sql = "INSERT INTO mensalidade(mes, valor, datav, datap, multa, desconto, status, idcontrato) VALUES(?,?,?,?,?,?,?,?) ";
-            }else{
+            } else {
                 sql = "UPDATE mensalidade SET mes=?, valor=?, datav=?, datap=?, multa=?, desconto=?, status=?, idcontrato=? WHERE idmensalidade=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -63,31 +63,31 @@ public class MensalidadeDAO extends DataBaseDAO{
             pstm.setString(4, m.getDatap());
             pstm.setDouble(5, m.getMulta());
             pstm.setDouble(6, m.getDesconto());
-            pstm.setInt(7, m.getStatus());           
-            pstm.setInt(8, m.getContrato().getIdcontrato());            
-            if(m.getIdmensalidade()> 0){
+            pstm.setInt(7, m.getStatus());
+            pstm.setInt(8, m.getContrato().getIdcontrato());
+            if (m.getIdmensalidade() > 0) {
                 pstm.setInt(9, m.getIdmensalidade());
-            }            
+            }
             pstm.execute();
             this.desconectar();
             return true;
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-    
-    public Mensalidade getCarregaPorId(int idmensalidade) throws Exception{
-    
+
+    public Mensalidade getCarregaPorId(int idmensalidade) throws Exception {
+
         Mensalidade m = new Mensalidade();
-        String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON "
-                + "a.idaluno = c.idaluno ";
+        String sql = "SELECT m.*, c.contrato FROM mensalidade m "
+                + "INNER JOIN contrato c ON "
+                + "c.idcontrato = m.idcontrato ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1,idmensalidade);
+        pstm.setInt(1, idmensalidade);
         ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
+        if (rs.next()) {
             m.setIdmensalidade(rs.getInt("m.idmensalidade"));
             m.setMes(rs.getString("m.mes"));
             m.setValor(rs.getDouble("m.valor"));
@@ -108,10 +108,10 @@ public class MensalidadeDAO extends DataBaseDAO{
         }
         this.desconectar();
         return m;
-    }  
-    
-    public boolean excluir(Mensalidade m){
-        try{
+    }
+
+    public boolean excluir(Mensalidade m) {
+        try {
             this.conectar();
             String sql = "UPDATE mensalidade WHERE idmensalidade=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -119,11 +119,11 @@ public class MensalidadeDAO extends DataBaseDAO{
             pstm.execute();
             this.desconectar();
             return true;
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             System.out.println(e);
             return false;
         }
     }
-    
+
 }

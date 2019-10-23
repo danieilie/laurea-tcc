@@ -7,11 +7,11 @@ import model.Disciplina;
 import model.Professor;
 import model.Usuario;
 
-public class ProfessorDAO extends DataBaseDAO{
+public class ProfessorDAO extends DataBaseDAO {
 
     public ProfessorDAO() throws Exception {
     }
-    
+
     public ArrayList<Professor> getLista() throws Exception {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
@@ -49,7 +49,7 @@ public class ProfessorDAO extends DataBaseDAO{
         try {
             String sql;
             this.conectar();
-            if (p.getIdprofessor()== 0) {
+            if (p.getIdprofessor() == 0) {
                 sql = "INSERT INTO professor(nome, iddisciplina, idusuario) VALUES(?,?,?) ";
             } else {
                 sql = "UPDATE professor SET nome=?, iddisciplina=?, idusuario=? WHERE idprofessor=?";
@@ -58,7 +58,7 @@ public class ProfessorDAO extends DataBaseDAO{
             pstm.setString(1, p.getNome());
             pstm.setInt(2, p.getDisciplina().getIddisciplina());
             pstm.setInt(3, p.getUsuario().getIdusuario());
-            if (p.getIdprofessor()> 0) {
+            if (p.getIdprofessor() > 0) {
                 pstm.setInt(4, p.getIdprofessor());
             }
             pstm.execute();
@@ -70,7 +70,7 @@ public class ProfessorDAO extends DataBaseDAO{
         }
 
     }
-    
+
     public Professor getCarregaPorId(int idprofessor) throws Exception {
 
         Professor p = new Professor();
@@ -90,18 +90,18 @@ public class ProfessorDAO extends DataBaseDAO{
             d.setIddisciplina(rs.getInt("p.iddisciplina"));
             d.setMateria(rs.getString("p.materia"));
             p.setDisciplina(d);
-            Usuario u = new Usuario();                        
+            Usuario u = new Usuario();
             u.setIdusuario(rs.getInt("u.idusuario"));
             u.setNome(rs.getString("p.nome"));
             u.setLogin(rs.getString("p.login"));
             u.setSenha(rs.getString("p.senha"));
             u.setStatus(rs.getInt("p.status"));
-            p.setUsuario(u); 
+            p.setUsuario(u);
         }
         this.desconectar();
         return p;
     }
-    
+
     public boolean excluir(Professor p) {
         try {
             this.conectar();
@@ -117,5 +117,5 @@ public class ProfessorDAO extends DataBaseDAO{
             return false;
         }
     }
-    
+
 }

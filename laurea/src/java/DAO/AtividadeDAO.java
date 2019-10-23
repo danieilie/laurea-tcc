@@ -14,8 +14,8 @@ public class AtividadeDAO extends DataBaseDAO {
     public ArrayList<Atividade> getLista() throws Exception {
 
         ArrayList<Atividade> lista = new ArrayList<Atividade>();
-        String sql = "SELECT a.*, d.materia FROM atividade a" 
-                + "INNER JOIN disciplina d ON " 
+        String sql = "SELECT a.*, d.materia FROM atividade a"
+                + "INNER JOIN disciplina d ON "
                 + "d.iddisciplina = a.iddisciplina";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -81,8 +81,8 @@ public class AtividadeDAO extends DataBaseDAO {
     public Atividade getCarregaPorId(int idatividade) throws Exception {
 
         Atividade a = new Atividade();
-        String sql = "SELECT a.*, d.materia FROM atividade a" 
-                + "INNER JOIN disciplina d ON " 
+        String sql = "SELECT a.*, d.materia FROM atividade a"
+                + "INNER JOIN disciplina d ON "
                 + "d.iddisciplina = a.iddisciplina WHERE a.idatividade=?";
         //renomeando a tabela atividade para a
         //u.* seleciona todos os campos
