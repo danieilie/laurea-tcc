@@ -1,87 +1,105 @@
-<%@page import="DAO.PerfilDAO"%>
-<%@page import="model.Perfil"%>
-<%@page import="java.util.ArrayList"%>
-<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : index
+    Created on : 08/08/2019, 10:22:26
+    Author     : Administrador
+--%>
 
+<%@page import="model.ResponsavelDAO"%>
+<%@page import="model.Responsavel"%>
+<%@page import="java.util.ArrayList"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
+              user-scalable=no" name="viewport"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>Listagem Perfil</title>
+        <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
+
             function confirmarExclusao(id, nome) {
-                if (confirm('Deseja realmente excluir o perfil "' + nome + '" ?')) {
-                    location.href = 'gerenciar_perfil.do?acao=excluir&idperfil=' + id;
+                if (confirm('Deseja realmente excluir o responsavel  ' + nome + ' ?')) {
+                    location.href = 'gerenciar_responsavel.do?acao=excluir&idresponsavel=' + id;
                 }
             }
-        </script>    
+        </script>
+
     </head>
     <body>
         <div class="container">
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
-            <h1>Lista de Perfis</h1>
+            <h1>Lista de Responsáveis</h1>
 
-            <a href="form_perfil.jsp" class="btn btn-primary">
+            <a href="form_responsavel.jsp" class="btn btn-primary">
                 Novo Cadastro
             </a>
-            <table class="table table-hover table-striped table-bordered display" id="listaPerfil">
+            <table class="table table-hover table-striped table-bordered display" 
+                   id ="listaResponsavel" >
+
                 <thead>
                     <tr>
-                        <th>ID Perfil</th>
-                        <th>Perfil</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID Perfil</th>
-                        <th>Perfil</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="DAO.PerfilDAO" id="pDAO"/>
+                <jsp:useBean class="model.ResponsavelDAO" id="resDAO" />
+
                 <tbody>
-                    <c:forEach var="p" items="${pDAO.lista}">
+                    <c:forEach var="res" items="${resDAO.lista}">
                         <tr>
-                            <td>${p.idperfil}</td>
-                            <td>${p.perfil}</td>
+                            <td>${res.idresponsavel}</td>
+                            <td>${res.nome}</td>
+                            <td>${res.cpf}</td>
+                            <td>${res.rg}</td>
+                            <td>${res.usuario}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
+                                <a class="btn btn-primary" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${pr.idresponsavel}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idresponsavel}, '${pr.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
-                                </button>  
-                                <a class="btn btn-default" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
-                                    <i class="glyphicon">Acessos</i>
-                                </a>
+                                </button>    
                             </td>
                         </tr>
-                    </c:forEach>
-                </tbody>
+                    </c:forEach>                    
+                </tbody>    
             </table>    
         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" >
+
                                     $(document).ready(function () {
-                                        $("#listaPerfil").dataTable({
+                                        $("#listaResponsavel").dataTable({
                                             "bJQueryUI": true,
                                             "oLanguage": {
-                                                "sProcessing": "Processando...",
+                                                "sProcessing": "Processando ...",
                                                 "sLengthMenu": "Mostrar _MENU_ registros",
                                                 "sZeroRecords": "Não foram encontrados resultados",
                                                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
                                                 "sInfoFiltered": "",
                                                 "sInfoPostFix": "",
                                                 "sSearch": "Pesquisar",
@@ -93,9 +111,10 @@
                                                     "sLast": "Último"
                                                 }
                                             }
-                                        })
-                                    });
-        </script>            
 
+                                        });
+
+                                    });
+        </script>
     </body>
 </html>

@@ -1,87 +1,102 @@
-<%@page import="DAO.PerfilDAO"%>
-<%@page import="model.Perfil"%>
-<%@page import="java.util.ArrayList"%>
-<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : index
+    Created on : 08/08/2019, 10:22:26
+    Author     : Administrador
+--%>
 
+<%@page import="model.ProfessorDAO"%>
+<%@page import="model.Professor"%>
+<%@page import="java.util.ArrayList"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
+              user-scalable=no" name="viewport"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>Listagem Perfil</title>
+        <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
+
             function confirmarExclusao(id, nome) {
-                if (confirm('Deseja realmente excluir o perfil "' + nome + '" ?')) {
-                    location.href = 'gerenciar_perfil.do?acao=excluir&idperfil=' + id;
+                if (confirm('Deseja realmente excluir o professor  ' + nome + ' ?')) {
+                    location.href = 'gerenciar_professor.do?acao=excluir&idprofessor=' + id;
                 }
             }
-        </script>    
+        </script>
+
     </head>
     <body>
         <div class="container">
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
-            <h1>Lista de Perfis</h1>
+            <h1>Lista de Professores</h1>
 
-            <a href="form_perfil.jsp" class="btn btn-primary">
+            <a href="form_professor.jsp" class="btn btn-primary">
                 Novo Cadastro
             </a>
-            <table class="table table-hover table-striped table-bordered display" id="listaPerfil">
+            <table class="table table-hover table-striped table-bordered display" 
+                   id ="listaProfessor" >
+
                 <thead>
                     <tr>
-                        <th>ID Perfil</th>
-                        <th>Perfil</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Disciplinas</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID Perfil</th>
-                        <th>Perfil</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Disciplinas</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="DAO.PerfilDAO" id="pDAO"/>
+                <jsp:useBean class="model.ProfessorDAO" id="prDAO" />
+
                 <tbody>
-                    <c:forEach var="p" items="${pDAO.lista}">
+                    <c:forEach var="pr" items="${prDAO.lista}">
                         <tr>
-                            <td>${p.idperfil}</td>
-                            <td>${p.perfil}</td>
+                            <td>${pr.idprofessor}</td>
+                            <td>${pr.nome}</td>
+                            <td>${pr.disciplina}</td>
+                            <td>${pr.usuario}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
+                                <a class="btn btn-primary" href="gerenciar_professor.do?acao=alterar&idprofessor=${pr.idprofessor}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idprofessor}, '${pr.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
-                                </button>  
-                                <a class="btn btn-default" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
-                                    <i class="glyphicon">Acessos</i>
-                                </a>
+                                </button>    
                             </td>
                         </tr>
-                    </c:forEach>
-                </tbody>
+                    </c:forEach>                    
+                </tbody>    
             </table>    
         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" >
+
                                     $(document).ready(function () {
-                                        $("#listaPerfil").dataTable({
+                                        $("#listaProfessor").dataTable({
                                             "bJQueryUI": true,
                                             "oLanguage": {
-                                                "sProcessing": "Processando...",
+                                                "sProcessing": "Processando ...",
                                                 "sLengthMenu": "Mostrar _MENU_ registros",
                                                 "sZeroRecords": "Não foram encontrados resultados",
                                                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
                                                 "sInfoFiltered": "",
                                                 "sInfoPostFix": "",
                                                 "sSearch": "Pesquisar",
@@ -93,9 +108,10 @@
                                                     "sLast": "Último"
                                                 }
                                             }
-                                        })
-                                    });
-        </script>            
 
+                                        });
+
+                                    });
+        </script>
     </body>
 </html>

@@ -1,44 +1,56 @@
-<%@page import="DAO.UsuarioDAO"%>
-<%@page import="model.Usuario"%>
-<%@page import="java.util.ArrayList"%>
-<%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- 
+    Document   : index
+    Created on : 08/08/2019, 10:22:26
+    Author     : Administrador
+--%>
 
+<%@page import="model.AlunoDAO"%>
+<%@page import="model.Aluno"%>
+<%@page import="java.util.ArrayList"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
+              user-scalable=no" name="viewport"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>Listagem Usuário</title>
+        <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
+
             function confirmarExclusao(id, nome) {
-                if (confirm('Deseja realmente desativar o usuário "' + nome + '" ?')) {
-                    location.href = 'gerenciar_usuario.do?acao=excluir&idusuario=' + id;
+                if (confirm('Deseja realmente excluir o aluno  ' + nome + ' ?')) {
+                    location.href = 'gerenciar_aluno.do?acao=excluir&idaluno=' + id;
                 }
             }
-        </script>    
+        </script>
+
     </head>
     <body>
         <div class="container">
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
-            <h1>Lista de Usuários</h1>
+            <h1>Lista de Alunos</h1>
 
-            <a href="form_usuario.jsp" class="btn btn-primary">
-                Novo Usuário
+            <a href="form_aluno.jsp" class="btn btn-primary">
+                Novo Cadastro
             </a>
-            <table class="table table-hover table-striped table-bordered display" id="listaUsuario">
+            <table class="table table-hover table-striped table-bordered display" 
+                   id ="listaAluno" >
+
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Login</th>
-                        <th>Status</th>
-                        <th>Perfil</th>
+                        <th>Data de Nascimento</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>Nome do Responsável</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -46,52 +58,54 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Login</th>
-                        <th>Status</th>
-                        <th>Perfil</th>
+                        <th>Data de Nascimento</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>Nome do Responsável</th>
+                        <th>Nome de Usuário</th>
                         <th>Opções</th>
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
-                <tbody>
-                    <c:forEach var="u" items="${uDAO.lista}">
-                        <tr>
-                            <td>${u.idusuario}</td>
-                            <td>${u.nome}</td>
-                            <td>${u.login}</td>
+                <jsp:useBean class="model.AlunoDAO" id="aDAO" />
 
+                <tbody>
+                    <c:forEach var="a" items="${aDAO.lista}">
+                        <tr>
+                            <td>${a.idaluno}</td>
+                            <td>${a.nome}</td>
+                            <td>${a.datanasc}</td>
+                            <td>${a.cpf}</td>
+                            <td>${a.rg}</td>
+                            <td>${a.responsavel}</td>
+                            <td>${a.usuario}</td>
                             <td>
-                                <c:if test="${u.status==1}">Ativo</c:if>
-                                <c:if test="${u.status==2}">Inativo</c:if>
-                                </td>
-                                <td>${u.perfil}</td>
-                            <td>
-                                <a class="btn btn-primary" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
+                                <a class="btn btn-primary" href="gerenciar_aluno.do?acao=alterar&idaluno=${pr.idaluno}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${u.idusuario}, '${u.nome}')">
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idaluno}, '${pr.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>
                         </tr>
-                    </c:forEach>
-                </tbody>
+                    </c:forEach>                    
+                </tbody>    
             </table>    
         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" >
+
                                     $(document).ready(function () {
-                                        $("#listaUsuario").dataTable({
+                                        $("#listaAluno").dataTable({
                                             "bJQueryUI": true,
                                             "oLanguage": {
-                                                "sProcessing": "Processando...",
+                                                "sProcessing": "Processando ...",
                                                 "sLengthMenu": "Mostrar _MENU_ registros",
                                                 "sZeroRecords": "Não foram encontrados resultados",
                                                 "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
                                                 "sInfoFiltered": "",
                                                 "sInfoPostFix": "",
                                                 "sSearch": "Pesquisar",
@@ -103,10 +117,10 @@
                                                     "sLast": "Último"
                                                 }
                                             }
-                                        })
-                                    });
-        </script>            
 
+                                        });
+
+                                    });
+        </script>
     </body>
 </html>
-

@@ -53,8 +53,8 @@
                         <tr>
                             <td>${d.iddisciplina}</td>
                             <td>${d.materia}</td>
-                                <td>
-                                    <a class="btn btn-primary" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
+                            <td>
+                                <a class="btn btn-primary" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
                                 <button class="btn btn-danger" onclick="confirmarExclusao(${d.iddisciplina}, '${d.materia}')">
@@ -70,28 +70,28 @@
         <script type="text/javascript" src="datatables/jquery.js"></script>
         <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $("#listaDisciplina").dataTable({
-                    "bJQueryUI": true,
-                    "oLanguage": {
-                        "sProcessing": "Processando...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "Não foram encontrados resultados",
-                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                        "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
-                        "sInfoFiltered": "",
-                        "sInfoPostFix": "",
-                        "sSearch": "Pesquisar",
-                        "sUrl": "",
-                        "oPaginate": {
-                            "sFirst": "Primeiro",
-                            "sPrevious": "Anterior",
-                            "sNext": "Próximo",
-                            "sLast": "Último"
-                        }
-                    }
-                })
-            });
+                                    $(document).ready(function () {
+                                        $("#listaDisciplina").dataTable({
+                                            "bJQueryUI": true,
+                                            "oLanguage": {
+                                                "sProcessing": "Processando...",
+                                                "sLengthMenu": "Mostrar _MENU_ registros",
+                                                "sZeroRecords": "Não foram encontrados resultados",
+                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                "sInfoFiltered": "",
+                                                "sInfoPostFix": "",
+                                                "sSearch": "Pesquisar",
+                                                "sUrl": "",
+                                                "oPaginate": {
+                                                    "sFirst": "Primeiro",
+                                                    "sPrevious": "Anterior",
+                                                    "sNext": "Próximo",
+                                                    "sLast": "Último"
+                                                }
+                                            }
+                                        })
+                                    });
         </script>
     </body>
 </html>
