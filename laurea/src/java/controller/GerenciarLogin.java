@@ -1,3 +1,4 @@
+
 package controller;
 
 import DAO.UsuarioDAO;
@@ -16,33 +17,15 @@ public class GerenciarLogin extends HttpServlet {
 
     private static HttpServletResponse response;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //redirecionamento do usuario após sair da sessão
         request.getSession().removeAttribute("ulogado"); //removendo o usuario logado da sessao
-        response.sendRedirect("form_login.jsp"); //redirecionamento de logoff        
+        response.sendRedirect("form/form_login.jsp"); //redirecionamento de logoff        
 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -87,7 +70,7 @@ public class GerenciarLogin extends HttpServlet {
         try {
             HttpSession sessao = request.getSession();
             if (sessao.getAttribute("ulogado") == null) {
-                response.sendRedirect("form_login.jsp");
+                response.sendRedirect("form/form_login.jsp");
             } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
@@ -97,7 +80,7 @@ public class GerenciarLogin extends HttpServlet {
                 u = (Usuario) request.getSession().getAttribute("ulogado");
                 if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
-                    response.sendRedirect("form_login.jsp");
+                    response.sendRedirect("form/form_login.jsp");
                 } else {
                     boolean possuiAcesso = false;
                     for (Menu m : u.getPerfil().getMenus()) {
@@ -126,7 +109,7 @@ public class GerenciarLogin extends HttpServlet {
         try {
             HttpSession sessao = request.getSession();
             if (sessao.getAttribute("ulogado") == null) {
-                response.sendRedirect("form_login.jsp");
+                response.sendRedirect("form/form_login.jsp");
             } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
@@ -136,7 +119,7 @@ public class GerenciarLogin extends HttpServlet {
                 u = (Usuario) request.getSession().getAttribute("ulogado");
                 if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
-                    response.sendRedirect("form_login.jsp");
+                    response.sendRedirect("form/form_login.jsp");
                 } else {
                     for (Menu m : u.getPerfil().getMenus()) {
                         if (uri.contains(m.getLink())) {
@@ -165,13 +148,8 @@ public class GerenciarLogin extends HttpServlet {
         }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }
