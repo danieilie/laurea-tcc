@@ -81,7 +81,6 @@ public class PerfilDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
             return false;
@@ -93,7 +92,6 @@ public class PerfilDAO extends DataBaseDAO {
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu_perfil as mp, menu as m "
                 + "WHERE mp.idmenu=m.idmenu AND mp.idperfil=?";
-
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idperfil);

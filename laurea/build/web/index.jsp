@@ -28,7 +28,7 @@
                         <li><a href="#sobre">Sobre </a></li>
                         <li><a href="#contato">Contato </a></li>
                         <li><a href="#depoimentos">Depoimentos </a></li>
-                        <li ><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
+                        <li><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
                     </ul>
                 </nav>
             </div>
@@ -293,11 +293,6 @@
                         }, 400);
                         return false;
                     });
-                });
-
-
-
-
-        </script>
+            </script>
     </body>
 </html>

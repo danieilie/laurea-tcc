@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -13,8 +14,7 @@ import model.Perfil;
 public class GerenciarMenuPerfil extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";

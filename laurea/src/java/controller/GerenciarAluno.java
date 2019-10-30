@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.AlunoDAO;
+import java.sql.Date;
 import model.Aluno;
 import model.Responsavel;
 import model.Usuario;
@@ -15,14 +17,12 @@ import model.Usuario;
 public class GerenciarAluno extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
-        String mensagem = "";
-
         int idaluno = Integer.parseInt(request.getParameter("idaluno"));
         String acao = request.getParameter("acao");
+        String mensagem = "";
 
         try {
             Aluno a = new Aluno();
@@ -31,7 +31,7 @@ public class GerenciarAluno extends HttpServlet {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a = aDAO.getCarregaPorId(idaluno);
                     if (a.getIdaluno() > 0) {
-                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_aluno.jsp");
+                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form/form_aluno.jsp");
                         request.setAttribute("aluno", a);
                         disp.forward(request, response);
                     } else {
@@ -41,34 +41,29 @@ public class GerenciarAluno extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-
-            /*  if(acao.equals("excluir")){
-              if(GerenciarLogin.verificarPermissao(request, response)){    
-                a.setIdaluno(idaluno);
-                if(aDAO.excluir(a)){
-                    mensagem = "Excluído com sucesso!";
-                }else{
-                    mensagem = "Erro ao excluir!";
-                }
-              }else{
-                  mensagem ="Acesso negado";
-              }  
             
-            } */
+            if (acao.equals("desativar")) {
+                a.setIdaluno(idaluno);
+                if (aDAO.desativar(a)) {
+                    mensagem = "Desativado com sucesso!";
+                } else {
+                    mensagem = "Erro ao Desativar!";
+                }
+            }
+            
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar_aluno.jsp';");
+        out.println("location.href='listar/listar_aluno.jsp';");
         out.println("</script>");
 
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         String idaluno = request.getParameter("idaluno");
@@ -76,6 +71,7 @@ public class GerenciarAluno extends HttpServlet {
         String datanasc = request.getParameter("datanasc");
         String cpf = request.getParameter("cpf");
         String rg = request.getParameter("rg");
+        String status = request.getParameter("status");
         String idresponsavel = request.getParameter("idresponsavel");
         String idusuario = request.getParameter("idusuario");
         String mensagem = "";
@@ -86,13 +82,14 @@ public class GerenciarAluno extends HttpServlet {
         }
         try {
             AlunoDAO aDAO = new AlunoDAO();
-            if (nome.equals("")) {
+            if (nome.equals("") || status.isEmpty() || idresponsavel.isEmpty() || idusuario.isEmpty()) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 a.setNome(nome);
                 a.setDatanasc(datanasc);
                 a.setCpf(cpf);
                 a.setRg(rg);
+                a.setStatus(Integer.parseInt(status));
                 Responsavel r = new Responsavel();
                 r.setIdresponsavel(Integer.parseInt(idresponsavel));
                 a.setResponsavel(r);
@@ -111,7 +108,7 @@ public class GerenciarAluno extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar_aluno.jsp';");
+        out.println("location.href='listar/listar_aluno.jsp';");
         out.println("</script>");
     }
 

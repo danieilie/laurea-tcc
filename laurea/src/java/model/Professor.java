@@ -2,18 +2,17 @@ package model;
 
 public class Professor {
 
-    private int idprofessor;
+    private int idprofessor, status;
     private String nome;
-    private Disciplina disciplina;
     private Usuario usuario;
 
     public Professor() {
     }
 
-    public Professor(int idprofessor, String nome, Disciplina disciplina, Usuario usuario) {
+    public Professor(int idprofessor, String nome, int status, Usuario usuario) {
         this.idprofessor = idprofessor;
         this.nome = nome;
-        this.disciplina = disciplina;
+        this.status = status;
         this.usuario = usuario;
     }
 
@@ -38,12 +37,12 @@ public class Professor {
         this.nome = nome;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public int getStatus() {
+        return status;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Usuario getUsuario() {

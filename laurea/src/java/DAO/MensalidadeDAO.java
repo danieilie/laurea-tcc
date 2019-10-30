@@ -3,7 +3,6 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Contrato;
 import model.Mensalidade;
 
 public class MensalidadeDAO extends DataBaseDAO {
@@ -14,10 +13,7 @@ public class MensalidadeDAO extends DataBaseDAO {
     public ArrayList<Mensalidade> getLista() throws Exception {
 
         ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
-        String sql = "SELECT m.*, c.contrato FROM mensalidade m "
-                + "INNER JOIN contrato c ON "
-                + "c.idcontrato = m.idcontrato ";
-
+        String sql = "SELECT m.* FROM mensalidade m ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -31,15 +27,8 @@ public class MensalidadeDAO extends DataBaseDAO {
             m.setMulta(rs.getDouble("m.multa"));
             m.setDesconto(rs.getDouble("m.desconto"));
             m.setStatus(rs.getInt("m.status"));
-            Contrato c = new Contrato();
-            c.setIdcontrato(rs.getInt("m.idcontrato"));
-            c.setDatacontrato(rs.getString("c.datacontrato"));
-            c.setPreco(rs.getDouble("c.preco"));
-            c.setParcela(rs.getInt("c.parcela"));
-            c.setStatus(rs.getInt("c.status"));
-            c.setSerie(rs.getString("c.serie"));
-            c.setEscola(rs.getString("c.escola"));
-            m.setContrato(c);
+            ContratoDAO cDAO = new ContratoDAO();
+            m.setContrato(cDAO.getCarregaPorId(rs.getInt("m.contrato")));
             lista.add(m);
         }
         this.desconectar();
@@ -80,9 +69,7 @@ public class MensalidadeDAO extends DataBaseDAO {
     public Mensalidade getCarregaPorId(int idmensalidade) throws Exception {
 
         Mensalidade m = new Mensalidade();
-        String sql = "SELECT m.*, c.contrato FROM mensalidade m "
-                + "INNER JOIN contrato c ON "
-                + "c.idcontrato = m.idcontrato ";
+        String sql = "SELECT m.*, c.contrato FROM mensalidade m ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idmensalidade);
@@ -96,15 +83,8 @@ public class MensalidadeDAO extends DataBaseDAO {
             m.setMulta(rs.getDouble("m.multa"));
             m.setDesconto(rs.getDouble("m.desconto"));
             m.setStatus(rs.getInt("m.status"));
-            Contrato c = new Contrato();
-            c.setIdcontrato(rs.getInt("m.idcontrato"));
-            c.setDatacontrato(rs.getString("c.datacontrato"));
-            c.setPreco(rs.getDouble("c.preco"));
-            c.setParcela(rs.getInt("c.parcela"));
-            c.setStatus(rs.getInt("c.status"));
-            c.setSerie(rs.getString("c.serie"));
-            c.setEscola(rs.getString("c.escola"));
-            m.setContrato(c);
+            ContratoDAO cDAO = new ContratoDAO();
+            m.setContrato(cDAO.getCarregaPorId(rs.getInt("m.contrato")));
         }
         this.desconectar();
         return m;

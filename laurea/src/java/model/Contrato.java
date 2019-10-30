@@ -1,19 +1,19 @@
 package model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Contrato {
 
     private int idcontrato, parcela, status;
-    private String serie, escola, datacontrato;
+    private String serie, escola;
+    private Date datacontrato;
     private double preco;
     private Aluno aluno;
 
     public Contrato() {
     }
 
-    public Contrato(int idcontrato, int parcela, int status, String datacontrato, String serie, String escola, double preco, Aluno aluno) {
+    public Contrato(int idcontrato, int parcela, int status, Date datacontrato, String serie, String escola, double preco, Aluno aluno) {
         this.idcontrato = idcontrato;
         this.parcela = parcela;
         this.status = status;
@@ -24,15 +24,9 @@ public class Contrato {
         this.aluno = aluno;
     }
 
-    public String getDataContrato() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate data = LocalDate.parse(datacontrato, formato);
-        return (formato.format(data));
-    }
-
     @Override
     public String toString() {
-        return getSerie() + getEscola() + getDataContrato();
+        return getSerie() + getEscola();
     }
 
     public int getIdcontrato() {
@@ -59,11 +53,11 @@ public class Contrato {
         this.status = status;
     }
 
-    public String getDatacontrato() {
+    public Date getDatacontrato() {
         return datacontrato;
     }
 
-    public void setDatacontrato(String datacontrato) {
+    public void setDatacontrato(Date datacontrato) {
         this.datacontrato = datacontrato;
     }
 

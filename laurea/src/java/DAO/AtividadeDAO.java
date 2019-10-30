@@ -3,7 +3,6 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Disciplina;
 import model.Atividade;
 
 public class AtividadeDAO extends DataBaseDAO {
@@ -14,9 +13,7 @@ public class AtividadeDAO extends DataBaseDAO {
     public ArrayList<Atividade> getLista() throws Exception {
 
         ArrayList<Atividade> lista = new ArrayList<Atividade>();
-        String sql = "SELECT a.*, d.materia FROM atividade a"
-                + "INNER JOIN disciplina d ON "
-                + "d.iddisciplina = a.iddisciplina";
+        String sql = "SELECT a.* FROM atividade a ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -24,11 +21,9 @@ public class AtividadeDAO extends DataBaseDAO {
             Atividade a = new Atividade();
             a.setIdatividade(rs.getInt("a.idatividade"));
             a.setNome(rs.getString("a.nome"));
-            a.setArquivo(rs.getString("a.arquvido"));
-            Disciplina d = new Disciplina();
-            d.setIddisciplina(rs.getInt("u.iddisciplina"));
-            d.setMateria(rs.getString("d.disciplina"));
-            a.setDisciplina(d);
+            a.setArquivo(rs.getString("a.arquivo"));
+            DisciplinaDAO dDAO = new DisciplinaDAO();
+            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("u.iddisciplina")));
             lista.add(a);
         }
         this.desconectar();
@@ -81,9 +76,7 @@ public class AtividadeDAO extends DataBaseDAO {
     public Atividade getCarregaPorId(int idatividade) throws Exception {
 
         Atividade a = new Atividade();
-        String sql = "SELECT a.*, d.materia FROM atividade a"
-                + "INNER JOIN disciplina d ON "
-                + "d.iddisciplina = a.iddisciplina WHERE a.idatividade=?";
+        String sql = "SELECT a.* FROM atividade a WHERE a.idatividade=?";
         //renomeando a tabela atividade para a
         //u.* seleciona todos os campos
         //INNER JOIN pega todas as colunas especificadas das tabelas e junta através das chaves(id).
@@ -95,11 +88,8 @@ public class AtividadeDAO extends DataBaseDAO {
             a.setIdatividade(rs.getInt("a.idatividade"));
             a.setNome(rs.getString("a.nome"));
             a.setArquivo(rs.getString("a.arquivo"));
-            Disciplina d = new Disciplina();
-            d.setIddisciplina(rs.getInt("a.idatividade"));
-            d.setMateria(rs.getString("d.materia"));
-            a.setDisciplina(d);
-
+            DisciplinaDAO dDAO = new DisciplinaDAO();
+            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("a.idatividade")));
         }
         this.desconectar();
         return a;

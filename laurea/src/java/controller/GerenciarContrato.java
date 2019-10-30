@@ -87,9 +87,9 @@ public class GerenciarContrato extends HttpServlet {
         }
         try {
             ContratoDAO cDAO = new ContratoDAO();
-            if (datacontrato.equals("") || preco.equals("") || parcela.equals("") ||  status.equals("") ||  serie.equals("")) {
+            if (datacontrato.equals("") || preco.equals("") || parcela.equals("") || status.equals("") || serie.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
-            } else {                
+            } else {
                 c.setDatacontrato(datacontrato);
                 c.setPreco(Double.parseDouble(preco));
                 c.setParcela(Integer.parseInt(parcela));
