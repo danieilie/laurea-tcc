@@ -2,7 +2,6 @@ package model;
 
 import java.util.Date;
 
-
 public class AlunoTurma {
 
     private Aluno aluno;
@@ -22,7 +21,7 @@ public class AlunoTurma {
 
     @Override
     public String toString() {
-        return getData() + getFrequencia();
+        return getFrequencia() +getData() ;
     }
 
     public Date getData() {

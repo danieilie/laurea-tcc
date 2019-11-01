@@ -5,15 +5,17 @@ public class Professor {
     private int idprofessor, status;
     private String nome;
     private Usuario usuario;
+    private Disciplina disciplina;
 
     public Professor() {
     }
 
-    public Professor(int idprofessor, String nome, int status, Usuario usuario) {
+    public Professor(int idprofessor, int status, String nome, Usuario usuario, Disciplina disciplina) {
         this.idprofessor = idprofessor;
-        this.nome = nome;
         this.status = status;
+        this.nome = nome;
         this.usuario = usuario;
+        this.disciplina = disciplina;
     }
 
     @Override
@@ -52,4 +54,13 @@ public class Professor {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+        
 }

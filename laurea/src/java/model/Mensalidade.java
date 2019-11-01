@@ -6,7 +6,8 @@ import java.time.format.DateTimeFormatter;
 public class Mensalidade {
 
     private int idmensalidade, status;
-    private String mes, datav, datap;
+    private String mes;
+    private String datav, datap; //mudar a tipagem
     private double valor, multa, desconto;
     private Contrato contrato;
 
