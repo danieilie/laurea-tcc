@@ -17,18 +17,27 @@
 
     </head>
     <body>
+         <%
+                String mensagem = (String)request.getSession().getAttribute("mensagem");
+                if(mensagem != null){
+                  request.getSession().removeAttribute("mensagem");
+            %>
+            <div class="alert alert-info"><%=mensagem%></div>
+            <%
+               }  //só pra fechar a chave do if
+            %>
+
         <header class="container-fluid m-p" data-anime="100">
             <div class="container ">
                 <div class="logo " data-anime="200"> <a href="#inicio">Láurea <img src="assets/img/logo/logo_menu.png"></a></div>
                 <nav>
                     <ul data-anime="200">
-                        <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#produtos">Produtos </a></li>
                         <li><a href="#materias">Matérias</a></li>
                         <li><a href="#sobre">Sobre </a></li>
                         <li><a href="#contato">Contato </a></li>
                         <li><a href="#depoimentos">Depoimentos </a></li>
-                        <li><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
+                        <li ><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
                     </ul>
                 </nav>
             </div>
@@ -39,17 +48,17 @@
             </button>
             <img src="assets/img/logo/logo_form.png" style="margin-top: 30px;">
 
-            <form method="POST" action="" class="login">
+            <form  action="gerenciar_login.do" method="POST" class="login">
                 <div class="form-group">
                     <label for="login">Login:</label>
-                    <input type="text" class="form-control" id="login">
+                    <input type="text" class="form-control" id="login" name="login" required="" maxlength="45" value="${login.login}" autofocus=""/>
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha:</label>
-                    <input type="password" class="form-control" id="senha">
+                    <input type="password" class="form-control" id="senha" name="senha" required="" maxlength="45" value="${login.senha}"/>
                 </div>
                 <div class="form-group">
-                    <input type="submit" value="ENTRAR" class="btn btn-primary"/>
+                       <button class="btn btn-primary">Entrar</button> 
                 </div>
             </form>
         </div>
@@ -222,7 +231,7 @@
                         <h4>De segunda a sexta, das 08 as 20h</h4>
                         <ul>
                             <li> <img src="assets/img/contato/telefone.png"/> (061) 3333-9999 </li>
-                            <li> <img src="assets/img/contato/whatsapp.png"/> (061) 99311-3336</li>
+                            <li> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a> (061) 99311-3336</li>
                             <li> <img src="assets/img/contato/email.png"/> qualquer@qualquer.com </li>
                             <li> <img src="assets/img/contato/localizacao.png"/> Praça do Relógio - Taguatinga - Distrito Federal </li>
 
@@ -235,6 +244,41 @@
 
             </div>
 
+        </section>
+        <section id="depoimentos" class="container-fluid m-p" data-anime="600">
+            <div class="container">
+                 <div class="tag ">DEPOIMENTOS</div> 
+            <div class="row">
+                <div class="col">
+                    <div class="card_depoimento"> 
+                        
+                            <img src="assets/img/depoimentos/julia.png" class="float-left">
+                            <h4 class="float-left">Júlia Vaz</h4>
+                            <div class="float-left card_depoimento_text">Muito bom aprendi algo além do verbo to be, best of the best professor!!!</div>
+
+                    </div>
+                </div>
+                <div class="col">
+                   <div class="card_depoimento"> 
+                        
+                       <img src="assets/img/depoimentos/daniele.png" class="float-left">
+                            <h4 class="float-left">Daniele Silva</h4>
+                            <div class="float-left card_depoimento_text">Ótimo professor, atencioso e dedicado! “arrivederci”</div>
+
+                    </div>
+                </div>
+                <div class="col">
+                     <div class="card_depoimento"> 
+                        
+                         <img src="assets/img/depoimentos/marcos.png" class="float-left">
+                            <h4 class="float-left">Marcos Felipe</h4>
+                           
+                             <div class="float-left card_depoimento_text">Tudo é questão de lógica, parabéns professor!!</div>
+
+                    </div>
+                </div>
+            </div>
+                </div>
         </section>
         <footer data-anime="600">
             <div class="footer">
@@ -253,7 +297,7 @@
         </footer>
         <div class="copy" data-anime="600">
             <div class="container">
-                Láurea 2010 - 2019. Todos os direitos reservados.
+                © Copyright  2018-2019. Láurea. Todos os direitos reservados.
             </div>
         </div>
         <a id="back-to-top" href="#" class="btn back-to-top" role="button"><img src="assets/img/arrow/arrow-up.gif"></a>
@@ -286,6 +330,7 @@
                             $('#back-to-top').fadeOut();
                         }
                     });
+                    
                     // scroll body to 0px on click
                     $('#back-to-top').click(function () {
                         $('body,html').animate({
@@ -293,6 +338,7 @@
                         }, 400);
                         return false;
                     });
-            </script>
+                });
+        </script>
     </body>
 </html>
