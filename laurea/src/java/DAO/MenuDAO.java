@@ -92,4 +92,19 @@ public class MenuDAO extends DataBaseDAO {
             return false;
         }
     }
+
+    public boolean desativar(Menu m) {
+        try {
+            this.conectar();
+            String sql = "DELETE FROM menu WHERE idmenu=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, m.getIdmenu());
+            pstm.execute();
+            this.desconectar();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
 }

@@ -17,22 +17,21 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     public ArrayList<AlunoTurma> getLista() throws Exception {
 
         ArrayList<AlunoTurma> lista = new ArrayList<AlunoTurma>();
-        String sql = "SELECT at.* FROM aluno_turma at ";
+        String sql = "SELECT at.*, a.aluno FROM aluno_turma at "
+                + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {
-            AlunoTurma at = new AlunoTurma();
-            at.setFrequencia(rs.getString("at.frequencia"));
-            at.setData(rs.getDate("at.data"));
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("at.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            Turma t = new Turma();
-            t.setIdturma(rs.getInt("at.idturma"));
-            t.setNome(rs.getString("t.nome"));
+            AlunoTurma at = new AlunoTurma();
+            at.setData(rs.getDate("at.data"));
+            at.setFrequencia(rs.getString("at.frequencia"));
+            TurmaDAO tDAO= new TurmaDAO();
+            at.setTurma(tDAO.getCarregaPorId(rs.getInt("at.idturma")));
             at.setAluno(a);
-            at.setTurma(t);
             lista.add(at);
         }
         this.desconectar();
@@ -61,11 +60,9 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {
-
-        String sql = "SELECT at.*, t.nome, a.nome FROM aluno_turma at" +
-                    " INNER JOIN turma t ON at.idturma = tu.idturma" +
-                    " INNER JOIN aluno a ON at.idaluno = a.idaluno WHERE at.idaluno = ?"+
-                    " AND at.idturma = ?";
+        
+        String sql = "SELECT at.*, a.aluno FROM aluno_turma at "
+                + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idaluno);
@@ -73,16 +70,15 @@ public class AlunoTurmaDAO extends DataBaseDAO {
         ResultSet rs = pstm.executeQuery();
         AlunoTurma at = new AlunoTurma();
         if (rs.next()) {
-            at.setFrequencia(rs.getString("at.frequencia"));
-            at.setData(rs.getDate("at.data"));
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("at.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            Turma t = new Turma();
-            t.setIdturma(rs.getInt("at.idturma"));
-            t.setNome(rs.getString("t.nome"));
+            //alunoTurma 
+            at.setData(rs.getDate("at.data"));
+            at.setFrequencia(rs.getString("at.frequencia"));
+            TurmaDAO tDAO= new TurmaDAO();
+            at.setTurma(tDAO.getCarregaPorId(rs.getInt("at.idturma")));
             at.setAluno(a);
-            at.setTurma(t);
         }
         this.desconectar();
         return at;
@@ -92,7 +88,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     public boolean vincular(int idaluno, int idturma, Date data, String frequencia) {
 
         try {
-            String sql = "INSERT INTO aluno_turma (idaluno, idturma, data, frequencia) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO aluno_turma (idaluno, idturma, data, frequencia) VALUES (?,?,?,?)";
             this.conectar();
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, idaluno);

@@ -23,7 +23,7 @@ public class AtividadeDAO extends DataBaseDAO {
             a.setNome(rs.getString("a.nome"));
             a.setArquivo(rs.getString("a.arquivo"));
             DisciplinaDAO dDAO = new DisciplinaDAO();
-            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("u.iddisciplina")));
+            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("a.iddisciplina")));
             lista.add(a);
         }
         this.desconectar();
@@ -38,15 +38,15 @@ public class AtividadeDAO extends DataBaseDAO {
             if (a.getIdatividade() == 0) {
                 sql = "INSERT INTO atividade(nome, arquivo, iddisciplina) VALUES(?,?,?) ";
             } else {
-                sql = "UPDATE atividade SET nome=?, arquivo=?, iddisciplina=? WHERE idatividade=?";
+                sql = "UPDATE atividade SET nome=?, arquivo=?, iddisciplina=? WHERE idatividade=? ";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, a.getNome());
-            pstm.setString(2, a.getArquivo());
-            pstm.setInt(3, a.getDisciplina().getIddisciplina());
             if (a.getIdatividade() > 0) {
-                pstm.setInt(4, a.getIdatividade());
+                pstm.setInt(1, a.getIdatividade());
             }
+            pstm.setString(2, a.getNome());
+            pstm.setString(3, a.getArquivo());
+            pstm.setInt(4, a.getDisciplina().getIddisciplina());
             pstm.execute();
             this.desconectar();
             return true;

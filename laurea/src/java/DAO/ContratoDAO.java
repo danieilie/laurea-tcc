@@ -16,7 +16,9 @@ public class ContratoDAO extends DataBaseDAO {
     public ArrayList<Contrato> getLista() throws Exception {
 
         ArrayList<Contrato> lista = new ArrayList<Contrato>();
-        String sql = "SELECT c.* FROM contrato c ";
+        String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
+                + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
+                + "INNER JOIN responsavel r ON c.idresponsavel = r.idresponsavel ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -29,9 +31,10 @@ public class ContratoDAO extends DataBaseDAO {
             c.setStatus(rs.getInt("c.status"));
             c.setSerie(rs.getString("c.serie"));
             c.setEscola(rs.getString("c.escola"));
-            AlunoDAO aDAO = new AlunoDAO();
-            c.setAluno(aDAO.getCarregaPorId(rs.getInt("c.idaluno")));
             Aluno a = new Aluno();
+            a.setIdaluno(rs.getInt("c.idaluno"));
+            a.setNome(rs.getString("a.nome"));
+            c.setAluno(a);
             Responsavel r = new Responsavel();
             r.setNome(rs.getString("r.nome"));
             a.setResponsavel(r);
@@ -49,19 +52,19 @@ public class ContratoDAO extends DataBaseDAO {
             if (c.getIdcontrato() == 0) {
                 sql = "INSERT INTO contrato(datacontrato, preco, parcela, status, serie, escola, idaluno) VALUES(?,?,?,?,?,?,?) ";
             } else {
-                sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=?";
+                sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=? ";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setDate(1, (Date) c.getDatacontrato());
-            pstm.setDouble(2, c.getPreco());
-            pstm.setInt(3, c.getParcela());
-            pstm.setInt(4, c.getStatus());
-            pstm.setString(5, c.getSerie());
-            pstm.setString(6, c.getEscola());
-            pstm.setInt(7, c.getAluno().getIdaluno());
             if (c.getIdcontrato() > 0) {
-                pstm.setInt(8, c.getIdcontrato());
+                pstm.setInt(1, c.getIdcontrato());
             }
+            pstm.setDate(2, (Date) c.getDatacontrato());
+            pstm.setDouble(3, c.getPreco());
+            pstm.setInt(4, c.getParcela());
+            pstm.setInt(5, c.getStatus());
+            pstm.setString(6, c.getSerie());
+            pstm.setString(7, c.getEscola());
+            pstm.setInt(8, c.getAluno().getIdaluno());
             pstm.execute();
             this.desconectar();
             return true;
@@ -75,8 +78,7 @@ public class ContratoDAO extends DataBaseDAO {
 
         Contrato c = new Contrato();
         String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
-                + "WHERE idcontrato=? ";
+                + "INNER JOIN aluno a ON c.idaluno = a.idaluno WHERE idcontrato=? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idcontrato);

@@ -14,7 +14,8 @@ public class ProfessorDAO extends DataBaseDAO {
     public ArrayList<Professor> getLista() throws Exception {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
-        String sql = "SELECT p.* FROM professor p";
+        String sql = "SELECT p.*, u.usuario FROM professor p "
+                + "INNER JOIN usuario u ON p.idusuario = u.idusuario";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -23,8 +24,12 @@ public class ProfessorDAO extends DataBaseDAO {
             p.setIdprofessor(rs.getInt("p.idprofessor"));
             p.setNome(rs.getString("p.nome"));
             p.setStatus(rs.getInt("p.status"));
-            UsuarioDAO uDAO = new UsuarioDAO();
-            p.setUsuario(uDAO.getCarregaPorId(rs.getInt("p.idusuario")));
+            Usuario u = new Usuario();
+            u.setIdusuario(rs.getInt("p.idusuario"));
+            u.setNome(rs.getString("u.nome"));
+            p.setUsuario(u);
+            DisciplinaDAO dDAO = new DisciplinaDAO();
+            p.setDisciplina(dDAO.getCarregaPorId(rs.getInt("p.iddisciplina")));
             lista.add(p);
         }
         this.desconectar();
@@ -37,16 +42,17 @@ public class ProfessorDAO extends DataBaseDAO {
             String sql;
             this.conectar();
             if (p.getIdprofessor() == 0) {
-                sql = "INSERT INTO professor(nome, status, idusuario) VALUES(?,?,?) ";
+                sql = "INSERT INTO professor(nome, status, idusuario, iddisciplina) VALUES(?,?,?) ";
             } else {
-                sql = "UPDATE professor SET nome=?, status=?, idusuario=? WHERE idprofessor=?";
+                sql = "UPDATE professor SET nome=?, status=?, idusuario=?, iddisciplina=? WHERE idprofessor=? ";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, p.getNome());
             pstm.setInt(2, p.getStatus());
             pstm.setInt(3, p.getUsuario().getIdusuario());
+            pstm.setInt(4, p.getDisciplina().getIddisciplina());
             if (p.getIdprofessor() > 0) {
-                pstm.setInt(4, p.getIdprofessor());
+                pstm.setInt(5, p.getIdprofessor());
             }
             pstm.execute();
             this.desconectar();
@@ -74,19 +80,18 @@ public class ProfessorDAO extends DataBaseDAO {
             Usuario u = new Usuario();
             u.setIdusuario(rs.getInt("p.idusuario"));
             u.setNome(rs.getString("u.nome"));
-            u.setLogin(rs.getString("u.login"));
-            u.setSenha(rs.getString("u.senha"));
-            u.setStatus(rs.getInt("u.status"));
+            DisciplinaDAO dDAO = new DisciplinaDAO();
+            p.setDisciplina(dDAO.getCarregaPorId(rs.getInt("p.iddisciplina")));            
             p.setUsuario(u);
         }
         this.desconectar();
         return p;
     }
 
-    public boolean excluir(Professor p) {
+    public boolean desativar(Professor p) {
         try {
             this.conectar();
-            String sql = "UPDATE professor WHERE idprofessor=?";
+            String sql = "UPDATE professor SET status=2 WHERE idprofessor=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, p.getIdprofessor());
             pstm.execute();

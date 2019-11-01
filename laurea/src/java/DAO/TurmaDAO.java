@@ -23,8 +23,11 @@ public class TurmaDAO extends DataBaseDAO {
             Turma t = new Turma();
             t.setIdturma(rs.getInt("t.idturma"));
             t.setNome(rs.getString("t.nome"));
-            ProfessorDAO pDAO = new ProfessorDAO();
-            t.setProfessor(pDAO.getCarregaPorId(rs.getInt("r.idusuario")));
+            Professor p = new Professor();
+            p.setIdprofessor(rs.getInt("t.idprofessor"));
+            p.setNome(rs.getString("p.nome"));
+            p.setStatus(rs.getInt("p.status"));
+            //p.setDisciplina(rs.getString("t.iddisciplina"));
             lista.add(t);
         }
         this.desconectar();
