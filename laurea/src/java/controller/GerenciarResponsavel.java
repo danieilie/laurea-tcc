@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -39,11 +40,25 @@ public class GerenciarResponsavel extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
+            
+            if (acao.equals("desativar")) {
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    r.setIdresponsavel(idresponsavel);
+                    if (rDAO.desativar(r)) {
+                        mensagem = "Desativado com sucesso!";
+                    } else {
+                        mensagem = "Erro ao desativar!";
+                    }
+                } else {
+                    mensagem = "Acesso negado";
+                }
 
-            /*    if(acao.equals("excluir")){
+            }
+
+            if(acao.equals("excluir")){
               if(GerenciarLogin.verificarPermissao(request, response)){    
-                res.setIdresponsavel(idresponsavel);
-                if(resDAO.excluir(res)){
+                r.setIdresponsavel(idresponsavel);
+                if(rDAO.excluir(r)){
                     mensagem = "Excluído com sucesso!";
                 }else{
                     mensagem = "Erro ao excluir!";
@@ -52,7 +67,8 @@ public class GerenciarResponsavel extends HttpServlet {
                   mensagem ="Acesso negado";
               }  
             
-            } */
+            }
+            
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";
@@ -73,6 +89,7 @@ public class GerenciarResponsavel extends HttpServlet {
         String nome = request.getParameter("nome");
         String cpf = request.getParameter("cpf");
         String rg = request.getParameter("rg");
+        String status = request.getParameter("status");
         String idusuario = request.getParameter("idusuario");
         String mensagem = "";
 
@@ -82,12 +99,13 @@ public class GerenciarResponsavel extends HttpServlet {
         }
         try {
             ResponsavelDAO rDAO = new ResponsavelDAO();
-            if (nome.equals("") || cpf.equals("") || idusuario.equals("")) {
+            if (nome.equals("") || cpf.equals("") || status.equals("") ||idusuario.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 r.setNome(nome);
                 r.setCpf(cpf);
                 r.setRg(rg);
+                r.setStatus(Integer.parseInt(status));
                 Usuario u = new Usuario();
                 u.setIdusuario(Integer.parseInt(idusuario));
                 r.setUsuario(u);

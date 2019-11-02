@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class GerenciarMensalidade extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";
+        int idcontrato = Integer.parseInt(request.getParameter("idcontrato"));
         int idmensalidade = Integer.parseInt(request.getParameter("idmensalidade"));
         String acao = request.getParameter("acao");
 
@@ -27,7 +29,7 @@ public class GerenciarMensalidade extends HttpServlet {
             MensalidadeDAO mDAO = new MensalidadeDAO();
             if (acao.equals("alterar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    m = mDAO.getCarregaPorId(idmensalidade);
+                    m = mDAO.getCarregaPorId(idcontrato, idmensalidade);
                     if (m.getIdmensalidade() > 0) {
                         RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_mensalidade.jsp");
                         request.setAttribute("mensalidade", m);
@@ -40,13 +42,13 @@ public class GerenciarMensalidade extends HttpServlet {
                 }
             }
 
-            if (acao.equals("excluir")) {
+            if (acao.equals("atualizarMensalidade")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     m.setIdmensalidade(idmensalidade);
-                    if (mDAO.excluir(m)) {
-                        mensagem = "Excluído com sucesso!";
+                    if (mDAO.atualizarMensalidade(m)) {
+                        mensagem = "Atualizada com sucesso!";
                     } else {
-                        mensagem = "Erro ao excluir!";
+                        mensagem = "Erro ao atualizar";
                     }
                 } else {
                     mensagem = "Acesso negado";
@@ -87,9 +89,12 @@ public class GerenciarMensalidade extends HttpServlet {
         }
         try {
             MensalidadeDAO mDAO = new MensalidadeDAO();
-            if (valor.equals("")) {
+            if (idcontrato.equals("") || mes.equals("") || valor.equals("") || datav.equals("") || datap.equals("") || status.equals("") ) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
+                Contrato c = new Contrato();
+                c.setIdcontrato(Integer.parseInt(idcontrato));
+                m.setContrato(c);
                 m.setMes(mes);
                 m.setValor(Double.parseDouble(valor));
                 m.setDatav(datav);
@@ -97,9 +102,6 @@ public class GerenciarMensalidade extends HttpServlet {
                 m.setMulta(Double.parseDouble(multa));
                 m.setDesconto(Double.parseDouble(desconto));
                 m.setStatus(Integer.parseInt(status));
-                Contrato c = new Contrato();
-                c.setIdcontrato(Integer.parseInt(idcontrato));
-                m.setContrato(c);
                 if (mDAO.gravar(m)) {
                     mensagem = "Gravado com sucesso";
                 } else {

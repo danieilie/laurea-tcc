@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -33,13 +34,26 @@ public class GerenciarAtividade extends HttpServlet {
                         request.setAttribute("atividade", a);
                         disp.forward(request, response);
                     } else {
-                        mensagem = "Atividade não encontrado";
+                        mensagem = "Atividade não encontrada";
                     }
                 } else {
                     mensagem = "Acesso negado";
                 }
             }
 
+            if (acao.equals("desativar")) {
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    a.setIdatividade(idatividade);
+                    if (aDAO.desativar(a)) {
+                        mensagem = "Desativado com sucesso!";
+                    } else {
+                        mensagem = "Erro ao desativar!";
+                    }
+                } else {
+                    mensagem = "Acesso negado";
+                }
+            }
+            
             if (acao.equals("excluir")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a.setIdatividade(idatividade);
@@ -82,7 +96,7 @@ public class GerenciarAtividade extends HttpServlet {
         }
         try {
             AtividadeDAO aDAO = new AtividadeDAO();
-            if (nome.equals("")) {
+            if (nome.equals("") || arquivo.equals("") || iddisciplina.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 a.setNome(nome);

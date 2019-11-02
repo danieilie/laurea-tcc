@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.AlunoDAO;
-import java.sql.Date;
 import model.Aluno;
+import DAO.ResponsavelDAO;
 import model.Responsavel;
 import model.Usuario;
 
@@ -31,7 +31,7 @@ public class GerenciarAluno extends HttpServlet {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a = aDAO.getCarregaPorId(idaluno);
                     if (a.getIdaluno() > 0) {
-                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form/form_aluno.jsp");
+                        RequestDispatcher disp = getServletContext().getRequestDispatcher("form_aluno.jsp");
                         request.setAttribute("aluno", a);
                         disp.forward(request, response);
                     } else {
@@ -43,11 +43,15 @@ public class GerenciarAluno extends HttpServlet {
             }
             
             if (acao.equals("desativar")) {
-                a.setIdaluno(idaluno);
-                if (aDAO.desativar(a)) {
-                    mensagem = "Desativado com sucesso!";
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    a.setIdaluno(idaluno);
+                    if (aDAO.desativar(a)) {
+                        mensagem = "Desativado com sucesso!";
+                    } else {
+                        mensagem = "Erro ao desativar!";
+                    }
                 } else {
-                    mensagem = "Erro ao Desativar!";
+                    mensagem = "Acesso negado";
                 }
             }
             
@@ -108,7 +112,7 @@ public class GerenciarAluno extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar/listar_aluno.jsp';");
+        out.println("location.href='listar_aluno.jsp';");
         out.println("</script>");
     }
 

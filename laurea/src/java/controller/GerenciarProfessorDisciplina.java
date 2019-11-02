@@ -8,47 +8,47 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAO.PerfilDAO;
-import model.Perfil;
+import DAO.ProfessorDAO;
+import model.Professor;
 
-public class GerenciarMenuPerfil extends HttpServlet {
+public class GerenciarProfessorDisciplina extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";
-        String idperfil = request.getParameter("idperfil");
+        String idprofessor = request.getParameter("idprofessor");
         String acao = request.getParameter("acao");
 
         try {
-            PerfilDAO pDAO = new PerfilDAO();
-            Perfil p = new Perfil();
+            ProfessorDAO proDAO = new ProfessorDAO();
+            Professor pro = new Professor();
             if (acao.equals("gerenciar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    p = pDAO.getCarregaPorId(Integer.parseInt(idperfil));
-                    if (p.getIdperfil() > 0) {
-                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_menu_perfil.jsp");
-                        request.setAttribute("perfilv", p);
+                    pro = proDAO.getCarregaPorId(Integer.parseInt(idprofessor));
+                    if (pro.getIdprofessor() > 0) {
+                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_professor_disciplina.jsp");
+                        request.setAttribute("professorv", pro);
                         disp.forward(request, response);
                     } else {
-                        mensagem = "Perfil não encontrado!";
+                        mensagem = "Professor não encontrado!";
                     }
                 } else {
                     mensagem = "Acesso Negado";
                 }
 
             }
-            if (acao.equals("desativar")) {
+            if (acao.equals("desvincular")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    String idmenu = request.getParameter("idmenu");
-                    if (idmenu.equals("") || idmenu.isEmpty()) {
-                        mensagem = "O menu deve ser selecinado";
+                    String iddisciplina = request.getParameter("iddisciplina");
+                    if (iddisciplina.equals("") || iddisciplina.isEmpty()) {
+                        mensagem = "A disciplina deve ser selecionada";
                     } else {
-                        if (pDAO.desativar(Integer.parseInt(idmenu), Integer.parseInt(idperfil))) {
-                            mensagem = "Desativado com sucesso";
+                        if (proDAO.desvincular(Integer.parseInt(iddisciplina), Integer.parseInt(idprofessor))) {
+                            mensagem = "Desvinculado com sucesso";
                         } else {
-                            mensagem = "Erro ao desativar";
+                            mensagem = "Erro ao desvincular";
                         }
                     }
                 } else {
@@ -57,12 +57,12 @@ public class GerenciarMenuPerfil extends HttpServlet {
             }
 //            if (acao.equals("excluir")) {
 //                if (GerenciarLogin.verificarPermissao(request, response)) {
-//                    String idmenu = request.getParameter("idmenu");
-//                    if (idmenu.equals("") || idmenu.isEmpty()) {
-//                        mensagem = "O menu deve ser selecinado";
+//                    String iddisciplina = request.getParameter("iddisciplina");
+//                    if (iddisciplina.equals("") || iddisciplina.isEmpty()) {
+//                        mensagem = "A Disciplina deve ser selecionada";
 //                    } else {
-//                        if (pDAO.excluir(Integer.parseInt(idperfil))) {
-//                            mensagem = "Excluido com sucesso";
+//                        if (proDAO.excluir(iddisciplina, idprofessor)) {
+//                            mensagem = "Excluída com sucesso";
 //                        } else {
 //                            mensagem = "Erro ao excluir";
 //                        }
@@ -71,16 +71,14 @@ public class GerenciarMenuPerfil extends HttpServlet {
 //                    mensagem = "Acesso Negado";
 //                }
 //            }
-
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='gerenciar_menu_perfil.do?acao=gerenciar&idperfil=" + idperfil + "';");
+        out.println("location.href='gerenciar_menu_perfil.do?acao=gerenciar&idprofessor=" + idprofessor + "';");
         out.println("</script>");
-
     }
 
     @Override
@@ -89,15 +87,15 @@ public class GerenciarMenuPerfil extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";
-        String idmenu = request.getParameter("idmenu");
-        String idperfil = request.getParameter("idperfil");
+        String idprofessor = request.getParameter("idprofessor");
+        String iddisciplina = request.getParameter("iddisciplina");
 
         try {
-            PerfilDAO pDAO = new PerfilDAO();
-            if (idperfil.equals("") || idmenu.equals("")) {
+            ProfessorDAO proDAO = new ProfessorDAO();
+            if (idprofessor.equals("") || iddisciplina.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser selecionados";
             } else {
-                if (pDAO.vincular(Integer.parseInt(idmenu), Integer.parseInt(idperfil))) {
+                if (proDAO.vincular(Integer.parseInt(idprofessor), Integer.parseInt(iddisciplina))) {
                     mensagem = "Vinculado com sucesso";
                 } else {
                     mensagem = "Erro ao Vincular";
@@ -109,7 +107,7 @@ public class GerenciarMenuPerfil extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='gerenciar_menu_perfil.do?acao=gerenciar&idperfil=" + idperfil + "';");
+        out.println("location.href='gerenciar_professor_disciplina.do?acao=gerenciar&idprofessor=" + idprofessor + "';");
         out.println("</script>");
     }
 

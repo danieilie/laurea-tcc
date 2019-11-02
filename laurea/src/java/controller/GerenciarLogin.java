@@ -22,7 +22,7 @@ public class GerenciarLogin extends HttpServlet {
 
         //redirecionamento do usuario após sair da sessão
         request.getSession().removeAttribute("ulogado"); //removendo o usuario logado da sessao
-        response.sendRedirect("form/form_login.jsp"); //redirecionamento de logoff        
+        response.sendRedirect("form_login.jsp"); //redirecionamento de logoff        
 
     }
 
@@ -70,7 +70,7 @@ public class GerenciarLogin extends HttpServlet {
         try {
             HttpSession sessao = request.getSession();
             if (sessao.getAttribute("ulogado") == null) {
-                response.sendRedirect("form/form_login.jsp");
+                response.sendRedirect("form_login.jsp");
             } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
@@ -80,7 +80,7 @@ public class GerenciarLogin extends HttpServlet {
                 u = (Usuario) request.getSession().getAttribute("ulogado");
                 if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
-                    response.sendRedirect("form/form_login.jsp");
+                    response.sendRedirect("form_login.jsp");
                 } else {
                     boolean possuiAcesso = false;
                     for (Menu m : u.getPerfil().getMenus()) {
@@ -109,7 +109,7 @@ public class GerenciarLogin extends HttpServlet {
         try {
             HttpSession sessao = request.getSession();
             if (sessao.getAttribute("ulogado") == null) {
-                response.sendRedirect("form/form_login.jsp");
+                response.sendRedirect("form_login.jsp");
             } else {
                 String uri = request.getRequestURI();
                 String queryString = request.getQueryString();
@@ -119,7 +119,7 @@ public class GerenciarLogin extends HttpServlet {
                 u = (Usuario) request.getSession().getAttribute("ulogado");
                 if (u == null) {
                     sessao.setAttribute("mensagem", "Você não está autenticado");
-                    response.sendRedirect("form/form_login.jsp");
+                    response.sendRedirect("form_login.jsp");
                 } else {
                     for (Menu m : u.getPerfil().getMenus()) {
                         if (uri.contains(m.getLink())) {

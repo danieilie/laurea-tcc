@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -69,8 +70,7 @@ public class GerenciarTurma extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String idturma = request.getParameter("idturma");
-        String datahora = request.getParameter("datahora");
-        String diasemana = request.getParameter("diasemana");
+        String nome = request.getParameter("nome");
         String idprofessor = request.getParameter("idprofessor");
         String mensagem = "";
 
@@ -80,17 +80,13 @@ public class GerenciarTurma extends HttpServlet {
         }
         try {
             TurmaDAO tDAO = new TurmaDAO();
-            if (datahora.equals("") || diasemana.equals("") || idprofessor.equals("")) {
+            if (nome.equals("") || idprofessor.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
-
-                t.setDatahora(datahora);
-                t.setDiasemana(diasemana);
-
+                t.setNome(nome);
                 Professor p = new Professor();
                 p.setIdprofessor(Integer.parseInt(idprofessor));
                 t.setProfessor(p);
-
                 if (tDAO.gravar(t)) {
                     mensagem = "Gravado com sucesso";
                 } else {
