@@ -1,19 +1,19 @@
 package model;
 
-import java.util.Date;
+//import java.util.Date;
 
 public class Aluno {
 
     private int idaluno, status;
-    private String nome, cpf, rg;
-    private Date datanasc;
+    private String nome, cpf, rg, datanasc;
+//    private String datanasc;
     private Responsavel responsavel;
     private Usuario usuario;
 
     public Aluno() {
     }
 
-    public Aluno(int idaluno, int status, String nome, String cpf, String rg, Date datanasc, Responsavel responsavel, Usuario usuario) {
+    public Aluno(int idaluno, int status, String nome, String cpf, String rg, String datanasc, Responsavel responsavel, Usuario usuario) {
         this.idaluno = idaluno;
         this.status = status;
         this.nome = nome;
@@ -45,11 +45,11 @@ public class Aluno {
         this.idaluno = idaluno;
     }
 
-    public Date getDatanasc() {
+    public String getDatanasc() {
         return datanasc;
     }
 
-    public void setDatanasc(Date datanasc) {
+    public void setDatanasc(String datanasc) {
         this.datanasc = datanasc;
     }
 

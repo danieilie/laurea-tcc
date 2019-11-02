@@ -5,15 +5,15 @@ import java.util.Date;
 public class Contrato {
 
     private int idcontrato, parcela, status;
-    private String serie, escola;
-    private Date datacontrato;
+    private String serie, escola, datacontrato;
+//    private Date datacontrato;
     private double preco;
     private Aluno aluno;
 
     public Contrato() {
     }
 
-    public Contrato(int idcontrato, int parcela, int status, Date datacontrato, String serie, String escola, double preco, Aluno aluno) {
+    public Contrato(int idcontrato, int parcela, int status, String datacontrato, String serie, String escola, double preco, Aluno aluno) {
         this.idcontrato = idcontrato;
         this.parcela = parcela;
         this.status = status;
@@ -53,11 +53,11 @@ public class Contrato {
         this.status = status;
     }
 
-    public Date getDatacontrato() {
+    public String getDatacontrato() {
         return datacontrato;
     }
 
-    public void setDatacontrato(Date datacontrato) {
+    public void setDatacontrato(String datacontrato) {
         this.datacontrato = datacontrato;
     }
 
