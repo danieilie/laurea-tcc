@@ -1,6 +1,6 @@
 package DAO;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ContratoDAO extends DataBaseDAO {
         while (rs.next()) {
             Contrato c = new Contrato();
             c.setIdcontrato(rs.getInt("c.idcontrato"));
-            c.setDatacontrato(rs.getDate("c.datacontrato"));
+            c.setDatacontrato(rs.getString("c.datacontrato"));
             c.setPreco(rs.getDouble("c.preco"));
             c.setParcela(rs.getInt("c.parcela"));
             c.setStatus(rs.getInt("c.status"));
@@ -58,7 +58,7 @@ public class ContratoDAO extends DataBaseDAO {
             if (c.getIdcontrato() > 0) {
                 pstm.setInt(1, c.getIdcontrato());
             }
-            pstm.setDate(2, (Date) c.getDatacontrato());
+            pstm.setString(2, c.getDatacontrato());
             pstm.setDouble(3, c.getPreco());
             pstm.setInt(4, c.getParcela());
             pstm.setInt(5, c.getStatus());
@@ -85,7 +85,7 @@ public class ContratoDAO extends DataBaseDAO {
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
             c.setIdcontrato(rs.getInt("c.idcontrato"));
-            c.setDatacontrato(rs.getDate("c.datacontrato"));
+            c.setDatacontrato(rs.getString("c.datacontrato"));
             c.setPreco(rs.getDouble("c.preco"));
             c.setParcela(rs.getInt("c.parcela"));
             c.setStatus(rs.getInt("c.status"));
@@ -103,10 +103,10 @@ public class ContratoDAO extends DataBaseDAO {
         return c;
     }
 
-    public boolean desativar(Contrato c) {
+    public boolean excluir(Contrato c) {
         try {
             this.conectar();
-            String sql = "UPDATE contrato SET status=2 WHERE idcontrato = ? ";
+            String sql = "DELETE FROM contrato WHERE idcontrato=? ";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, c.getIdcontrato());
             pstm.execute();

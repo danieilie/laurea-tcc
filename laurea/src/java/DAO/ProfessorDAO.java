@@ -88,10 +88,10 @@ public class ProfessorDAO extends DataBaseDAO {
         return p;
     }
 
-    public boolean desativar(Professor p) {
+    public boolean excluir(Professor p) {
         try {
             this.conectar();
-            String sql = "UPDATE professor SET status=2 WHERE idprofessor=?";
+            String sql = "DELETE FROM professor WHERE idprofessor=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, p.getIdprofessor());
             pstm.execute();
@@ -101,6 +101,85 @@ public class ProfessorDAO extends DataBaseDAO {
             System.out.println(e);
             return false;
         }
+    }    
+
+    public boolean desvincular(int idprofessor, int iddisciplina) {
+
+        try {
+            String sql = "DELETE FROM professor_disciplina WHERE iddisciplina=? AND idprofessor=? ";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idprofessor);
+            pstm.setInt(2, iddisciplina);
+            pstm.execute();
+            this.desconectar();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public boolean vincular(int idprofessor, int iddisciplina) {
+
+        try {
+            String sql = "INSERT INTO professor_disciplina (idprofessor, iddisciplina) VALUES (?,?)";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idprofessor);
+            pstm.setInt(2, iddisciplina);
+            pstm.execute();
+            this.desconectar();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
     }
 
+    public ArrayList<Professor> professoresVinculadosPorAtividades(int iddisciplina) throws Exception {
+
+        ArrayList<Professor> lista = new ArrayList<Professor>();
+        String sql = "SELECT p.* FROM professor_disciplina as pd, professor as p "
+                + "WHERE pd.idprofessor = p.idprofessor AND pd.iddisciplina = ? ";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, iddisciplina);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Professor p = new Professor();
+            p.setIdprofessor(rs.getInt("p.idprofessor"));
+            p.setNome(rs.getString("p.nome"));
+            p.setStatus(rs.getInt("p.status"));
+            Usuario u = new Usuario();
+            u.setIdusuario(rs.getInt("p.idusuario"));
+            p.setUsuario(u);
+            lista.add(p);
+        }
+        this.desconectar();
+        return lista;
+    }
+
+    public ArrayList<Professor> professoresNaoVinculadosPorAtividades(int iddisciplina) throws Exception {
+
+        ArrayList<Professor> lista = new ArrayList<Professor>();
+        String sql = "SELECT p.* FROM professor as p WHERE p.idprofessor "
+                + "NOT IN (SELECT pd.idprofessor FROM professor_disciplina as pd WHERE pd.iddisciplina=? ) ";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, iddisciplina);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Professor p = new Professor();
+            p.setIdprofessor(rs.getInt("p.idprofessor"));
+            p.setNome(rs.getString("p.nome"));
+            p.setStatus(rs.getInt("p.status"));
+            Usuario u = new Usuario();
+            u.setIdusuario(rs.getInt("p.idusuario"));
+            p.setUsuario(u);
+            lista.add(p);
+        }
+        this.desconectar();
+        return lista;
+    }
 }

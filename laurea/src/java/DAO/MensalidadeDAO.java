@@ -105,37 +105,31 @@ public class MensalidadeDAO extends DataBaseDAO {
         return m;
     }
     
-    /** public Mensalidade contarRegistro(int idcontrato, int idmensalidade) throws Exception{
-    
-        Mensalidade men = new Mensalidade();
+//    public Mensalidade contarRegistro(int idcontrato, int idmensalidade) throws Exception{
+//    
+//        Mensalidade men = new Mensalidade();
+//        
+//        String sql = "SELECT COUNT(mes) AS num FROM mensalidade WHERE idcontrato = ? AND idmensalidade = ?";
+//        
+//        this.conectar();
+//        PreparedStatement pstm = conn.prepareStatement(sql);
+//        pstm.setInt(1 , idcontrato);
+//        pstm.setInt(2 , idmensalidade);
+//        ResultSet rs = pstm.executeQuery();
+//        if(rs.next()){
+//            
+//           men.setNum(rs.getInt("num"));
+//            
+//        }
+//        this.desconectar();
+//        return men;
+//    } 
         
-        String sql = "SELECT COUNT(mes) AS num FROM mensalidade WHERE idcontrato = ? AND idmensalidade = ?";
-        
-        this.conectar();
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1 , idcontrato);
-        pstm.setInt(2 , idmensalidade);
-        ResultSet rs = pstm.executeQuery();
-        if(rs.next()){
-            
-           men.setNum(rs.getInt("num"));
-            
-        }
-        this.desconectar();
-        return men;
-    } 
-        
-    public boolean atualizar(Mensalidade men){
-        try{
-            
-            String sql;
+    public boolean atualizarMensalidade(Mensalidade men){
+        try{            
+            String sql = "UPDATE mensalidade SET mes=?, valor=?, datav=?, datap=?, multa=?, desconto=?, status=? WHERE idcontrato=? AND idmensalidade=?";                
             this.conectar();
-            
-                sql = "UPDATE mensalidade SET mes=?, valor=?, datav=?, datap=?,"
-                     + "multa=?, desconto=?, status=? WHERE idcontrato=? AND idmensalidade=?";
-                
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            
+            PreparedStatement pstm = conn.prepareStatement(sql);            
             pstm.setString(1, men.getMes());
             pstm.setDouble(2, men.getValor());
             pstm.setString(3, men.getDatav());
@@ -144,34 +138,13 @@ public class MensalidadeDAO extends DataBaseDAO {
             pstm.setDouble(6, men.getDesconto());
             pstm.setInt(7, men.getStatus());
             pstm.setInt(8, men.getContrato().getIdcontrato());
-            pstm.setInt(9, men.getIdmensalidade());
-            
+            pstm.setInt(9, men.getIdmensalidade());            
             pstm.execute();
             this.desconectar();
-            return true;
-            
+            return true;            
         }catch(Exception e){
-            
             System.out.println(e);
-            return false;
-            
+            return false;            
         }
-    }  **/
-    
-    public boolean excluir(Mensalidade m) {
-        try {
-            this.conectar();
-            String sql = "UPDATE mensalidade SET status=2 WHERE idmensalidade=? ";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, m.getIdmensalidade());
-            pstm.execute();
-            this.desconectar();
-            return true;
-
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }
-
+    } 
 }

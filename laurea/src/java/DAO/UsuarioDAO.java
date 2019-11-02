@@ -3,7 +3,6 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Perfil;
 import model.Usuario;
 
 public class UsuarioDAO extends DataBaseDAO {
