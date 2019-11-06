@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -71,13 +72,13 @@ public class GerenciarContrato extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String idcontrato = request.getParameter("idcontrato");
-        String idaluno = request.getParameter("idaluno");
         String datacontrato = request.getParameter("datacontrato");
         String preco = request.getParameter("preco");
         String parcela = request.getParameter("parcela");
         String status = request.getParameter("status");
         String serie = request.getParameter("serie");
         String escola = request.getParameter("escola");
+        String idaluno = request.getParameter("idaluno");
 
         String mensagem = "";
 
@@ -87,9 +88,9 @@ public class GerenciarContrato extends HttpServlet {
         }
         try {
             ContratoDAO cDAO = new ContratoDAO();
-            if (datacontrato.equals("") || preco.equals("") || parcela.equals("") ||  status.equals("") ||  serie.equals("")) {
+            if (datacontrato.equals("") || preco.equals("") || parcela.equals("") || status.equals("") || serie.equals("") || idaluno.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
-            } else {                
+            } else {
                 c.setDatacontrato(datacontrato);
                 c.setPreco(Double.parseDouble(preco));
                 c.setParcela(Integer.parseInt(parcela));

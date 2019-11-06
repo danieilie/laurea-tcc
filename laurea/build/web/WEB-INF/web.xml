@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>GerenciarPerfil</servlet-name>
+        <url-pattern>/gerenciar_perfil.do</url-pattern>
+    </servlet-mapping>       
+    <servlet>
+        <servlet-name>GerenciarPerfil</servlet-name>
+        <servlet-class>controller.GerenciarPerfil</servlet-class>
+=======
         <servlet-name>GerenciarAluno</servlet-name>
         <url-pattern>/gerenciar_aluno.do</url-pattern>
     </servlet-mapping>       
@@ -47,6 +55,37 @@
     <servlet>
         <servlet-name>GerenciarContrato</servlet-name>
         <servlet-class>controller.GerenciarContrato</servlet-class>
+>>>>>>> dev
+    </servlet>
+    
+    
+    <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>GerenciarMenu</servlet-name>
+        <url-pattern>/gerenciar_menu.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GerenciarMenu</servlet-name>
+        <servlet-class>controller.GerenciarMenu</servlet-class>
+=======
+        <servlet-name>GerenciarDisciplina</servlet-name>
+        <url-pattern>/gerenciar_disciplina.do</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GerenciarDisciplina</servlet-name>
+        <servlet-class>controller.GerenciarDisciplina</servlet-class>
+>>>>>>> dev
+    </servlet>
+    
+    
+    <servlet-mapping>
+<<<<<<< HEAD
+        <servlet-name>GerenciarUsuario</servlet-name>
+        <url-pattern>/gerenciar_usuario.do</url-pattern>
+    </servlet-mapping>  
+    <servlet>
+        <servlet-name>GerenciarUsuario</servlet-name>
+        <servlet-class>controller.GerenciarUsuario</servlet-class>
     </servlet>
     
     
@@ -57,10 +96,7 @@
     <servlet>
         <servlet-name>GerenciarDisciplina</servlet-name>
         <servlet-class>controller.GerenciarDisciplina</servlet-class>
-    </servlet>
-    
-    
-    <servlet-mapping>
+=======
         <servlet-name>GerenciarLogin</servlet-name>
         <url-pattern>/gerenciar_login.do</url-pattern>
     </servlet-mapping>  
@@ -87,6 +123,7 @@
     <servlet>
         <servlet-name>GerenciarMenu</servlet-name>
         <servlet-class>controller.GerenciarMenu</servlet-class>
+>>>>>>> dev
     </servlet>
     
     
@@ -98,6 +135,17 @@
         <servlet-name>GerenciarMenuPerfil</servlet-name>
         <servlet-class>controller.GerenciarMenuPerfil</servlet-class>
     </servlet>
+<<<<<<< HEAD
+    
+    
+    <servlet-mapping>
+        <servlet-name>GerenciarLogin</servlet-name>
+        <url-pattern>/gerenciar_login.do</url-pattern>
+    </servlet-mapping>  
+    <servlet>
+        <servlet-name>GerenciarLogin</servlet-name>
+        <servlet-class>controller.GerenciarLogin</servlet-class>
+=======
        
                      
     <servlet-mapping>
@@ -157,6 +205,7 @@
     <servlet>
         <servlet-name>GerenciarUsuario</servlet-name>
         <servlet-class>controller.GerenciarUsuario</servlet-class>
+>>>>>>> dev
     </servlet>
     
     

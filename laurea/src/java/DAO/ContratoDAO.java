@@ -1,10 +1,12 @@
 package DAO;
 
+//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import model.Aluno;
 import model.Contrato;
+import model.Responsavel;
 
 public class ContratoDAO extends DataBaseDAO {
 
@@ -14,10 +16,9 @@ public class ContratoDAO extends DataBaseDAO {
     public ArrayList<Contrato> getLista() throws Exception {
 
         ArrayList<Contrato> lista = new ArrayList<Contrato>();
-        String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON "
-                + "a.idaluno = c.idaluno ";
-
+        String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
+                + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
+                + "INNER JOIN responsavel r ON c.idresponsavel = r.idresponsavel ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -33,10 +34,10 @@ public class ContratoDAO extends DataBaseDAO {
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("c.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            a.setDatanasc(rs.getString("a.datanasc"));
-            a.setCpf(rs.getString("a.cpf"));
-            a.setRg(rs.getString("a.rg"));
             c.setAluno(a);
+            Responsavel r = new Responsavel();
+            r.setNome(rs.getString("r.nome"));
+            a.setResponsavel(r);
             lista.add(c);
         }
         this.desconectar();
@@ -51,19 +52,19 @@ public class ContratoDAO extends DataBaseDAO {
             if (c.getIdcontrato() == 0) {
                 sql = "INSERT INTO contrato(datacontrato, preco, parcela, status, serie, escola, idaluno) VALUES(?,?,?,?,?,?,?) ";
             } else {
-                sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=?";
+                sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=? ";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, c.getDataContrato());
-            pstm.setDouble(2, c.getPreco());
-            pstm.setInt(3, c.getParcela());
-            pstm.setInt(4, c.getStatus());
-            pstm.setString(5, c.getSerie());
-            pstm.setString(6, c.getEscola());
-            pstm.setInt(7, c.getAluno().getIdaluno());
             if (c.getIdcontrato() > 0) {
-                pstm.setInt(8, c.getIdcontrato());
+                pstm.setInt(1, c.getIdcontrato());
             }
+            pstm.setString(2, c.getDatacontrato());
+            pstm.setDouble(3, c.getPreco());
+            pstm.setInt(4, c.getParcela());
+            pstm.setInt(5, c.getStatus());
+            pstm.setString(6, c.getSerie());
+            pstm.setString(7, c.getEscola());
+            pstm.setInt(8, c.getAluno().getIdaluno());
             pstm.execute();
             this.desconectar();
             return true;
@@ -77,8 +78,7 @@ public class ContratoDAO extends DataBaseDAO {
 
         Contrato c = new Contrato();
         String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON "
-                + "a.idaluno = c.idaluno WHERE c.idcontrato=?";
+                + "INNER JOIN aluno a ON c.idaluno = a.idaluno WHERE idcontrato=? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idcontrato);
@@ -92,12 +92,12 @@ public class ContratoDAO extends DataBaseDAO {
             c.setSerie(rs.getString("c.serie"));
             c.setEscola(rs.getString("c.escola"));
             Aluno a = new Aluno();
-            a.setIdaluno(rs.getInt("p.idaluno"));
+            a.setIdaluno(rs.getInt("c.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            a.setDatanasc(rs.getString("a.datanasc"));
-            a.setCpf(rs.getString("a.cpf"));
-            a.setRg(rs.getString("a.rg"));
             c.setAluno(a);
+            Responsavel r = new Responsavel();
+            r.setNome(rs.getString("r.nome"));
+            a.setResponsavel(r);
         }
         this.desconectar();
         return c;
@@ -106,7 +106,7 @@ public class ContratoDAO extends DataBaseDAO {
     public boolean excluir(Contrato c) {
         try {
             this.conectar();
-            String sql = "UPDATE contrato WHERE idcontrato=?";
+            String sql = "DELETE FROM contrato WHERE idcontrato=? ";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, c.getIdcontrato());
             pstm.execute();

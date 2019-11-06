@@ -1,3 +1,4 @@
+
 package controller;
 
 import java.io.IOException;
@@ -39,10 +40,10 @@ public class GerenciarUsuario extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            if (acao.equals("excluir")) {
+            if (acao.equals("desativar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     u.setIdusuario(idusuario);
-                    if (uDAO.excluir(u)) {
+                    if (uDAO.desativar(u)) {
                         mensagem = "Desativado com sucesso!";
                     } else {
                         mensagem = "Erro ao desativar!";
@@ -84,7 +85,7 @@ public class GerenciarUsuario extends HttpServlet {
 
         try {
             if (nome.equals("") || login.equals("") || senha.equals("") || status.equals("") || idperfil.equals("")) {
-                mensagem = "Campos obrigatórios devem ser preecnhidos!";
+                mensagem = "Campos obrigatórios devem ser preenchidos!";
             } else {
                 u.setNome(nome);
                 u.setLogin(login);

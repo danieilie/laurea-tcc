@@ -3,22 +3,21 @@ package model;
 public class Turma {
 
     private int idturma;
-    private String diasemana, datahora;
+    private String nome;
     private Professor professor;
 
     public Turma() {
     }
 
-    public Turma(int idturma, String diasemana, Professor professor, String datahora) {
+    public Turma(int idturma, String nome, Professor professor) {
         this.idturma = idturma;
-        this.diasemana = diasemana;
+        this.nome = nome;
         this.professor = professor;
-        this.datahora = datahora;
     }
 
     @Override
     public String toString() {
-        return getDiasemana() + getDatahora();
+        return getNome();
     }
 
     public int getIdturma() {
@@ -29,12 +28,12 @@ public class Turma {
         this.idturma = idturma;
     }
 
-    public String getDiasemana() {
-        return diasemana;
+    public String getNome() {
+        return nome;
     }
 
-    public void setDiasemana(String diasemana) {
-        this.diasemana = diasemana;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Professor getProfessor() {
@@ -45,12 +44,5 @@ public class Turma {
         this.professor = professor;
     }
 
-    public String getDatahora() {
-        return datahora;
-    }
-
-    public void setDatahora(String datahora) {
-        this.datahora = datahora;
-    }
-
+    
 }

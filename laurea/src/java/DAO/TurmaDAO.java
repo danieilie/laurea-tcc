@@ -15,20 +15,19 @@ public class TurmaDAO extends DataBaseDAO {
 
         ArrayList<Turma> lista = new ArrayList<Turma>();
         String sql = "SELECT t.*, p.professor FROM turma t "
-                + "INNER JOIN professor p ON "
-                + "p.idprofessor = t.idprofessor ";
+                + "INNER JOIN professor p ON p.idprofessor = t.idprofessor ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {
             Turma t = new Turma();
             t.setIdturma(rs.getInt("t.idturma"));
-            t.setDatahora(rs.getString("t.datahora"));
-            t.setDiasemana(rs.getString("t.diasemana"));
+            t.setNome(rs.getString("t.nome"));
             Professor p = new Professor();
-            p.setIdprofessor(rs.getInt("p.idprofessor"));
+            p.setIdprofessor(rs.getInt("t.idprofessor"));
             p.setNome(rs.getString("p.nome"));
-            t.setProfessor(p);
+            p.setStatus(rs.getInt("p.status"));
+            //p.setDisciplina(rs.getString("t.iddisciplina"));
             lista.add(t);
         }
         this.desconectar();
@@ -41,16 +40,15 @@ public class TurmaDAO extends DataBaseDAO {
             String sql;
             this.conectar();
             if (t.getIdturma() == 0) {
-                sql = "INSERT INTO turma(datahora, diasemana, idprofessor) VALUES(?,?,?) ";
+                sql = "INSERT INTO turma(nome, idprofessor) VALUES(?,?) ";
             } else {
-                sql = "UPDATE turma SET datahora=?, diasemana=?, idprofessor=? WHERE idturma=?";
+                sql = "UPDATE turma SET nome=?, idprofessor=? WHERE idturma=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, t.getDatahora());
-            pstm.setString(2, t.getDiasemana());
-            pstm.setInt(3, t.getProfessor().getIdprofessor());
+            pstm.setString(1, t.getNome());
+            pstm.setInt(2, t.getProfessor().getIdprofessor());
             if (t.getIdturma() > 0) {
-                pstm.setInt(4, t.getIdturma());
+                pstm.setInt(3, t.getIdturma());
             }
             pstm.execute();
             this.desconectar();
@@ -65,19 +63,18 @@ public class TurmaDAO extends DataBaseDAO {
 
         Turma t = new Turma();
         String sql = "SELECT t.*, p.professor FROM turma t "
-                + "INNER JOIN professor p ON "
-                + "p.idprofessor = t.idprofessor WHERE t.idturma=?";
+                + "INNER JOIN professor p ON p.idprofessor = t.idprofessor WHERE t.idturma=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idturma);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
             t.setIdturma(rs.getInt("idturma"));
-            t.setDatahora(rs.getString("t.datahora"));
-            t.setDiasemana(rs.getString("t.diasemana"));
+            t.setNome(rs.getString("t.nome"));
             Professor p = new Professor();
             p.setIdprofessor(rs.getInt("p.idprofessor"));
             p.setNome(rs.getString("p.nome"));
+            p.setStatus(rs.getInt("p.status"));
             t.setProfessor(p);
         }
         this.desconectar();
@@ -93,7 +90,6 @@ public class TurmaDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
             return false;

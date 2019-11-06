@@ -1,28 +1,27 @@
 package model;
 
-//import java.util.ArrayList;
+//import java.util.Date;
+
 public class Aluno {
 
-    private int idaluno;
+    private int idaluno, status;
     private String nome, cpf, rg, datanasc;
+//    private String datanasc;
     private Responsavel responsavel;
     private Usuario usuario;
-    //private ArrayList<Usuario> alunos;
-    //private ArrayList<Usuario> naoAlunos;
 
     public Aluno() {
     }
 
-    public Aluno(int idaluno, String datanasc, String nome, String cpf, String rg, Responsavel responsavel /*, Usuario usuario, ArrayList<Usuario> alunos, ArrayList<Usuario> naoAlunos  */) {
+    public Aluno(int idaluno, int status, String nome, String cpf, String rg, String datanasc, Responsavel responsavel, Usuario usuario) {
         this.idaluno = idaluno;
-        this.datanasc = datanasc;
+        this.status = status;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
+        this.datanasc = datanasc;
         this.responsavel = responsavel;
         this.usuario = usuario;
-        //this.alunos = alunos;
-        //this.naoAlunos = naoAlunos;
     }
 
     @Override
@@ -30,6 +29,14 @@ public class Aluno {
         return getNome() + getCpf() + getRg();
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
     public int getIdaluno() {
         return idaluno;
     }
@@ -86,16 +93,4 @@ public class Aluno {
         this.usuario = usuario;
     }
 
-    /**
-     * public ArrayList<Usuario> getAlunos() { return alunos; }
-     *
-     * public void setAlunos(ArrayList<Usuario> alunos) { this.alunos = alunos;
-     * }
-     *
-     * public ArrayList<Usuario> getNaoAlunos() { return naoAlunos; }
-     *
-     * public void setNaoAlunos(ArrayList<Usuario> naoAlunos) { this.naoAlunos =
-     * naoAlunos; }
-     *
-     */
 }

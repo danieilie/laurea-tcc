@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controller;
 
 import java.io.IOException;
@@ -14,24 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.Perfil;
 import DAO.PerfilDAO;
 
-/**
- *
- * @author Administrador
- */
 public class GerenciarPerfil extends HttpServlet {
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         int idperfil = Integer.parseInt(request.getParameter("idperfil"));
@@ -44,8 +27,7 @@ public class GerenciarPerfil extends HttpServlet {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     p = pDAO.getCarregaPorId(idperfil);
                     if (p.getIdperfil() > 0) {
-                        RequestDispatcher disp
-                                = getServletContext().getRequestDispatcher("/form_perfil.jsp");
+                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_perfil.jsp");
                         request.setAttribute("perfil", p);
                         disp.forward(request, response);
                     } else {
@@ -76,14 +58,6 @@ public class GerenciarPerfil extends HttpServlet {
 
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -121,13 +95,8 @@ public class GerenciarPerfil extends HttpServlet {
 
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }

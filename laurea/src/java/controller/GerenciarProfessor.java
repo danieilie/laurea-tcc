@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -9,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.ProfessorDAO;
-import model.Disciplina;
 import model.Professor;
 import model.Usuario;
 
@@ -31,8 +29,7 @@ public class GerenciarProfessor extends HttpServlet {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     p = pDAO.getCarregaPorId(idprofessor);
                     if (p.getIdprofessor() > 0) {
-                        RequestDispatcher disp
-                                = getServletContext().getRequestDispatcher("/form_professor.jsp");
+                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_professor.jsp");
                         request.setAttribute("professor", p);
                         disp.forward(request, response);
                     } else {
@@ -47,9 +44,9 @@ public class GerenciarProfessor extends HttpServlet {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     p.setIdprofessor(idprofessor);
                     if (pDAO.excluir(p)) {
-                        mensagem = "Excluído com sucesso!";
+                        mensagem = "Desativado com sucesso!";
                     } else {
-                        mensagem = "Erro ao excluir!";
+                        mensagem = "Erro ao desativar!";
                     }
                 } else {
                     mensagem = "Acesso negado";
@@ -73,7 +70,7 @@ public class GerenciarProfessor extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idprofessor = request.getParameter("idprofessor");
         String nome = request.getParameter("nome");
-        String iddisciplina = request.getParameter("iddisciplina");
+        String status = request.getParameter("status");
         String idusuario = request.getParameter("idusuario");
         String mensagem = "";
 
@@ -83,13 +80,11 @@ public class GerenciarProfessor extends HttpServlet {
         }
         try {
             ProfessorDAO pDAO = new ProfessorDAO();
-            if (nome.equals("") || iddisciplina.equals("") || idusuario.equals("")) {
+            if (nome.equals("") || status.equals("") || idusuario.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 p.setNome(nome);
-                Disciplina d = new Disciplina();
-                d.setIddisciplina(Integer.parseInt(iddisciplina));
-                p.setDisciplina(d);
+                p.setStatus(Integer.parseInt(status));
                 Usuario u = new Usuario();
                 u.setIdusuario(Integer.parseInt(idusuario));
                 p.setUsuario(u);

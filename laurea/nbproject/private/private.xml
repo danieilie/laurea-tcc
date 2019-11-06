@@ -3,8 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+<<<<<<< Updated upstream
             <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarAlunoAtividade.java</file>
             <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/web/form/form_aluno.jsp</file>
+=======
+            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/assets/css/estilo_geral.css</file>
+            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/index.jsp</file>
+>>>>>>> Stashed changes
+=======
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/ContratoDAO.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarAlunoAtividade.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/AlunoDAO.java</file>
+>>>>>>> dev
         </group>
     </open-files>
 </project-private>

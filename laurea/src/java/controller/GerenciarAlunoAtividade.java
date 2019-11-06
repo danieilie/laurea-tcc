@@ -2,13 +2,12 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Aluno;
 import DAO.AlunoDAO;
+import model.Aluno;
 
 public class GerenciarAlunoAtividade extends HttpServlet {
 
@@ -18,11 +17,12 @@ public class GerenciarAlunoAtividade extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";
-        String acao = request.getParameter("acao");
         String idaluno = request.getParameter("idaluno");
+        String acao = request.getParameter("acao");
 
         try {
             AlunoDAO aDAO = new AlunoDAO();
+            Aluno a = new Aluno();
 
             if (acao.equals("desvincular")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
@@ -30,7 +30,7 @@ public class GerenciarAlunoAtividade extends HttpServlet {
                     if (idatividade.equals("") || idatividade.isEmpty()) {
                         mensagem = "O menu deve ser selecinado";
                     } else {
-                        if (aDAO.desvincular(Integer.parseInt(idatividade))) {
+                        if (aDAO.desativar(Integer.parseInt("idaluno"))) {
                             mensagem = "Desvinculado com sucesso!";
                         } else {
                             mensagem = "Erro ao desvincular!";

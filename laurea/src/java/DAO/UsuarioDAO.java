@@ -3,7 +3,6 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import model.Perfil;
 import model.Usuario;
 
 public class UsuarioDAO extends DataBaseDAO {
@@ -14,9 +13,7 @@ public class UsuarioDAO extends DataBaseDAO {
     public ArrayList<Usuario> getLista() throws Exception {
 
         ArrayList<Usuario> lista = new ArrayList<Usuario>();
-        String sql = "SELECT u.*, p.perfil FROM usuario u "
-                + "INNER JOIN perfil p ON "
-                + "p.idperfil = u.idperfil ";
+        String sql = "SELECT u.* FROM usuario u ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -27,10 +24,8 @@ public class UsuarioDAO extends DataBaseDAO {
             u.setLogin(rs.getString("u.login"));
             u.setSenha(rs.getString("u.senha"));
             u.setStatus(rs.getInt("u.status"));
-            Perfil p = new Perfil();
-            p.setIdperfil(rs.getInt("u.idperfil"));
-            p.setPerfil(rs.getString("p.perfil"));
-            u.setPerfil(p);
+            PerfilDAO pDAO = new PerfilDAO();
+            u.setPerfil(pDAO.getCarregaPorId(rs.getInt("u.idperfil")));
             lista.add(u);
         }
         this.desconectar();
@@ -66,7 +61,7 @@ public class UsuarioDAO extends DataBaseDAO {
 
     }
 
-    public boolean excluir(Usuario u) {
+    public boolean desativar(Usuario u) {
         try {
             this.conectar();
             String sql = "UPDATE usuario SET status=2 WHERE idusuario=?";
@@ -85,9 +80,7 @@ public class UsuarioDAO extends DataBaseDAO {
     public Usuario getCarregaPorId(int idusuario) throws Exception {
 
         Usuario u = new Usuario();
-        String sql = "SELECT u.*, p.perfil FROM usuario u "
-                + "INNER JOIN perfil p ON "
-                + "p.idperfil = u.idperfil WHERE u.idusuario=?";
+        String sql = "SELECT u.* FROM usuario u WHERE u.idusuario=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idusuario);
@@ -98,11 +91,8 @@ public class UsuarioDAO extends DataBaseDAO {
             u.setLogin(rs.getString("u.login"));
             u.setSenha(rs.getString("u.senha"));
             u.setStatus(rs.getInt("u.status"));
-            Perfil p = new Perfil();
-            p.setIdperfil(rs.getInt("u.idperfil"));
-            p.setPerfil(rs.getString("p.perfil"));
-            u.setPerfil(p);
-
+            PerfilDAO pDAO = new PerfilDAO();
+            u.setPerfil(pDAO.getCarregaPorId(rs.getInt("u.idperfil")));
         }
         this.desconectar();
         return u;
@@ -112,7 +102,7 @@ public class UsuarioDAO extends DataBaseDAO {
 
         Usuario u = new Usuario();
         String sql = "SELECT u.* FROM usuario u "
-                + " WHERE u.login=? AND u.status=1";
+                + "WHERE u.login=? AND u.status=1";
         try {
             this.conectar();
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -126,7 +116,6 @@ public class UsuarioDAO extends DataBaseDAO {
                 u.setStatus(rs.getInt("u.status"));
                 PerfilDAO pDAO = new PerfilDAO();
                 u.setPerfil(pDAO.getCarregaPorId(rs.getInt("u.idperfil")));
-
             }
             this.desconectar();
             return u;

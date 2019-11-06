@@ -1,3 +1,4 @@
+
 package controller;
 
 import DAO.DisciplinaDAO;
@@ -12,15 +13,6 @@ import model.Disciplina;
 
 public class GerenciarDisciplina extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,7 +32,7 @@ public class GerenciarDisciplina extends HttpServlet {
                     request.setAttribute("disciplina", d);
                     disp.forward(request, response);
                 } else {
-                    mensagem = "Disciplina não encontrada. ";
+                    mensagem = "Disciplina não encontrada.";
                 }
             }
 
@@ -59,18 +51,10 @@ public class GerenciarDisciplina extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar/listar_disciplina.jsp';");
+        out.println("location.href='listar_disciplina.jsp';");
         out.println("</script>");
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -101,15 +85,10 @@ public class GerenciarDisciplina extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar/listar_disciplina.jsp';");
+        out.println("location.href='listar_disciplina.jsp';");
         out.println("</script>");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -81,7 +81,40 @@ public class PerfilDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }    
 
+    public boolean desativar(int idmenu, int idperfil) {
+
+        try {
+            String sql = "DELETE FROM menu_perfil WHERE idmenu=? AND idperfil=? ";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idmenu);
+            pstm.setInt(2, idperfil);
+            pstm.execute();
+            this.desconectar();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
+    public boolean vincular(int idmenu, int idperfil) {
+
+        try {
+            String sql = "INSERT INTO menu_perfil (idmenu, idperfil) VALUES (?,?)";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, idmenu);
+            pstm.setInt(2, idperfil);
+            pstm.execute();
+            this.desconectar();
+            return true;
         } catch (Exception e) {
             System.out.println(e);
             return false;
@@ -92,8 +125,7 @@ public class PerfilDAO extends DataBaseDAO {
 
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu_perfil as mp, menu as m "
-                + "WHERE mp.idmenu=m.idmenu AND mp.idperfil=?";
-
+                + "WHERE mp.idmenu = m.idmenu AND mp.idperfil = ? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idperfil);
@@ -116,7 +148,7 @@ public class PerfilDAO extends DataBaseDAO {
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu as m WHERE m.idmenu "
                 + "NOT IN (SELECT mp.idmenu FROM menu_perfil as mp "
-                + "         WHERE mp.idperfil=?)";
+                + "WHERE mp.idperfil=? )";
 
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -133,41 +165,6 @@ public class PerfilDAO extends DataBaseDAO {
         }
         this.desconectar();
         return lista;
-    }
-
-    public boolean vincular(int idmenu, int idperfil) {
-
-        try {
-            String sql = "INSERT INTO menu_perfil (idmenu, idperfil) "
-                    + "VALUES (?,?)";
-            this.conectar();
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, idmenu);
-            pstm.setInt(2, idperfil);
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }
-
-    public boolean desvincular(int idmenu, int idperfil) {
-
-        try {
-            String sql = "DELETE FROM menu_perfil  WHERE idmenu=? AND idperfil=? ";
-            this.conectar();
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, idmenu);
-            pstm.setInt(2, idperfil);
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
     }
 
 }
