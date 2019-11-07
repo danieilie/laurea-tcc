@@ -14,30 +14,29 @@
         <!-- Tipografia -->
         <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Pontano+Sans|Port+Lligat+Sans&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
-
     </head>
     <body>
-         <%
-                String mensagem = (String)request.getSession().getAttribute("mensagem");
-                if(mensagem != null){
-                  request.getSession().removeAttribute("mensagem");
-            %>
-            <div class="alert alert-info"><%=mensagem%></div>
-            <%
-               }  //só pra fechar a chave do if
-            %>
+        <%
+            String mensagem = (String)request.getSession().getAttribute("mensagem");
+            if(mensagem != null){
+              request.getSession().removeAttribute("mensagem");
+        %>
+        <div class="alert alert-info"><%=mensagem%></div>
+        <%
+           }  //só pra fechar a chave do if
+        %>
 
         <header class="container-fluid m-p" data-anime="100">
-            <div class="container ">
-                <div class="logo " data-anime="200"> <a href="#inicio">Láurea <img src="assets/img/logo/logo_menu.png"></a></div>
+            <div class="container">
+                <div class="logo" data-anime="200"><a href="#inicio">Láurea<img src="../assets/img/logo/logo_menu.png"></a></div>
                 <nav>
                     <ul data-anime="200">
-                        <li><a href="#produtos">Produtos </a></li>
+                        <li><a href="#produtos">Produtos</a></li>
                         <li><a href="#materias">Matérias</a></li>
-                        <li><a href="#sobre">Sobre </a></li>
-                        <li><a href="#contato">Contato </a></li>
-                        <li><a href="#depoimentos">Depoimentos </a></li>
-                        <li ><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><div onclick="toggleSidebar()"><h5>Entrar</h5></div></li>
                     </ul>
                 </nav>
             </div>
@@ -47,7 +46,6 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <img src="assets/img/logo/logo_form.png" style="margin-top: 30px;">
-
             <form  action="gerenciar_login.do" method="POST" class="login">
                 <div class="form-group">
                     <label for="login">Login:</label>
@@ -58,7 +56,7 @@
                     <input type="password" class="form-control" id="senha" name="senha" required="" maxlength="45" value="${login.senha}"/>
                 </div>
                 <div class="form-group">
-                       <button class="btn btn-primary">Entrar</button> 
+                    <button class="btn btn-primary">Entrar</button> 
                 </div>
             </form>
         </div>
@@ -134,7 +132,7 @@
                 </div>
                 <div class="col">
                     <div class="widget">
-                        <div class="widget_head">  <img src="assets/img/materias/matematica.png"/> </div>
+                        <div class="widget_head"><img src="assets/img/materias/matematica.png"/></div>
                         <div class="widget_body">
                             <h2>MATEMÁTICA</h2>
                             <hr>
@@ -144,7 +142,7 @@
                 </div>
                 <div class="col">
                     <div class="widget">
-                        <div class="widget_head">  <img src="assets/img/materias/fisica.png"/> </div>
+                        <div class="widget_head"><img src="assets/img/materias/fisica.png"/></div>
                         <div class="widget_body">
                             <h2>FÍSICA</h2>
                             <hr>
@@ -157,7 +155,7 @@
             <div class="row container item">
                 <div class="col">
                     <div class="widget">
-                        <div class="widget_head">  <img src="assets/img/materias/quimica.png"/> </div>
+                        <div class="widget_head"><img src="assets/img/materias/quimica.png"/></div>
                         <div class="widget_body">
                             <h2>QUÍMICA</h2>
                             <hr>
@@ -167,7 +165,7 @@
                 </div>    
                 <div class="col">
                     <div class="widget">
-                        <div class="widget_head">  <img src="assets/img/materias/idiomas.png"/> </div>
+                        <div class="widget_head"><img src="assets/img/materias/idiomas.png"/></div>
                         <div class="widget_body">
                             <h2>idiomas</h2>
                             <hr>
@@ -177,7 +175,7 @@
                 </div>
                 <div class="col">
                     <div class="widget">
-                        <div class="widget_head">  <img src="assets/img/materias/rac_logico.png"/> </div>
+                        <div class="widget_head"><img src="assets/img/materias/rac_logico.png"/></div>
                         <div class="widget_body">
                             <h2>rac. lógico</h2>
                             <hr>
@@ -191,7 +189,7 @@
         </section>
         <section id="sobre" class="container-fluid m-p" data-anime="600">
             <div class="container">
-                <div class="tag ">SOBRE</div> 
+                <div class="tag">SOBRE</div> 
             </div>
             <div class="sobre_titulo">
                 <h1>A Láurea</h1>
@@ -207,34 +205,30 @@
                 </p>
             </div>
             <div class="container">
-                <div class="row ">
+                <div class="row">
                     <div class="col"><img src="assets/img/sobre/criancas.png" alt="Criancas"></div>
                     <div class="col">
                         <h1>Não Cansamos De Ensinar</h1>
                         <ul>
-                            <li>-150 Alunos </li>
+                            <li>-150 Alunos</li>
                             <li>-3 Anos atuando com maestria</li>
                             <li>-Alunos de diversas escolas do DF</li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-
         </section>
         <section id="contato" class="container-fluid m-p" data-anime="600">
             <div class="container">
                 <div class="tag ">CONTATO</div> 
-
                 <div class="row align-items-center">
                     <div class="col">
                         <h4>De segunda a sexta, das 08 as 20h</h4>
                         <ul>
-                            <li> <img src="assets/img/contato/telefone.png"/> (061) 3333-9999 </li>
-                            <li> <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a> (061) 99311-3336</li>
-                            <li> <img src="assets/img/contato/email.png"/> qualquer@qualquer.com </li>
-                            <li> <img src="assets/img/contato/localizacao.png"/> Praça do Relógio - Taguatinga - Distrito Federal </li>
-
+                            <li><img src="assets/img/contato/telefone.png"/>(061) 3333-9999</li>
+                            <li><a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a>(061) 99311-3336</li>
+                            <li><img src="assets/img/contato/email.png"/>qualquer@qualquer.com</li>
+                            <li><img src="assets/img/contato/localizacao.png"/>Praça do Relógio - Taguatinga - Distrito Federal</li>
                         </ul>
                     </div>
                     <div class="col">
@@ -247,43 +241,36 @@
         </section>
         <section id="depoimentos" class="container-fluid m-p" data-anime="600">
             <div class="container">
-                 <div class="tag ">DEPOIMENTOS</div> 
-            <div class="row">
-                <div class="col">
-                    <div class="card_depoimento"> 
-                        
-                            <img src="assets/img/depoimentos/julia.png" class="float-left">
-                            <h4 class="float-left">Júlia Vaz</h4>
-                            <div class="float-left card_depoimento_text">Muito bom aprendi algo além do verbo to be, best of the best professor!!!</div>
-
+                 <div class="tag">DEPOIMENTOS</div> 
+                <div class="row">
+                    <div class="col">
+                        <div class="card_depoimento"> 
+                                <img src="assets/img/depoimentos/julia.png" class="float-left">
+                                <h4 class="float-left">Júlia Vaz</h4>
+                                <div class="float-left card_depoimento_text">Muito bom aprendi algo além do verbo to be, best of the best professor!!!</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                   <div class="card_depoimento"> 
-                        
-                       <img src="assets/img/depoimentos/daniele.png" class="float-left">
-                            <h4 class="float-left">Daniele Silva</h4>
-                            <div class="float-left card_depoimento_text">Ótimo professor, atencioso e dedicado! “arrivederci”</div>
-
+                    <div class="col">
+                       <div class="card_depoimento">                         
+                           <img src="assets/img/depoimentos/daniele.png" class="float-left">
+                                <h4 class="float-left">Daniele Silva</h4>
+                                <div class="float-left card_depoimento_text">Ótimo professor, atencioso e dedicado! “arrivederci”</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                     <div class="card_depoimento"> 
-                        
-                         <img src="assets/img/depoimentos/marcos.png" class="float-left">
-                            <h4 class="float-left">Marcos Felipe</h4>
-                           
-                             <div class="float-left card_depoimento_text">Tudo é questão de lógica, parabéns professor!!</div>
-
+                    <div class="col">
+                         <div class="card_depoimento"> 
+                             <img src="assets/img/depoimentos/marcos.png" class="float-left">
+                                <h4 class="float-left">Marcos Felipe</h4>
+                                 <div class="float-left card_depoimento_text">Tudo é questão de lógica, parabéns professor!!</div>
+                        </div>
                     </div>
                 </div>
             </div>
-                </div>
         </section>
         <footer data-anime="600">
             <div class="footer">
                 <div class="container">
-                    <div class="logo float-left"> <a href="#inicio">Láurea <img src="assets/img/logo/logo_menu.png"></a></div>
+                    <div class="logo float-left"><a href="#inicio">Láurea <img src="assets/img/logo/logo_menu.png"></a></div>
                 </div>
                 <div class="redes_sociais  float-right">
                     <ul class="float-right">
@@ -330,7 +317,6 @@
                 function toggleSidebar() {
                     document.getElementById("sidebar").classList.toggle('active');
                 }
-
                 $(document).ready(function () {
                     $(window).scroll(function () {
                         if ($(this).scrollTop() > 500) {

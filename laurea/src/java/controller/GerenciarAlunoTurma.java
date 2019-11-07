@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Aluno;
 import DAO.AlunoDAO;
+import DAO.AlunoTurmaDAO;
 
 public class GerenciarAlunoTurma extends HttpServlet {
 
@@ -23,8 +24,9 @@ public class GerenciarAlunoTurma extends HttpServlet {
         String acao = request.getParameter("acao");
 
         try {
+            AlunoDAO aDAO = new AlunoDAO ();
             Aluno a = new Aluno();
-            AlunoDAO aDAO = new AlunoDAO();
+            AlunoTurmaDAO atDAO = new AlunoTurmaDAO();
             if (acao.equals("alterar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a = aDAO.getCarregaPorId(idaluno);
@@ -33,20 +35,25 @@ public class GerenciarAlunoTurma extends HttpServlet {
                         request.setAttribute("alunoturma", a);
                         disp.forward(request, response);
                     } else {
-                        mensagem = "AlunoTurma não encontrado";
+                        mensagem = "Vinculo entre Aluno&Turma não encontrado";
                     }
                 } else {
                     mensagem = "Acesso negado";
                 }
             }
 
-            /**
-             * if(acao.equals("excluir")){
-             * if(GerenciarLogin.verificarPermissao(request, response)){
-             * pr.setIdalunoturma(idalunoturma); if(prDAO.excluir(pr)){ mensagem
-             * = "Excluído com sucesso!"; }else{ mensagem = "Erro ao excluir!";
-             * } }else{ mensagem ="Acesso negado"; } * }
-             */
+            if(acao.equals("desvincular")){
+              if(GerenciarLogin.verificarPermissao(request, response)){
+                
+               if(atDAO.desvincular(Integer.parseInt(idaluno), Integer.parseInt(idturma))){
+                        mensagem = "Desvinculado com sucesso!";
+                    }else{
+                        mensagem = "Erro ao desvincular!";
+                    }                
+              }else{
+                  mensagem = "Acesso Negado";
+              } 
+            }
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";

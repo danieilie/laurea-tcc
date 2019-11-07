@@ -9,19 +9,17 @@ public class Mensalidade {
     private String mes;
     private String datav, datap; //mudar a tipagem
     private double valor, multa, desconto;
-    private Contrato contrato;
 
     public Mensalidade() {
     }
 
-    public Mensalidade(int idmensalidade, int status, String mes, double valor, double multa, double desconto, Contrato contrato, String datav, String datap) {
+    public Mensalidade(int idmensalidade, int status, String mes, double valor, double multa, double desconto, String datav, String datap) {
         this.idmensalidade = idmensalidade;
         this.status = status;
         this.mes = mes;
         this.valor = valor;
         this.multa = multa;
         this.desconto = desconto;
-        this.contrato = contrato;
         this.datav = datav;
         this.datap = datap;
     }
@@ -90,15 +88,7 @@ public class Mensalidade {
     public void setDesconto(double desconto) {
         this.desconto = desconto;
     }
-
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-
+    
     public String getDatav() {
         return datav;
     }

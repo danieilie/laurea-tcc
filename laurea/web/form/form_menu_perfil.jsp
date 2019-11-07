@@ -8,30 +8,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width,initial-scale=1, maximum-scale=1,user-scalable=no"name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>JSP Page</title>
-
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <title>Láurea Reforço Escolar</title>  
         <script type="text/javascript">
             function confirmarExclusao(idmenu, idperfil, nome) {
                 if (confirm('Deseja realmente desvincular o menu "' + nome + '" ?')) {
                     location.href = 'gerenciar_menu_perfil.do?acao=desvincular&idmenu=' + idmenu + '&idperfil=' + idperfil;
                 }
-
             }
         </script>    
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
-
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h3>Gerenciar Acessos</h3>
 
             <form action="gerenciar_menu_perfil.do" method="POST">
-
                 <input type="hidden" name="idperfil" id="idperfil" value="${perfilv.idperfil}"/>
                 <div class="row">
                     <div class="form-group col-sm-8">
@@ -50,16 +45,12 @@
                 </div>    
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <a href="listar_perfil.jsp" class="btn btn-warning">
-                        Voltar
-                    </a>    
+                    <a href="../listar/listar_perfil.jsp" class="btn btn-warning">Voltar</a>    
                 </div>    
             </form>    
 
             <h1>Lista de Menus Vinculados</h1>
-
-            <table class="table table-hover table-striped table-bordered display"
-                   id="listaMenu">
+            <table class="table table-hover table-striped table-bordered display" id="listaMenu">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -76,7 +67,6 @@
                         <th>Desvicular</th>
                     </tr>
                 </tfoot>
-
                 <tbody>
                     <c:forEach var="m" items="${perfilv.menus}">
                         <tr>
@@ -94,8 +84,8 @@
             </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
                                     $(document).ready(function () {
                                         $("#listaMenu").dataTable({
@@ -119,7 +109,6 @@
                                             }
                                         })
                                     });
-        </script>            
-
+        </script>   
     </body>
 </html>

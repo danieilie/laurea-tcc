@@ -1,23 +1,17 @@
-<%-- 
-    Document   : index
-    Created on : 08/08/2019, 10:22:26
-    Author     : Administrador
---%>
-
 <%@page import="model.ContratoDAO"%>
 <%@page import="model.Contrato"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
-              user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="../datatables/jquery.dataTables.min.css"/>
         <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
@@ -32,16 +26,12 @@
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h1>Lista de Contratos</h1>
 
-            <a href="form_contrato.jsp" class="btn btn-primary">
-                Novo Cadastro
-            </a>
-            <table class="table table-hover table-striped table-bordered display" 
-                   id ="listaContrato" >
-
+            <a href="../form/form_contrato.jsp" class="btn btn-primary">Novo Cadastro</a>
+            <table class="table table-hover table-striped table-bordered display" id ="listaContrato">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -69,27 +59,27 @@
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="model.ContratoDAO" id="conDAO" />
+                <jsp:useBean class="DAO.ContratoDAO" id="cDAO" />
 
                 <tbody>
-                    <c:forEach var="con" items="${conDAO.lista}">
+                    <c:forEach var="c" items="${cDAO.lista}">
                         <tr>
-                            <td>${con.idcontrato}</td>
-                            <td>${con.aluno.nome}</td>
-                            <td>${con.escola}</td>
-                            <td>${con.aluno.responsavel.nome}</td>
-                            <td>${con.datacontrato}</td>
-                            <td>${con.preco}</td>
-                            <td>${con.parcela}</td>
+                            <td>${c.idcontrato}</td>
+                            <td>${c.aluno.nome}</td>
+                            <td>${c.escola}</td>
+                            <td>${c.aluno.responsavel.nome}</td>
+                            <td>${c.datacontrato}</td>
+                            <td>${c.preco}</td>
+                            <td>${c.parcela}</td>
                             <td>
-                                <c:if test="${con.status == 2}" > Pendente </c:if>
-                                <c:if test="${con.status == 1}" > Pago </c:if>
+                                <c:if test="${c.status == 2}" > Pendente </c:if>
+                                <c:if test="${c.status == 1}" > Pago </c:if>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="gerenciar_contrato.do?acao=alterar&idcontrato=${pr.idcontrato}">
+                                    <a class="btn btn-primary" href="gerenciar_contrato.do?acao=alterar&idcontrato=${p.idcontrato}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idcontrato}, '${pr.nome}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idcontrato}, '${p.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>
@@ -99,8 +89,8 @@
             </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" src="../datatables/jquery.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.dataTables.min.js" ></script>
         <script type="text/javascript" >
 
                                     $(document).ready(function () {
@@ -123,9 +113,7 @@
                                                     "sLast": "Último"
                                                 }
                                             }
-
                                         });
-
                                     });
         </script>
     </body>

@@ -9,11 +9,12 @@ public class Contrato {
 //    private Date datacontrato;
     private double preco;
     private Aluno aluno;
+    private Mensalidade mensalidade;
 
     public Contrato() {
     }
 
-    public Contrato(int idcontrato, int parcela, int status, String datacontrato, String serie, String escola, double preco, Aluno aluno) {
+    public Contrato(int idcontrato, int parcela, int status, String datacontrato, String serie, String escola, double preco, Aluno aluno, Mensalidade mensalidade) {
         this.idcontrato = idcontrato;
         this.parcela = parcela;
         this.status = status;
@@ -22,6 +23,7 @@ public class Contrato {
         this.escola = escola;
         this.preco = preco;
         this.aluno = aluno;
+        this.mensalidade = mensalidade;
     }
 
     @Override
@@ -91,6 +93,14 @@ public class Contrato {
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+    }
+
+    public Mensalidade getMensalidade() {
+        return mensalidade;
+    }
+
+    public void setMensalidade(Mensalidade mensalidade) {
+        this.mensalidade = mensalidade;
     }
 
 }

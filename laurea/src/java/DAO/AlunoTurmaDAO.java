@@ -39,30 +39,11 @@ public class AlunoTurmaDAO extends DataBaseDAO {
 
     }
 
-    public boolean fazerChamada(String data, String frequencia, int idaluno, int idturma) {
-
-        try {
-            String sql = "UPDATE aluno_turma SET data=?, frequencia=? WHERE idaluno=? AND idturma=?";
-            this.conectar();
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setString(1, data);
-            pstm.setString(2, frequencia);
-            pstm.setInt(3, idaluno);
-            pstm.setInt(4, idturma);
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-
-    }
-
     public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {
         
-        String sql = "SELECT at.*, a.aluno FROM aluno_turma at "
-                + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
+        String sql = "SELECT at.*, a.aluno, t.turma FROM aluno_turma at "
+                + "INNER JOIN aluno a ON at.idaluno = a.idaluno "
+                + "INNER JOIN turma t ON at.idturma = t.idturma ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idaluno);
@@ -70,14 +51,15 @@ public class AlunoTurmaDAO extends DataBaseDAO {
         ResultSet rs = pstm.executeQuery();
         AlunoTurma at = new AlunoTurma();
         if (rs.next()) {
+            at.setData(rs.getDate("at.data"));
+            at.setFrequencia(rs.getString("at.frequencia"));
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("at.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            //alunoTurma 
-            at.setData(rs.getDate("at.data"));
-            at.setFrequencia(rs.getString("at.frequencia"));
-            TurmaDAO tDAO= new TurmaDAO();
-            at.setTurma(tDAO.getCarregaPorId(rs.getInt("at.idturma")));
+            Turma t = new Turma();            
+            t.setIdturma(rs.getInt("at.idturma"));
+            t.setNome(rs.getString("t.nome"));
+            at.setTurma(t);
             at.setAluno(a);
         }
         this.desconectar();
@@ -121,5 +103,24 @@ public class AlunoTurmaDAO extends DataBaseDAO {
             return false;
         }
     }
+    
+    public boolean fazerChamada(String data, String frequencia, int idaluno, int idturma) {
 
+        try {
+            String sql = "UPDATE aluno_turma SET data=?, frequencia=? WHERE idaluno=? AND idturma=?";
+            this.conectar();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, data);
+            pstm.setString(2, frequencia);
+            pstm.setInt(3, idaluno);
+            pstm.setInt(4, idturma);
+            pstm.execute();
+            this.desconectar();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+        }
+    }
+    
 }

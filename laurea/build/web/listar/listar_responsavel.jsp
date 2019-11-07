@@ -1,27 +1,20 @@
-<%-- 
-    Document   : index
-    Created on : 08/08/2019, 10:22:26
-    Author     : Administrador
---%>
-
-<%@page import="model.ResponsavelDAO"%>
+<%@page import="DAO.ResponsavelDAO"%>
 <%@page import="model.Responsavel"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
-              user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="../datatables/jquery.dataTables.min.css"/>
         <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
-
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o responsavel  ' + nome + ' ?')) {
                     location.href = 'gerenciar_responsavel.do?acao=excluir&idresponsavel=' + id;
@@ -32,15 +25,12 @@
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h1>Lista de Responsáveis</h1>
 
-            <a href="form_responsavel.jsp" class="btn btn-primary">
-                Novo Cadastro
-            </a>
-            <table class="table table-hover table-striped table-bordered display" 
-                   id ="listaResponsavel" >
+            <a href="../form/form_responsavel.jsp" class="btn btn-primary">Novo Cadastro</a>
+            <table class="table table-hover table-striped table-bordered display" id ="listaResponsavel" >
 
                 <thead>
                     <tr>
@@ -63,21 +53,21 @@
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="model.ResponsavelDAO" id="resDAO" />
+                <jsp:useBean class="DAO.ResponsavelDAO" id="rDAO" />
 
                 <tbody>
-                    <c:forEach var="res" items="${resDAO.lista}">
+                    <c:forEach var="r" items="${rDAO.lista}">
                         <tr>
-                            <td>${res.idresponsavel}</td>
-                            <td>${res.nome}</td>
-                            <td>${res.cpf}</td>
-                            <td>${res.rg}</td>
-                            <td>${res.usuario}</td>
+                            <td>${r.idresponsavel}</td>
+                            <td>${r.nome}</td>
+                            <td>${r.cpf}</td>
+                            <td>${r.rg}</td>
+                            <td>${r.usuario}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${pr.idresponsavel}">
+                                <a class="btn btn-primary" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idresponsavel}, '${pr.nome}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idresponsavel}, '${p.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>
@@ -87,10 +77,9 @@
             </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" src="../datatables/jquery.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.dataTables.min.js" ></script>
         <script type="text/javascript" >
-
                                     $(document).ready(function () {
                                         $("#listaResponsavel").dataTable({
                                             "bJQueryUI": true,
