@@ -5,14 +5,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css"/>
         <title>Láurea Reforço Escolar</title>
     </head>
     <body>
         <div class="container">
-            <%@include file="../banner.jsp" %>
-            <%@include file="../menu.jsp" %>
+            <%@include file="./banner.jsp" %>
+            <%@include file="./menu.jsp" %>
             <h3>Novo Aluno</h3>
 
             <form action="gerenciar_aluno.do" method="POST">
@@ -62,7 +62,7 @@
 
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <a href="../listar/listar_aluno.jsp" class="btn btn-warning">Voltar</a>    
+                    <a href="listar_aluno.jsp" class="btn btn-warning">Voltar</a>    
                 </div>    
             </form>   
         </div>

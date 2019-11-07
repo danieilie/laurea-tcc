@@ -5,23 +5,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css"/>
         <title>Láurea Reforço Escolar</title>
     </head>
     <body>
         <div class="container">
-            <%@include file="../banner.jsp" %>
-            <%@include file="../menu.jsp" %>
-            <h3>Novo Professor</h3>
+            <%@include file="./banner.jsp" %>
+            <%@include file="./menu.jsp" %>
+            <h3>Novo Aluno</h3>
 
-            <form action="gerenciar_professor.do" method="POST">
-
-                <input type="hidden" name="idprofessor" id="idprofessor" value="${professor.idprofessor}"/>
+            <form action="gerenciar_aluno.do" method="POST">
+                <input type="hidden" name="idaluno" id="idaluno" value="${aluno.idaluno}"/>
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="nome"> Nome </label>
-                        <input type="text" class="form-control" id="nome" name="nome" required="" maxlength="45" value="${professor.nome}"/>
+                        <input type="text" class="form-control" id="nome" name="nome" required="" maxlength="45" value="${aluno.nome}"/>
                     </div>    
                 </div>
 
@@ -33,11 +32,11 @@
                             <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO"/>
                             <c:forEach var="d" items="${dDAO.lista}">
                                 <option value="${d.iddisciplina}"
-                                    <c:if test="${d.iddisciplina==professor.disciplina.iddisciplina}">
+                                    <c:if test="${d.iddisciplina==aluno.disciplina.iddisciplina}">
                                         selected=""
                                     </c:if> 
                                 >
-                                    ${d.materia}</option>
+                                ${d.materia}</option>
                             </c:forEach>
                         </select>    
                     </div>    
@@ -51,7 +50,7 @@
                             <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
                             <c:forEach var="u" items="${uDAO.lista}">
                                 <option value="${u.idusuario}"
-                                    <c:if test="${u.idusuario==professor.usuario.idusuario}">
+                                    <c:if test="${u.idusuario==aluno.usuario.idusuario}">
                                         selected=""
                                     </c:if> 
                                 >
@@ -63,9 +62,9 @@
 
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <a href="../listar/listar_professor.jsp" class="btn btn-warning">Voltar</a>    
+                    <a href="listar_aluno.jsp" class="btn btn-warning">Voltar</a>    
                 </div>    
-            </form> 
+            </form>   
         </div>
     </body>
 </html>
