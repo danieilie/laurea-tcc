@@ -1,3 +1,17 @@
+$('nav a').click(function(e){
+	e.preventDefault();
+	var id = $(this).attr('href'),
+			targetOffset = $(id).offset().top,
+			menuHeight = $('nav').innerHeight();
+
+	$('html, body').animate({
+		scrollTop: targetOffset 
+	}, 500);
+});
+
+
+
+
 if (window.SimpleSlide) {
     new SimpleSlide({
         slide: "quote", // nome do atributo data-slide="principal"

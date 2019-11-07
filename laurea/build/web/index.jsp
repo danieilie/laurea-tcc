@@ -318,11 +318,12 @@
 
         <!-- Slide deve ser colado em toda pagina de HTML  -->
         <script type="text/javascript" src="assets/js/simple-slide.js"></script>
-        <script type="text/javascript" src="assets/js/script.js"></script>
+        
 
         <!-- Jquery 3.4.1 e bootstrap -->
         <script type="text/javascript" src="assets/js/jquery.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="assets/js/script.js"></script>
 
         <!-- AÇÃO DO FORMULÁRIO DE LOGIN -->
         <script type="text/javascript">
