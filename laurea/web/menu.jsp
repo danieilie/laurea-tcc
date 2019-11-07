@@ -18,5 +18,5 @@
     </c:if>
     </ul>
 </div>   
-<link rel="stylesheet" type="text/css" href="../estilo/menu.css"/>
+<link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
 
