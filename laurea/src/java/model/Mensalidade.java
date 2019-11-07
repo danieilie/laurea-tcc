@@ -1,44 +1,24 @@
 package model;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Mensalidade {
 
     private int idmensalidade, status;
-    private String mes;
-    private String datav, datap; //mudar a tipagem
+    private Date datav, datap; 
     private double valor, multa, desconto;
 
     public Mensalidade() {
     }
 
-    public Mensalidade(int idmensalidade, int status, String mes, double valor, double multa, double desconto, String datav, String datap) {
+    public Mensalidade(int idmensalidade, int status, double valor, double multa, double desconto, Date datav, Date datap) {
         this.idmensalidade = idmensalidade;
         this.status = status;
-        this.mes = mes;
         this.valor = valor;
         this.multa = multa;
         this.desconto = desconto;
         this.datav = datav;
         this.datap = datap;
-    }
-
-    public String getFormatDataVencimento() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate data = LocalDate.parse(datav, formato);
-        return (formato.format(data));
-    }
-
-    public String getFormatDataPagamento() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate data = LocalDate.parse(datap, formato);
-        return (formato.format(data));
-    }
-
-    @Override
-    public String toString() {
-        return getMes() + getFormatDataVencimento() + getFormatDataPagamento();
     }
 
     public int getIdmensalidade() {
@@ -55,14 +35,6 @@ public class Mensalidade {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public String getMes() {
-        return mes;
-    }
-
-    public void setMes(String mes) {
-        this.mes = mes;
     }
 
     public double getValor() {
@@ -89,19 +61,19 @@ public class Mensalidade {
         this.desconto = desconto;
     }
     
-    public String getDatav() {
+    public Date getDatav() {
         return datav;
     }
 
-    public void setDatav(String datav) {
+    public void setDatav(Date datav) {
         this.datav = datav;
     }
 
-    public String getDatap() {
+    public Date getDatap() {
         return datap;
     }
 
-    public void setDatap(String datap) {
+    public void setDatap(Date datap) {
         this.datap = datap;
     }
 

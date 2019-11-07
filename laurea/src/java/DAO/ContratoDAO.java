@@ -1,9 +1,11 @@
 package DAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import model.Aluno;
 import model.Contrato;
 import model.Mensalidade;
@@ -14,44 +16,9 @@ public class ContratoDAO extends DataBaseDAO {
     public ContratoDAO() throws Exception {
     }
     
-    public void registrar(Contrato c) throws Exception{
-        this.conectar();
-        String sql = "INSERT INTO contrato (idcontrato, parcela, status, datacontrato, serie, escola, preco, idaluno, idmensalidade) VALUES (?,?,?,now()?,?,?,?,?)";
-        PreparedStatement pstm = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        pstm.setInt(1, c.getIdcontrato());
-        pstm.setInt(2, c.getMensalidade().getIdmensalidade());
-        pstm.execute();
-        ResultSet rs = pstm.getGeneratedKeys();
-        if(rs.next()){
-            c.setIdcontrato(rs.getInt(1));
-        }
-//        for(int i = 0; i <= 9; i++){
-<<<<<<< HEAD
-        int MensalidadePorContrato[] = {c.getMensalidade().getIdmensalidade()};
-        for(int i: MensalidadePorContrato){
-=======
-        for(Mensalidade i:c.getMensalidade()){
->>>>>>> dev
-            String sql_item = "INSERT INTO mensalidade (idmensalidade, status, mes, valor, multa, desconto, datav, datap) VALUES (?,?,?,?,?,?,?,?)";
-            PreparedStatement pstm_item = conn.prepareStatement(sql_item);
-            pstm_item.setInt(1, i.getIdcontrato());
-            pstm_item.setInt(2, i.getMensalidade().getIdmensalidade());
-            pstm_item.setInt(3, c.getStatus());
-            pstm_item.setString(4, i.getMes());
-            pstm_item.setDouble(5, i.getValor());
-            pstm_item.setDouble(6, i.getMulta());
-            pstm_item.setDouble(7, i.getDesconto());
-            pstm_item.setString(8, i.getDatav());
-            pstm_item.setString(9, i.getDatap());
-            pstm_item.setDouble(10, i.getValor());
-            pstm_item.execute();
-        }
-        this.desconectar();
-    }
-
     public ArrayList<Contrato> getLista() throws Exception {
 
-        ArrayList<Contrato> lista = new ArrayList<Contrato>();
+        ArrayList<Contrato> listaC = new ArrayList<Contrato>();
         String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
                 + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
                 + "INNER JOIN responsavel r ON c.idresponsavel = r.idresponsavel ";
@@ -61,12 +28,13 @@ public class ContratoDAO extends DataBaseDAO {
         while (rs.next()) {
             Contrato c = new Contrato();
             c.setIdcontrato(rs.getInt("c.idcontrato"));
-            c.setDatacontrato(rs.getString("c.datacontrato"));
+            c.setDatacontrato(rs.getDate("c.datacontrato"));
             c.setPreco(rs.getDouble("c.preco"));
             c.setParcela(rs.getInt("c.parcela"));
             c.setStatus(rs.getInt("c.status"));
             c.setSerie(rs.getString("c.serie"));
             c.setEscola(rs.getString("c.escola"));
+            c.setMensalidade(mensalidaVinculadaPorContrato(Integer.parseInt("idcontrato")));
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("c.idaluno"));
             a.setNome(rs.getString("a.nome"));
@@ -74,54 +42,97 @@ public class ContratoDAO extends DataBaseDAO {
             Responsavel r = new Responsavel();
             r.setNome(rs.getString("r.nome"));
             a.setResponsavel(r);
-            lista.add(c);
+            listaC.add(c);     
+        }
+        this.desconectar();
+        return listaC;
+    }
+
+    public ArrayList<Mensalidade> mensalidaVinculadaPorContrato(int idcontrato) throws Exception {
+
+        ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
+        String sql = "SELECT m.* FROM mensalidade WHERE idcontrato = ? ";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idcontrato);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Mensalidade m = new Mensalidade();
+            m.setIdmensalidade(rs.getInt("m.idmensalidade"));
+            m.setValor(rs.getDouble("m.valor"));
+            m.setDatav(rs.getDate("m.datav"));
+            m.setDatap(rs.getDate("m.datap"));
+            m.setMulta(rs.getDouble("m.multa"));
+            m.setDesconto(rs.getDouble("m.desconto"));
+            m.setStatus(rs.getInt("m.status"));  
+            Contrato c = new Contrato();
+            c.setIdcontrato(rs.getInt("m.idcontrato"));
+            Aluno a = new Aluno();
+            a.setNome(rs.getString("a.nome"));
+            c.setAluno(a);
+            Responsavel r = new Responsavel();
+            r.setNome(rs.getString("r.nome"));
+            a.setResponsavel(r);
+            c.setMensalidade(lista);
+            lista.add(m);
         }
         this.desconectar();
         return lista;
     }
 
-    public boolean gravar(Contrato c) {
-
-        try {
-            String sql;
-            this.conectar();
-            if (c.getIdcontrato() == 0) {
-                sql = "INSERT INTO contrato(datacontrato, preco, parcela, status, serie, escola, idaluno) VALUES(?,?,?,?,?,?,?) ";
-            } else {
-                sql = "UPDATE contrato SET datacontrato=?, preco=?, parcela=?, status=?, serie=?, escola=?, idaluno=? WHERE idcontrato=? ";
-            }
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            if (c.getIdcontrato() > 0) {
-                pstm.setInt(1, c.getIdcontrato());
-            }
-            pstm.setString(2, c.getDatacontrato());
-            pstm.setDouble(3, c.getPreco());
-            pstm.setInt(4, c.getParcela());
-            pstm.setInt(5, c.getStatus());
-            pstm.setString(6, c.getSerie());
-            pstm.setString(7, c.getEscola());
-            pstm.setInt(8, c.getAluno().getIdaluno());
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
+    public void gravar(Contrato c) throws Exception{
+        this.conectar();
+        String sql = "INSERT INTO contrato (idcontrato, datacontrato, preco, primeirovencimento, parcela, status, serie, escola, idaluno) VALUES (?,now(),?,?,?,?,?,?,?)";
+        PreparedStatement pstm = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        pstm.setInt(1, c.getIdcontrato());
+        pstm.setDate(2,  new Date(c.getDatacontrato().getTime()));
+        pstm.setDouble(3, c.getPreco());
+        pstm.setInt(4, c.getParcela());
+        pstm.setInt(5, c.getStatus());
+        pstm.setString(6, c.getSerie());
+        pstm.setString(7, c.getEscola());
+        pstm.execute();
+        ResultSet rs = pstm.getGeneratedKeys();
+        if(rs.next()){
+            c.setIdcontrato(rs.getInt(1));
         }
+
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(c.getPrimeirovencimento());
+        
+        for(int i = 0; i < c.getParcela(); i++){
+                String sql_item = "INSERT INTO mensalidade (idmensalidade, idcontrato, valor, datav, datap, multa, desconto, status) VALUES (?,?,?,?,?,?,?,?)";
+                PreparedStatement pstm_item = conn.prepareStatement(sql_item);
+                pstm_item.setInt(1, i+1); //add o numero no id da parcela
+                pstm_item.setInt(2, c.getIdcontrato());
+                pstm_item.setDouble(3, c.getPreco() / c.getParcela());
+                pstm_item.setDate(4, (Date) ca.getTime());
+
+                ca.add(Calendar.MONTH, 1);
+        
+                pstm_item.setDate(5, null);
+                pstm_item.setDouble(6, 0);
+                pstm_item.setDouble(7, 0);
+                pstm_item.setInt(8, 1);
+                pstm_item.execute();            
+        }
+        this.desconectar();
     }
+
 
     public Contrato getCarregaPorId(int idcontrato) throws Exception {
 
         Contrato c = new Contrato();
-        String sql = "SELECT c.*, a.aluno FROM contrato c "
-                + "INNER JOIN aluno a ON c.idaluno = a.idaluno WHERE idcontrato=? ";
+        String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
+                + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
+                + "INNER JOIN responsavel r ON c.responsavel = r.responsavel WHERE idcontrato=? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idcontrato);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
             c.setIdcontrato(rs.getInt("c.idcontrato"));
-            c.setDatacontrato(rs.getString("c.datacontrato"));
+            c.setDatacontrato(rs.getDate("c.datacontrato"));
             c.setPreco(rs.getDouble("c.preco"));
             c.setParcela(rs.getInt("c.parcela"));
             c.setStatus(rs.getInt("c.status"));
@@ -154,5 +165,5 @@ public class ContratoDAO extends DataBaseDAO {
             return false;
         }
     }
-
+    
 }

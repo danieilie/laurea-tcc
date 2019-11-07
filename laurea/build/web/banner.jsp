@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="../assets/css/normalize.css">
         <link rel="stylesheet" type="text/css" href="../assets/css/reset.css">
         <!-- Bootstrap versão 4.1 -->
-        <link rel="stylesheet" type="text/css" href="estilo/banner.css" />
+        <link rel="stylesheet" type="text/css" href="../estilo/banner.css" />
         <!-- Tipografia -->
         <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Pontano+Sans|Port+Lligat+Sans&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="../assets/img/logo/logo_menu.png"/>
@@ -18,7 +18,7 @@
    
     <header class="" >
         <div class="">
-            <div class="logo">Láurea<img src="assets/img/logo/logo_menu.png"></div> 
+            <div class="logo">Láurea<img src="../assets/img/logo/logo_menu.png"></div> 
             <nav>
                 <ul>
                     <li>

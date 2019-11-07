@@ -1,26 +1,28 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Contrato {
 
     private int idcontrato, parcela, status;
-    private String serie, escola, datacontrato;
-//    private Date datacontrato;
+    private String serie, escola;
+    private Date datacontrato, primeirovencimento;
     private double preco;
     private Aluno aluno;
-    private Mensalidade mensalidade;
+    private ArrayList<Mensalidade> mensalidade;
 
     public Contrato() {
     }
 
-    public Contrato(int idcontrato, int parcela, int status, String datacontrato, String serie, String escola, double preco, Aluno aluno, Mensalidade mensalidade) {
+    public Contrato(int idcontrato, int parcela, int status, String serie, String escola, Date datacontrato, Date primeirovencimento, double preco, Aluno aluno, ArrayList<Mensalidade> mensalidade) {
         this.idcontrato = idcontrato;
         this.parcela = parcela;
         this.status = status;
-        this.datacontrato = datacontrato;
         this.serie = serie;
         this.escola = escola;
+        this.datacontrato = datacontrato;
+        this.primeirovencimento = primeirovencimento;
         this.preco = preco;
         this.aluno = aluno;
         this.mensalidade = mensalidade;
@@ -55,12 +57,20 @@ public class Contrato {
         this.status = status;
     }
 
-    public String getDatacontrato() {
+    public Date getDatacontrato() {
         return datacontrato;
     }
 
-    public void setDatacontrato(String datacontrato) {
+    public void setDatacontrato(Date datacontrato) {
         this.datacontrato = datacontrato;
+    }
+
+    public Date getPrimeirovencimento() {
+        return primeirovencimento;
+    }
+
+    public void setPrimeirovencimento(Date primeirovencimento) {
+        this.primeirovencimento = primeirovencimento;
     }
 
     public String getSerie() {
@@ -95,11 +105,12 @@ public class Contrato {
         this.aluno = aluno;
     }
 
-    public Mensalidade getMensalidade() {
+    
+    public ArrayList<Mensalidade> getMensalidade() {
         return mensalidade;
     }
 
-    public void setMensalidade(Mensalidade mensalidade) {
+    public void setMensalidade(ArrayList<Mensalidade> mensalidade) {
         this.mensalidade = mensalidade;
     }
 

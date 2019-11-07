@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Contrato;
 import model.Mensalidade;
 import DAO.MensalidadeDAO;
+import java.text.SimpleDateFormat;
 
 public class GerenciarMensalidade extends HttpServlet {
 
@@ -74,7 +75,6 @@ public class GerenciarMensalidade extends HttpServlet {
         PrintWriter out = response.getWriter();
         String idmensalidade = request.getParameter("idmensalidade");
         String idcontrato = request.getParameter("idcontrato");
-        String mes = request.getParameter("mes");
         String valor = request.getParameter("valor");
         String datav = request.getParameter("datav");
         String datap = request.getParameter("datap");
@@ -88,27 +88,43 @@ public class GerenciarMensalidade extends HttpServlet {
             m.setIdmensalidade(Integer.parseInt(idmensalidade));
         }
         try {
-            MensalidadeDAO mDAO = new MensalidadeDAO();
-            if (idcontrato.equals("") || mes.equals("") || valor.equals("") || datav.equals("") || datap.equals("") || status.equals("") ) {
-                mensagem = "Campos obrigatórios deverão ser preenchidos";
-            } else {
-                Contrato c = new Contrato();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            Contrato c = new Contrato();
                 c.setIdcontrato(Integer.parseInt(idcontrato));
-                m.setContrato(c);
-                m.setMes(mes);
                 m.setValor(Double.parseDouble(valor));
-                m.setDatav(datav);
-                m.setDatap(datap);
                 m.setMulta(Double.parseDouble(multa));
                 m.setDesconto(Double.parseDouble(desconto));
                 m.setStatus(Integer.parseInt(status));
-                if (mDAO.gravar(m)) {
+            if(!idmensalidade.isEmpty()){
+                m.setIdmensalidade(Integer.parseInt(idmensalidade));
+            }
+            m.setDatav(df.parse(datav));
+            m.setDatap(df.parse(datap));
+            
+            double novovalor = 0;
+            if(!valor.isEmpty())
+                novovalor = Double.parseDouble(valor.replace(".","").replace(",","."));
+            m.setValor(novovalor);
+            
+            double novamulta = 0;
+            if(!multa.isEmpty())
+                novamulta = Double.parseDouble(multa.replace(".","").replace(",","."));
+            m.setMulta(novamulta);
+            
+            double novodesconto = 0;
+            if(!desconto.isEmpty())
+                novodesconto = Double.parseDouble(desconto.replace(".","").replace(",","."));
+            m.setDesconto(novodesconto);
+            
+            if( valor.equals("") || valor.isEmpty() || datap.equals("") || datap.isEmpty()){
+                mensagem = "Campos obrigatórios devem ser preenchidos";
+            }else{                
+                if(m.getIdmensalidade()){
                     mensagem = "Gravado com sucesso";
-                } else {
+                }else{
                     mensagem = "Erro ao gravar no banco";
                 }
-            }
-
+            } 
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";
