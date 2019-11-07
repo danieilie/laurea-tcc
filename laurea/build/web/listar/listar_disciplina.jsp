@@ -9,10 +9,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>Lista Disciplina</title>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="../datatables/jquery.dataTables.min.css"/>
+        <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
@@ -24,13 +24,11 @@
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h1>Lista de Disciplinas</h1>
 
-            <a href="form_disciplina.jsp" class="btn btn-primary">
-                Inserir Disciplina
-            </a>
+            <a href="../form/form_disciplina.jsp" class="btn btn-primary">Inserir Disciplina</a>
             <table class="table table-hover table-striped table-bordered display" id="listaDisciplina">
                 <thead>
                     <tr>
@@ -67,8 +65,8 @@
             </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
                                     $(document).ready(function () {
                                         $("#listaDisciplina").dataTable({

@@ -1,0 +1,33 @@
+.menu{
+    margin-bottom: 20px;
+    min-width: 1140px;
+    height: 80px;
+    background-color: #7DB0D7;
+}
+.menu ul li{
+   margin: 0;
+   list-style: none;
+   float: left;
+   display: inline-block;
+   border-right: none;
+ 
+   
+   line-height: 80px;
+}
+
+.menu ul li a{
+    float: left;
+    color:#FFF;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    height: 80px;
+}
+
+.menu ul li a:hover{
+   color: #E64C3C;
+   border-bottom: 3px  #E64C3C solid;
+}
+
+

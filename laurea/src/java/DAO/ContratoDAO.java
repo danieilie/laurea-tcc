@@ -1,16 +1,47 @@
 package DAO;
 
-//import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import model.Aluno;
 import model.Contrato;
+import model.Mensalidade;
 import model.Responsavel;
 
 public class ContratoDAO extends DataBaseDAO {
 
     public ContratoDAO() throws Exception {
+    }
+    
+    public void registrar(Contrato c) throws Exception{
+        this.conectar();
+        String sql = "INSERT INTO contrato (idcontrato, parcela, status, datacontrato, serie, escola, preco, idaluno, idmensalidade) VALUES (?,?,?,now()?,?,?,?,?)";
+        PreparedStatement pstm = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+        pstm.setInt(1, c.getIdcontrato());
+        pstm.setInt(2, c.getMensalidade().getIdmensalidade());
+        pstm.execute();
+        ResultSet rs = pstm.getGeneratedKeys();
+        if(rs.next()){
+            c.setIdcontrato(rs.getInt(1));
+        }
+//        for(int i = 0; i <= 9; i++){
+        for(Mensalidade i:c.getMensalidade()){
+            String sql_item = "INSERT INTO mensalidade (idmensalidade, status, mes, valor, multa, desconto, datav, datap) VALUES (?,?,?,?,?,?,?,?)";
+            PreparedStatement pstm_item = conn.prepareStatement(sql_item);
+            pstm_item.setInt(1, i.getIdcontrato());
+            pstm_item.setInt(2, i.getMensalidade().getIdmensalidade());
+            pstm_item.setInt(3, c.getStatus());
+            pstm_item.setString(4, i.getMes());
+            pstm_item.setDouble(5, i.getValor());
+            pstm_item.setDouble(6, i.getMulta());
+            pstm_item.setDouble(7, i.getDesconto());
+            pstm_item.setString(8, i.getDatav());
+            pstm_item.setString(9, i.getDatap());
+            pstm_item.setDouble(10, i.getValor());
+            pstm_item.execute();
+        }
+        this.desconectar();
     }
 
     public ArrayList<Contrato> getLista() throws Exception {

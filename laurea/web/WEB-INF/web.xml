@@ -3,53 +3,35 @@
     <servlet-mapping>
         <servlet-name>GerenciarAluno</servlet-name>
         <url-pattern>/gerenciar_aluno.do</url-pattern>
-    </servlet-mapping>       
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarAluno</servlet-name>
         <servlet-class>controller.GerenciarAluno</servlet-class>
     </servlet>
-
-
-    <servlet-mapping>
-        <servlet-name>GerenciarAlunoAtividade</servlet-name>
-        <url-pattern>/gerenciar_aluno_atividade.do</url-pattern>
-    </servlet-mapping>       
-    <servlet>
-        <servlet-name>GerenciarAlunoAtividade</servlet-name>
-        <servlet-class>controller.GerenciarAlunoAtividade</servlet-class>
-    </servlet>
-
-
     <servlet-mapping>
         <servlet-name>GerenciarAlunoTurma</servlet-name>
         <url-pattern>/gerenciar_aluno_turma.do</url-pattern>
-    </servlet-mapping>       
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarAlunoTurma</servlet-name>
         <servlet-class>controller.GerenciarAlunoTurma</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>GerenciarAtividade</servlet-name>
         <url-pattern>/gerenciar_atividade.do</url-pattern>
-    </servlet-mapping>       
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarAtividade</servlet-name>
         <servlet-class>controller.GerenciarAtividade</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>GerenciarContrato</servlet-name>
         <url-pattern>/gerenciar_contrato.do</url-pattern>
-    </servlet-mapping>       
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarContrato</servlet-name>
         <servlet-class>controller.GerenciarContrato</servlet-class>
     </servlet>
-    
-    
     <servlet-mapping>
         <servlet-name>GerenciarDisciplina</servlet-name>
         <url-pattern>/gerenciar_disciplina.do</url-pattern>
@@ -58,28 +40,22 @@
         <servlet-name>GerenciarDisciplina</servlet-name>
         <servlet-class>controller.GerenciarDisciplina</servlet-class>
     </servlet>
-    
-    
     <servlet-mapping>
         <servlet-name>GerenciarLogin</servlet-name>
         <url-pattern>/gerenciar_login.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarLogin</servlet-name>
         <servlet-class>controller.GerenciarLogin</servlet-class>
     </servlet>
-           
-    
     <servlet-mapping>
         <servlet-name>GerenciarMensalidade</servlet-name>
         <url-pattern>/gerenciar_mensalidade.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarMensalidade</servlet-name>
         <servlet-class>controller.GerenciarMensalidade</servlet-class>
     </servlet>
-    
-     
     <servlet-mapping>
         <servlet-name>GerenciarMenu</servlet-name>
         <url-pattern>/gerenciar_menu.do</url-pattern>
@@ -88,8 +64,6 @@
         <servlet-name>GerenciarMenu</servlet-name>
         <servlet-class>controller.GerenciarMenu</servlet-class>
     </servlet>
-    
-    
     <servlet-mapping>
         <servlet-name>GerenciarMenuPerfil</servlet-name>
         <url-pattern>/gerenciar_menu_perfil.do</url-pattern>
@@ -98,18 +72,14 @@
         <servlet-name>GerenciarMenuPerfil</servlet-name>
         <servlet-class>controller.GerenciarMenuPerfil</servlet-class>
     </servlet>
-       
-                     
     <servlet-mapping>
         <servlet-name>GerenciarPerfil</servlet-name>
         <url-pattern>/gerenciar_perfil.do</url-pattern>
-    </servlet-mapping>       
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarPerfil</servlet-name>
         <servlet-class>controller.GerenciarPerfil</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>GerenciarProfessor</servlet-name>
         <url-pattern>/gerenciar_professor.do</url-pattern>
@@ -118,8 +88,6 @@
         <servlet-name>GerenciarProfessor</servlet-name>
         <servlet-class>controller.GerenciarProfessor</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>GerenciarProfessorDisciplina</servlet-name>
         <url-pattern>/gerenciar_professor_disciplina.do</url-pattern>
@@ -128,38 +96,30 @@
         <servlet-name>GerenciarProfessorDisciplina</servlet-name>
         <servlet-class>controller.GerenciarProfessorDisciplina</servlet-class>
     </servlet>
-
-    
     <servlet-mapping>
         <servlet-name>GerenciarResponsavel</servlet-name>
         <url-pattern>/gerenciar_responsavel.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarResponsavel</servlet-name>
         <servlet-class>controller.GerenciarResponsavel</servlet-class>
     </servlet>
-
-    
     <servlet-mapping>
         <servlet-name>GerenciarTurma</servlet-name>
         <url-pattern>/gerenciar_turma.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarTurma</servlet-name>
         <servlet-class>controller.GerenciarTurma</servlet-class>
     </servlet>
-    
-    
     <servlet-mapping>
         <servlet-name>GerenciarUsuario</servlet-name>
         <url-pattern>/gerenciar_usuario.do</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
     <servlet>
         <servlet-name>GerenciarUsuario</servlet-name>
         <servlet-class>controller.GerenciarUsuario</servlet-class>
     </servlet>
-    
-    
     <session-config>
         <session-timeout>
             30

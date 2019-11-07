@@ -1,24 +1,19 @@
-<%-- 
-    Document   : index
-    Created on : 08/08/2019, 10:22:26
-    Author     : Administrador
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width,  initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <title>JSP Page</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <title>Láurea Reforço Escolar</title>
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h3>Novo Menu</h3>
 
             <form action="gerenciar_menu.do" method="POST">
@@ -64,11 +59,9 @@
                 </div>    
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <a href="listar_menu.jsp" class="btn btn-warning">Voltar</a>    
+                    <a href="../listar/listar_menu.jsp" class="btn btn-warning">Voltar</a>    
                 </div>    
-            </form>    
-
+            </form>   
         </div>
-
     </body>
 </html>

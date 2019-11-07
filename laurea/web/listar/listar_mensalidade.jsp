@@ -1,25 +1,18 @@
-<%-- 
-    Document   : index
-    Created on : 08/08/2019, 10:22:26
-    Author     : Administrador
---%>
-
-<%@page import="model.MensalidadeDAO"%>
+<%@page import="DAO.MensalidadeDAO"%>
 <%@page import="model.Mensalidade"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, 
-              user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" href="../datatables/jquery.dataTables.min.css"/>
         <title>Láurea Reforço Escolar</title>
-
         <script type="text/javascript">
 
             function confirmarExclusao(id, nome) {
@@ -32,16 +25,12 @@
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h1>Lista de Mensalidades</h1>
 
-            <a href="form_mensalidade.jsp" class="btn btn-primary">
-                Novo Cadastro
-            </a>
-            <table class="table table-hover table-striped table-bordered display" 
-                   id ="listaMensalidade" >
-
+            <a href="../form/form_mensalidade.jsp" class="btn btn-primary">Novo Cadastro</a>
+            <table class="table table-hover table-striped table-bordered display" id ="listaMensalidade" >
                 <thead>
                     <tr>
                         <th>Nº Contrato</th>
@@ -75,30 +64,30 @@
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="model.MensalidadeDAO" id="menDAO" />
+                <jsp:useBean class="DAO.MensalidadeDAO" id="mDAO" />
 
                 <tbody>
-                    <c:forEach var="men" items="${menDAO.lista}">
+                    <c:forEach var="men" items="${mDAO.lista}">
                         <tr>
-                            <td>${men.contrato.idcontrato}</td>
-                            <td>${men.idmensalidade}</td>
-                            <td>${men.contrato.aluno.nome}</td>
-                            <td>${men.contrato.aluno.responsavel.nome}</td>
-                            <td>${men.mes}</td>
-                            <td>${men.valor}</td>
-                            <td>${men.datav}</td>
-                            <td>${men.datap}</td>
-                            <td>${men.multa}</td>
-                            <td>${men.desconto}</td>
+                            <td>${m.contrato.idcontrato}</td>
+                            <td>${m.idmensalidade}</td>
+                            <td>${m.contrato.aluno.nome}</td>
+                            <td>${m.contrato.aluno.responsavel.nome}</td>
+                            <td>${m.mes}</td>
+                            <td>${m.valor}</td>
+                            <td>${m.datav}</td>
+                            <td>${m.datap}</td>
+                            <td>${m.multa}</td>
+                            <td>${m.desconto}</td>
                             <td>
                                 <c:if test="${men.status == 2}" > Pendente </c:if>
                                 <c:if test="${men.status == 1}" > Pago </c:if>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="gerenciar_mensalidade.do?acao=alterar&idmensalidade=${pr.idmensalidade}">
+                                    <a class="btn btn-primary" href="gerenciar_mensalidade.do?acao=alterar&idmensalidade=${p.idmensalidade}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idmensalidade}, '${pr.nome}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idmensalidade}, '${p.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>
@@ -108,8 +97,8 @@
             </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+        <script type="text/javascript" src="../datatables/jquery.js"></script>
+        <script type="text/javascript" src="../datatables/jquery.dataTables.min.js" ></script>
         <script type="text/javascript" >
 
                                     $(document).ready(function () {
@@ -132,9 +121,7 @@
                                                     "sLast": "Último"
                                                 }
                                             }
-
                                         });
-
                                     });
         </script>
     </body>

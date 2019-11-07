@@ -6,25 +6,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <title>Formulário Disciplina</title>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../bootstrap/css/bootstrap-theme.min.css"/>
+        <title>Láurea Reforço Escolar</title>
     </head>
     <body>
         <div class="container">
-            <%//@include file="banner.jsp" %>
-            <%//@include file="menu.jsp" %>
+            <%@include file="../banner.jsp" %>
+            <%@include file="../menu.jsp" %>
             <h3>Nova Disciplina</h3>
 
             <form action="gerenciar_disciplina.do" method="POST">
-
                 <input type="hidden" name="iddisciplina" id="iddisciplina" value="${disciplina.iddisciplina}"/>
+                
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="materia">Matéria</label>
-                        <!-- <input type="text" class="form-control" id="materia" name="materia" required="" maxlength="45" value="${disciplina.materia}"/> -->
-                        <select >
-                            <option class="" value="">Escolha a Matéria</option>
+                        <select name="materia" required="" class="form-control">
+                            <option class="" value="" selected="">Escolha a Matéria</option>
                             <option class="" value="portugues">Português</option>
                             <option class="" value="quimica">Química</option>
                             <option class="" value="matematica">Matemática</option>
@@ -38,9 +37,8 @@
                 </div>       
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <button><a href="./listar/listar_disciplina.jsp" class="btn btn-warning">Voltar</a></button>    
+                    <button><a href="../listar/listar_disciplina.jsp" class="btn btn-warning">Voltar</a></button>    
                 </div>   
-
             </form>    
         </div>
     </body>
