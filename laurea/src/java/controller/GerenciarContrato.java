@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Aluno;
 import model.Contrato;
 import DAO.ContratoDAO;
+import java.text.SimpleDateFormat;
 
 public class GerenciarContrato extends HttpServlet {
 
@@ -88,11 +89,17 @@ public class GerenciarContrato extends HttpServlet {
         }
         try {
             ContratoDAO cDAO = new ContratoDAO();
+            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             if (datacontrato.equals("") || preco.equals("") || parcela.equals("") || status.equals("") || serie.equals("") || idaluno.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
-                c.setDatacontrato(datacontrato);
+                c.setDatacontrato(df.parse(datacontrato));
                 c.setPreco(Double.parseDouble(preco));
+                
+            double novopreco = 0;
+            if(!preco.isEmpty())
+                novopreco = Double.parseDouble(preco.replace(".","").replace(",","."));
+            c.setPreco(novopreco);            
                 c.setParcela(Integer.parseInt(parcela));
                 c.setStatus(Integer.parseInt(status));
                 c.setSerie(serie);
