@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="model.Usuario"%>
+<%@page import="controller.GerenciarLogin"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,12 +17,29 @@
         <script type="text/javascript">document.documentElement.classList.add("js");</script>
         <!-- Tipografia -->
         <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Pontano+Sans|Port+Lligat+Sans&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
+        <link rel="shortcut icon" href="./assets/img/logo/logo_menu.png"/>
     </head>
     <body>
         <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+            <header class="" >
+                <div class="">
+                    <div class="logo">Láurea<img src="./assets/img/logo/logo_menu.png"></div> 
+                    <nav>
+                        <ul>
+                            <li>
+                                <div class="">
+                                     <div class="pull-right">Bem vindo, 
+                                        <c:if test="${ulogado!=null}">${ulogado.nome}</c:if>
+                                        <a href="gerenciar_login.do">Sair<img src="https://image.flaticon.com/icons/svg/126/126467.svg" width="20"></a>
+                                    </div>
+                                </div>
+                            </li>       
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+            <%--<%@include file="./banner.jsp" %>--%>
+            <%@include file="./menu.jsp" %>
             <h1>Home</h1>
         </div>
     </body>

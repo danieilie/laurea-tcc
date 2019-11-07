@@ -28,7 +28,7 @@
 
         <header class="container-fluid m-p" data-anime="100">
             <div class="container">
-                <div class="logo" data-anime="200"><a href="#inicio">Láurea<img src="../assets/img/logo/logo_menu.png"></a></div>
+                <div class="logo" data-anime="200"><a href="#inicio">Láurea<img src="./assets/img/logo/logo_menu.png"></a></div>
                 <nav>
                     <ul data-anime="200">
                         <li><a href="#produtos">Produtos</a></li>
