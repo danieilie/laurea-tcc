@@ -284,15 +284,7 @@
         </footer>
         <div class="copy" data-anime="600">
             <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD
                 © Copyright  2010-2019. Láurea. Todos os direitos reservados.
-=======
-                © Copyright  2018-2019. Láurea. Todos os direitos reservados.
->>>>>>> dev
-=======
-                © Copyright  2018-2019. Láurea. Todos os direitos reservados.
->>>>>>> dev
             </div>
         </div>
         <a id="back-to-top" href="#" class="btn back-to-top" role="button"><img src="assets/img/arrow/arrow-up.gif"></a>
