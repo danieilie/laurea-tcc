@@ -72,7 +72,7 @@ public class MensalidadeDAO extends DataBaseDAO {
         return m;
     }
         
-    public boolean atualizarMensalidade(Mensalidade m){
+    public boolean gravar(Mensalidade m){
         try{            
             String sql = "UPDATE mensalidade SET  valor=?, datav=?, datap=?, multa=?, desconto=?, status=? WHERE idcontrato=? AND idmensalidade=?";                
             this.conectar();

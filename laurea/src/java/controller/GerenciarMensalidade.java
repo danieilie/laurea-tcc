@@ -43,10 +43,10 @@ public class GerenciarMensalidade extends HttpServlet {
                 }
             }
 
-            if (acao.equals("atualizarMensalidade")) {
+            if (acao.equals("gravar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     m.setIdmensalidade(idmensalidade);
-                    if (mDAO.atualizarMensalidade(m)) {
+                    if (mDAO.gravar(m)) {
                         mensagem = "Atualizada com sucesso!";
                     } else {
                         mensagem = "Erro ao atualizar";
@@ -88,6 +88,7 @@ public class GerenciarMensalidade extends HttpServlet {
             m.setIdmensalidade(Integer.parseInt(idmensalidade));
         }
         try {
+            MensalidadeDAO mDAO = new MensalidadeDAO();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Contrato c = new Contrato();
                 c.setIdcontrato(Integer.parseInt(idcontrato));
@@ -119,7 +120,7 @@ public class GerenciarMensalidade extends HttpServlet {
             if( valor.equals("") || valor.isEmpty() || datap.equals("") || datap.isEmpty()){
                 mensagem = "Campos obrigatórios devem ser preenchidos";
             }else{                
-                if(m.getIdmensalidade()){
+                if(mDAO.gravar(m)){
                     mensagem = "Gravado com sucesso";
                 }else{
                     mensagem = "Erro ao gravar no banco";

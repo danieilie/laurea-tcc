@@ -6,7 +6,6 @@ public class Aluno {
 
     private int idaluno, status;
     private String nome, cpf, rg, datanasc;
-//    private String datanasc;
     private Responsavel responsavel;
     private Usuario usuario;
 

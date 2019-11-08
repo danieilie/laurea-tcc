@@ -88,6 +88,7 @@ public class GerenciarContrato extends HttpServlet {
             c.setIdcontrato(Integer.parseInt(idcontrato));
         }
         try {
+            
             ContratoDAO cDAO = new ContratoDAO();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             if (datacontrato.equals("") || preco.equals("") || parcela.equals("") || status.equals("") || serie.equals("") || idaluno.equals("")) {
@@ -99,7 +100,7 @@ public class GerenciarContrato extends HttpServlet {
             double novopreco = 0;
             if(!preco.isEmpty())
                 novopreco = Double.parseDouble(preco.replace(".","").replace(",","."));
-            c.setPreco(novopreco);            
+                c.setPreco(novopreco);            
                 c.setParcela(Integer.parseInt(parcela));
                 c.setStatus(Integer.parseInt(status));
                 c.setSerie(serie);
@@ -107,7 +108,7 @@ public class GerenciarContrato extends HttpServlet {
                 Aluno a = new Aluno();
                 a.setIdaluno(Integer.parseInt(idaluno));
                 c.setAluno(a);
-                if (cDAO.gravar(c)) {
+                if(cDAO.gravar(c)) {
                     mensagem = "Gravado com sucesso";
                 } else {
                     mensagem = "Erro ao gravar no banco";

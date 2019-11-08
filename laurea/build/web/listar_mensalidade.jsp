@@ -1,8 +1,8 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.MensalidadeDAO"%>
 <%@page import="model.Mensalidade"%>
 <%@page import="java.util.ArrayList"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +63,7 @@
 
                 <jsp:useBean class="DAO.MensalidadeDAO" id="mDAO" />
                 <tbody>
-                    <c:forEach var="men" items="${mDAO.lista}">
+                    <c:forEach var="m" items="${mDAO.lista}">
                         <tr>
                             <td>${m.contrato.idcontrato}</td>
                             <td>${m.idmensalidade}</td>

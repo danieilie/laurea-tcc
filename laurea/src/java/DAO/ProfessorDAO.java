@@ -14,7 +14,7 @@ public class ProfessorDAO extends DataBaseDAO {
     public ArrayList<Professor> getLista() throws Exception {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
-        String sql = "SELECT p.*, u.usuario FROM professor p "
+        String sql = "SELECT p.*, u.nome FROM professor p "
                 + "INNER JOIN usuario u ON p.idusuario = u.idusuario";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -69,6 +69,29 @@ public class ProfessorDAO extends DataBaseDAO {
         Professor p = new Professor();
         String sql = "SELECT p.*, u.usuario FROM professor p "
                 + "INNER JOIN usuario u ON u.idusuario = p.idusuario ";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idprofessor);
+        ResultSet rs = pstm.executeQuery();
+        if (rs.next()) {
+            p.setIdprofessor(rs.getInt("p.idprofessor"));
+            p.setNome(rs.getString("p.nome"));
+            p.setStatus(rs.getInt("p.status"));
+            Usuario u = new Usuario();
+            u.setIdusuario(rs.getInt("p.idusuario"));
+            u.setNome(rs.getString("u.nome"));
+            DisciplinaDAO dDAO = new DisciplinaDAO();
+            p.setDisciplina(dDAO.getCarregaPorId(rs.getInt("p.iddisciplina")));            
+            p.setUsuario(u);
+        }
+        this.desconectar();
+        return p;
+    }
+
+    public Professor getCarregaPorIdProfessor(int idprofessor) throws Exception {
+
+        Professor p = new Professor();
+        String sql = "SELECT p.* WHERE p.idusuario == u.logado";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idprofessor);
