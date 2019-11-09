@@ -23,7 +23,7 @@
             }
         </script>    
     </head>
-    <body> 
+    <body class="body">
         <%@include file="menu.jsp" %>
          <div class="row">
             <a href="form_Menu.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>

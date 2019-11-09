@@ -28,7 +28,7 @@
             </c:if>    
         </c:forEach>
     </c:if>
-    <div><a href="gerenciar_login.do">Sair</a></div>
+   <a href="gerenciar_login.do"> <div>Sair </div> </a>
 </div>   
          
 

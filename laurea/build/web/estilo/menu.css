@@ -17,10 +17,11 @@
     border-right: 1px solid #CCC;
     float:left;
     text-align: left;
-    font-size: 24px; 
+    font-size: 18px; 
     color:#4F4F4F;
     background-color: #FFF;
     box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+    min-height: 100hv;
 
  
 }
