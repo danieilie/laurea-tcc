@@ -26,7 +26,7 @@
     <body class="body">
          <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_usuario.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_usuario.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar usuário </div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
@@ -40,7 +40,8 @@
                         <th>Login</th>
                         <th>Status</th>
                         <th>Perfil</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                      
                     </tr>
                 </thead>
                 <tfoot>
@@ -50,7 +51,8 @@
                         <th>Login</th>
                         <th>Status</th>
                         <th>Perfil</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+            
                     </tr>
                 </tfoot>
 
@@ -68,13 +70,11 @@
                                 </td>
                                 <td>${u.perfil}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                <a class=" icone_lista" title="Deletar Usuário" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
+                                     <img src="assets/img/lista/editar.png">
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${u.idusuario}, '${u.nome}')">
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>    
                             </td>
+
                         </tr>
                     </c:forEach>
                 </tbody>

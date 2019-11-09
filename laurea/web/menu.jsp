@@ -24,11 +24,11 @@
     <c:if test="${ulogado != null && ulogado.perfil != null}">
         <c:forEach var="menu" items="${ulogado.perfil.menus}">
             <c:if test="${menu.exibir == 1}">
-                <a href="${menu.link}"><div><img src="assets/img/menu/painel.png">${menu.menu}</div></a>                  
+                <a class="menu_item" href="${menu.link}"><div ><img src="assets/img/menu/painel.png">${menu.menu}</div></a>                  
             </c:if>    
         </c:forEach>
     </c:if>
-    <a href="gerenciar_login.do"> <div> <img src="assets/img/icone menu/sair.png"> Sair </div> </a>
+    <a class="menu_item" href="gerenciar_login.do"> <div> <img src="assets/img/icone menu/sair.png"> Sair </div> </a>
 </div>   
          
 

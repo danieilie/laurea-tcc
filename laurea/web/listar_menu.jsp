@@ -26,7 +26,7 @@
     <body class="body">
         <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_menu.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_menu.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Menu </div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
@@ -69,12 +69,12 @@
                                 <c:if test="${m.exibir==2}">Não</c:if>
                                 </td>
                                 <td>
-                                    <a class="icone_lista" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
+                                    <a class="icone_lista" title="Editar Menu" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
                                     <img src="assets/img/lista/editar.png">
                                 </a>
                                  </td>
                                  <td>
-                                <button class="deletar icone_lista" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
+                                <button class="deletar icone_lista" title="Deletar Menu" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
                                    <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>

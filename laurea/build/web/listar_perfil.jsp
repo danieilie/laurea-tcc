@@ -27,7 +27,7 @@
      <body class="body">
          <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_perfil.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_perfil.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Perfil</div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
@@ -61,19 +61,19 @@
                             <td>${p.idperfil}</td>
                             <td>${p.perfil}</td>
                             <td>
-                                <a class="icone_lista" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
+                                <a class="icone_lista" title="Libere ou retire acessos" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
                                      <img src="assets/img/lista/acessos.png">
                                 </a>
                                
                             </td>
                              <td>
-                                  <a class="icone_lista" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
+                                  <a class="icone_lista" title="Editar Perfil"  href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
                                       <img src="assets/img/lista/editar.png">
                                 </a>
                                 
                             </td>
                             <td>
-                                <button class="deletar icone_lista" onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                <button class="deletar icone_lista" title="Deletar Perfil"  onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
                                     <img src="assets/img/lista/deletar.png">
                                 </button>  
                             </td>

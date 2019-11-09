@@ -26,7 +26,7 @@
      <body class="body">
         <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_disciplina.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_disciplina.jsp" class="" > <div class="float-left" id="btn_cadastrar"> cadastrar disciplina </div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
@@ -37,14 +37,16 @@
                     <tr>
                         <th>ID</th>
                         <th>Matéria</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Matéria</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </tfoot>
 
@@ -55,11 +57,13 @@
                             <td>${d.iddisciplina}</td>
                             <td>${d.materia}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                <a class="icone_lista" title="Editar Disciplina" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
+                                     <img src="assets/img/lista/editar.png">
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${d.iddisciplina}, '${d.materia}')">
-                                    <i class="glyphicon glyphicon-trash"></i>
+                            </td>
+                            <td>
+                                <button class="deletar icone_lista" title="Deletar Disciplina" onclick="confirmarExclusao(${d.iddisciplina}, '${d.materia}')">
+                                   <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>
                         </tr>

@@ -1,0 +1,12 @@
+.row{
+    padding-top: 90px;
+}
+.painel_status img{
+    width: 25px;
+    height: 25px;
+}
+.ativo{
+    background-color: #204571;
+    color:#FFF;
+    font-weight: bold;
+}

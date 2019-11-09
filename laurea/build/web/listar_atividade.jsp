@@ -9,9 +9,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>  
         <title>Láurea Reforço Escolar</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
@@ -23,20 +25,22 @@
 
     </head>
      <body class="body">
-        <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
-            <h1>Lista de Atividades</h1>
-
-            <a href="form_atividade.jsp" class="btn btn-primary">Novo Cadastro</a>
-            <table class="table table-hover table-striped table-bordered display" id ="listaAtividade" >
+        <%@include file="menu.jsp" %>
+         <div class="row">
+            <a href="form_atividadea.jsp" class="" > <div class="float-left" id="btn_cadastrar"> cadastrar atividade </div></a>
+         </div>
+         <div class="row  justify-content-center" id="listagem">
+       
+            <div class="table-responsive">
+            <table class="table table-hover table-sm" id ="listaAtividade" >
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Arquivo</th>
                         <th>Disciplina</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -45,7 +49,8 @@
                         <th>Nome</th>
                         <th>Arquivo</th>
                         <th>Disciplina</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </tfoot>
 
@@ -59,11 +64,13 @@
                             <td>${at.arquivo}</td>
                             <td>${at.disciplina}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_atividade.do?acao=alterar&idatividade=${p.idatividade}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                <a class="icone_lista" href="gerenciar_atividade.do?acao=alterar&idatividade=${p.idatividade}">
+                                   <img src="assets/img/lista/editar.png">
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idatividade}, '${p.nome}')" >
-                                    <i class="glyphicon glyphicon-trash"></i>
+                            </td>
+                            <td>
+                                <button class="deletar icone_lista" onclick="confirmarExclusao(${p.idatividade}, '${p.nome}')" >
+                                    <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>
                         </tr>
@@ -71,6 +78,7 @@
                 </tbody>    
             </table>    
         </div>
+         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
         <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>

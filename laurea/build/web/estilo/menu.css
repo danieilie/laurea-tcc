@@ -5,7 +5,8 @@
     font-size: 24px;
     line-height: 70px;
     border-right: 1px solid #CCC;
-    font-weight: bold;   
+    font-weight: bold;
+    
 }
 .logo img{
     max-width: 250px;
@@ -23,6 +24,7 @@
     min-height: 100vh;
     overflow-x: hidden;
 }
+
 .menu a{
     text-decoration: none;
      color:#4F4F4F;    
@@ -42,7 +44,8 @@
      padding: 6px;
      padding-left: 20px;
 }
-.menu div:hover{
+
+.menu_item :hover{
     border-left: 10px solid red;
     transition: 350ms all linear;
     cursor: pointer;
@@ -50,6 +53,7 @@
 .menu div:first-child{
     border-top: 1px solid #CCC;
     border-bottom: 1px solid #CCC;
+   
 }
 .menu div{
      border-bottom: 1px solid #CCC;
