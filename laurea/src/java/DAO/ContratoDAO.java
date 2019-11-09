@@ -18,7 +18,7 @@ public class ContratoDAO extends DataBaseDAO {
     
     public ArrayList<Contrato> getLista() throws Exception {
 
-        ArrayList<Contrato> listaC = new ArrayList<Contrato>();
+        ArrayList<Contrato> lista = new ArrayList<Contrato>();
         String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
                 + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
                 + "INNER JOIN responsavel r ON c.idresponsavel = r.idresponsavel ";
@@ -42,10 +42,10 @@ public class ContratoDAO extends DataBaseDAO {
             Responsavel r = new Responsavel();
             r.setNome(rs.getString("r.nome"));
             a.setResponsavel(r);
-            listaC.add(c);     
+            lista.add(c);     
         }
         this.desconectar();
-        return listaC;
+        return lista;
     }
 
     public ArrayList<Mensalidade> mensalidaVinculadaPorContrato(int idcontrato) throws Exception {
@@ -80,43 +80,48 @@ public class ContratoDAO extends DataBaseDAO {
         return lista;
     }
 
-    public void gravar(Contrato c) throws Exception{
-        this.conectar();
-        String sql = "INSERT INTO contrato (idcontrato, datacontrato, preco, primeirovencimento, parcela, status, serie, escola, idaluno) VALUES (?,now(),?,?,?,?,?,?,?)";
-        PreparedStatement pstm = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
-        pstm.setInt(1, c.getIdcontrato());
-        pstm.setDate(2,  new Date(c.getDatacontrato().getTime()));
-        pstm.setDouble(3, c.getPreco());
-        pstm.setInt(4, c.getParcela());
-        pstm.setInt(5, c.getStatus());
-        pstm.setString(6, c.getSerie());
-        pstm.setString(7, c.getEscola());
-        pstm.execute();
-        ResultSet rs = pstm.getGeneratedKeys();
-        if(rs.next()){
-            c.setIdcontrato(rs.getInt(1));
-        }
+    public boolean gravar(Contrato c) throws Exception{
+        try{
+            String sql = "INSERT INTO contrato (idcontrato, datacontrato, preco, primeirovencimento, parcela, status, serie, escola, idaluno) VALUES (?,now(),?,?,?,?,?,?,?)";
+            PreparedStatement pstm = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            pstm.setInt(1, c.getIdcontrato());
+            pstm.setDate(2,  new Date(c.getDatacontrato().getTime()));
+            pstm.setDouble(3, c.getPreco());
+            pstm.setDate(4,  new Date(c.getPrimeirovencimento().getTime()));
+            pstm.setInt(5, c.getParcela());
+            pstm.setInt(6, c.getStatus());
+            pstm.setString(7, c.getSerie());
+            pstm.setString(8, c.getEscola());
+            pstm.setInt(9, c.getStatus());
+            pstm.execute();
+            ResultSet rs = pstm.getGeneratedKeys();
+            if(rs.next()){
+                c.setIdcontrato(rs.getInt(1));
+            }
 
-        Calendar ca = Calendar.getInstance();
-        ca.setTime(c.getPrimeirovencimento());
-        
-        for(int i = 0; i < c.getParcela(); i++){
-                String sql_item = "INSERT INTO mensalidade (idmensalidade, idcontrato, valor, datav, datap, multa, desconto, status) VALUES (?,?,?,?,?,?,?,?)";
-                PreparedStatement pstm_item = conn.prepareStatement(sql_item);
-                pstm_item.setInt(1, i+1); //add o numero no id da parcela
-                pstm_item.setInt(2, c.getIdcontrato());
-                pstm_item.setDouble(3, c.getPreco() / c.getParcela());
-                pstm_item.setDate(4, (Date) ca.getTime());
+            Calendar ca = Calendar.getInstance();
+            ca.setTime(c.getPrimeirovencimento());
 
-                ca.add(Calendar.MONTH, 1);
-        
-                pstm_item.setDate(5, null);
-                pstm_item.setDouble(6, 0);
-                pstm_item.setDouble(7, 0);
-                pstm_item.setInt(8, 1);
-                pstm_item.execute();            
+            for(int i = 0; i < c.getParcela(); i++){
+                    String sql_item = "INSERT INTO mensalidade (idmensalidade, idcontrato, valor, datav, datap, multa, desconto, status) VALUES (?,?,?,?,?,?,?,?)";
+                    PreparedStatement pstm_item = conn.prepareStatement(sql_item);
+                    pstm_item.setInt(1, i+1); //add o numero no id da parcela
+                    pstm_item.setInt(2, c.getIdcontrato());
+                    pstm_item.setDouble(3, c.getPreco() / c.getParcela());
+                    pstm_item.setDate(4, (Date) ca.getTime());
+                    ca.add(Calendar.MONTH, 1);        
+                    pstm_item.setDate(5, null);
+                    pstm_item.setDouble(6, 0);
+                    pstm_item.setDouble(7, 0);
+                    pstm_item.setInt(8, 1);
+                    pstm_item.execute();            
+            }
+            this.desconectar();
+            return true;
+        }catch (Exception e){
+            System.out.println(e);
+            return false;
         }
-        this.desconectar();
     }
 
 
