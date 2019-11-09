@@ -103,19 +103,21 @@ public class GerenciarMensalidade extends HttpServlet {
             m.setDatap(df.parse(datap));
             
             double novovalor = 0;
-            if(!valor.isEmpty())
+            if(!valor.isEmpty()){
                 novovalor = Double.parseDouble(valor.replace(".","").replace(",","."));
-            m.setValor(novovalor);
-            
+                m.setValor(novovalor);
+            }
             double novamulta = 0;
-            if(!multa.isEmpty())
+            if(!multa.isEmpty()){
                 novamulta = Double.parseDouble(multa.replace(".","").replace(",","."));
-            m.setMulta(novamulta);
+                m.setMulta(novamulta);
+            }
             
             double novodesconto = 0;
-            if(!desconto.isEmpty())
+            if(!desconto.isEmpty()){
                 novodesconto = Double.parseDouble(desconto.replace(".","").replace(",","."));
-            m.setDesconto(novodesconto);
+                m.setDesconto(novodesconto);
+            }
             
             if( valor.equals("") || valor.isEmpty() || datap.equals("") || datap.isEmpty()){
                 mensagem = "Campos obrigatórios devem ser preenchidos";

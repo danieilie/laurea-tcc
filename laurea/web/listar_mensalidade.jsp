@@ -15,7 +15,7 @@
         <title>Láurea Reforço Escolar</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
-                if (confirm('Deseja realmente excluir o mensalidade  ' + nome + ' ?')) {
+                if (confirm('Deseja realmente excluir o mensalidade  "' + nome + '" ?')) {
                     location.href = 'gerenciar_mensalidade.do?acao=excluir&idmensalidade=' + id;
                 }
             }
@@ -64,29 +64,31 @@
                 <jsp:useBean class="DAO.MensalidadeDAO" id="mDAO" />
                 <tbody>
                     <c:forEach var="m" items="${mDAO.lista}">
-                        <tr>
-                            <td>${m.contrato.idcontrato}</td>
-                            <td>${m.idmensalidade}</td>
-                            <td>${m.contrato.aluno.nome}</td>
-                            <td>${m.contrato.aluno.responsavel.nome}</td>
-                            <td>${m.valor}</td>
-                            <td>${m.datav}</td>
-                            <td>${m.datap}</td>
-                            <td>${m.multa}</td>
-                            <td>${m.desconto}</td>
-                            <td>
-                                <c:if test="${men.status == 2}" > Pendente </c:if>
-                                <c:if test="${men.status == 1}" > Pago </c:if>
-                                </td>
+                        <c:if test="${m.contrato.aluno.responsavel.nome }">
+                            <tr>
+                                <td>${m.contrato.idcontrato}</td>
+                                <td>${m.idmensalidade}</td>
+                                <td>${m.contrato.aluno.nome}</td>
+                                <td>${m.contrato.aluno.responsavel.nome}</td>
+                                <td>${m.valor}</td>
+                                <td>${m.datav}</td>
+                                <td>${m.datap}</td>
+                                <td>${m.multa}</td>
+                                <td>${m.desconto}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="gerenciar_mensalidade.do?acao=gravar&idmensalidade=${p.idmensalidade}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idmensalidade}, '${p.nome}')" >
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>    
-                            </td>
-                        </tr>
+                                    <c:if test="${m.status == 2}" > Pendente </c:if>
+                                    <c:if test="${m.status == 1}" > Pago </c:if>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" href="gerenciar_mensalidade.do?acao=gravar&idmensalidade=${p.idmensalidade}">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <button class="btn btn-danger" onclick="confirmarExclusao(${p.idmensalidade}, '${p.nome}')" >
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>    
+                                </td>
+                            </tr>
+                        </c:if>    
                     </c:forEach>                    
                 </tbody>    
             </table>    

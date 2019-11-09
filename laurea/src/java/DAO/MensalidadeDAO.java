@@ -17,7 +17,7 @@ public class MensalidadeDAO extends DataBaseDAO {
     public ArrayList<Mensalidade> getLista() throws Exception {
 
         ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
-        String sql = "SELECT m.* FROM mensalidade m "
+        String sql = "SELECT m.*, a.nome, r.nome FROM mensalidade m "
                 + "INNER JOIN contrato c ON m.idcontrato = c.idcontrato "
                 + "INNER JOIN aluno a ON m.idaluno = a.idaluno"
                 + "INNER JOIN responsavel r ON m.idresponsavel = r.idresponsavel";
@@ -26,6 +26,13 @@ public class MensalidadeDAO extends DataBaseDAO {
         ResultSet rs = pstm.executeQuery();
         Mensalidade m = new Mensalidade();            
         while (rs.next()) {
+            m.setIdmensalidade(rs.getInt("m.idmensalidade"));
+            m.setValor(rs.getDouble("m.valor"));
+            m.setDatav(rs.getDate("m.datav"));
+            m.setDatap(rs.getDate("m.datap"));
+            m.setMulta(rs.getDouble("m.multa"));
+            m.setDesconto(rs.getDouble("m.desconto"));
+            m.setStatus(rs.getInt("m.status"));
             Contrato c = new Contrato();
             c.setIdcontrato(rs.getInt("m.idcontrato"));
             Aluno a = new Aluno();
@@ -34,13 +41,6 @@ public class MensalidadeDAO extends DataBaseDAO {
             Responsavel r = new Responsavel();
             r.setNome(rs.getString("r.nome"));
             a.setResponsavel(r);
-            m.setIdmensalidade(rs.getInt("m.idmensalidade"));
-            m.setValor(rs.getDouble("m.valor"));
-            m.setDatav(rs.getDate("m.datav"));
-            m.setDatap(rs.getDate("m.datap"));
-            m.setMulta(rs.getDouble("m.multa"));
-            m.setDesconto(rs.getDouble("m.desconto"));
-            m.setStatus(rs.getInt("m.status"));
             lista.add(m);
         }
         this.desconectar();
@@ -50,7 +50,7 @@ public class MensalidadeDAO extends DataBaseDAO {
     public Mensalidade getCarregaPorId(int idcontrato, int idmensalidade) throws Exception {
 
         Mensalidade m = new Mensalidade();
-        String sql = "SELECT m.*, c.contrato, a.aluno, r.responsavel FROM mensalidade m "
+        String sql = "SELECT m.*, c.idcontrato, a.nome, r.nome FROM mensalidade m "
                 + "INNER JOIN contrato c ON m.idcontrato = c.idcontrato "
                 + "INNER JOIN aluno a ON m.idaluno = a.idaluno"
                 + "INNER JOIN responsavel r ON m.idresponsavel = r.idresponsavel WHERE idmensalidade = ? AND idcontrato = ? ";

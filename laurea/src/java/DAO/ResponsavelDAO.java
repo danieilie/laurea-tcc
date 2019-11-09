@@ -85,6 +85,27 @@ public class ResponsavelDAO extends DataBaseDAO {
         return r;
     }
 
+    public Responsavel getCarregaPorIdResponsavel(int idresponsavel) throws Exception {
+
+        Responsavel r = new Responsavel();
+        String sql = "SELECT r.* FROM responsavel r WHERE r.idresponsavel=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idresponsavel);
+        ResultSet rs = pstm.executeQuery();
+        if (rs.next()) {
+            r.setIdresponsavel(rs.getInt("r.idresponsavel"));
+            r.setNome(rs.getString("r.nome"));
+            r.setCpf(rs.getString("r.cpf"));
+            r.setRg(rs.getString("r.rg"));
+            r.setStatus(rs.getInt("r.status"));
+            UsuarioDAO uDAO = new UsuarioDAO();
+            r.setUsuario(uDAO.getCarregaPorId(rs.getInt("r.idusuario")));
+        }
+        this.desconectar();
+        return r;
+    }
+
     public boolean excluir(Responsavel r) {
         try {
             this.conectar();
