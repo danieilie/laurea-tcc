@@ -22,7 +22,7 @@
         </script>
 
     </head>
-    <body>
+     <body class="body">
         <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
         <div class="container">
