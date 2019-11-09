@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.AlunoDAO;
 import model.Aluno;
 import DAO.ResponsavelDAO;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import model.Responsavel;
 import model.Usuario;
 
@@ -81,6 +83,7 @@ public class GerenciarAluno extends HttpServlet {
         String mensagem = "";
 
         Aluno a = new Aluno();
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         if (!idaluno.isEmpty()) {
             a.setIdaluno(Integer.parseInt(idaluno));
         }
@@ -90,7 +93,7 @@ public class GerenciarAluno extends HttpServlet {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 a.setNome(nome);
-                a.setDatanasc(datanasc);
+                a.setDatanasc(df.parse(datanasc));
                 a.setCpf(cpf);
                 a.setRg(rg);
                 a.setStatus(Integer.parseInt(status));
