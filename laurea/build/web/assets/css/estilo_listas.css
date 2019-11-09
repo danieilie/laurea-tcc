@@ -1,12 +1,23 @@
-table{
-    width: 80000px;
+.body{
+    background-color: #F5F7F8;
 }
+#listagem{
+     font-family: 'Lato', sans-serif;
+      
+}
+
+
 .table{
     text-align: center;
+    
 }
-tbody tr td:nth-child(1){
-
-    font-weight: bold;
+#listaUsuario{
+     box-shadow: 4px 4px 4px rgba(0,0,0,.3);
+}
+th{
+    font-size: 12px;
+    font-weight: 100;
+    text-transform: uppercase;
 }
 input , select{
     border: 2px solid #204571;
@@ -26,4 +37,13 @@ table thead{
     border: 2px solid  #2F80ED;
     margin: 30px;
     padding: 10px;
+    
+}
+#btn_cadastrar:hover{
+    background: #2F80ED;
+    color:#FFF;
+    transition: 300ms all linear;
+}
+#btn_cadastrar a{
+    text-decoration: none;
 }

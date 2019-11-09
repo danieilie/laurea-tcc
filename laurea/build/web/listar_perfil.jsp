@@ -12,6 +12,8 @@
         <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
         <title>Listagem Perfil</title>
 
         <script type="text/javascript">
@@ -24,15 +26,14 @@
     </head>
     <body>
          <%@include file="menu.jsp" %>
-         
+         <div class="row">
+            <a href="form_perfil.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+         </div>
+        
         <div class="row  justify-content-center" id="listagem">
        
-            <div class="w-100">
-                 <div class="" id="btn_cadastrar"> <a href="form_perfil.jsp" class="" >Novo Cadastro</a></div>
-             </div>
-   
-            
-            <table class="table table-hover table-striped table-bordered display " id="listaPerfil">
+            <div class="table-responsive">
+            <table class="table table-hover table-sm" id="listaPerfil">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -61,7 +62,7 @@
                             <td>${p.perfil}</td>
                             <td>
                                 <a class="btn btn-default" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
-                                    <i class="glyphicon">Acessos</i>
+                                    Acessos
                                 </a>
                                
                             </td>
@@ -80,6 +81,7 @@
                     </c:forEach>
                 </tbody>
             </table>    
+        </div>
         </div>
        
          <script type="text/javascript" src="datatables/jquery.js"></script>

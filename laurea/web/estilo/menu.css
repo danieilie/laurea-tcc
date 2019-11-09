@@ -19,6 +19,8 @@
     text-align: left;
     font-size: 24px; 
     color:#4F4F4F;
+    background-color: #FFF;
+    box-shadow: 4px 4px 4px rgba(0,0,0,.3);
 
  
 }
@@ -48,3 +50,8 @@
 .menu div{
      border-bottom: 1px solid #CCC;
 }
+.table-responsive{
+    margin:0px 30px;
+}
+
+

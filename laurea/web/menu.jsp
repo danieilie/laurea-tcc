@@ -6,7 +6,12 @@
     Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
     request.setAttribute("ulogado", ulogado);
 %>
-<link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
+<head>
+        <meta charset="utf-8"/>
+        
+        <link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
+    </head>
+
 <div class="menu">
     
    <div class="logo">
@@ -25,6 +30,7 @@
     </c:if>
     <div><a href="gerenciar_login.do">Sair</a></div>
 </div>   
+         
 
 
 
