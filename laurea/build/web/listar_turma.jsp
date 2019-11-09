@@ -9,11 +9,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
+         <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>            
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>          
         <title>Láurea Reforço Escolar</title>
 
         <script type="text/javascript">
@@ -28,7 +28,7 @@
      <body class="body">
        <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_turma.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_turma.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo turma </div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
@@ -39,18 +39,20 @@
                     <tr>
                         <th>ID</th>
                         <th>Data e Hora</th>
-                        <th>Dia da Semana</th>
+          
                         <th>Professor</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>ID</th>
                         <th>Data e Hora</th>
-                        <th>Dia da Semana</th>
+
                         <th>Professor</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </tfoot>
 
@@ -62,11 +64,13 @@
                             <td>${t.nome}</td>
                             <td>${t.professor}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                <a class="icone_lista" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
+                                   <img src="assets/img/lista/editar.png">
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
-                                    <i class="glyphicon glyphicon-trash"></i>
+                            </td>
+                            <td>
+                                <button class="deletar icone_lista" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
+                                    <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>
                         </tr>

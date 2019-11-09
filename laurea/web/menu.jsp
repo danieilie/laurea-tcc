@@ -24,7 +24,7 @@
     <c:if test="${ulogado != null && ulogado.perfil != null}">
         <c:forEach var="menu" items="${ulogado.perfil.menus}">
             <c:if test="${menu.exibir == 1}">
-                <a class="menu_item" href="${menu.link}"><div ><img src="assets/img/menu/painel.png">${menu.menu}</div></a>                  
+                <a href="${menu.link}"><div class="menu_item" ><img src="assets/img/menu/painel.png">${menu.menu}</div></a>                  
             </c:if>    
         </c:forEach>
     </c:if>

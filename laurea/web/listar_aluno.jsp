@@ -9,9 +9,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/> 
         <title>Láurea Reforço Escolar</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
@@ -23,14 +25,15 @@
 
     </head>
      <body class="body">
-        <%@include file="banner.jsp" %>
-        <%@include file="menu.jsp" %>
-        <div class="container">
-            
-            <h1>Lista de Alunos</h1>
-            
-            <a href="form_aluno.jsp" class="btn btn-primary">Novo Cadastro</a>
-            <table class="table table-hover table-striped table-bordered display" id ="listaAluno" >
+  <%@include file="menu.jsp" %>
+         <div class="row">
+            <a href="form_aluno.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Aluno </div></a>
+         </div>
+        
+        <div class="row  justify-content-center" id="listagem">
+       
+            <div class="table-responsive">
+            <table class="table table-hover table-sm" id="listaAluno">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -41,7 +44,7 @@
                         <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -54,7 +57,7 @@
                         <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
                     </tr>
                 </tfoot>
 
@@ -71,17 +74,14 @@
                             <td>${a.responsavel.nome}</td>
                             <td>${a.usuario.nome}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idaluno}, '${p.nome}')" >
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>    
+                                <a class="icone_lista" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
+                                    <img src="assets/img/lista/editar.png">
                             </td>
                         </tr>
                     </c:forEach>                    
                 </tbody>    
             </table>    
+        </div>
         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
