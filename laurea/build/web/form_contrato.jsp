@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,11 +37,9 @@
                 </div>
             </header>
             <div class="container">
-                <h3>Novo Contrato</h3>
-                <br/>
+                <h3>Novo Contrato</h3><br/>
                 <form action="gerenciar_contrato.do" method="POST">
                     <input type="hidden" name="idcontrato" id="idcontrato" value="${contrato.idcontrato}"/>
-
                     <div class ="row">
                         <div class ="form-group-sm-8">
                             <h4> Informações do aluno </h4>
@@ -116,7 +113,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-8">
-                            <label for="cpf"> CPF</label>
+                            <label for="cpf"> CPF </label>
                             <input type="text" class="form-control" id="cpf"
                                    name="cpf" required="" maxlength="45"
                                    value="${contrato.serie}"/>
@@ -171,16 +168,12 @@
                         </div>    
                     </div>
 
-
                     <br/>  
                     <div class="row">
                         <button class="btn btn-success">Gravar</button>
-                        <a href="listar_contrato.jsp" class="btn btn-warning">
-                            Voltar
-                        </a>    
+                        <a href="listar_contrato.jsp" class="btn btn-warning">Voltar</a>    
                     </div>    
                 </form>    
-
             </div>
     </body>
 </html>
