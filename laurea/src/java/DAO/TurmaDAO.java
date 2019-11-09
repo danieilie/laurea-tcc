@@ -14,7 +14,7 @@ public class TurmaDAO extends DataBaseDAO {
     public ArrayList<Turma> getLista() throws Exception {
 
         ArrayList<Turma> lista = new ArrayList<Turma>();
-        String sql = "SELECT t.*, p.professor FROM turma t "
+        String sql = "SELECT t.*, p.nome, p.status FROM turma t "
                 + "INNER JOIN professor p ON p.idprofessor = t.idprofessor ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class TurmaDAO extends DataBaseDAO {
     public Turma getCarregaPorId(int idturma) throws Exception {
 
         Turma t = new Turma();
-        String sql = "SELECT t.*, p.professor FROM turma t "
+        String sql = "SELECT t.*, p.idprofessor FROM turma t "
                 + "INNER JOIN professor p ON p.idprofessor = t.idprofessor WHERE t.idturma=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);

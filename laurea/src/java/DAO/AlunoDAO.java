@@ -1,5 +1,6 @@
 package DAO;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class AlunoDAO extends DataBaseDAO {
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("a.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            a.setDatanasc(rs.getString("a.datanasc"));
+            a.setDatanasc(rs.getDate("a.datanasc"));
             a.setCpf(rs.getString("a.cpf"));
             a.setRg(rs.getString("a.rg"));
             a.setStatus(rs.getInt("a.status"));
@@ -58,7 +59,7 @@ public class AlunoDAO extends DataBaseDAO {
                 pstm.setInt(1, a.getIdaluno());
             }
             pstm.setString(2, a.getNome());
-            pstm.setString(3, a.getDatanasc());
+            pstm.setDate(3, new Date(a.getDatanasc().getTime()));
             pstm.setString(4, a.getCpf());
             pstm.setString(5, a.getRg());
             pstm.setInt(6, a.getStatus());
@@ -86,7 +87,7 @@ public class AlunoDAO extends DataBaseDAO {
         if (rs.next()) {
             a.setIdaluno(rs.getInt("a.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            a.setDatanasc(rs.getString("a.datanasc"));
+            a.setDatanasc(rs.getDate("a.datanasc"));
             a.setCpf(rs.getString("a.cpf"));
             a.setRg(rs.getString("a.rg"));
             a.setStatus(rs.getInt("a.status"));

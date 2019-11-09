@@ -44,7 +44,7 @@
 
                 <div class="row">
                     <div class="form-group col-sm-8">
-                        <label for="usuario"> Nome de Usuário </label>
+                        <label for="usuario"> Nome de Responsável </label>
                         <select name="idusuario" required="" class="form-control">
                             <option value="">Selecine a opção</option>
                             <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>

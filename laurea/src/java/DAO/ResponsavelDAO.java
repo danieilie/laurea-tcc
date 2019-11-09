@@ -14,7 +14,7 @@ public class ResponsavelDAO extends DataBaseDAO {
     public ArrayList<Responsavel> getLista() throws Exception {
 
         ArrayList<Responsavel> lista = new ArrayList<Responsavel>();
-        String sql = "SELECT r.*, u.usuario FROM responsavel r "
+        String sql = "SELECT r.*, u.nome FROM responsavel r "
                 + "INNER JOIN usuario u ON r.idusuario = u.idusuario ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
@@ -121,10 +121,10 @@ public class ResponsavelDAO extends DataBaseDAO {
         }
     }
     
-    public boolean desativar(Responsavel r) {
+    public boolean alterar(Responsavel r) {
         try {
             this.conectar();
-            String sql = "UPDATE responsavel WHERE idresponsavel=?";
+            String sql = "UPDATE responsavel AND status=2 WHERE idresponsavel=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, r.getIdresponsavel());
             pstm.execute();

@@ -37,7 +37,7 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
-                        <th>Nome de Usuário</th>
+                        <th>Nome do Responsável</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
@@ -47,7 +47,7 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
-                        <th>Nome de Usuário</th>
+                        <th>Nome do Responsável</th>
                         <th>Opções</th>
                     </tr>
                 </tfoot>
