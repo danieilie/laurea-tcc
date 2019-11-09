@@ -55,22 +55,6 @@ public class GerenciarProfessorDisciplina extends HttpServlet {
                     mensagem = "Acesso Negado";
                 }
             }
-//            if (acao.equals("excluir")) {
-//                if (GerenciarLogin.verificarPermissao(request, response)) {
-//                    String iddisciplina = request.getParameter("iddisciplina");
-//                    if (iddisciplina.equals("") || iddisciplina.isEmpty()) {
-//                        mensagem = "A Disciplina deve ser selecionada";
-//                    } else {
-//                        if (proDAO.excluir(iddisciplina, idprofessor)) {
-//                            mensagem = "Excluída com sucesso";
-//                        } else {
-//                            mensagem = "Erro ao excluir";
-//                        }
-//                    }
-//                } else {
-//                    mensagem = "Acesso Negado";
-//                }
-//            }
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";

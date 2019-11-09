@@ -19,97 +19,97 @@
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o perfil "' + nome + '" ?')) {
-                    location.href = 'gerenciar_perfil.do?acao=excluir&idperfil=' + id;
+                    location.href = 'gerenciar_perfil.do?acao=desativar&idperfil=' + id;
                 }
             }
         </script>   
-        
-    </head>
-     <body class="body">
-         <%@include file="menu.jsp" %>
-         <div class="row">
-            <a href="form_perfil.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Perfil</div></a>
-         </div>
-        
-        <div class="row  justify-content-center" id="listagem">
-       
-            <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaPerfil">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Perfil</th>
-                        <th>Acessos</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Perfil</th>
-                        <th>Acessos</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
-                        
-                    </tr>
-                </tfoot>
 
-                <jsp:useBean class="DAO.PerfilDAO" id="pDAO"/>
-                <tbody>
-                    <c:forEach var="p" items="${pDAO.lista}">
+    </head>
+    <body class="body">
+        <%@include file="menu.jsp" %>
+        <div class="row">
+            <a href="form_perfil.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Perfil</div></a>
+        </div>
+
+        <div class="row  justify-content-center" id="listagem">
+
+            <div class="table-responsive">
+                <table class="table table-hover table-sm" id="listaPerfil">
+                    <thead>
                         <tr>
-                            <td>${p.idperfil}</td>
-                            <td>${p.perfil}</td>
-                            <td>
-                                <a class="icone_lista" title="Libere ou retire acessos" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
-                                     <img src="assets/img/lista/acessos.png">
-                                </a>
-                               
-                            </td>
-                             <td>
-                                  <a class="icone_lista" title="Editar Perfil"  href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
-                                      <img src="assets/img/lista/editar.png">
-                                </a>
-                                
-                            </td>
-                            <td>
-                                <button class="deletar icone_lista" title="Deletar Perfil"  onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
-                                    <img src="assets/img/lista/deletar.png">
-                                </button>  
-                            </td>
+                            <th>ID</th>
+                            <th>Perfil</th>
+                            <th>Acessos</th>
+                            <th>Editar</th>
+                            <th>Deletar</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>    
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Perfil</th>
+                            <th>Acessos</th>
+                            <th>Editar</th>
+                            <th>Deletar</th>
+
+                        </tr>
+                    </tfoot>
+
+                    <jsp:useBean class="DAO.PerfilDAO" id="pDAO"/>
+                    <tbody>
+                        <c:forEach var="p" items="${pDAO.lista}">
+                            <tr>
+                                <td>${p.idperfil}</td>
+                                <td>${p.perfil}</td>
+                                <td>
+                                    <a class="icone_lista" title="Libere ou retire acessos" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
+                                        <img src="assets/img/lista/acessos.png">
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <a class="icone_lista" title="Editar Perfil"  href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
+                                        <img src="assets/img/lista/editar.png">
+                                    </a>
+
+                                </td>
+                                <td>
+                                    <button class="deletar icone_lista" title="Deletar Perfil"  onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                        <img src="assets/img/lista/deletar.png">
+                                    </button>  
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>    
+            </div>
         </div>
-        </div>
-       
-         <script type="text/javascript" src="datatables/jquery.js"></script>
+
+        <script type="text/javascript" src="datatables/jquery.js"></script>
         <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
         <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $("#listaPerfil").dataTable({
-                                            "bJQueryUI": true,
-                                            "oLanguage": {
-                                                "sProcessing": "Processando...",
-                                                "sLengthMenu": "MOSTRAR _MENU_",
-                                                "sZeroRecords": "Não foram encontrados resultados",
-                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
-                                                "sInfoFiltered": "",
-                                                "sInfoPostFix": "",
-                                                "sSearch": "PESQUISAR",
-                                                "sUrl": "",
-                                                "oPaginate": {
-                                                    "sFirst": "Primeiro",
-                                                    "sPrevious": "Anterior",
-                                                    "sNext": "Próximo",
-                                                    "sLast": "Último"
+                                        $(document).ready(function () {
+                                            $("#listaPerfil").dataTable({
+                                                "bJQueryUI": true,
+                                                "oLanguage": {
+                                                    "sProcessing": "Processando...",
+                                                    "sLengthMenu": "MOSTRAR _MENU_",
+                                                    "sZeroRecords": "Não foram encontrados resultados",
+                                                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                    "sInfoFiltered": "",
+                                                    "sInfoPostFix": "",
+                                                    "sSearch": "PESQUISAR",
+                                                    "sUrl": "",
+                                                    "oPaginate": {
+                                                        "sFirst": "Primeiro",
+                                                        "sPrevious": "Anterior",
+                                                        "sNext": "Próximo",
+                                                        "sLast": "Último"
+                                                    }
                                                 }
-                                            }
-                                        })
-                                    });
+                                            })
+                                        });
         </script>            
     </body>
 </html>

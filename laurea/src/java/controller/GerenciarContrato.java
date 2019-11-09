@@ -42,13 +42,13 @@ public class GerenciarContrato extends HttpServlet {
                 }
             }
 
-            if (acao.equals("excluir")) {
+            if (acao.equals("desativar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     c.setIdcontrato(idcontrato);
-                    if (cDAO.excluir(c)) {
-                        mensagem = "Excluído com sucesso!";
+                    if (cDAO.desativar(c)) {
+                        mensagem = "Desativado com sucesso!";
                     } else {
-                        mensagem = "Erro ao excluir!";
+                        mensagem = "Erro ao desativar!";
                     }
                 } else {
                     mensagem = "Acesso negado";

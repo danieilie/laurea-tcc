@@ -58,7 +58,7 @@
                             <td>${d.materia}</td>
                             <td>
                                 <a class="icone_lista" title="Editar Disciplina" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
-                                     <img src="assets/img/lista/editar.png">
+                                    <img src="assets/img/lista/editar.png">
                                 </a>
                             </td>
                             <td>

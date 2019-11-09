@@ -48,10 +48,10 @@ public class GerenciarMenu extends HttpServlet {
                     mensagem = "Acesso Negado";
                 }
             }
-            if (acao.equals("excluir")) {
+            if (acao.equals("desativar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     m.setIdmenu(idmenu);
-                    if (mDAO.excluir(m)) {
+                    if (mDAO.desativar(m)) {
                         mensagem = "Excluído com sucesso!";
                     } else {
                         mensagem = "Erro ao excluir!";

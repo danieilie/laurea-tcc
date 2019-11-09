@@ -41,10 +41,10 @@ public class GerenciarResponsavel extends HttpServlet {
                 }
             }
             
-            if (acao.equals("alterar")) {
+            if (acao.equals("gravar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     r.setIdresponsavel(idresponsavel);
-                    if (rDAO.alterar(r)) {
+                    if (rDAO.gravar(r)) {
                         mensagem = "Desativado com sucesso!";
                     } else {
                         mensagem = "Erro ao desativar!";
@@ -55,10 +55,10 @@ public class GerenciarResponsavel extends HttpServlet {
 
             }
 
-            if(acao.equals("excluir")){
+            if(acao.equals("desativar")){
               if(GerenciarLogin.verificarPermissao(request, response)){    
                 r.setIdresponsavel(idresponsavel);
-                if(rDAO.excluir(r)){
+                if(rDAO.desativar(r)){
                     mensagem = "Excluído com sucesso!";
                 }else{
                     mensagem = "Erro ao excluir!";

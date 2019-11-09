@@ -37,9 +37,9 @@ public class GerenciarPerfil extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            if (acao.equals("excluir")) {
+            if (acao.equals("desativar")) {
                 p.setIdperfil(idperfil);
-                if (pDAO.excluir(p)) {
+                if (pDAO.desativar(1, idperfil)) {
                     mensagem = "Excluído com sucesso!";
                 } else {
                     mensagem = "Erro ao excluir!";

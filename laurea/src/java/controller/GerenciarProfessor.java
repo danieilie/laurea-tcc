@@ -40,10 +40,10 @@ public class GerenciarProfessor extends HttpServlet {
                 }
             }
 
-            if (acao.equals("excluir")) {
+            if (acao.equals("desativar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     p.setIdprofessor(idprofessor);
-                    if (pDAO.excluir(p)) {
+                    if (pDAO.desativar(p)) {
                         mensagem = "Desativado com sucesso!";
                     } else {
                         mensagem = "Erro ao desativar!";
