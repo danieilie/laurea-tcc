@@ -45,3 +45,10 @@ table thead{
 #btn_cadastrar a{
     text-decoration: none;
 }
+.deletar{
+    background: transparent;
+    border-style: none;
+}
+.icone_lista:hover{
+    
+}

@@ -61,20 +61,20 @@
                             <td>${p.idperfil}</td>
                             <td>${p.perfil}</td>
                             <td>
-                                <a class="btn btn-default" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
-                                    Acessos
+                                <a class="icone_lista" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
+                                     <img src="assets/img/lista/acessos.png">
                                 </a>
                                
                             </td>
                              <td>
-                                  <a class="btn btn-primary" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                  <a class="icone_lista" href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
+                                      <img src="assets/img/lista/editar.png">
                                 </a>
                                 
                             </td>
                             <td>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
-                                    <i class="glyphicon glyphicon-trash"></i>
+                                <button class="deletar icone_lista" onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                    <img src="assets/img/lista/deletar.png">
                                 </button>  
                             </td>
                         </tr>

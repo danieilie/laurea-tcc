@@ -40,7 +40,8 @@
                         <th>Link</th>
                         <th>Icone</th>
                         <th>Exibir</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -50,7 +51,8 @@
                         <th>Link</th>
                         <th>Icone</th>
                         <th>Exibir</th>
-                        <th>Opções</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
                     </tr>
                 </tfoot>
 
@@ -67,11 +69,13 @@
                                 <c:if test="${m.exibir==2}">Não</c:if>
                                 </td>
                                 <td>
-                                    <a class="btn btn-primary" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
+                                    <a class="icone_lista" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
+                                    <img src="assets/img/lista/editar.png">
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
-                                    <i class="glyphicon glyphicon-trash"></i>
+                                 </td>
+                                 <td>
+                                <button class="deletar icone_lista" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
+                                   <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>
                         </tr>
