@@ -38,8 +38,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Data e Hora</th>
-          
+                        <th>Nome da Turma</th>
                         <th>Professor</th>
                         <th>Editar</th>
                         <th>Deletar</th>
@@ -48,8 +47,7 @@
                 <tfoot>
                     <tr>
                         <th>ID</th>
-                        <th>Data e Hora</th>
-
+                        <th>Nome da Turma</th>
                         <th>Professor</th>
                         <th>Editar</th>
                         <th>Deletar</th>
