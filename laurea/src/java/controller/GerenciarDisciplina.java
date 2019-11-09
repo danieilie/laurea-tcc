@@ -28,7 +28,7 @@ public class GerenciarDisciplina extends HttpServlet {
             if (acao.equals("alterar")) {
                 d = dDAO.getCarregaPorId(iddisciplina);
                 if (d.getIddisciplina() > 0) {
-                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form/form_disciplina.jsp");
+                    RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_disciplina.jsp");
                     request.setAttribute("disciplina", d);
                     disp.forward(request, response);
                 } else {
@@ -37,7 +37,7 @@ public class GerenciarDisciplina extends HttpServlet {
             }
 
             if (acao.equals("excluir")) {
-                d.getIddisciplina();
+                d.setIddisciplina(iddisciplina);
                 if (dDAO.excluir(d)) {
                     mensagem = "Excluido com sucesso!";
                 } else {

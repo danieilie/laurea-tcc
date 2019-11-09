@@ -41,19 +41,6 @@ public class GerenciarAtividade extends HttpServlet {
                 }
             }
 
-//            if (acao.equals("desativar")) {
-//                if (GerenciarLogin.verificarPermissao(request, response)) {
-//                    a.setIdatividade(idatividade);
-//                    if (aDAO.desativar(a)) {
-//                        mensagem = "Desativado com sucesso!";
-//                    } else {
-//                        mensagem = "Erro ao desativar!";
-//                    }
-//                } else {
-//                    mensagem = "Acesso negado";
-//                }
-//            }
-//            
             if (acao.equals("excluir")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a.setIdatividade(idatividade);

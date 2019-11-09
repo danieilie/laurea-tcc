@@ -94,45 +94,5 @@ public class AtividadeDAO extends DataBaseDAO {
         this.desconectar();
         return a;
     }
-    
-//
-//    public boolean desativar(Atividade a) {
-//        try {
-//            this.conectar();
-//            String sql = "UPDATE atividade SET status=2 WHERE idatividade=?";
-//            PreparedStatement pstm = conn.prepareStatement(sql);
-//            pstm.setInt(1, a.getIdatividade());
-//            pstm.execute();
-//            this.desconectar();
-//            return true;
-//
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            return false;
-//        }
-//    }
-//    public Atividade getRecuperarAtividade(String nome) {
-//
-//        Atividade a = new Atividade();
-//        String sql = "SELECT a.* FROM atividade a WHERE a.nome=? AND a.status=1 ";
-//        try {
-//            this.conectar();
-//            PreparedStatement pstm = conn.prepareStatement(sql);
-//            pstm.setString(1, nome);
-//            ResultSet rs = pstm.executeQuery();
-//            if (rs.next()) {
-//                a.setIdatividade(rs.getInt("a.idatividade"));
-//                a.setNome(rs.getString("a.nome"));
-//                a.setArquivo(rs.getString("a.arquivo"));
-//                DisciplinaDAO dDAO = new DisciplinaDAO();
-//                a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("a.iddisciplina")));
-//            }
-//            this.desconectar();
-//            return a;
-//        } catch (Exception e) {
-//            System.out.println(e);
-//            return null;
-//        }
-//    }
 
 }

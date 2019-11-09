@@ -19,7 +19,7 @@ public class MensalidadeDAO extends DataBaseDAO {
         ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
         String sql = "SELECT m.*, a.nome, r.nome FROM mensalidade m "
                 + "INNER JOIN contrato c ON m.idcontrato = c.idcontrato "
-                + "INNER JOIN aluno a ON m.idaluno = a.idaluno"
+                + "INNER JOIN aluno a ON m.idaluno = a.idaluno "
                 + "INNER JOIN responsavel r ON m.idresponsavel = r.idresponsavel";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
