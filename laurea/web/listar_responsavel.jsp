@@ -65,7 +65,7 @@
                             <td>${r.nome}</td>
                             <td>${r.cpf}</td>
                             <td>${r.rg}</td>
-                            <td>${r.usuario}</td>
+                            <td>${r.usuario.nome}</td>
                             <td>
                                 <a class="icone_lista" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
                                     <img src="assets/img/lista/editar.png">
