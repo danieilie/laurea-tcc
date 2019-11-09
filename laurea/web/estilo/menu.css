@@ -45,7 +45,7 @@
 }
 
 .menu_item:hover{
-    border-left: 10px solid red;
+    border-left: 10px solid #E64C3C;
     transition: 350ms all linear;
     cursor: pointer;
 }

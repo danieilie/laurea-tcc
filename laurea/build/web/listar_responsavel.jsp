@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/> 
-        <title>Láurea Reforço Escolar</title>
+        <title>Listar Responsáveis</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o responsavel  ' + nome + ' ?')) {
@@ -65,7 +65,7 @@
                             <td>${r.nome}</td>
                             <td>${r.cpf}</td>
                             <td>${r.rg}</td>
-                            <td>${r.usuario.nome}</td>
+                            <td>${r.usuario}</td>
                             <td>
                                 <a class="icone_lista" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
                                     <img src="assets/img/lista/editar.png">

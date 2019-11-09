@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>  
-        <title>Láurea Reforço Escolar</title>
+        <title>Listar Atividades</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o atividade  ' + nome + ' ?')) {

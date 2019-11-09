@@ -22,7 +22,8 @@
                     location.href = 'gerenciar_perfil.do?acao=excluir&idperfil=' + id;
                 }
             }
-        </script>    
+        </script>   
+        
     </head>
      <body class="body">
          <%@include file="menu.jsp" %>

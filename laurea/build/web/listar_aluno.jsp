@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/> 
-        <title>Láurea Reforço Escolar</title>
+        <title>Listar Alunos</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o aluno  ' + nome + ' ?')) {
@@ -33,7 +33,7 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaAluno">
+            <table class="table table-hover table-sm table-striped" id="listaAluno">
                 <thead>
                     <tr>
                         <th>ID</th>

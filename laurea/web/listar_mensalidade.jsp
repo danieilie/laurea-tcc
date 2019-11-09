@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
-        <title>Láurea Reforço Escolar</title>
+        <title>Listar Mensalidade</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
                 if (confirm('Deseja realmente excluir o mensalidade  "' + nome + '" ?')) {
