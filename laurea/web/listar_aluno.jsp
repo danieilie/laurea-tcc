@@ -36,7 +36,7 @@
             <table class="table table-hover table-sm table-striped" id="listaAluno">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
                         <th>CPF</th>
@@ -44,12 +44,12 @@
                         <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
                         <th>CPF</th>
@@ -57,7 +57,7 @@
                         <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
                     </tr>
                 </tfoot>
 
@@ -65,7 +65,7 @@
                 <tbody>
                     <c:forEach var="a" items="${aDAO.lista}">
                         <tr>
-                            <td>${a.idaluno}</td>
+                            <td style="text-align: center;">${a.idaluno}</td>
                             <td>${a.nome}</td>
                             <td>${a.datanasc}</td>
                             <td>${a.cpf}</td>
@@ -73,7 +73,7 @@
                             <td>${a.status}</td>
                             <td>${a.responsavel.nome}</td>
                             <td>${a.usuario.nome}</td>
-                            <td>
+                            <td style="text-align: center;">
                                 <a class="icone_lista" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
                                     <img src="assets/img/lista/editar.png">
                             </td>

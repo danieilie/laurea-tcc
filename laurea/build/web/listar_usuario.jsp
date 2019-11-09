@@ -32,26 +32,26 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaUsuario">
+            <table class="table table-hover table-sm table-striped" id="listaUsuario">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>Login</th>
                         <th>Status</th>
                         <th>Perfil</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
                       
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>Login</th>
                         <th>Status</th>
                         <th>Perfil</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
             
                     </tr>
                 </tfoot>
@@ -60,7 +60,7 @@
                 <tbody>
                     <c:forEach var="u" items="${uDAO.lista}">
                         <tr>
-                            <td>${u.idusuario}</td>
+                            <td style="text-align: center;">${u.idusuario}</td>
                             <td>${u.nome}</td>
                             <td>${u.login}</td>
 
@@ -69,8 +69,8 @@
                                 <c:if test="${u.status==2}">Inativo</c:if>
                                 </td>
                                 <td>${u.perfil}</td>
-                            <td>
-                                <a class=" icone_lista" title="Deletar Usuário" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
+                            <td style="text-align: center;">
+                                <a class=" icone_lista" title="Editar Usuário" href="gerenciar_usuario.do?acao=alterar&idusuario=${u.idusuario}">
                                      <img src="assets/img/lista/editar.png">
                                 </a>
                             </td>

@@ -34,23 +34,23 @@
         <div class="row  justify-content-center" id="listagem">
 
             <div class="table-responsive">
-                <table class="table table-hover table-sm" id="listaPerfil">
+                <table class="table table-hover table-sm table-striped" id="listaPerfil">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th style="text-align: center;">ID</th>
                             <th>Perfil</th>
-                            <th>Acessos</th>
-                            <th>Editar</th>
-                            <th>Deletar</th>
+                            <th style="text-align: center;">Acessos</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
+                            <th style="text-align: center;">ID</th>
                             <th>Perfil</th>
-                            <th>Acessos</th>
-                            <th>Editar</th>
-                            <th>Deletar</th>
+                            <th style="text-align: center;">Acessos</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
 
                         </tr>
                     </tfoot>
@@ -59,22 +59,22 @@
                     <tbody>
                         <c:forEach var="p" items="${pDAO.lista}">
                             <tr>
-                                <td>${p.idperfil}</td>
+                                <td style="text-align: center;">${p.idperfil}</td>
                                 <td>${p.perfil}</td>
-                                <td>
+                                <td style="text-align: center;">
                                     <a class="icone_lista" title="Libere ou retire acessos" href="gerenciar_menu_perfil.do?acao=gerenciar&idperfil=${p.idperfil}">
                                         <img src="assets/img/lista/acessos.png">
                                     </a>
 
                                 </td>
-                                <td>
+                                <td style="text-align: center;">
                                     <a class="icone_lista" title="Editar Perfil"  href="gerenciar_perfil.do?acao=alterar&idperfil=${p.idperfil}">
                                         <img src="assets/img/lista/editar.png">
                                     </a>
 
                                 </td>
-                                <td>
-                                    <button class="deletar icone_lista" title="Deletar Perfil"  onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
+                                <td style="text-align: center;">
+                                    <button class="deletar icone_lista" title="Excluir Perfil"  onclick="confirmarExclusao(${p.idperfil}, '${p.perfil}')">
                                         <img src="assets/img/lista/deletar.png">
                                     </button>  
                                 </td>

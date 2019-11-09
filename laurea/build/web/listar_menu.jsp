@@ -32,27 +32,27 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaMenu">
+            <table class="table table-hover table-sm table-striped" id="listaMenu">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Menu</th>
                         <th>Link</th>
                         <th>Icone</th>
                         <th>Exibir</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Menu</th>
                         <th>Link</th>
                         <th>Icone</th>
                         <th>Exibir</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </tfoot>
 
@@ -60,7 +60,7 @@
                 <tbody>
                     <c:forEach var="m" items="${mDAO.lista}">
                         <tr>
-                            <td>${m.idmenu}</td>
+                            <td style="text-align: center;">${m.idmenu}</td>
                             <td>${m.menu}</td>
                             <td>${m.link}</td>
                             <td>${m.icone}</td>
@@ -68,13 +68,13 @@
                                 <c:if test="${m.exibir==1}">Sim</c:if>
                                 <c:if test="${m.exibir==2}">Não</c:if>
                                 </td>
-                                <td>
+                                <td style="text-align: center;">
                                     <a class="icone_lista" title="Editar Menu" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
                                     <img src="assets/img/lista/editar.png">
                                 </a>
                                  </td>
-                                 <td>
-                                <button class="deletar icone_lista" title="Deletar Menu" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
+                                 <td style="text-align: center;">
+                                <button class="deletar icone_lista" title="Excluir Menu" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
                                    <img src="assets/img/lista/deletar.png">
                                 </button>    
                             </td>

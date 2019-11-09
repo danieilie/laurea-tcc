@@ -32,21 +32,21 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaDisciplina">
+            <table class="table table-hover table-sm table-striped" id="listaDisciplina">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Matéria</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Matéria</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </tfoot>
 
@@ -54,14 +54,14 @@
                 <tbody>
                     <c:forEach var="d" items="${dDAO.lista}">
                         <tr>
-                            <td>${d.iddisciplina}</td>
+                            <td style="text-align: center;">${d.iddisciplina}</td>
                             <td>${d.materia}</td>
-                            <td>
+                            <td style="text-align: center;">
                                 <a class="icone_lista" title="Editar Disciplina" href="gerenciar_disciplina.do?acao=alterar&iddisciplina=${d.iddisciplina}">
                                     <img src="assets/img/lista/editar.png">
                                 </a>
                             </td>
-                            <td>
+                            <td style="text-align: center;">
                                 <button class="deletar icone_lista" title="Deletar Disciplina" onclick="confirmarExclusao(${d.iddisciplina}, '${d.materia}')">
                                    <img src="assets/img/lista/deletar.png">
                                 </button>    

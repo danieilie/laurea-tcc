@@ -34,23 +34,23 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaTurma">
+            <table class="table table-hover table-sm table-striped" id="listaTurma">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome da Turma</th>
                         <th>Professor</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome da Turma</th>
                         <th>Professor</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th style="text-align: center;">Editar</th>
+                        <th style="text-align: center;">Excluir</th>
                     </tr>
                 </tfoot>
 
@@ -58,15 +58,15 @@
                 <tbody>
                     <c:forEach var="t" items="${tDAO.lista}">
                         <tr>
-                            <td>${t.idturma}</td>
+                            <td style="text-align: center;">${t.idturma}</td>
                             <td>${t.nome}</td>
                             <td>${t.professor}</td>
-                            <td>
+                            <td style="text-align: center;">
                                 <a class="icone_lista" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
                                    <img src="assets/img/lista/editar.png">
                                 </a>
                             </td>
-                            <td>
+                            <td style="text-align: center;">
                                 <button class="deletar icone_lista" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
                                     <img src="assets/img/lista/deletar.png">
                                 </button>    

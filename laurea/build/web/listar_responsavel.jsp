@@ -33,26 +33,26 @@
         <div class="row  justify-content-center" id="listagem">
        
             <div class="table-responsive">
-            <table class="table table-hover table-sm" id="listaResponsavel">
+            <table class="table table-hover table-sm table-striped" id="listaResponsavel">
 
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
                         <th>Nome do Responsável</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>ID</th>
+                        <th style="text-align: center;">ID</th>
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
                         <th>Nome do Responsável</th>
-                        <th>Editar</th>
+                        <th style="text-align: center;">Editar</th>
                     </tr>
                 </tfoot>
 
@@ -61,13 +61,13 @@
                 <tbody>
                     <c:forEach var="r" items="${rDAO.lista}">
                         <tr>
-                            <td>${r.idresponsavel}</td>
+                            <td style="text-align: center;">${r.idresponsavel}</td>
                             <td>${r.nome}</td>
                             <td>${r.cpf}</td>
                             <td>${r.rg}</td>
                             <td>${r.usuario.nome}</td>
-                            <td>
-                                <a class="icone_lista" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
+                            <td style="text-align: center;">
+                                <a class="icone_lista" title="Editar Responsável" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
                                     <img src="assets/img/lista/editar.png">
                                 </a>
                                 
