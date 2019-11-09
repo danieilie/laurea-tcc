@@ -72,21 +72,6 @@ public class PerfilDAO extends DataBaseDAO {
         return p;
     }
 
-    public boolean excluir(Perfil p) {
-        try {
-            this.conectar();
-            String sql = "DELETE FROM perfil WHERE idperfil=?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, p.getIdperfil());
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }    
-
     public boolean desativar(int idmenu, int idperfil) {
 
         try {
@@ -125,7 +110,7 @@ public class PerfilDAO extends DataBaseDAO {
 
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu_perfil as mp, menu as m "
-                + "WHERE mp.idmenu = m.idmenu AND mp.idperfil = ? ";
+                    + "WHERE mp.idmenu = m.idmenu AND mp.idperfil = ? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idperfil);

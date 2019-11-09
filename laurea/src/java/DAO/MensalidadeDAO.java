@@ -92,4 +92,18 @@ public class MensalidadeDAO extends DataBaseDAO {
             return false;            
         }
     } 
+    
+    public boolean desativar(Mensalidade m){
+        try{
+            String sql = "UPDATE mensalidade SET status=2 WHERE idmensalidade=?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, m.getIdmensalidade());
+            this.desconectar();
+            return true;
+        }catch(Exception e){
+            System.out.println(e);
+            return false;
+        }        
+    }
+    
 }

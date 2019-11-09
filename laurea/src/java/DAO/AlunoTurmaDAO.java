@@ -15,10 +15,10 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public ArrayList<AlunoTurma> getLista() throws Exception {
-
+        
         ArrayList<AlunoTurma> lista = new ArrayList<AlunoTurma>();
         String sql = "SELECT at.*, a.aluno FROM aluno_turma at "
-                + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
+                    + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
@@ -39,8 +39,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
 
     }
 
-    public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {
-        
+    public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {        
         String sql = "SELECT at.*, a.aluno, t.turma FROM aluno_turma at "
                 + "INNER JOIN aluno a ON at.idaluno = a.idaluno "
                 + "INNER JOIN turma t ON at.idturma = t.idturma ";
@@ -68,7 +67,6 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public boolean vincular(int idaluno, int idturma, Date data, String frequencia) {
-
         try {
             String sql = "INSERT INTO aluno_turma (idaluno, idturma, data, frequencia) VALUES (?,?,?,?)";
             this.conectar();
@@ -88,7 +86,6 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public boolean desvincular(int idaluno, int idturma) {
-
         try {
             String sql = "DELETE FROM aluno_turma WHERE idaluno=? AND idturma=?";
             this.conectar();
@@ -105,7 +102,6 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
     
     public boolean fazerChamada(String data, String frequencia, int idaluno, int idturma) {
-
         try {
             String sql = "UPDATE aluno_turma SET data=?, frequencia=? WHERE idaluno=? AND idturma=?";
             this.conectar();

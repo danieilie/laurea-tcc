@@ -106,22 +106,7 @@ public class ResponsavelDAO extends DataBaseDAO {
         return r;
     }
 
-    public boolean excluir(Responsavel r) {
-        try {
-            this.conectar();
-            String sql = "DELETE FROM responsavel WHERE idresponsavel=?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, r.getIdresponsavel());
-            pstm.execute();
-            this.desconectar();
-            return true;
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        }
-    }
-    
-    public boolean alterar(Responsavel r) {
+    public boolean desativar(Responsavel r) {
         try {
             this.conectar();
             String sql = "UPDATE responsavel AND status=2 WHERE idresponsavel=?";

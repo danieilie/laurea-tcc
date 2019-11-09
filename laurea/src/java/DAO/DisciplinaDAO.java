@@ -14,11 +14,9 @@ public class DisciplinaDAO extends DataBaseDAO {
     public ArrayList<Disciplina> getLista() throws Exception {
         ArrayList<Disciplina> lista = new ArrayList<Disciplina>();
         String sql = "SELECT * FROM disciplina";
-
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-
         while (rs.next()) {
             Disciplina d = new Disciplina();
             d.setIddisciplina(rs.getInt("iddisciplina"));
@@ -47,7 +45,6 @@ public class DisciplinaDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
             return false;
@@ -78,7 +75,6 @@ public class DisciplinaDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
             return false;

@@ -111,10 +111,10 @@ public class ProfessorDAO extends DataBaseDAO {
         return p;
     }
 
-    public boolean excluir(Professor p) {
+    public boolean desativar(Professor p) {
         try {
             this.conectar();
-            String sql = "DELETE FROM professor WHERE idprofessor=?";
+            String sql = "UPDATE professor SET status=2 WHERE idprofessor=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, p.getIdprofessor());
             pstm.execute();
@@ -164,7 +164,7 @@ public class ProfessorDAO extends DataBaseDAO {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
         String sql = "SELECT p.* FROM professor_disciplina as pd, professor as p "
-                + "WHERE pd.idprofessor = p.idprofessor AND pd.iddisciplina = ? ";
+                    + "WHERE pd.idprofessor = p.idprofessor AND pd.iddisciplina=? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, iddisciplina);
@@ -187,7 +187,7 @@ public class ProfessorDAO extends DataBaseDAO {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
         String sql = "SELECT p.* FROM professor as p WHERE p.idprofessor "
-                + "NOT IN (SELECT pd.idprofessor FROM professor_disciplina as pd WHERE pd.iddisciplina=? ) ";
+                    + "NOT IN (SELECT pd.idprofessor FROM professor_disciplina as pd WHERE pd.iddisciplina=? ) ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, iddisciplina);

@@ -66,7 +66,6 @@ public class AtividadeDAO extends DataBaseDAO {
             pstm.execute();
             this.desconectar();
             return true;
-
         } catch (Exception e) {
             System.out.println(e);
             return false;
