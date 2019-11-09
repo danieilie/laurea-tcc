@@ -32,9 +32,9 @@
                             <jsp:useBean class="DAO.ProfessorDAO" id="pDAO"/>
                             <c:forEach var="p" items="${pDAO.lista}">
                                 <option value="${p.idprofessor}"
-                                        <c:if test="${p.idprofessor==turma.professor.idprofessor}">
-                                            selected=""
-                                        </c:if> 
+                                    <c:if test="${p.idprofessor==turma.professor.idprofessor}">
+                                        selected=""
+                                    </c:if> 
                                 >
                                     ${p.nome}</option>
                                 </c:forEach>

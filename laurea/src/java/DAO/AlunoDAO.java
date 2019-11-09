@@ -16,9 +16,9 @@ public class AlunoDAO extends DataBaseDAO {
     public ArrayList<Aluno> getLista() throws Exception {
 
         ArrayList<Aluno> lista = new ArrayList<Aluno>();
-        String sql = "SELECT a.*,r.responsavel, u.usuario FROM aluno a "
-                + "INNER JOIN r.idresponsavel ON a.idresponsavel = r.idresponsavel "
-                + "INNER JOIN u.idusuario ON a.idusuario = u.idusuario ";
+        String sql = "SELECT a.*, r.nome , u.nome FROM aluno a "
+                + "INNER JOIN responsavel r ON a.idresponsavel = r.idresponsavel "
+                + "INNER JOIN usuario u ON a.idusuario = u.idusuario ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -77,9 +77,9 @@ public class AlunoDAO extends DataBaseDAO {
     public Aluno getCarregaPorId(int idaluno) throws Exception {
 
         Aluno a = new Aluno();
-        String sql = "SELECT a.*,r.responsavel, u.usuario FROM aluno a "
-                + "INNER JOIN r.idresponsavel ON a.idresponsavel = r.idresponsavel "
-                + "INNER JOIN u.idusuario ON a.idusuario = u.idusuario ";
+        String sql = "SELECT a.*, r.nome , u.nome FROM aluno a "
+                + "INNER JOIN responsavel r ON a.idresponsavel = r.idresponsavel "
+                + "INNER JOIN usuario u ON a.idusuario = u.idusuario ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idaluno);

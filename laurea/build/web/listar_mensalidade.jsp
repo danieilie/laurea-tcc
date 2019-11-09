@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="DAO.MensalidadeDAO"%>
 <%@page import="model.Mensalidade"%>
+<%@page import="model.Contrato"%>
 <%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -64,12 +65,12 @@
                 <jsp:useBean class="DAO.MensalidadeDAO" id="mDAO" />
                 <tbody>
                     <c:forEach var="m" items="${mDAO.lista}">
-                        <c:if test="${m.contrato.aluno.responsavel.nome }">
+                        <%--<c:if test="${m.contrato.aluno.responsavel.nome }">--%>
                             <tr>
-                                <td>${m.contrato.idcontrato}</td>
+                                <td>${c.contrato.idcontrato}</td>
                                 <td>${m.idmensalidade}</td>
-                                <td>${m.contrato.aluno.nome}</td>
-                                <td>${m.contrato.aluno.responsavel.nome}</td>
+                                <td>${c.contrato.aluno.nome}</td>
+                                <td>${c.contrato.aluno.responsavel.nome}</td>
                                 <td>${m.valor}</td>
                                 <td>${m.datav}</td>
                                 <td>${m.datap}</td>
@@ -88,7 +89,7 @@
                                     </button>    
                                 </td>
                             </tr>
-                        </c:if>    
+                        <%--</c:if>--%>    
                     </c:forEach>                    
                 </tbody>    
             </table>    

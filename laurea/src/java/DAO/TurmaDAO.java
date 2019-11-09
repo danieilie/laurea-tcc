@@ -84,7 +84,7 @@ public class TurmaDAO extends DataBaseDAO {
     public boolean excluir(Turma t) {
         try {
             this.conectar();
-            String sql = "UPDATE turma WHERE idturma=?";
+            String sql = "DELETE FROM turma WHERE turma.idturma=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, t.getIdturma());
             pstm.execute();

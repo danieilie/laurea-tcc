@@ -94,7 +94,7 @@ public class GerenciarContrato extends HttpServlet {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 c.setDatacontrato(df.parse(datacontrato));
-                c.setPreco(Double.parseDouble(preco));                
+//                c.setPreco(Double.parseDouble(preco));                
             double novopreco = 0;
             if(!preco.isEmpty())
                 novopreco = Double.parseDouble(preco.replace(".","").replace(",","."));

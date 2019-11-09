@@ -19,9 +19,9 @@ public class ContratoDAO extends DataBaseDAO {
     public ArrayList<Contrato> getLista() throws Exception {
 
         ArrayList<Contrato> lista = new ArrayList<Contrato>();
-        String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
+        String sql = "SELECT c.*, a.nome, r.nome FROM contrato c "
                 + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
-                + "INNER JOIN responsavel r ON c.idresponsavel = r.idresponsavel ";
+                + "INNER JOIN responsavel r ON c.idcontrato = r.idresponsavel ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -43,38 +43,6 @@ public class ContratoDAO extends DataBaseDAO {
             r.setNome(rs.getString("r.nome"));
             a.setResponsavel(r);
             lista.add(c);     
-        }
-        this.desconectar();
-        return lista;
-    }
-
-    public ArrayList<Mensalidade> mensalidaVinculadaPorContrato(int idcontrato) throws Exception {
-
-        ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
-        String sql = "SELECT m.* FROM mensalidade WHERE idcontrato = ? ";
-        this.conectar();
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, idcontrato);
-        ResultSet rs = pstm.executeQuery();
-        while (rs.next()) {
-            Mensalidade m = new Mensalidade();
-            m.setIdmensalidade(rs.getInt("m.idmensalidade"));
-            m.setValor(rs.getDouble("m.valor"));
-            m.setDatav(rs.getDate("m.datav"));
-            m.setDatap(rs.getDate("m.datap"));
-            m.setMulta(rs.getDouble("m.multa"));
-            m.setDesconto(rs.getDouble("m.desconto"));
-            m.setStatus(rs.getInt("m.status"));  
-            Contrato c = new Contrato();
-            c.setIdcontrato(rs.getInt("m.idcontrato"));
-            Aluno a = new Aluno();
-            a.setNome(rs.getString("a.nome"));
-            c.setAluno(a);
-            Responsavel r = new Responsavel();
-            r.setNome(rs.getString("r.nome"));
-            a.setResponsavel(r);
-            c.setMensalidade(lista);
-            lista.add(m);
         }
         this.desconectar();
         return lista;
@@ -128,9 +96,9 @@ public class ContratoDAO extends DataBaseDAO {
     public Contrato getCarregaPorId(int idcontrato) throws Exception {
 
         Contrato c = new Contrato();
-        String sql = "SELECT c.*, a.aluno, r.responsavel FROM contrato c "
+        String sql = "SELECT c.*, a.nome, r.nome FROM contrato c "
                 + "INNER JOIN aluno a ON c.idaluno = a.idaluno "
-                + "INNER JOIN responsavel r ON c.responsavel = r.responsavel WHERE idcontrato=? ";
+                + "INNER JOIN responsavel r ON c.idcontrato = r.idresponsavel ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idcontrato);
@@ -169,6 +137,38 @@ public class ContratoDAO extends DataBaseDAO {
             System.out.println(e);
             return false;
         }
+    }
+
+    public ArrayList<Mensalidade> mensalidaVinculadaPorContrato(int idcontrato) throws Exception {
+
+        ArrayList<Mensalidade> lista = new ArrayList<Mensalidade>();
+        String sql = "SELECT m.* FROM mensalidade WHERE idcontrato = ? ";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idcontrato);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+            Mensalidade m = new Mensalidade();
+            m.setIdmensalidade(rs.getInt("m.idmensalidade"));
+            m.setValor(rs.getDouble("m.valor"));
+            m.setDatav(rs.getDate("m.datav"));
+            m.setDatap(rs.getDate("m.datap"));
+            m.setMulta(rs.getDouble("m.multa"));
+            m.setDesconto(rs.getDouble("m.desconto"));
+            m.setStatus(rs.getInt("m.status"));  
+            Contrato c = new Contrato();
+            c.setIdcontrato(rs.getInt("m.idcontrato"));
+            Aluno a = new Aluno();
+            a.setNome(rs.getString("a.nome"));
+            c.setAluno(a);
+            Responsavel r = new Responsavel();
+            r.setNome(rs.getString("r.nome"));
+            a.setResponsavel(r);
+            c.setMensalidade(lista);
+            lista.add(m);
+        }
+        this.desconectar();
+        return lista;
     }
     
 }

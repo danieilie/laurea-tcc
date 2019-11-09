@@ -101,8 +101,7 @@ public class UsuarioDAO extends DataBaseDAO {
     public Usuario getRecuperarUsuario(String login) {
 
         Usuario u = new Usuario();
-        String sql = "SELECT u.* FROM usuario u "
-                + "WHERE u.login=? AND u.status=1";
+        String sql = "SELECT u.* FROM usuario u WHERE u.login=? AND u.status=1";
         try {
             this.conectar();
             PreparedStatement pstm = conn.prepareStatement(sql);

@@ -49,19 +49,19 @@
                     </tr>
                 </tfoot>
 
-                <jsp:useBean class="DAO.ProfessorDAO" id="pDAO" />
+                <jsp:useBean class="DAO.ProfessorDAO" id="proDAO" />
                 <tbody>
-                    <c:forEach var="p" items="${pDAO.lista}">
+                    <c:forEach var="pro" items="${proDAO.lista}">
                         <tr>
-                            <td>${p.idprofessor}</td>
-                            <td>${p.nome}</td>
-                            <td>${p.disciplina}</td>
-                            <td>${p.idusuario}</td>
+                            <td>${pro.idprofessor}</td>
+                            <td>${pro.nome}</td>
+                            <td>${pro.disciplina}</td>
+                            <td>${pro.idusuario}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_professor.do?acao=alterar&idprofessor=${p.idprofessor}">
+                                <a class="btn btn-primary" href="gerenciar_professor.do?acao=alterar&idprofessor=${pro.idprofessor}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idprofessor}, '${p.nome}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${pro.idprofessor}, '${pro.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>

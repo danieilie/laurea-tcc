@@ -24,11 +24,11 @@
     </head>
      <body class="body">
         <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
+        <%@include file="menu.jsp" %>
         <div class="container">
             
             <h1>Lista de Alunos</h1>
-
+            
             <a href="form_aluno.jsp" class="btn btn-primary">Novo Cadastro</a>
             <table class="table table-hover table-striped table-bordered display" id ="listaAluno" >
                 <thead>
@@ -38,6 +38,7 @@
                         <th>Data de Nascimento</th>
                         <th>CPF</th>
                         <th>RG</th>
+                        <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
                         <th>Opções</th>
@@ -50,6 +51,7 @@
                         <th>Data de Nascimento</th>
                         <th>CPF</th>
                         <th>RG</th>
+                        <th>Status</th>
                         <th>Nome do Responsável</th>
                         <th>Nome de Usuário</th>
                         <th>Opções</th>
@@ -65,13 +67,14 @@
                             <td>${a.datanasc}</td>
                             <td>${a.cpf}</td>
                             <td>${a.rg}</td>
-                            <td>${a.responsavel}</td>
-                            <td>${a.usuario}</td>
+                            <td>${a.status}</td>
+                            <td>${a.responsavel.nome}</td>
+                            <td>${a.usuario.nome}</td>
                             <td>
-                                <a class="btn btn-primary" href="gerenciar_aluno.do?acao=alterar&idaluno=${pr.idaluno}">
+                                <a class="btn btn-primary" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${pr.idaluno}, '${pr.nome}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idaluno}, '${p.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>

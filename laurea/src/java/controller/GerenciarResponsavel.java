@@ -41,10 +41,10 @@ public class GerenciarResponsavel extends HttpServlet {
                 }
             }
             
-            if (acao.equals("desativar")) {
+            if (acao.equals("alterar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     r.setIdresponsavel(idresponsavel);
-                    if (rDAO.desativar(r)) {
+                    if (rDAO.alterar(r)) {
                         mensagem = "Desativado com sucesso!";
                     } else {
                         mensagem = "Erro ao desativar!";

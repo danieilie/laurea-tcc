@@ -67,7 +67,7 @@ public class ProfessorDAO extends DataBaseDAO {
     public Professor getCarregaPorId(int idprofessor) throws Exception {
 
         Professor p = new Professor();
-        String sql = "SELECT p.*, u.usuario FROM professor p "
+        String sql = "SELECT p.*, u.idusuario FROM professor p "
                 + "INNER JOIN usuario u ON u.idusuario = p.idusuario ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);

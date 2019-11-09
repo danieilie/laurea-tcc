@@ -59,14 +59,13 @@
                     <c:forEach var="t" items="${tDAO.lista}">
                         <tr>
                             <td>${t.idturma}</td>
-                            <td>${t.datahora}</td>
-                            <td>${t.diasemana}</td>
+                            <td>${t.nome}</td>
                             <td>${t.professor}</td>
                             <td>
                                 <a class="btn btn-primary" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${t.idturma}, '${t.datahora}')" >
+                                <button class="btn btn-danger" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>    
                             </td>
