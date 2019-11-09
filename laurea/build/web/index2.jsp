@@ -16,6 +16,7 @@
         <script type="text/javascript">document.documentElement.classList.add("js");</script>
 
         <link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
+         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
     </head>
     <body>
        

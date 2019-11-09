@@ -20,16 +20,21 @@
     font-size: 18px; 
     color:#4F4F4F;
     background-color: #FFF;
-    box-shadow: 4px 4px 4px rgba(0,0,0,.3);
-    min-height: 100hv;
-
- 
+    box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 .menu a{
     text-decoration: none;
-     color:#4F4F4F;
-    
-    
+     color:#4F4F4F;    
+     text-transform: uppercase;
+     font-family: 'Lato', sans-serif;
+     font-size: 14px;
+}
+.menu a img{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
 }
 .menu div a:hover{
     color:#204571;
@@ -40,7 +45,7 @@
 }
 .menu div:hover{
     border-left: 10px solid red;
-    transition: 300ms all linear;
+    transition: 350ms all linear;
     cursor: pointer;
 }
 .menu div:first-child{

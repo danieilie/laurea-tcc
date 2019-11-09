@@ -28,7 +28,7 @@
      <body class="body">
        <%@include file="menu.jsp" %>
          <div class="row">
-            <a href="form_Turma.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
+            <a href="form_turma.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo Cadastro </div></a>
          </div>
         
         <div class="row  justify-content-center" id="listagem">
