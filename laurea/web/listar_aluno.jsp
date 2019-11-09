@@ -23,9 +23,10 @@
 
     </head>
     <body>
-        <div class="container">
-            <%@include file="banner.jsp" %>
+        <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
+        <div class="container">
+            
             <h1>Lista de Alunos</h1>
 
             <a href="form_aluno.jsp" class="btn btn-primary">Novo Cadastro</a>

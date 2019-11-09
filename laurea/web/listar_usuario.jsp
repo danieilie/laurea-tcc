@@ -9,9 +9,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <title>Láurea Reforço Escolar</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
@@ -22,11 +22,13 @@
         </script>    
     </head>
     <body>
-        <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
-
-            <a href="form_usuario.jsp" class="btn btn-primary">Novo Usuário</a>
+         <%@include file="menu.jsp" %>
+         
+        <div class="row  justify-content-center" id="listagem">
+       
+            <div class="w-100">
+                 <div class="" id="btn_cadastrar"> <a href="form_perfil.jsp" class="" >Novo Usuário</a></div>
+             </div>
             <table class="table table-hover table-striped table-bordered display" id="listaUsuario">
                 <thead>
                     <tr>

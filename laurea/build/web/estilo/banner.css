@@ -1,44 +1,13 @@
-body{
-    margin: 0; padding: 0;
+.logo{
+    width: 250px;
+    height: 90px;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 20px;
+    border-right: 1px solid #CCC;
+    font-weight: bold;
+    
 }
-.m-p{
-    margin: 0; padding: 0;
-}
-header{
-    background: #7DB0D7;
-    height: 100px;
-
-}
-.logo {
-    line-height: 100px;
-    font-family: 'Bubblegum Sans', cursive;
-    font-size: 48px;
-    display: inline-block;
-    margin-left : 10px;
-}
-.logo {
-    color: #FFF;
-}
-
-nav{
-    float: right;
-    line-height: 100px;
-     height: 100px;
-}
-
-nav ul li div{
-    color: #FFF;
-    font-family: 'Port Lligat Sans', sans-serif;
-    font-size: 18px;
-    margin: 0 10px;
-    height: 150px;
-}
-
-nav ul li a{
-    padding-left: 10px;
-    color: #204571;
-    font-family: 'Port Lligat Sans', sans-serif;
-    font-size: 18px;
-
-
+.logo img{
+    max-width: 250px;
 }

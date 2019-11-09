@@ -6,17 +6,32 @@
     Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
     request.setAttribute("ulogado", ulogado);
 %>
-
+<link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
 <div class="menu">
-    <ul>
+    
+   <div class="logo">
+          <img src="assets/img/logo/logo_menu.png"> 
+        
+         <c:if test="${ulogado!=null}">${ulogado.nome}</c:if>
+        
+   </div>
+         
     <c:if test="${ulogado != null && ulogado.perfil != null}">
         <c:forEach var="menu" items="${ulogado.perfil.menus}">
             <c:if test="${menu.exibir == 1}">
-                <li><a href="${menu.link}">${menu.menu}</a></li>                   
+                <a href="${menu.link}"><div>${menu.menu}</div></a>                  
             </c:if>    
         </c:forEach>
     </c:if>
-    </ul>
+    <div><a href="gerenciar_login.do">Sair</a></div>
 </div>   
-<link rel="stylesheet" type="text/css" href="../estilo/menu.css"/>
+
+
+
+
+
+
+
+
+
 
