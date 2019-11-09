@@ -16,7 +16,7 @@
         <script type="text/javascript">document.documentElement.classList.add("js");</script>
         <!-- Tipografia -->
         <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Pontano+Sans|Port+Lligat+Sans&display=swap" rel="stylesheet">
-        <link rel="shortcut icon" href="./assets/img/logo/logo_menu.png"/>
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
         <link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
     </head>
     <body>
@@ -24,7 +24,7 @@
         <div class="container">
             <header class="" >
                 <div class="">
-                    <div class="logo">Láurea<img src="./assets/img/logo/logo_menu.png"></div> 
+                    <div class="logo">Láurea<img src="assets/img/logo/logo_menu.png"></div> 
                     <nav>
                         <ul>
                             <li>
