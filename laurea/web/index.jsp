@@ -28,7 +28,7 @@
 
         <header class="container-fluid m-p" data-anime="100">
             <div class="container">
-                <div class="logo" data-anime="200"><a href="#inicio">Láurea<img src="./assets/img/logo/logo_menu.png"></a></div>
+                <div class="logo" data-anime="200">Láurea<img src="./assets/img/logo/logo_menu.png"></div>
                 <nav>
                     <ul data-anime="200">
                         <li><a href="#produtos">Produtos</a></li>
@@ -220,10 +220,10 @@
                     <div class="col">
                         <h4>De segunda a sexta, das 08 as 20h</h4>
                         <ul>
-                            <li><img src="assets/img/contato/telefone.png"/>(061) 3333-9999</li>
-                            <li><a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a>(061) 99311-3336</li>
-                            <li><img src="assets/img/contato/email.png"/>qualquer@qualquer.com</li>
-                            <li><img src="assets/img/contato/localizacao.png"/>QNN 20 conjunto “C” casa 12 Ceilândia-Sul</li>
+                            <li><img src="assets/img/contato/telefone.png"/> (061) 3333-9999</li>
+                            <li><a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a> (061) 99311-3336</li>
+                            <li><img src="assets/img/contato/email.png"/> profpaulo@laurea.com</li>
+                            <li><img src="assets/img/contato/localizacao.png"/> QNN 20 conjunto “C” casa 12 Ceilândia-Sul</li>
                         </ul>
                     </div>
                     <div class="col">
@@ -242,30 +242,32 @@
                         <div class="card_depoimento"> 
                                 <img src="assets/img/depoimentos/julia.png" class="float-left">
                                 <h4 class="float-left">Júlia Vaz</h4>
-                                <div class="float-left card_depoimento_text">&ldquo;Muito bom aprendi algo além do verbo to be, best of the best professor!!!&rdquo;</div>
+                                <div class="float-left card_depoimento_text">&ldquo;Totalmente satisfeita! Nunca pensei que pagando um valor tão acessível eu aprenderia tanto em um período de tempo tão curto.&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
                        <div class="card_depoimento">                         
                            <img src="assets/img/depoimentos/daniele.png" class="float-left">
                                 <h4 class="float-left">Daniele Silva</h4>
-                                <div class="float-left card_depoimento_text">&ldquo;Ótimo professor, atencioso e dedicado. Indico com certeza!&rdquo;</div>
+                                <div class="float-left card_depoimento_text">&ldquo;Paulo Henrique sem dúvida é um professor prestativo muito atencioso suporte rápido.&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
                          <div class="card_depoimento"> 
                              <img src="assets/img/depoimentos/marcos.png" class="float-left">
                                 <h4 class="float-left">Marcos Felipe</h4>
-                                 <div class="float-left card_depoimento_text">&ldquo;Tudo é questão de lógica, parabéns professor!!&rdquo;</div>
+                                 <div class="float-left card_depoimento_text">&ldquo;Estou fazendo o curso e estou adorando a didática simples porém muito completa, é bem explicada passo a passo.&rdquo;</div>
                         </div>
                     </div>
+                    
+                    
                 </div>
             </div>
         </section>
         <footer data-anime="600">
             <div class="footer">
                 <div class="container">
-                    <div class="logo float-left"><a href="#inicio">Láurea <img src="assets/img/logo/logo_menu.png"></a></div>
+                    <div class="logo float-left">Láurea <img src="assets/img/logo/logo_menu.png"></div>
                 </div>
                 <div class="redes_sociais  float-right">
                     <ul class="float-right">
