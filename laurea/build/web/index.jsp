@@ -218,12 +218,12 @@
                 <div class="tag ">CONTATO</div> 
                 <div class="row align-items-center">
                     <div class="col">
-                        <h4>De segunda a sexta, das 08 as 20h</h4>
+                        <h4>Funcionamento: 08h30 às 19h30</h4>
                         <ul>
-                            <li><img src="assets/img/contato/telefone.png"/> (061) 3333-9999</li>
+                            <li><img src="assets/img/contato/telefone.png"/> (061) 3047-0252</li>
                             <li><a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a> (061) 99311-3336</li>
-                            <li><img src="assets/img/contato/email.png"/> profpaulo@laurea.com</li>
-                            <li><img src="assets/img/contato/localizacao.png"/> QNN 20 conjunto “C” casa 12 Ceilândia-Sul</li>
+                            <li><img src="assets/img/contato/email.png"/> paullohhenrique74@gmail.com</li>
+                            <li><img src="assets/img/contato/localizacao.png"/> QNN 20 Conj C casa 12 Guariroba-Ceilândia Sul</li>
                         </ul>
                     </div>
                     <div class="col">
