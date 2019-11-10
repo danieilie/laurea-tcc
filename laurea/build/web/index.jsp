@@ -195,24 +195,19 @@
                 <h1>A Láurea</h1>
             </div>
             <div class="sobre_texto container">
-                <p>O Lorem Ipsum é um texto modelo da indústria tipográfica e de impressão. 
-                    O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano de 1500,
-                    quando uma misturou os caracteres de um texto para criar um espécime de livro. 
-                    Este texto não só sobreviveu 5 séculos, mas também o salto para a tipografia electrónica, 
-                    mantendo-se essencialmente inalterada. Foi popularizada nos anos 60 com a disponibilização 
-                    das folhas de Letraset, que continham passagens com Lorem Ipsum, e mais recentemente com os 
-                    programas de publicação como o Aldus PageMaker que incluem versões do Lorem Ipsum.
+                <p>Fundada em fevereiro de 2018, nossa instituição foi totalmente idealizada com o intuito de levar conhecimento para as pessoas e trabalhar cada vez mais buscando ensinar de uma maneira totalmente prazerosa para seus alunos. 
+                    Seguimos atendendo os alunos com horários totalmente flexíveis e estamos localizados na Ceilândia-Sul. Entre em contato conosco, estamos te aguardando de braços abertos!
                 </p>
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col"><img src="assets/img/sobre/criancas.png" alt="Criancas"></div>
                     <div class="col">
-                        <h1>Não Cansamos De Ensinar</h1>
+                        <h1>Atuação</h1>
                         <ul>
-                            <li>-150 Alunos</li>
-                            <li>-3 Anos atuando com maestria</li>
-                            <li>-Alunos de diversas escolas do DF</li>
+                            <li>&rarr; Já atendemos mais de mil alunos</li>
+                            <li>&rarr; 10 anos de atuação</li>
+                            <li>&rarr; Atendemos alunos de diversas escolas</li>
                         </ul>
                     </div>
                 </div>
@@ -228,11 +223,11 @@
                             <li><img src="assets/img/contato/telefone.png"/>(061) 3333-9999</li>
                             <li><a href="https://api.whatsapp.com/send?1=pt_BR&phone=5561993113336" target="_blank"><img src="assets/img/footer/whatsapp.png" alt="whatsapp"></a>(061) 99311-3336</li>
                             <li><img src="assets/img/contato/email.png"/>qualquer@qualquer.com</li>
-                            <li><img src="assets/img/contato/localizacao.png"/>Praça do Relógio - Taguatinga - Distrito Federal</li>
+                            <li><img src="assets/img/contato/localizacao.png"/>QNN 20 conjunto “C” casa 12 Ceilândia-Sul</li>
                         </ul>
                     </div>
                     <div class="col">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.444316797588!2d-48.05893754928808!3d-15.833228078076216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a32e923032cbf%3A0x55322540ab25f7c6!2zUHJhw6dhIGRvIFJlbMOzZ2lv!5e0!3m2!1spt-BR!2sbr!4v1571793044900!5m2!1spt-BR!2sbr" width="580" height="380" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.522564656659!2d-48.115546249230306!3d-15.829109077973683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935bccfb7f941bab%3A0xd51b55e404de58af!2sSt.%20N%20QNN%2020%20-%20Ceil%C3%A2ndia%2C%20Bras%C3%ADlia%20-%20DF!5e0!3m2!1spt-BR!2sbr!4v1573387495813!5m2!1spt-BR!2sbr" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
                     </div>
                 </div>
 
@@ -247,21 +242,21 @@
                         <div class="card_depoimento"> 
                                 <img src="assets/img/depoimentos/julia.png" class="float-left">
                                 <h4 class="float-left">Júlia Vaz</h4>
-                                <div class="float-left card_depoimento_text">Muito bom aprendi algo além do verbo to be, best of the best professor!!!</div>
+                                <div class="float-left card_depoimento_text">&ldquo;Muito bom aprendi algo além do verbo to be, best of the best professor!!!&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
                        <div class="card_depoimento">                         
                            <img src="assets/img/depoimentos/daniele.png" class="float-left">
                                 <h4 class="float-left">Daniele Silva</h4>
-                                <div class="float-left card_depoimento_text">Ótimo professor, atencioso e dedicado! “arrivederci”</div>
+                                <div class="float-left card_depoimento_text">&ldquo;Ótimo professor, atencioso e dedicado. Indico com certeza!&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
                          <div class="card_depoimento"> 
                              <img src="assets/img/depoimentos/marcos.png" class="float-left">
                                 <h4 class="float-left">Marcos Felipe</h4>
-                                 <div class="float-left card_depoimento_text">Tudo é questão de lógica, parabéns professor!!</div>
+                                 <div class="float-left card_depoimento_text">&ldquo;Tudo é questão de lógica, parabéns professor!!&rdquo;</div>
                         </div>
                     </div>
                 </div>
