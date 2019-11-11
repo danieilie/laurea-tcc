@@ -1,0 +1,30 @@
+.body{
+    background-color: #F5F7F8;
+}
+.titulo{
+    font-size: 22px;
+    color:#4F4F4F;
+    font-weight: bold;
+}
+h2:after{
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    background: #105aa2;
+    margin: 2px;
+}
+.div_formulario{
+    display: flex;
+}
+.form{
+    margin: 0 auto;
+    width: 400px;
+    padding-top: 10px;  
+}
+.campo_obrigatorio{
+    line-height: 14px;
+    font-size: 14px;
+    color:#4F4F4F;
+    opacity: .5;
+}

@@ -6,39 +6,42 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
-        <title>Láurea Reforço Escolar</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_form.css">
+        <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>  
+        <title>Cadastrar Usuário</title>
     </head>
-    <body>
-        <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
-            <h3>Novo Usuário</h3>
-
-            <form action="gerenciar_usuario.do" method="POST">
-                <input type="hidden" name="idusuario" id="idusuario" value="${usuario.idusuario}"/>
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" required="" maxlength="45" value="${usuario.nome}"/>
+    <body class="body">
+        <%@include file="menu.jsp" %>
+        
+        <div class="div_formulario">
+            
+            <form action="gerenciar_usuario.do" method="POST" class="form">
+                <div class="form-group ">
+                     <h2 class="titulo">Novo Usuário</h2>
+                     <div class="campo_obrigatorio">* campos de preenchimento obrigatório</div>
+                </div>
+                <input type="hidden" name="idusuario" class="form-control" id="idusuario" value="${usuario.idusuario}"/>
+                
+                   <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo" required="" maxlength="45" value="${usuario.nome}" />
                     </div>    
-                </div>    
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="login">Login</label>
-                        <input type="text" class="form-control" id="login" name="login" required="" maxlength="45" value="${usuario.login}"/>
+              
+                 <div class="form-group">
+                        <label for="login">Login *</label>
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Para entrar no sistema" required="" maxlength="45" value="${usuario.login}"/>
                     </div>    
-                </div>   
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="senha">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" maxlength="45" required="" value="${usuario.senha}"/>
+               
+                <div class="form-group">
+                        <label for="senha">Senha *</label>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="No mínimo 8 caracteres" maxlength="45" required="" value="${usuario.senha}"/>
+                        
                     </div>    
-                </div> 
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="status">Status</label>
+            
+                <div class="form-group">
+                        <label for="status">Status *</label>
                         <select name="status" required="" class="form-control">
                             <c:if test="${usuario.status==null}">
                                 <option value="">Selecine a opção</option>
@@ -55,10 +58,9 @@
                             </c:if>
                         </select>    
                     </div>    
-                </div>    
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="perfil">Perfil</label>
+                
+               <div class="form-group">
+                        <label for="perfil">Perfil *</label>
                         <select name="idperfil" required="" class="form-control">
                             <option value="">Selecine a opção</option>
                             <jsp:useBean class="DAO.PerfilDAO" id="pDAO"/>
@@ -70,12 +72,13 @@
                                 >
                                     ${p.perfil}</option>
                                 </c:forEach>
-                        </select>    
+                        </select>  
+                        
                     </div>    
-                </div>    
-                <div class="row">
-                    <button class="btn btn-success">Gravar</button>
-                    <a href="listar_usuario.jsp" class="btn btn-warning">Voltar</a>    
+                   
+               <div class="form-group">
+                    <button class="btn btn-primary">Gravar</button>
+                    <a href="listar_usuario.jsp" class="btn btn-outline-dark">Voltar</a>    
                 </div>    
             </form>    
         </div>
