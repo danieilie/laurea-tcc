@@ -10,9 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
+        <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+        <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>
         <title>Listar Mensalidade</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
@@ -23,40 +25,36 @@
         </script>
 
     </head>
-     <body class="body">
-        <div class="container">
-            <%@include file="banner.jsp" %>
-            <%@include file="menu.jsp" %>
-            <h1>Lista de Mensalidades</h1>
+        <body class="body">
+        <%@include file="menu.jsp" %>
 
-            <a href="form_mensalidade.jsp" class="btn btn-primary">Novo Cadastro</a>
-            <table class="table table-hover table-striped table-bordered display" id ="listaMensalidade" >
+        <div class="row  justify-content-center" id="listagem" style="padding-top: 50px;">
+               <div class="table-responsive">
+                <table class="table table-hover table-sm table-striped" id ="listaMensalidade" >
                 <thead>
                     <tr>
-                        <th>Nº Contrato</th>
-                        <th>Nº Mendalidade</th>
-                        <th>Nome do Aluno</th>
-                        <th>Nome do Responsável</th>
+                        <th style="text-align: center;">Contrato</th>
+     
+                        <th>Aluno</th>
+                        <th>Responsável</th>
                         <th>Valor</th>
-                        <th>Data de Vencimento</th>
-                        <th>Data do Pagamento</th>
-                        <th>Multa</th>
-                        <th>Desconto</th>
+                        <th>Vencimento</th>
+                        <th>Pagamento</th>
+                      
                         <th>Status</th>
                         <th>Opções</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Nº Contrato</th>
-                        <th>Nº Mendalidade</th>
-                        <th>Nome do Aluno</th>
-                        <th>Nome do Responsável</th>
+                        <th style="text-align: center;">Nº Contrato</th>
+                      
+                        <th>Aluno</th>
+                        <th>Responsável</th>
                         <th>Valor</th>
-                        <th>Data de Vencimento</th>
-                        <th>Data do Pagamento</th>
-                        <th>Multa</th>
-                        <th>Desconto</th>
+                        <th>Vencimento</th>
+                        <th>Pagamento</th>
+                       
                         <th>Status</th>
                         <th>Opções</th>
                     </tr>
@@ -67,32 +65,30 @@
                     <c:forEach var="m" items="${mDAO.lista}">
                         <%--<c:if test="${m.contrato.aluno.responsavel.nome }">--%>
                             <tr>
-                                <td>${c.contrato.idcontrato}</td>
-                                <td>${m.idmensalidade}</td>
+                                <td style="text-align: center;">${c.contrato.idcontrato}</td>
+                               
                                 <td>${c.contrato.aluno.nome}</td>
                                 <td>${c.contrato.aluno.responsavel.nome}</td>
                                 <td>${m.valor}</td>
                                 <td>${m.datav}</td>
                                 <td>${m.datap}</td>
-                                <td>${m.multa}</td>
-                                <td>${m.desconto}</td>
+                             
                                 <td>
                                     <c:if test="${m.status == 2}" > Pendente </c:if>
                                     <c:if test="${m.status == 1}" > Pago </c:if>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" href="gerenciar_mensalidade.do?acao=gravar&idmensalidade=${p.idmensalidade}">
-                                        <i class="glyphicon glyphicon-pencil"></i>
+                                        <a class="icone_lista" href="gerenciar_mensalidade.do?acao=gravar&idmensalidade=${p.idmensalidade}">
+                                         <img src="assets/img/lista/editar.png">
                                     </a>
-                                    <button class="btn btn-danger" onclick="confirmarExclusao(${p.idmensalidade}, '${p.nome}')" >
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </button>    
+                                   
                                 </td>
                             </tr>
                         <%--</c:if>--%>    
                     </c:forEach>                    
                 </tbody>    
-            </table>    
+            </table> 
+               </div>
         </div>
 
         <script type="text/javascript" src="datatables/jquery.js"></script>
