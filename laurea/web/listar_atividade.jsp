@@ -24,10 +24,14 @@
         </script>
 
     </head>
+    <%@page import="util.Upload"%>
+    <%@page contentType="text/html"%>
+    
      <body class="body">
-        <%@include file="menu.jsp" %>
+     <%@include file="menu.jsp"%>
          <div class="row">
-            <a href="form_atividadea.jsp" class="" > <div class="float-left" id="btn_cadastrar"> cadastrar atividade </div></a>
+            <a href="form_atividade.jsp" class="" > <div class="float-left" id="btn_cadastrar"> cadastrar atividade </div></a>
+            
          </div>
          <div class="row  justify-content-center" id="listagem">
        
@@ -61,7 +65,11 @@
                         <tr>
                             <td style="text-align: center;">${at.idatividade}</td>
                             <td>${at.nome}</td>
-                            <td>${at.arquivo}</td>
+                            <td> 
+                                <a href="arquivos/${ati.arquivo}" download> Baixar
+                                    ${ati.arquivo}
+                                </a>
+                            </td>
                             <td>${at.disciplina}</td>
                            
                             <td style="text-align: center;">
@@ -104,6 +112,11 @@
                                         });
 
                                     });
+                                    
+                
         </script>
+        
     </body>
+    
+    
 </html>

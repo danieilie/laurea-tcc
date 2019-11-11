@@ -1,16 +1,15 @@
-
 package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAO.AtividadeDAO;
 import model.Disciplina;
 import model.Atividade;
+import DAO.AtividadeDAO;
+import util.Upload;
 
 public class GerenciarAtividade extends HttpServlet {
 
@@ -20,31 +19,21 @@ public class GerenciarAtividade extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         String mensagem = "";
+
         int idatividade = Integer.parseInt(request.getParameter("idatividade"));
         String acao = request.getParameter("acao");
 
         try {
-            Atividade a = new Atividade();
-            AtividadeDAO aDAO = new AtividadeDAO();
-            if (acao.equals("alterar")) {
-                if (GerenciarLogin.verificarPermissao(request, response)) {
-                    a = aDAO.getCarregaPorId(idatividade);
-                    if (a.getIdatividade() > 0) {
-                        RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_atividade.jsp");
-                        request.setAttribute("atividade", a);
-                        disp.forward(request, response);
-                    } else {
-                        mensagem = "Atividade não encontrada";
-                    }
-                } else {
-                    mensagem = "Acesso negado";
-                }
-            }
+            Atividade ati = new Atividade();
+            AtividadeDAO atiDAO = new AtividadeDAO();
 
             if (acao.equals("excluir")) {
+
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    a.setIdatividade(idatividade);
-                    if (aDAO.excluir(a)) {
+
+                    ati.setIdatividade(idatividade);
+
+                    if (atiDAO.excluir(ati)) {
                         mensagem = "Excluído com sucesso!";
                     } else {
                         mensagem = "Erro ao excluir!";
@@ -70,42 +59,56 @@ public class GerenciarAtividade extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        PrintWriter out = response.getWriter();
-        String idatividade = request.getParameter("idatividade");
-        String nome = request.getParameter("nome");
-        String arquivo = request.getParameter("arquivo");
-        String iddisciplina = request.getParameter("iddisciplina");
-        String mensagem = "";
+        Upload up = new Upload();
+        up.setFolderUpload("arquivos");
 
-        Atividade a = new Atividade();
-        if (!idatividade.isEmpty()) {
-            a.setIdatividade(Integer.parseInt(idatividade));
-        }
-        try {
-            AtividadeDAO aDAO = new AtividadeDAO();
-            if (nome.equals("") || arquivo.equals("") || iddisciplina.equals("")) {
-                mensagem = "Campos obrigatórios deverão ser preenchidos";
-            } else {
-                a.setNome(nome);
-                a.setArquivo(arquivo);
-                Disciplina d = new Disciplina();
-                d.setIddisciplina(Integer.parseInt(iddisciplina));
-                a.setDisciplina(d);
-                if (aDAO.gravar(a)) {
-                    mensagem = "Gravado com sucesso";
-                } else {
-                    mensagem = "Erro ao gravar no banco";
-                }
+        if (up.formProcess(getServletContext(), request)) {
+
+            PrintWriter out = response.getWriter();
+            String idatividade = up.getForm().get("idatividade").toString();
+            String nome = up.getForm().get("nome").toString();
+            String iddisciplina = up.getForm().get("disciplina").toString();
+            String mensagem = "";
+
+            Atividade ati = new Atividade();
+            if (!idatividade.isEmpty()) {
+                ati.setIdatividade(Integer.parseInt(idatividade));
             }
+            try {
+                AtividadeDAO atiDAO = new AtividadeDAO();
+                if (nome.isEmpty()) {
+                    mensagem = "Campos obrigatórios deverão ser preenchidos";
+                } else {
 
-        } catch (Exception e) {
-            out.print(e);
-            mensagem = "Erro ao executar o comando";
+                    ati.setNome(nome);
+
+                    if (!up.getFiles().isEmpty()) {
+
+                        ati.setArquivo(up.getFiles().get(0));
+                    }
+
+                    Disciplina di = new Disciplina();
+                    di.setIddisciplina(Integer.parseInt(iddisciplina));
+
+                    ati.setDisciplina(di);
+
+                    if (atiDAO.gravar(ati)) {
+                        mensagem = "Gravado com sucesso";
+                    } else {
+                        mensagem = "Erro ao gravar no banco";
+                    }
+                }
+
+            } catch (Exception e) {
+                out.print(e);
+                mensagem = "Erro ao executar o comando";
+            }
+            out.println("<script type='text/javascript'>");
+            out.println("alert('" + mensagem + "')");
+            out.println("location.href='listar_atividade.jsp';");
+            out.println("</script>");
+
         }
-        out.println("<script type='text/javascript'>");
-        out.println("alert('" + mensagem + "')");
-        out.println("location.href='listar_atividade.jsp';");
-        out.println("</script>");
 
     }
 

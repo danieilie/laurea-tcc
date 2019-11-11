@@ -30,31 +30,37 @@ public class AtividadeDAO extends DataBaseDAO {
         return lista;
     }
 
-    public boolean gravar(Atividade a) {
-
-        try {
+    public boolean gravar(Atividade ati){
+        
+        try{
             String sql;
             this.conectar();
-            if (a.getIdatividade() == 0) {
-                sql = "INSERT INTO atividade(nome, arquivo, iddisciplina) VALUES(?,?,?) ";
-            } else {
-                sql = "UPDATE atividade SET nome=?, arquivo=?, iddisciplina=? WHERE idatividade=? ";
+            
+            if(ati.getIdatividade() == 0){
+                sql = "INSERT INTO atividade (nome, arquivo, iddisciplina) VALUES (?, ?, ?)";
+            }else{
+                sql = "UPDATE atividade SET nome=?, arquivo=?, iddisciplina=? WHERE idatividade=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-            if (a.getIdatividade() > 0) {
-                pstm.setInt(1, a.getIdatividade());
+            
+            pstm.setString(1, ati.getNome());
+            pstm.setString(2, ati.getArquivo());
+            pstm.setInt(3, ati.getDisciplina().getIddisciplina());
+            
+            if(ati.getIdatividade() > 0){
+                pstm.setInt(4, ati.getIdatividade());
             }
-            pstm.setString(2, a.getNome());
-            pstm.setString(3, a.getArquivo());
-            pstm.setInt(4, a.getDisciplina().getIddisciplina());
             pstm.execute();
             this.desconectar();
             return true;
-        } catch (Exception e) {
+            
+        }catch(Exception e){
+            
             System.out.println(e);
             return false;
+            
         }
-
+        
     }
 
     public boolean excluir(Atividade a) {

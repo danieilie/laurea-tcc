@@ -1,3 +1,6 @@
+<%@page import="DAO.AtividadeDAO"%>
+<%@page import="model.Atividade"%>
+<%@page import="util.Upload"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -14,47 +17,51 @@
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
             <h3>Nova Atividade</h3>
-            
             <form action="gerenciar_atividade.do" method="POST" enctype="multipart/form-data" >
-                
-                <input type="hidden" name="idatividade" id="idatividade" value="${atividade.idatividade}"/>                
+
+                <input type="hidden" name="idatividade" id="idatividade" value="${atividade.idatividade}"/>
+
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="nome"> Nome </label>
-                        <input type="text" class="form-control" id="nome" name="nome" required="" maxlength="45" value="${atividade.nome}"/>
+                        <input type="text" class="form-control" id="nome"
+                               name="nome" required="" maxlength="45"
+                               value="${atividade.nome}"/>
                     </div>    
                 </div>
-                    
+
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="arquivo"> Arquivo </label>
-                        <input type="file" class="form-control" id="arquivo" name="arquivo" required=""/>
+                        <input type="file" class="form-control" id="arquivo"
+                               name="arquivo" required=""/>
                     </div>    
                 </div>
-                              
+
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="disciplina"> Disciplina </label>
                         <select name="disciplina" required="" class="form-control">
-                              <option value="">Selecine a opção</option>
-                              <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO"/>
-                              <c:forEach var="d" items="${dDAO.lista}">
-                                    <option value="${d.iddisciplina}"
-                                      <c:if test="${d.iddisciplina==atividade.disciplina.iddisciplina}">
-                                          selected=""
-                                      </c:if> 
-                                    >
-                                    ${d.materia}</option>
-                              </c:forEach>
+                            <option value="">Selecine a opção</option>
+                            <jsp:useBean class="DAO.DisciplinaDAO" id="diDAO"/>
+                            <c:forEach var="di" items="${diDAO.lista}">
+                                <option value="${di.iddisciplina}"
+                                        <c:if test="${di.iddisciplina==atividade.disciplina.iddisciplina}">
+                                            selected=""
+                                        </c:if> 
+                                        >
+                                    ${di.materia}</option>
+                                </c:forEach>
                         </select>    
                     </div>    
                 </div>
-                    
+
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
-                    <a href="listar_atividade.jsp" class="btn btn-warning">Voltar</a>    
+                    <a href="listar_atividade.jsp" class="btn btn-warning">
+                        Voltar
+                    </a>    
                 </div>    
-            </form>                
-        </div>        
+            </form>    
     </body>
 </html>
