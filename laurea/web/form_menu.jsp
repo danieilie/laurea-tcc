@@ -19,7 +19,7 @@
 
             <form action="gerenciar_menu.do" method="POST" class="form">
                 <div class="form-group ">
-                     <h2 class="titulo">Novo Menu</h2>
+                    <h2 class="titulo">Novo Menu</h2>
                      <div class="campo_obrigatorio">* campos de preenchimento obrigatório</div>
                 </div>
                 <input type="hidden" name="idmenu" id="idmenu" value="${menu.idmenu}"/>
