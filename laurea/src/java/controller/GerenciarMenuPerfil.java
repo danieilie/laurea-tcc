@@ -39,14 +39,14 @@ public class GerenciarMenuPerfil extends HttpServlet {
                 }
 
             }
-            if (acao.equals("desativar")) {
+            if (acao.equals("desvincular")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     String idmenu = request.getParameter("idmenu");
                     if (idmenu.equals("") || idmenu.isEmpty()) {
                         mensagem = "O menu deve ser selecinado";
                     } else {
-                        if (pDAO.desativar(Integer.parseInt(idmenu), Integer.parseInt(idperfil))) {
-                            mensagem = "Desativado com sucesso";
+                        if (pDAO.desvincular(Integer.parseInt(idmenu), Integer.parseInt(idperfil))) {
+                            mensagem = "Desvinculado com sucesso";
                         } else {
                             mensagem = "Erro ao desativar";
                         }
@@ -55,22 +55,6 @@ public class GerenciarMenuPerfil extends HttpServlet {
                     mensagem = "Acesso Negado";
                 }
             }
-//            if (acao.equals("excluir")) {
-//                if (GerenciarLogin.verificarPermissao(request, response)) {
-//                    String idmenu = request.getParameter("idmenu");
-//                    if (idmenu.equals("") || idmenu.isEmpty()) {
-//                        mensagem = "O menu deve ser selecinado";
-//                    } else {
-//                        if (pDAO.excluir(Integer.parseInt(idperfil))) {
-//                            mensagem = "Excluido com sucesso";
-//                        } else {
-//                            mensagem = "Erro ao excluir";
-//                        }
-//                    }
-//                } else {
-//                    mensagem = "Acesso Negado";
-//                }
-//            }
 
         } catch (Exception e) {
             out.print(e);
