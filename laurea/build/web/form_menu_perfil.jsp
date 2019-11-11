@@ -82,8 +82,8 @@
                             <td>${m.menu}</td>
                             <td>${m.link}</td>
                             <td style="text-align: center;">
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${m.idmenu},${perfilv.idperfil}, '${m.menu}')">
-                                   Desvincular
+                                <button class="icone_lista deletar" onclick="confirmarExclusao(${m.idmenu},${perfilv.idperfil}, '${m.menu}')">
+                                    <img src="assets/img/lista/desvincular.png">
                                 </button>    
                             </td>
                         </tr>
