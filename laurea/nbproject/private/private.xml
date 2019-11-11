@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_professor.jsp</file>
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_perfil.jsp</file>
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_aluno.jsp</file>
@@ -15,6 +16,13 @@
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_turma.jsp</file>
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_disciplina.jsp</file>
             <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_contrato.jsp</file>
+=======
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/TurmaDAO.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarAlunoTurma.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/AlunoDAO.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarMenuPerfil.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/AlunoTurmaDAO.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>

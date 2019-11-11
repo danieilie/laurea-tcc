@@ -72,7 +72,7 @@ public class PerfilDAO extends DataBaseDAO {
         return p;
     }
 
-    public boolean desativar(int idmenu, int idperfil) {
+    public boolean desvincular(int idmenu, int idperfil) {
 
         try {
             String sql = "DELETE FROM menu_perfil WHERE idmenu=? AND idperfil=? ";
