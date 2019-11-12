@@ -23,15 +23,15 @@
             }
         </script>    
     </head>
-     <body class="body">
+    <body class="body">
         <%@include file="menu.jsp" %>
-        
+
         <div class="div_formulario">
 
             <form action="gerenciar_menu_perfil.do" method="POST" class="form">
                 <div class="form-group ">
-                     <h2 class="titulo">Vincular menu ao perfil</h2>
-              
+                    <h2 class="titulo">Vincular menu ao perfil</h2>
+
                 </div>
                 <input type="hidden" name="idperfil" id="idperfil" value="${perfilv.idperfil}"/>
                 <div class="row">
@@ -40,83 +40,83 @@
                     </div>    
                 </div>    
                 <div class="form-group">
-                        <select name="idmenu" class="form-control" required="">
-                            <option value="">Selecione o menu</option>
-                            <c:forEach var="m" items="${perfilv.naoMenus}">
-                                <option value="${m.idmenu}">${m.menu}</option>
-                            </c:forEach>                            
-                        </select>                      
-                    
+                    <select name="idmenu" class="form-control" required="">
+                        <option value="">Selecione o menu</option>
+                        <c:forEach var="m" items="${perfilv.naoMenus}">
+                            <option value="${m.idmenu}">${m.menu}</option>
+                        </c:forEach>                            
+                    </select>                      
+
                 </div>    
                 <div class="form-group">
                     <button class="btn btn-primary">Gravar</button>
                     <a href="listar_perfil.jsp" class="btn btn-outline-dark">Voltar</a>    
                 </div>    
             </form>    
-                    
+
         </div>
         <hr>
-           <div class="row  justify-content-center" id="listagem">
-                <div class="table-responsive">
+        <div class="row  justify-content-center" id="listagem">
+            <div class="table-responsive">
                 <table class="table table-hover table-sm table-striped" id="listaMenu">
-                <thead>
-                    <tr>
-                         <th style="text-align: center;">ID</th>
-                        <th>Menu</th>
-                        <th>Link</th>
-                        <th style="text-align: center;">Desvicular</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                         <th style="text-align: center;">ID</th>
-                        <th>Menu</th>
-                        <th>Link</th>
-                        <th style="text-align: center;">Desvicular</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <c:forEach var="m" items="${perfilv.menus}">
+                    <thead>
                         <tr>
-                            <td style="text-align: center;">${m.idmenu}</td>
-                            <td>${m.menu}</td>
-                            <td>${m.link}</td>
-                            <td style="text-align: center;">
-                                <button class="icone_lista deletar" onclick="confirmarExclusao(${m.idmenu},${perfilv.idperfil}, '${m.menu}')">
-                                    <img src="assets/img/lista/desvincular.png">
-                                </button>    
-                            </td>
+                            <th style="text-align: center;">ID</th>
+                            <th>Menu</th>
+                            <th>Link</th>
+                            <th style="text-align: center;">Desvicular</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>    
-        </div>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Menu</th>
+                            <th>Link</th>
+                            <th style="text-align: center;">Desvicular</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <c:forEach var="m" items="${perfilv.menus}">
+                            <tr>
+                                <td style="text-align: center;">${m.idmenu}</td>
+                                <td>${m.menu}</td>
+                                <td>${m.link}</td>
+                                <td style="text-align: center;">
+                                    <button class="icone_lista deletar" onclick="confirmarExclusao(${m.idmenu},${perfilv.idperfil}, '${m.menu}')">
+                                        <img src="assets/img/lista/desvincular.png">
+                                    </button>    
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>    
+            </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $("#listaMenu").dataTable({
-                                            "bJQueryUI": true,
-                                            "oLanguage": {
-                                                "sProcessing": "Processando...",
-                                                "sLengthMenu": "Mostrar _MENU_ registros",
-                                                "sZeroRecords": "Não foram encontrados resultados",
-                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
-                                                "sInfoFiltered": "",
-                                                "sInfoPostFix": "",
-                                                "sSearch": "Pesquisar",
-                                                "sUrl": "",
-                                                "oPaginate": {
-                                                    "sFirst": "Primeiro",
-                                                    "sPrevious": "Anterior",
-                                                    "sNext": "Próximo",
-                                                    "sLast": "Último"
+            <script type="text/javascript" src="datatables/jquery.js"></script>
+            <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
+            <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $("#listaMenu").dataTable({
+                                                "bJQueryUI": true,
+                                                "oLanguage": {
+                                                    "sProcessing": "Processando...",
+                                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                                    "sZeroRecords": "Não foram encontrados resultados",
+                                                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                    "sInfoFiltered": "",
+                                                    "sInfoPostFix": "",
+                                                    "sSearch": "Pesquisar",
+                                                    "sUrl": "",
+                                                    "oPaginate": {
+                                                        "sFirst": "Primeiro",
+                                                        "sPrevious": "Anterior",
+                                                        "sNext": "Próximo",
+                                                        "sLast": "Último"
+                                                    }
                                                 }
-                                            }
-                                        })
-                                    });
-        </script>   
+                                            })
+                                        });
+            </script>   
     </body>
 </html>

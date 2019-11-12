@@ -1,4 +1,4 @@
- <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@
                         <input type="datetime-local" class="form-control" id="datahora" name="datahora" required="" maxlength="45" value="${turma.datahora}"/>
                     </div>    
                 </div> 
-                
+
                 <div class="row">
                     <div class="form-group col-sm-8">
                         <label for="professor"> Professor </label>
@@ -32,10 +32,10 @@
                             <jsp:useBean class="DAO.ProfessorDAO" id="pDAO"/>
                             <c:forEach var="p" items="${pDAO.lista}">
                                 <option value="${p.idprofessor}"
-                                    <c:if test="${p.idprofessor==turma.professor.idprofessor}">
-                                        selected=""
-                                    </c:if> 
-                                >
+                                        <c:if test="${p.idprofessor==turma.professor.idprofessor}">
+                                            selected=""
+                                        </c:if> 
+                                        >
                                     ${p.nome}</option>
                                 </c:forEach>
                         </select>    

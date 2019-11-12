@@ -25,91 +25,91 @@
     </head>
     <body class="body">
         <%@include file="menu.jsp" %>
-         <div class="row">
+        <div class="row">
             <a href="form_menu.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Menu </div></a>
-         </div>
-        
-        <div class="row  justify-content-center" id="listagem">
-       
-            <div class="table-responsive">
-            <table class="table table-hover table-sm table-striped" id="listaMenu">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Menu</th>
-                        <th>Link</th>
-                        <th>Icone</th>
-                        <th>Exibir</th>
-                        <th style="text-align: center;">Editar</th>
-                        <th style="text-align: center;">Excluir</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Menu</th>
-                        <th>Link</th>
-                        <th>Icone</th>
-                        <th>Exibir</th>
-                        <th style="text-align: center;">Editar</th>
-                        <th style="text-align: center;">Excluir</th>
-                    </tr>
-                </tfoot>
-
-                <jsp:useBean class="DAO.MenuDAO" id="mDAO"/>
-                <tbody>
-                    <c:forEach var="m" items="${mDAO.lista}">
-                        <tr>
-                            <td style="text-align: center;">${m.idmenu}</td>
-                            <td>${m.menu}</td>
-                            <td>${m.link}</td>
-                            <td>${m.icone}</td>
-                            <td>
-                                <c:if test="${m.exibir==1}">Sim</c:if>
-                                <c:if test="${m.exibir==2}">Não</c:if>
-                                </td>
-                                <td style="text-align: center;">
-                                    <a class="icone_lista" title="Editar Menu" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
-                                    <img src="assets/img/lista/editar.png">
-                                </a>
-                                 </td>
-                                 <td style="text-align: center;">
-                                <button class="deletar icone_lista" title="Excluir Menu" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
-                                   <img src="assets/img/lista/deletar.png">
-                                </button>    
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $("#listaMenu").dataTable({
-                                            "bJQueryUI": true,
-                                            "oLanguage": {
-                                                "sProcessing": "Processando...",
-                                                "sLengthMenu": "Mostrar _MENU_ registros",
-                                                "sZeroRecords": "Não foram encontrados resultados",
-                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
-                                                "sInfoFiltered": "",
-                                                "sInfoPostFix": "",
-                                                "sSearch": "Pesquisar",
-                                                "sUrl": "",
-                                                "oPaginate": {
-                                                    "sFirst": "Primeiro",
-                                                    "sPrevious": "Anterior",
-                                                    "sNext": "Próximo",
-                                                    "sLast": "Último"
+        <div class="row  justify-content-center" id="listagem">
+
+            <div class="table-responsive">
+                <table class="table table-hover table-sm table-striped" id="listaMenu">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Menu</th>
+                            <th>Link</th>
+                            <th>Icone</th>
+                            <th>Exibir</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Menu</th>
+                            <th>Link</th>
+                            <th>Icone</th>
+                            <th>Exibir</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
+                        </tr>
+                    </tfoot>
+
+                    <jsp:useBean class="DAO.MenuDAO" id="mDAO"/>
+                    <tbody>
+                        <c:forEach var="m" items="${mDAO.lista}">
+                            <tr>
+                                <td style="text-align: center;">${m.idmenu}</td>
+                                <td>${m.menu}</td>
+                                <td>${m.link}</td>
+                                <td>${m.icone}</td>
+                                <td>
+                                    <c:if test="${m.exibir==1}">Sim</c:if>
+                                    <c:if test="${m.exibir==2}">Não</c:if>
+                                    </td>
+                                    <td style="text-align: center;">
+                                        <a class="icone_lista" title="Editar Menu" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
+                                        <img src="assets/img/lista/editar.png">
+                                    </a>
+                                </td>
+                                <td style="text-align: center;">
+                                    <button class="deletar icone_lista" title="Excluir Menu" onclick="confirmarExclusao(${m.idmenu}, '${m.menu}')">
+                                        <img src="assets/img/lista/deletar.png">
+                                    </button>    
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>    
+            </div>
+
+            <script type="text/javascript" src="datatables/jquery.js"></script>
+            <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
+            <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $("#listaMenu").dataTable({
+                                                "bJQueryUI": true,
+                                                "oLanguage": {
+                                                    "sProcessing": "Processando...",
+                                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                                    "sZeroRecords": "Não foram encontrados resultados",
+                                                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 registros",
+                                                    "sInfoFiltered": "",
+                                                    "sInfoPostFix": "",
+                                                    "sSearch": "Pesquisar",
+                                                    "sUrl": "",
+                                                    "oPaginate": {
+                                                        "sFirst": "Primeiro",
+                                                        "sPrevious": "Anterior",
+                                                        "sNext": "Próximo",
+                                                        "sLast": "Último"
+                                                    }
                                                 }
-                                            }
-                                        })
-                                    });
-        </script>            
+                                            })
+                                        });
+            </script>            
 
     </body>
 </html>

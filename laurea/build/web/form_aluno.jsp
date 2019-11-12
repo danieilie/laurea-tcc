@@ -32,12 +32,12 @@
                             <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO"/>
                             <c:forEach var="d" items="${dDAO.lista}">
                                 <option value="${d.iddisciplina}"
-                                    <c:if test="${d.iddisciplina==aluno.disciplina.iddisciplina}">
-                                        selected=""
-                                    </c:if> 
-                                >
-                                ${d.materia}</option>
-                            </c:forEach>
+                                        <c:if test="${d.iddisciplina==aluno.disciplina.iddisciplina}">
+                                            selected=""
+                                        </c:if> 
+                                        >
+                                    ${d.materia}</option>
+                                </c:forEach>
                         </select>    
                     </div>    
                 </div>
@@ -50,12 +50,12 @@
                             <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
                             <c:forEach var="u" items="${uDAO.lista}">
                                 <option value="${u.idusuario}"
-                                    <c:if test="${u.idusuario==aluno.usuario.idusuario}">
-                                        selected=""
-                                    </c:if> 
-                                >
+                                        <c:if test="${u.idusuario==aluno.usuario.idusuario}">
+                                            selected=""
+                                        </c:if> 
+                                        >
                                     ${u.nome}</option>
-                            </c:forEach>
+                                </c:forEach>
                         </select>    
                     </div>    
                 </div>

@@ -36,7 +36,7 @@ public class Aluno {
     public void setStatus(int status) {
         this.status = status;
     }
-    
+
     public int getIdaluno() {
         return idaluno;
     }

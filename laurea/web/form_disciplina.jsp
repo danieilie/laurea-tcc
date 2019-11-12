@@ -12,31 +12,31 @@
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>  
         <title>Cadastrar Disciplina</title>
     </head>
-   <body class="body">
+    <body class="body">
         <%@include file="menu.jsp" %>
-        
+
         <div class="div_formulario">
             <form action="gerenciar_disciplina.do" method="POST" class="form">
                 <div class="form-group ">
-                     <h2 class="titulo">Novo Disciplina</h2>
-                    
+                    <h2 class="titulo">Novo Disciplina</h2>
+
                 </div>
                 <input type="hidden" name="iddisciplina" id="iddisciplina" value="${disciplina.iddisciplina}"/>
-                
-               <div class="form-group">
-                        <label for="materia">Matéria</label>
-                        <select name="materia" required="" class="form-control">
-                            <option class="" value="" selected="">Escolha a Matéria</option>
-                            <option class="" value="portugues">Português</option>
-                            <option class="" value="quimica">Química</option>
-                            <option class="" value="matematica">Matemática</option>
-                            <option class="" value="fisica">Fisica</option>
-                            <option class="" value="italiano-basico">Italiano Básico</option>                                                        
-                            <option class="" value="ingles">Ingles</option>
-                            <option class="" value="espanhol">Espanhol</option>
-                            <option class="" value="raciocinio-logico">Raciocinio Lógico</option>
-                        </select>                                
-                     
+
+                <div class="form-group">
+                    <label for="materia">Matéria</label>
+                    <select name="materia" required="" class="form-control">
+                        <option class="" value="" selected="">Escolha a Matéria</option>
+                        <option class="" value="portugues">Português</option>
+                        <option class="" value="quimica">Química</option>
+                        <option class="" value="matematica">Matemática</option>
+                        <option class="" value="fisica">Fisica</option>
+                        <option class="" value="italiano-basico">Italiano Básico</option>                                                        
+                        <option class="" value="ingles">Ingles</option>
+                        <option class="" value="espanhol">Espanhol</option>
+                        <option class="" value="raciocinio-logico">Raciocinio Lógico</option>
+                    </select>                                
+
                 </div>       
                 <div class="form-group">
                     <button class="btn btn-primary">Gravar</button>

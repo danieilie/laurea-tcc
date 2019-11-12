@@ -6,7 +6,7 @@
     line-height: 70px;
     border-right: 1px solid #CCC;
     font-weight: bold;
-    
+
 }
 .logo img{
     max-width: 250px;
@@ -26,10 +26,10 @@
 
 .menu a{
     text-decoration: none;
-     color:#4F4F4F;    
-     text-transform: uppercase;
-     font-family: 'Lato', sans-serif;
-     font-size: 14px;
+    color:#4F4F4F;    
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
 }
 .menu a img{
     width: 18px;
@@ -40,8 +40,8 @@
     color:#204571;
 }
 .menu div{
-     padding: 6px;
-     padding-left: 20px;
+    padding: 6px;
+    padding-left: 20px;
 }
 
 .menu_item:hover{
@@ -50,7 +50,7 @@
     cursor: pointer;
 }
 .menu div{
-     border-bottom: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
 }
 .table-responsive{
     margin:0px 30px;

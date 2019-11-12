@@ -31,12 +31,12 @@
                             <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO"/>
                             <c:forEach var="d" items="${dDAO.lista}">
                                 <option value="${d.iddisciplina}"
-                                    <c:if test="${d.iddisciplina==mensalidade.disciplina.iddisciplina}">
-                                        selected=""
-                                    </c:if> 
-                                >
-                                ${d.materia}</option>
-                            </c:forEach>
+                                        <c:if test="${d.iddisciplina==mensalidade.disciplina.iddisciplina}">
+                                            selected=""
+                                        </c:if> 
+                                        >
+                                    ${d.materia}</option>
+                                </c:forEach>
                         </select>    
                     </div>    
                 </div>
@@ -49,16 +49,16 @@
                             <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
                             <c:forEach var="u" items="${uDAO.lista}">
                                 <option value="${u.idusuario}"
-                                    <c:if test="${u.idusuario==mensalidade.usuario.idusuario}">
-                                        selected=""
-                                    </c:if> 
-                                >
-                                ${u.nome}</option>
-                            </c:forEach>
+                                        <c:if test="${u.idusuario==mensalidade.usuario.idusuario}">
+                                            selected=""
+                                        </c:if> 
+                                        >
+                                    ${u.nome}</option>
+                                </c:forEach>
                         </select>    
                     </div>    
                 </div>
-                
+
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
                     <a href="listar_mensalidade.jsp" class="btn btn-warning">Voltar</a>    

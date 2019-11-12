@@ -13,13 +13,13 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
         <title>Láurea Reforço Escolar</title>        
-        <script type="text/javascript">            
-            function confirmarExclusao(idaluno, idturma , nomealuno, nometurma){
-                if(confirm('Deseja realmente desvincular o(a) aluno(a) '+nomealuno+' da turma '+nometurma+'?')){
-                    location.href='gerenciar_aluno_turma.do?' +
-                    'acao=desvincular&idaluno='+idaluno+'&idturma='+idturma;
-                }                
-            }            
+        <script type="text/javascript">
+            function confirmarExclusao(idaluno, idturma, nomealuno, nometurma) {
+                if (confirm('Deseja realmente desvincular o(a) aluno(a) ' + nomealuno + ' da turma ' + nometurma + '?')) {
+                    location.href = 'gerenciar_aluno_turma.do?' +
+                            'acao=desvincular&idaluno=' + idaluno + '&idturma=' + idturma;
+                }
+            }
         </script>
 
     </head>
@@ -68,7 +68,7 @@
                                     <i class="glyphicon glyphicon-pencil"></i>
                                 </a>                                
                                 <button class="btn btn-danger" 
-                                        onclick="confirmarExclusao(${at.aluno.idaluno}, ${at.turma.idturma},'${at.aluno.nome}', '${at.turma.nome}')" >
+                                        onclick="confirmarExclusao(${at.aluno.idaluno}, ${at.turma.idturma}, '${at.aluno.nome}', '${at.turma.nome}')" >
                                     <i class="glyphicon glyphicon-trash"></i>
                                 </button>
                             </td>
@@ -81,31 +81,31 @@
         <script type="text/javascript" src="datatables/jquery.js"></script>
         <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
         <script type="text/javascript" >
-                
-            $(document).ready(function(){
-                $("#listaAlunoTurma").dataTable({
-                    "bJQueryUI":  true,
-                    "oLanguage": {
-                        "sProcessing": "Processando ...",
-                        "sLengthMenu": "Mostrar _MENU_ registros",
-                        "sZeroRecords": "Não foram encontrados resultados",
-                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                        "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
-                        "sInfoFiltered": "",
-                        "sInfoPostFix": "",
-                        "sSearch": "Pesquisar",
-                        "sUrl": "",
-                        "oPaginate": {
-                            "sFirst" : "Primeiro",
-                            "sPrevious": "Anterior",
-                            "sNext": "Próximo",
-                            "sLast": "Último"
-                        }
-                    }
-                        
-                });
-                    
-            });
+
+                                            $(document).ready(function () {
+                                                $("#listaAlunoTurma").dataTable({
+                                                    "bJQueryUI": true,
+                                                    "oLanguage": {
+                                                        "sProcessing": "Processando ...",
+                                                        "sLengthMenu": "Mostrar _MENU_ registros",
+                                                        "sZeroRecords": "Não foram encontrados resultados",
+                                                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                        "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
+                                                        "sInfoFiltered": "",
+                                                        "sInfoPostFix": "",
+                                                        "sSearch": "Pesquisar",
+                                                        "sUrl": "",
+                                                        "oPaginate": {
+                                                            "sFirst": "Primeiro",
+                                                            "sPrevious": "Anterior",
+                                                            "sNext": "Próximo",
+                                                            "sLast": "Último"
+                                                        }
+                                                    }
+
+                                                });
+
+                                            });
         </script>
     </body>
 </html>

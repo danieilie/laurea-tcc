@@ -21,7 +21,7 @@ public class AlunoTurma {
 
     @Override
     public String toString() {
-        return getFrequencia() +getData() ;
+        return getFrequencia() + getData();
     }
 
     public Date getData() {

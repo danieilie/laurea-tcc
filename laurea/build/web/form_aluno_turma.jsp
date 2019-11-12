@@ -16,12 +16,12 @@
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
             <h3>Novo AlunoTurma</h3>
-            
+
             <form action="gerenciar_aluno_turma.do" method="POST">                
                 <c:if test="${alunoturma.turma.idturma != null}">
                     <input type="hidden" id="idturma" name="idturma" value="${alunoturma.turma.idturma}"/>
                     <input type="hidden" id="idaluno" name="idaluno" value="${alunoturma.aluno.idaluno}"/>
-                    
+
                     <div class="row">
                         <div class="form-group col-sm-8">
                             <label> Nome da Turma </label><br/>${alunoturma.turma.nome}                        
@@ -35,32 +35,32 @@
                     </div>
                     <br/>
                     <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="frequencia"> Frequência </label>
-                        <select name="frequencia" required="" class="form-control">
-                            <c:if test="${alunoturma.frequencia=='--'}">
-                                <option value="--" selected="" > -- </option>
-                                <option value="P"> P </option>
-                                <option value="F"> F </option>
-                                <option value="FJ"> FJ </option>
-                            </c:if>
-                            <c:if test="${alunoturma.frequencia=='P'}">
-                                <option value="P" selected="" > P </option>
-                                <option value="F"> F </option>
-                                <option value="FJ"> FJ </option>
-                            </c:if>
-                            <c:if test="${alunoturma.frequencia=='F'}">
-                                <option value="P"> P </option>
-                                <option value="F" selected="" > F </option>
-                                <option value="FJ"> FJ </option>
-                            </c:if>
-                            <c:if test="${alunoturma.frequencia=='FJ'}">
-                                <option value="P"> P </option>
-                                <option value="F"> F </option>
-                                <option value="FJ" selected="" > FJ </option>
-                            </c:if>                                
-                        </select>    
-                    </div>    
+                        <div class="form-group col-sm-8">
+                            <label for="frequencia"> Frequência </label>
+                            <select name="frequencia" required="" class="form-control">
+                                <c:if test="${alunoturma.frequencia=='--'}">
+                                    <option value="--" selected="" > -- </option>
+                                    <option value="P"> P </option>
+                                    <option value="F"> F </option>
+                                    <option value="FJ"> FJ </option>
+                                </c:if>
+                                <c:if test="${alunoturma.frequencia=='P'}">
+                                    <option value="P" selected="" > P </option>
+                                    <option value="F"> F </option>
+                                    <option value="FJ"> FJ </option>
+                                </c:if>
+                                <c:if test="${alunoturma.frequencia=='F'}">
+                                    <option value="P"> P </option>
+                                    <option value="F" selected="" > F </option>
+                                    <option value="FJ"> FJ </option>
+                                </c:if>
+                                <c:if test="${alunoturma.frequencia=='FJ'}">
+                                    <option value="P"> P </option>
+                                    <option value="F"> F </option>
+                                    <option value="FJ" selected="" > FJ </option>
+                                </c:if>                                
+                            </select>    
+                        </div>    
                     </div>                    
                     <div class="row">
                         <div class="form-group col-sm-8">
@@ -74,10 +74,10 @@
                         <div class="form-group col-sm-8">
                             <label for="idaluno"> Nome do Aluno </label>
                             <select name="idaluno" required="" class="form-control">
-                                  <option value="">Selecine a opção</option>
-                                  <c:forEach var="a" items="${aDAO.lista}">
-                                      <option value="${a.idaluno}" > ${a.nome} </option>
-                                  </c:forEach>
+                                <option value="">Selecine a opção</option>
+                                <c:forEach var="a" items="${aDAO.lista}">
+                                    <option value="${a.idaluno}" > ${a.nome} </option>
+                                </c:forEach>
                             </select>    
                         </div>    
                     </div>                    
@@ -85,25 +85,25 @@
                         <div class="form-group col-sm-8">
                             <label for="idturma"> Nome da Turma </label>
                             <select name="idturma" required="" class="form-control">
-                                  <option value=""> Selecine a opção </option>
-                                  <c:forEach var="t" items="${tDAO.lista}">
-                                      <option value="${t.idturma}"> ${t.nome} </option>
-                                  </c:forEach>
+                                <option value=""> Selecine a opção </option>
+                                <c:forEach var="t" items="${tDAO.lista}">
+                                    <option value="${t.idturma}"> ${t.nome} </option>
+                                </c:forEach>
                             </select>    
                         </div>    
                     </div>                 
                     <br/>                
                     <input type="hidden" id="data" name="data" value="2020-01-01"/>                    
                     <div class="row">
-                            <div class="form-group col-sm-8">
-                                <label> Data </label><br/>    01-01-2020
-                            </div>
+                        <div class="form-group col-sm-8">
+                            <label> Data </label><br/>    01-01-2020
+                        </div>
                     </div>
                     <input type="hidden" id="frequencia" name="frequencia" value="--"/>                
                     <div class="row">
-                            <div class="form-group col-sm-8">
-                                <label> Frequência </label><br/>    --
-                            </div>
+                        <div class="form-group col-sm-8">
+                            <label> Frequência </label><br/>    --
+                        </div>
                     </div>                    
                 </c:if>
                 <div class="row">

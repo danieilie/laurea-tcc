@@ -24,93 +24,93 @@
         </script>
 
     </head>
-     <body class="body">
-  <%@include file="menu.jsp" %>
-         <div class="row">
+    <body class="body">
+        <%@include file="menu.jsp" %>
+        <div class="row">
             <a href="form_aluno.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Cadastrar Aluno </div></a>
-         </div>
-        
+        </div>
+
         <div class="row  justify-content-center" id="listagem">
-       
+
             <div class="table-responsive">
-            <table class="table table-hover table-sm table-striped" id="listaAluno">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Nome</th>
-                        <th>Data de Nascimento</th>
-                        <th>CPF</th>
-                        <th>RG</th>
-                        <th>Status</th>
-                        <th>Nome do Responsável</th>
-                        <th>Nome de Usuário</th>
-                        <th style="text-align: center;">Editar</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Nome</th>
-                        <th>Data de Nascimento</th>
-                        <th>CPF</th>
-                        <th>RG</th>
-                        <th>Status</th>
-                        <th>Nome do Responsável</th>
-                        <th>Nome de Usuário</th>
-                        <th style="text-align: center;">Editar</th>
-                    </tr>
-                </tfoot>
-
-                <jsp:useBean class="DAO.AlunoDAO" id="aDAO" />
-                <tbody>
-                    <c:forEach var="a" items="${aDAO.lista}">
+                <table class="table table-hover table-sm table-striped" id="listaAluno">
+                    <thead>
                         <tr>
-                            <td style="text-align: center;">${a.idaluno}</td>
-                            <td>${a.nome}</td>
-                            <td>${a.datanasc}</td>
-                            <td>${a.cpf}</td>
-                            <td>${a.rg}</td>
-                            <td>${a.status}</td>
-                            <td>${a.responsavel.nome}</td>
-                            <td>${a.usuario.nome}</td>
-                            <td style="text-align: center;">
-                                <a class="icone_lista" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
-                                    <img src="assets/img/lista/editar.png">
-                            </td>
+                            <th style="text-align: center;">ID</th>
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>CPF</th>
+                            <th>RG</th>
+                            <th>Status</th>
+                            <th>Nome do Responsável</th>
+                            <th>Nome de Usuário</th>
+                            <th style="text-align: center;">Editar</th>
                         </tr>
-                    </c:forEach>                    
-                </tbody>    
-            </table>    
-        </div>
-        </div>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>CPF</th>
+                            <th>RG</th>
+                            <th>Status</th>
+                            <th>Nome do Responsável</th>
+                            <th>Nome de Usuário</th>
+                            <th style="text-align: center;">Editar</th>
+                        </tr>
+                    </tfoot>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" >
-                                    $(document).ready(function () {
-                                        $("#listaAluno").dataTable({
-                                            "bJQueryUI": true,
-                                            "oLanguage": {
-                                                "sProcessing": "Processando ...",
-                                                "sLengthMenu": "Mostrar _MENU_ registros",
-                                                "sZeroRecords": "Não foram encontrados resultados",
-                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
-                                                "sInfoFiltered": "",
-                                                "sInfoPostFix": "",
-                                                "sSearch": "Pesquisar",
-                                                "sUrl": "",
-                                                "oPaginate": {
-                                                    "sFirst": "Primeiro",
-                                                    "sPrevious": "Anterior",
-                                                    "sNext": "Próximo",
-                                                    "sLast": "Último"
-                                                }
-                                            }
+                    <jsp:useBean class="DAO.AlunoDAO" id="aDAO" />
+                    <tbody>
+                        <c:forEach var="a" items="${aDAO.lista}">
+                            <tr>
+                                <td style="text-align: center;">${a.idaluno}</td>
+                                <td>${a.nome}</td>
+                                <td>${a.datanasc}</td>
+                                <td>${a.cpf}</td>
+                                <td>${a.rg}</td>
+                                <td>${a.status}</td>
+                                <td>${a.responsavel.nome}</td>
+                                <td>${a.usuario.nome}</td>
+                                <td style="text-align: center;">
+                                    <a class="icone_lista" href="gerenciar_aluno.do?acao=alterar&idaluno=${p.idaluno}">
+                                        <img src="assets/img/lista/editar.png">
+                                        </td>
+                                        </tr>
+                                    </c:forEach>                    
+                                    </tbody>    
+                                    </table>    
+                                    </div>
+                                    </div>
 
-                                        });
+                                    <script type="text/javascript" src="datatables/jquery.js"></script>
+                                    <script type="text/javascript" src="datatables/jquery.dataTables.min.js"></script>
+                                    <script type="text/javascript" >
+            $(document).ready(function () {
+                $("#listaAluno").dataTable({
+                    "bJQueryUI": true,
+                    "oLanguage": {
+                        "sProcessing": "Processando ...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "Não foram encontrados resultados",
+                        "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
+                        "sInfoFiltered": "",
+                        "sInfoPostFix": "",
+                        "sSearch": "Pesquisar",
+                        "sUrl": "",
+                        "oPaginate": {
+                            "sFirst": "Primeiro",
+                            "sPrevious": "Anterior",
+                            "sNext": "Próximo",
+                            "sLast": "Último"
+                        }
+                    }
 
-                                    });
-        </script>
-    </body>
-</html>
+                });
+
+            });
+                                    </script>
+                                    </body>
+                                    </html>

@@ -15,10 +15,10 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public ArrayList<AlunoTurma> getLista() throws Exception {
-        
+
         ArrayList<AlunoTurma> lista = new ArrayList<AlunoTurma>();
         String sql = "SELECT ati.*, a.aluno FROM aluno_turma ati "
-                    + "INNER JOIN aluno a ON ati.idaluno = a.idaluno ";
+                + "INNER JOIN aluno a ON ati.idaluno = a.idaluno ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
@@ -29,7 +29,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
             AlunoTurma at = new AlunoTurma();
             at.setData(rs.getDate("at.data"));
             at.setFrequencia(rs.getString("ati.frequencia"));
-            TurmaDAO tDAO= new TurmaDAO();
+            TurmaDAO tDAO = new TurmaDAO();
             at.setTurma(tDAO.getCarregaPorId(rs.getInt("ati.idturma")));
             at.setAluno(a);
             lista.add(at);
@@ -39,7 +39,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
 
     }
 
-    public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {        
+    public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {
         String sql = "SELECT ati.*, a.aluno, t.turma FROM aluno_turma ati "
                 + "INNER JOIN aluno a ON ati.idaluno = a.idaluno "
                 + "INNER JOIN turma t ON ati.idturma = t.idturma ";
@@ -55,7 +55,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
             Aluno a = new Aluno();
             a.setIdaluno(rs.getInt("ati.idaluno"));
             a.setNome(rs.getString("a.nome"));
-            Turma t = new Turma();            
+            Turma t = new Turma();
             t.setIdturma(rs.getInt("ati.idturma"));
             t.setNome(rs.getString("t.nome"));
             ati.setTurma(t);
@@ -100,7 +100,7 @@ public class AlunoTurmaDAO extends DataBaseDAO {
             return false;
         }
     }
-    
+
     public boolean fazerChamada(String data, String frequencia, int idaluno, int idturma) {
         try {
             String sql = "UPDATE aluno_turma SET data=?, frequencia=? WHERE idaluno=? AND idturma=?";
@@ -118,5 +118,5 @@ public class AlunoTurmaDAO extends DataBaseDAO {
             return false;
         }
     }
-    
+
 }

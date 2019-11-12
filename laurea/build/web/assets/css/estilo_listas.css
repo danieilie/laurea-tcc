@@ -2,13 +2,13 @@
     background-color: #F5F7F8;
 }
 #listagem{
-     font-family: 'Lato', sans-serif;
-      
+    font-family: 'Lato', sans-serif;
+
 }
 
 .table{
-    
-     box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+
+    box-shadow: 2px 2px 4px rgba(0,0,0,.3);
 }
 th{
     font-size: 12px;
@@ -34,8 +34,8 @@ table thead{
     border: 2px solid  #2F80ED;
     margin: 30px;
     padding: 10px;
-     border-radius: 5px;
-    
+    border-radius: 5px;
+
 }
 #btn_cadastrar:hover{
     background: #2F80ED;
@@ -50,5 +50,5 @@ table thead{
     border-style: none;
 }
 .icone_lista:hover{
-    
+
 }

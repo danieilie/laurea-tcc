@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package util;
+
 import java.io.File;
 import java.util.AbstractList;
 import java.util.ArrayList;
- import java.util.Date;
+import java.util.Date;
 import java.util.HashMap;
- import java.util.Iterator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContext;
@@ -23,25 +24,23 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * @author marcelosiedler
  */
 public class Upload {
-   private String folderUpload;
-   private List<String> files;
-   Map<String,String> form ;
 
+    private String folderUpload;
+    private List<String> files;
+    Map<String, String> form;
 
     public List<String> getFiles() {
         return files;
     }
-   
+
     public Map getForm() {
         return form;
     }
-    
-   
-   public Upload()
-   {
-       this.folderUpload = "upload";
-       files = new ArrayList<String>();
-   }
+
+    public Upload() {
+        this.folderUpload = "upload";
+        files = new ArrayList<String>();
+    }
 
     public String getFolderUpload() {
         return folderUpload;
@@ -50,15 +49,15 @@ public class Upload {
     public void setFolderUpload(String folderUpload) {
         this.folderUpload = folderUpload;
     }
-   
+
     public boolean formProcess(ServletContext sc, HttpServletRequest request) {
-        this.form = new HashMap<String,String>();
+        this.form = new HashMap<String, String>();
         Map<String, String> itemForm;
-        
+
         File file;
         int maxFileSize = 5000 * 1024;
         int maxMemSize = 5000 * 1024;
-        String filePath = sc.getRealPath("//"+this.folderUpload);
+        String filePath = sc.getRealPath("//" + this.folderUpload);
         boolean ret;
         String contentType = request.getContentType();
         if ((contentType.indexOf("multipart/form-data") >= 0)) {
@@ -71,7 +70,7 @@ public class Upload {
             try {
                 List fileItems = upload.parseRequest(request);
                 Iterator i = fileItems.iterator();
-                
+
                 while (i.hasNext()) {
                     FileItem fi = (FileItem) i.next();
                     if (!fi.isFormField()) {
@@ -81,27 +80,25 @@ public class Upload {
                             boolean isInMemory = fi.isInMemory();
                             long sizeInBytes = fi.getSize();
                             String name = new Date().getTime() + fileName;
-                            
+
                             file = new File(filePath + "/" + name);
                             fi.write(file);
                             files.add(name);
                         }
-                    }
-                    else
-                    {
-                         
-                         form.put(fi.getFieldName(), fi.getString());
-                        
+                    } else {
+
+                        form.put(fi.getFieldName(), fi.getString());
+
                     }
                 }
                 ret = true;
-               
+
             } catch (Exception ex) {
                 System.out.println(ex);
                 ret = false;
             }
         } else {
-           ret = false;
+            ret = false;
         }
         return ret;
     }

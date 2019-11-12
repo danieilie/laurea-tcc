@@ -21,12 +21,12 @@
                     <label for="nome">Nome *</label>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="" maxlength="45" value="${responsavel.nome}" />
                 </div>
-                
+
                 <div class="form-group">
                     <label for="nome">CPF *</label>
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required="" maxlength="14" value="${responsavel.cpf}" />
                 </div>
-                
+
                 <div class="form-group">
                     <label for="nome">RG *</label>
                     <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" required="" maxlength="13" value="${responsavel.rg}" />

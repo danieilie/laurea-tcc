@@ -286,7 +286,7 @@ font-family: 'Pontano Sans', sans-serif;*/
 
 #depoimentos{
     background-color: #7DB0D7;
-   
+
     font-family: 'Port Lligat Sans', sans-serif;
 }
 #depoimentos .tag{
@@ -326,7 +326,7 @@ font-family: 'Pontano Sans', sans-serif;*/
     height: 100px;
 }
 .redes_sociais ul{
-  height: 60px;  
+    height: 60px;  
 }
 .redes_sociais ul li{
     display: inline;
@@ -352,7 +352,7 @@ font-family: 'Pontano Sans', sans-serif;*/
 .copy .container{
     margin: 0 auto;
     text-align: center;
-    
+
 }
 
 
@@ -438,11 +438,11 @@ font-family: 'Pontano Sans', sans-serif;*/
     right: 25px;
     display: none;
     background-color:rgba(63,126,254,.9);
-position: fixed;
-bottom: 25px;
-right: 25px;
-display: none;
-background-color:rgba(63,126,254,.9);
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+    background-color:rgba(63,126,254,.9);
 }
 .back-to-top img{
     width:30px;

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Mensalidade {
 
     private int idmensalidade, status;
-    private Date datav, datap; 
+    private Date datav, datap;
     private double valor, multa, desconto;
 
     public Mensalidade() {
@@ -60,7 +60,7 @@ public class Mensalidade {
     public void setDesconto(double desconto) {
         this.desconto = desconto;
     }
-    
+
     public Date getDatav() {
         return datav;
     }

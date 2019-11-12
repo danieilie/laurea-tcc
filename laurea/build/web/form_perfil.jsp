@@ -9,25 +9,25 @@
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link rel="shortcut icon" href="assets/img/logo/logo_menu.png"/>  
-         <title>Cadastrar Perfil</title>
+        <title>Cadastrar Perfil</title>
     </head>
     <body>
-        <body class="body">
+    <body class="body">
         <%@include file="menu.jsp" %>
         <div class="div_formulario">
             <form action="gerenciar_perfil.do" method="POST" class="form">
                 <div class="form-group ">
-                     <h2 class="titulo">Novo Perfil</h2>
-                    
+                    <h2 class="titulo">Novo Perfil</h2>
+
                 </div>
                 <input type="hidden" name="idperfil" id="idperfil" value="${perfil.idperfil}"/>
                 <div class="form-group">
-                    
-                        <label for="perfil">Perfil</label>
-                        <input type="text" class="form-control" id="perfil" name="perfil" required="" maxlength="45" value="${perfil.perfil}"/>
-                   
+
+                    <label for="perfil">Perfil</label>
+                    <input type="text" class="form-control" id="perfil" name="perfil" required="" maxlength="45" value="${perfil.perfil}"/>
+
                 </div>    
-                 <div class="form-group">
+                <div class="form-group">
                     <button class="btn btn-primary">Gravar</button>
                     <a href="listar_perfil.jsp" class="btn btn-outline-dark">Voltar</a>    
                 </div>    

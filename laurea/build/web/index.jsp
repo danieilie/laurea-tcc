@@ -236,31 +236,31 @@
         </section>
         <section id="depoimentos" class="container-fluid m-p" data-anime="600">
             <div class="container">
-                 <div class="tag">DEPOIMENTOS</div> 
+                <div class="tag">DEPOIMENTOS</div> 
                 <div class="row">
                     <div class="col">
                         <div class="card_depoimento"> 
-                                <img src="assets/img/depoimentos/julia.png" class="float-left">
-                                <h4 class="float-left">Júlia Vaz</h4>
-                                <div class="float-left card_depoimento_text">&ldquo;Totalmente satisfeita! Nunca pensei que pagando um valor tão acessível eu aprenderia tanto em um período de tempo tão curto.&rdquo;</div>
+                            <img src="assets/img/depoimentos/julia.png" class="float-left">
+                            <h4 class="float-left">Júlia Vaz</h4>
+                            <div class="float-left card_depoimento_text">&ldquo;Totalmente satisfeita! Nunca pensei que pagando um valor tão acessível eu aprenderia tanto em um período de tempo tão curto.&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
-                       <div class="card_depoimento">                         
-                           <img src="assets/img/depoimentos/daniele.png" class="float-left">
-                                <h4 class="float-left">Daniele Silva</h4>
-                                <div class="float-left card_depoimento_text">&ldquo;Paulo Henrique sem dúvida é um professor prestativo muito atencioso suporte rápido.&rdquo;</div>
+                        <div class="card_depoimento">                         
+                            <img src="assets/img/depoimentos/daniele.png" class="float-left">
+                            <h4 class="float-left">Daniele Silva</h4>
+                            <div class="float-left card_depoimento_text">&ldquo;Paulo Henrique sem dúvida é um professor prestativo muito atencioso suporte rápido.&rdquo;</div>
                         </div>
                     </div>
                     <div class="col">
-                         <div class="card_depoimento"> 
-                             <img src="assets/img/depoimentos/marcos.png" class="float-left">
-                                <h4 class="float-left">Marcos Felipe</h4>
-                                 <div class="float-left card_depoimento_text">&ldquo;Estou fazendo o curso e estou adorando a didática simples porém muito completa, é bem explicada passo a passo.&rdquo;</div>
+                        <div class="card_depoimento"> 
+                            <img src="assets/img/depoimentos/marcos.png" class="float-left">
+                            <h4 class="float-left">Marcos Felipe</h4>
+                            <div class="float-left card_depoimento_text">&ldquo;Estou fazendo o curso e estou adorando a didática simples porém muito completa, é bem explicada passo a passo.&rdquo;</div>
                         </div>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
         </section>
@@ -294,7 +294,7 @@
 
         <!-- Slide deve ser colado em toda pagina de HTML  -->
         <script type="text/javascript" src="assets/js/simple-slide.js"></script>
-        
+
 
         <!-- Jquery 3.4.1 e bootstrap -->
         <script type="text/javascript" src="assets/js/jquery.js"></script>
@@ -314,7 +314,7 @@
                             $('#back-to-top').fadeOut();
                         }
                     });
-                    
+
                     // scroll body to 0px on click
                     $('#back-to-top').click(function () {
                         $('body,html').animate({

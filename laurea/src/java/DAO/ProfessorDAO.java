@@ -107,7 +107,6 @@ public class ProfessorDAO extends DataBaseDAO {
 //        this.desconectar();
 //        return p;
 //    }
-
     public boolean desativar(Professor p) {
         try {
             this.conectar();
@@ -158,7 +157,7 @@ public class ProfessorDAO extends DataBaseDAO {
     public ArrayList<Disciplina> disciplinaVinculadaPorProfessor(int idprofessor) throws Exception {
         ArrayList<Disciplina> lista = new ArrayList<Disciplina>();
         String sql = "SELECT p.* FROM professor_disciplina as pd, professor as p "
-                    + "WHERE pd.idprofessor = p.idprofessor AND pd.iddisciplina=? ";
+                + "WHERE pd.idprofessor = p.idprofessor AND pd.iddisciplina=? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idprofessor);
@@ -173,13 +172,13 @@ public class ProfessorDAO extends DataBaseDAO {
         return lista;
     }
 
-public ArrayList<Disciplina> disciplinaNaoVinculadaPorProfessor(int idprofessor) throws Exception {
+    public ArrayList<Disciplina> disciplinaNaoVinculadaPorProfessor(int idprofessor) throws Exception {
         ArrayList<Disciplina> lista = new ArrayList<Disciplina>();
         String sql = "SELECT p.* FROM professor as p WHERE p.idprofessor "
-                    + "NOT IN (SELECT pd.idprofessor FROM professor_disciplina as pd WHERE pd.iddisciplina=? ) ";
+                + "NOT IN (SELECT pd.idprofessor FROM professor_disciplina as pd WHERE pd.iddisciplina=? ) ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, idprofessor); 
+        pstm.setInt(1, idprofessor);
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {
             Disciplina d = new Disciplina();

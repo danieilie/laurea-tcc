@@ -105,7 +105,6 @@ public class Contrato {
         this.aluno = aluno;
     }
 
-    
     public ArrayList<Mensalidade> getMensalidade() {
         return mensalidade;
     }

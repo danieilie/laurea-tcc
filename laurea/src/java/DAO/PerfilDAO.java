@@ -88,7 +88,7 @@ public class PerfilDAO extends DataBaseDAO {
             return false;
         }
     }
-    
+
     public boolean vincular(int idmenu, int idperfil) {
 
         try {
@@ -110,7 +110,7 @@ public class PerfilDAO extends DataBaseDAO {
 
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu_perfil as mp, menu as m "
-                    + "WHERE mp.idmenu = m.idmenu AND mp.idperfil = ? ";
+                + "WHERE mp.idmenu = m.idmenu AND mp.idperfil = ? ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idperfil);

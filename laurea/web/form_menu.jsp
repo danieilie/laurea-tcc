@@ -14,50 +14,50 @@
     </head>
     <body class="body">
         <%@include file="menu.jsp" %>
-        
+
         <div class="div_formulario">
 
             <form action="gerenciar_menu.do" method="POST" class="form">
                 <div class="form-group ">
                     <h2 class="titulo">Novo Menu</h2>
-                     <div class="campo_obrigatorio">* campos de preenchimento obrigatório</div>
+                    <div class="campo_obrigatorio">* campos de preenchimento obrigatório</div>
                 </div>
                 <input type="hidden" name="idmenu" id="idmenu" value="${menu.idmenu}"/>
                 <div class="form-group ">
-                  
-                        <label for="menu">Menu*</label>
-                        <input type="text" class="form-control" id="menu" name="menu" required="" maxlength="45" value="${menu.menu}"/>
-                    
+
+                    <label for="menu">Menu*</label>
+                    <input type="text" class="form-control" id="menu" name="menu" required="" maxlength="45" value="${menu.menu}"/>
+
                 </div>    
-                 <div class="form-group ">
-                
-                        <label for="link">Link*</label>
-                        <input type="text" class="form-control" id="link" name="link" required="" maxlength="45" value="${menu.link}"/>
-                  
+                <div class="form-group ">
+
+                    <label for="link">Link*</label>
+                    <input type="text" class="form-control" id="link" name="link" required="" maxlength="45" value="${menu.link}"/>
+
                 </div>   
-                 <div class="form-group ">
-                        <label for="icone">Icone</label>
-                        <input type="text" class="form-control" id="icone" name="icone" maxlength="45" value="${menu.icone}"/>
-                
+                <div class="form-group ">
+                    <label for="icone">Icone</label>
+                    <input type="text" class="form-control" id="icone" name="icone" maxlength="45" value="${menu.icone}"/>
+
                 </div> 
-               <div class="form-group ">
-                        <label for="exibir">Exibir*</label>
-                        <select name="exibir" required="" class="form-control">
-                            <c:if test="${menu.exibir==null}">
-                                <option value="0">Selecine a opção</option>
-                                <option value="1">Sim</option>
-                                <option value="2">Não</option>
-                            </c:if>
-                            <c:if test="${menu.exibir==1}">
-                                <option value="1" selected="">Sim</option>
-                                <option value="2">Não</option>
-                            </c:if>
-                            <c:if test="${menu.exibir==2}">
-                                <option value="1">Sim</option>
-                                <option value="2" selected="">Não</option>
-                            </c:if>
-                        </select>    
-              
+                <div class="form-group ">
+                    <label for="exibir">Exibir*</label>
+                    <select name="exibir" required="" class="form-control">
+                        <c:if test="${menu.exibir==null}">
+                            <option value="0">Selecine a opção</option>
+                            <option value="1">Sim</option>
+                            <option value="2">Não</option>
+                        </c:if>
+                        <c:if test="${menu.exibir==1}">
+                            <option value="1" selected="">Sim</option>
+                            <option value="2">Não</option>
+                        </c:if>
+                        <c:if test="${menu.exibir==2}">
+                            <option value="1">Sim</option>
+                            <option value="2" selected="">Não</option>
+                        </c:if>
+                    </select>    
+
                 </div>    
                 <div class="form-group ">
                     <button class="btn btn-primary">Gravar</button>

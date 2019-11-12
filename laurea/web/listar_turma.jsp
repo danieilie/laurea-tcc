@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
-         <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/estilo_listas.css">
         <link rel="stylesheet" href="datatables/jquery.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
@@ -25,86 +25,86 @@
         </script>
 
     </head>
-     <body class="body">
-       <%@include file="menu.jsp" %>
-         <div class="row">
+    <body class="body">
+        <%@include file="menu.jsp" %>
+        <div class="row">
             <a href="form_turma.jsp" class="" > <div class="float-left" id="btn_cadastrar"> Novo turma </div></a>
-         </div>
-        
-        <div class="row  justify-content-center" id="listagem">
-       
-            <div class="table-responsive">
-            <table class="table table-hover table-sm table-striped" id="listaTurma">
-                <thead>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Nome da Turma</th>
-                        <th>Professor</th>
-                        <th style="text-align: center;">Editar</th>
-                        <th style="text-align: center;">Excluir</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th style="text-align: center;">ID</th>
-                        <th>Nome da Turma</th>
-                        <th>Professor</th>
-                        <th style="text-align: center;">Editar</th>
-                        <th style="text-align: center;">Excluir</th>
-                    </tr>
-                </tfoot>
-
-                <jsp:useBean class="DAO.TurmaDAO" id="tDAO" />
-                <tbody>
-                    <c:forEach var="t" items="${tDAO.lista}">
-                        <tr>
-                            <td style="text-align: center;">${t.idturma}</td>
-                            <td>${t.nome}</td>
-                            <td>${t.professor}</td>
-                            <td>${p.nome}</td>
-                            <td style="text-align: center;">
-                                <a class="icone_lista" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
-                                   <img src="assets/img/lista/editar.png">
-                                </a>
-                            </td>
-                            <td style="text-align: center;">
-                                <button class="deletar icone_lista" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
-                                    <img src="assets/img/lista/deletar.png">
-                                </button>    
-                            </td>
-                        </tr>
-                    </c:forEach>                    
-                </tbody>    
-            </table>    
         </div>
 
-        <script type="text/javascript" src="datatables/jquery.js"></script>
-        <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
-        <script type="text/javascript">
-                                    $(document).ready(function () {
-                                        $("#listaTurma").dataTable({
-                                            "bJQueryUI": true,
-                                            "oLanguage": {
-                                                "sProcessing": "Processando ...",
-                                                "sLengthMenu": "Mostrar _MENU_ registros",
-                                                "sZeroRecords": "Não foram encontrados resultados",
-                                                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                                                "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
-                                                "sInfoFiltered": "",
-                                                "sInfoPostFix": "",
-                                                "sSearch": "Pesquisar",
-                                                "sUrl": "",
-                                                "oPaginate": {
-                                                    "sFirst": "Primeiro",
-                                                    "sPrevious": "Anterior",
-                                                    "sNext": "Próximo",
-                                                    "sLast": "Último"
+        <div class="row  justify-content-center" id="listagem">
+
+            <div class="table-responsive">
+                <table class="table table-hover table-sm table-striped" id="listaTurma">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Nome da Turma</th>
+                            <th>Professor</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th style="text-align: center;">ID</th>
+                            <th>Nome da Turma</th>
+                            <th>Professor</th>
+                            <th style="text-align: center;">Editar</th>
+                            <th style="text-align: center;">Excluir</th>
+                        </tr>
+                    </tfoot>
+
+                    <jsp:useBean class="DAO.TurmaDAO" id="tDAO" />
+                    <tbody>
+                        <c:forEach var="t" items="${tDAO.lista}">
+                            <tr>
+                                <td style="text-align: center;">${t.idturma}</td>
+                                <td>${t.nome}</td>
+                                <td>${t.professor}</td>
+                                <td>${p.nome}</td>
+                                <td style="text-align: center;">
+                                    <a class="icone_lista" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
+                                        <img src="assets/img/lista/editar.png">
+                                    </a>
+                                </td>
+                                <td style="text-align: center;">
+                                    <button class="deletar icone_lista" onclick="confirmarExclusao(${t.idturma}, '${t.nome}')" >
+                                        <img src="assets/img/lista/deletar.png">
+                                    </button>    
+                                </td>
+                            </tr>
+                        </c:forEach>                    
+                    </tbody>    
+                </table>    
+            </div>
+
+            <script type="text/javascript" src="datatables/jquery.js"></script>
+            <script type="text/javascript" src="datatables/jquery.dataTables.min.js" ></script>
+            <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $("#listaTurma").dataTable({
+                                                "bJQueryUI": true,
+                                                "oLanguage": {
+                                                    "sProcessing": "Processando ...",
+                                                    "sLengthMenu": "Mostrar _MENU_ registros",
+                                                    "sZeroRecords": "Não foram encontrados resultados",
+                                                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                                                    "sInfoEmpty": "Mostrando de 0 até 0 de 0 resgistros",
+                                                    "sInfoFiltered": "",
+                                                    "sInfoPostFix": "",
+                                                    "sSearch": "Pesquisar",
+                                                    "sUrl": "",
+                                                    "oPaginate": {
+                                                        "sFirst": "Primeiro",
+                                                        "sPrevious": "Anterior",
+                                                        "sNext": "Próximo",
+                                                        "sLast": "Último"
+                                                    }
                                                 }
-                                            }
+
+                                            });
 
                                         });
-
-                                    });
-        </script>
+            </script>
     </body>
 </html>
