@@ -61,7 +61,6 @@
                                 <td style="text-align: center;">${t.idturma}</td>
                                 <td>${t.nome}</td>
                                 <td>${t.professor}</td>
-                                <td>${p.nome}</td>
                                 <td style="text-align: center;">
                                     <a class="icone_lista" href="gerenciar_turma.do?acao=alterar&idturma=${t.idturma}">
                                         <img src="assets/img/lista/editar.png">
