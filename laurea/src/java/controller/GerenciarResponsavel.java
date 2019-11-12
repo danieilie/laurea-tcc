@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Responsavel;
 import DAO.ResponsavelDAO;
+import java.text.SimpleDateFormat;
 import model.Usuario;
 
 public class GerenciarResponsavel extends HttpServlet {
@@ -40,7 +40,7 @@ public class GerenciarResponsavel extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            
+
             if (acao.equals("gravar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     r.setIdresponsavel(idresponsavel);
@@ -55,20 +55,20 @@ public class GerenciarResponsavel extends HttpServlet {
 
             }
 
-            if(acao.equals("desativar")){
-              if(GerenciarLogin.verificarPermissao(request, response)){    
-                r.setIdresponsavel(idresponsavel);
-                if(rDAO.desativar(r)){
-                    mensagem = "Excluído com sucesso!";
-                }else{
-                    mensagem = "Erro ao excluir!";
+            if (acao.equals("desativar")) {
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    r.setIdresponsavel(idresponsavel);
+                    if (rDAO.desativar(r)) {
+                        mensagem = "Excluído com sucesso!";
+                    } else {
+                        mensagem = "Erro ao excluir!";
+                    }
+                } else {
+                    mensagem = "Acesso negado";
                 }
-              }else{
-                  mensagem ="Acesso negado";
-              }  
-            
+
             }
-            
+
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";
@@ -94,12 +94,14 @@ public class GerenciarResponsavel extends HttpServlet {
         String mensagem = "";
 
         Responsavel r = new Responsavel();
+//        SimpleDateFormat cpf = new SimpleDateFormat("###.###.###-##");
+//        Form
         if (!idresponsavel.isEmpty()) {
             r.setIdresponsavel(Integer.parseInt(idresponsavel));
         }
         try {
             ResponsavelDAO rDAO = new ResponsavelDAO();
-            if (nome.equals("") || cpf.equals("") || status.equals("") ||idusuario.equals("")) {
+            if (nome.equals("") || cpf.equals("") || status.equals("") || idusuario.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 r.setNome(nome);

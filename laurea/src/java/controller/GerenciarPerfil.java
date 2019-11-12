@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -12,7 +11,7 @@ import model.Perfil;
 import DAO.PerfilDAO;
 
 public class GerenciarPerfil extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,12 +36,12 @@ public class GerenciarPerfil extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            if (acao.equals("desativar")) {
+            if (acao.equals("desvincular")) {
                 p.setIdperfil(idperfil);
-                if (pDAO.desativar(1, idperfil)) {
-                    mensagem = "Excluído com sucesso!";
+                if (pDAO.desvincular(1, idperfil)) {
+                    mensagem = "Desvinculado com sucesso!";
                 } else {
-                    mensagem = "Erro ao excluir!";
+                    mensagem = "Erro ao desvincular!";
                 }
 
             }

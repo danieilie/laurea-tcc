@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -22,8 +21,8 @@ public class GerenciarTurma extends HttpServlet {
         int idturma = Integer.parseInt(request.getParameter("idturma"));
         String acao = request.getParameter("acao");
         String mensagem = "";
-        Turma t = new Turma();
         try {
+            Turma t = new Turma();
             TurmaDAO tDAO = new TurmaDAO();
             if (acao.equals("alterar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
@@ -79,14 +78,14 @@ public class GerenciarTurma extends HttpServlet {
             t.setIdturma(Integer.parseInt(idturma));
         }
         try {
-            TurmaDAO tDAO = new TurmaDAO();
-            if (nome.equals("") || idprofessor.equals("")) {
+            if (nome.equals("") || nome.isEmpty() || idprofessor.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser preenchidos";
             } else {
                 t.setNome(nome);
                 Professor p = new Professor();
                 p.setIdprofessor(Integer.parseInt(idprofessor));
                 t.setProfessor(p);
+                TurmaDAO tDAO = new TurmaDAO();
                 if (tDAO.gravar(t)) {
                     mensagem = "Gravado com sucesso";
                 } else {
@@ -102,7 +101,6 @@ public class GerenciarTurma extends HttpServlet {
         out.println("alert('" + mensagem + "')");
         out.println("location.href='listar_turma.jsp';");
         out.println("</script>");
-
     }
 
     @Override

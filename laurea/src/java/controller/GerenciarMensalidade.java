@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -91,43 +90,43 @@ public class GerenciarMensalidade extends HttpServlet {
             MensalidadeDAO mDAO = new MensalidadeDAO();
             SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             Contrato c = new Contrato();
-                c.setIdcontrato(Integer.parseInt(idcontrato));
-                m.setValor(Double.parseDouble(valor));
-                m.setMulta(Double.parseDouble(multa));
-                m.setDesconto(Double.parseDouble(desconto));
-                m.setStatus(Integer.parseInt(status));
-            if(!idmensalidade.isEmpty()){
+            c.setIdcontrato(Integer.parseInt(idcontrato));
+            m.setValor(Double.parseDouble(valor));
+            m.setMulta(Double.parseDouble(multa));
+            m.setDesconto(Double.parseDouble(desconto));
+            m.setStatus(Integer.parseInt(status));
+            if (!idmensalidade.isEmpty()) {
                 m.setIdmensalidade(Integer.parseInt(idmensalidade));
             }
             m.setDatav(df.parse(datav));
             m.setDatap(df.parse(datap));
-            
+
             double novovalor = 0;
-            if(!valor.isEmpty()){
-                novovalor = Double.parseDouble(valor.replace(".","").replace(",","."));
+            if (!valor.isEmpty()) {
+                novovalor = Double.parseDouble(valor.replace(".", "").replace(",", "."));
                 m.setValor(novovalor);
             }
             double novamulta = 0;
-            if(!multa.isEmpty()){
-                novamulta = Double.parseDouble(multa.replace(".","").replace(",","."));
+            if (!multa.isEmpty()) {
+                novamulta = Double.parseDouble(multa.replace(".", "").replace(",", "."));
                 m.setMulta(novamulta);
             }
-            
+
             double novodesconto = 0;
-            if(!desconto.isEmpty()){
-                novodesconto = Double.parseDouble(desconto.replace(".","").replace(",","."));
+            if (!desconto.isEmpty()) {
+                novodesconto = Double.parseDouble(desconto.replace(".", "").replace(",", "."));
                 m.setDesconto(novodesconto);
             }
-            
-            if( valor.equals("") || valor.isEmpty() || datap.equals("") || datap.isEmpty()){
+
+            if (valor.equals("") || valor.isEmpty() || datap.equals("") || datap.isEmpty()) {
                 mensagem = "Campos obrigatórios devem ser preenchidos";
-            }else{                
-                if(mDAO.gravar(m)){
+            } else {
+                if (mDAO.gravar(m)) {
                     mensagem = "Gravado com sucesso";
-                }else{
+                } else {
                     mensagem = "Erro ao gravar no banco";
                 }
-            } 
+            }
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";

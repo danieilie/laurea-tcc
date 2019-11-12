@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.AlunoDAO;
 import model.Aluno;
-import DAO.ResponsavelDAO;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import model.Responsavel;
 import model.Usuario;
@@ -43,7 +40,7 @@ public class GerenciarAluno extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            
+
             if (acao.equals("desativar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a.setIdaluno(idaluno);
@@ -56,7 +53,7 @@ public class GerenciarAluno extends HttpServlet {
                     mensagem = "Acesso negado";
                 }
             }
-            
+
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";

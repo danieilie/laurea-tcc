@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -24,9 +23,9 @@ public class GerenciarAlunoTurma extends HttpServlet {
         String acao = request.getParameter("acao");
 
         try {
-            AlunoDAO aDAO = new AlunoDAO ();
+            AlunoDAO aDAO = new AlunoDAO();
             Aluno a = new Aluno();
-            AlunoTurmaDAO atDAO = new AlunoTurmaDAO();
+            AlunoTurmaDAO atiDAO = new AlunoTurmaDAO();
             if (acao.equals("alterar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a = aDAO.getCarregaPorId(idaluno);
@@ -42,17 +41,16 @@ public class GerenciarAlunoTurma extends HttpServlet {
                 }
             }
 
-            if(acao.equals("desvincular")){
-              if(GerenciarLogin.verificarPermissao(request, response)){
-                
-               if(atDAO.desvincular(Integer.parseInt(idaluno), Integer.parseInt(idturma))){
+            if (acao.equals("desvincular")) {
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    if (atiDAO.desvincular(Integer.parseInt(idaluno), Integer.parseInt(idturma))) {
                         mensagem = "Desvinculado com sucesso!";
-                    }else{
+                    } else {
                         mensagem = "Erro ao desvincular!";
-                    }                
-              }else{
-                  mensagem = "Acesso Negado";
-              } 
+                    }
+                } else {
+                    mensagem = "Acesso Negado";
+                }
             }
         } catch (Exception e) {
             out.print(e);

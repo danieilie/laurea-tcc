@@ -86,6 +86,7 @@ public class GerenciarProfessor extends HttpServlet {
                 p.setNome(nome);
                 p.setStatus(Integer.parseInt(status));
                 Usuario u = new Usuario();
+                u.setIdusuario(p.getUsuario().getIdusuario());
                 u.setIdusuario(Integer.parseInt(idusuario));
                 p.setUsuario(u);
                 if (pDAO.gravar(p)) {

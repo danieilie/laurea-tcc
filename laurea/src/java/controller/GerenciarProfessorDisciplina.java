@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -22,14 +21,14 @@ public class GerenciarProfessorDisciplina extends HttpServlet {
         String acao = request.getParameter("acao");
 
         try {
-            ProfessorDAO proDAO = new ProfessorDAO();
-            Professor pro = new Professor();
+            ProfessorDAO pDAO = new ProfessorDAO();
+            Professor p = new Professor();
             if (acao.equals("gerenciar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    pro = proDAO.getCarregaPorId(Integer.parseInt(idprofessor));
-                    if (pro.getIdprofessor() > 0) {
+                    p = pDAO.getCarregaPorId(Integer.parseInt(idprofessor));
+                    if (p.getIdprofessor() > 0) {
                         RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_professor_disciplina.jsp");
-                        request.setAttribute("professorv", pro);
+                        request.setAttribute("professorv", p);
                         disp.forward(request, response);
                     } else {
                         mensagem = "Professor não encontrado!";
@@ -45,7 +44,7 @@ public class GerenciarProfessorDisciplina extends HttpServlet {
                     if (iddisciplina.equals("") || iddisciplina.isEmpty()) {
                         mensagem = "A disciplina deve ser selecionada";
                     } else {
-                        if (proDAO.desvincular(Integer.parseInt(iddisciplina), Integer.parseInt(idprofessor))) {
+                        if (pDAO.desvincular(Integer.parseInt(iddisciplina), Integer.parseInt(idprofessor))) {
                             mensagem = "Desvinculado com sucesso";
                         } else {
                             mensagem = "Erro ao desvincular";
@@ -61,7 +60,7 @@ public class GerenciarProfessorDisciplina extends HttpServlet {
         }
         out.println("<script type='text/javascript'>");
         out.println("alert('" + mensagem + "')");
-        out.println("location.href='gerenciar_menu_perfil.do?acao=gerenciar&idprofessor=" + idprofessor + "';");
+        out.println("location.href='gerenciar_professor_disciplina.do?acao=gerenciar&idprofessor=" + idprofessor + "';");
         out.println("</script>");
     }
 
@@ -75,11 +74,11 @@ public class GerenciarProfessorDisciplina extends HttpServlet {
         String iddisciplina = request.getParameter("iddisciplina");
 
         try {
-            ProfessorDAO proDAO = new ProfessorDAO();
+            ProfessorDAO pDAO = new ProfessorDAO();
             if (idprofessor.equals("") || iddisciplina.equals("")) {
                 mensagem = "Campos obrigatórios deverão ser selecionados";
             } else {
-                if (proDAO.vincular(Integer.parseInt(idprofessor), Integer.parseInt(iddisciplina))) {
+                if (pDAO.vincular(Integer.parseInt(idprofessor), Integer.parseInt(iddisciplina))) {
                     mensagem = "Vinculado com sucesso";
                 } else {
                     mensagem = "Erro ao Vincular";
