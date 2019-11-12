@@ -41,7 +41,7 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
-                        <th>Nome do Responsável</th>
+                        <th>Status</th>
                         <th style="text-align: center;">Editar</th>
                     </tr>
                 </thead>
@@ -51,7 +51,7 @@
                         <th>Nome</th>
                         <th>CPF</th>
                         <th>RG</th>
-                        <th>Nome do Responsável</th>
+                        <th>Status</th>
                         <th style="text-align: center;">Editar</th>
                     </tr>
                 </tfoot>
@@ -65,9 +65,12 @@
                             <td>${r.nome}</td>
                             <td>${r.cpf}</td>
                             <td>${r.rg}</td>
-                            <td>${r.usuario.nome}</td>
+                            <td>
+                                <c:if test="${r.status==0}">Ativado</c:if>
+                                <c:if test="${r.status==1}">Desativado</c:if>
+                            </td>
                             <td style="text-align: center;">
-                                <a class="icone_lista" title="Editar Responsável" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${p.idresponsavel}">
+                                <a class="icone_lista" title="Editar Responsável" href="gerenciar_responsavel.do?acao=alterar&idresponsavel=${r.idresponsavel}">
                                     <img src="assets/img/lista/editar.png">
                                 </a>
                                 

@@ -17,48 +17,39 @@
 
             <form action="gerenciar_responsavel.do" method="POST">
                 <input type="hidden" name="idresponsavel" id="idresponsavel" value="${responsavel.idresponsavel}"/>
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="nome"> Nome </label>
-                        <input type="text" class="form-control" id="nome" name="nome" required="" maxlength="45" value="${responsavel.nome}"/>
-                    </div>    
+                <<div class="form-group">
+                    <label for="nome">Nome *</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="" maxlength="45" value="${responsavel.nome}" />
                 </div>
+                
+                <div class="form-group">
+                    <label for="nome">CPF *</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" placeholder="000.000.000-00" required="" maxlength="14" value="${responsavel.cpf}" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">RG *</label>
+                    <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" required="" maxlength="13" value="${responsavel.rg}" />
+                </div> 
 
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="disciplina"> Disciplina </label>
-                        <select name="iddisciplina" required="" class="form-control">
+                <div class="form-group">
+                    <label for="status">Status *</label>
+                    <select name="status" required="" class="form-control">
+                        <c:if test="${responsavel.status==null}">
                             <option value="">Selecine a opção</option>
-                            <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO"/>
-                            <c:forEach var="d" items="${dDAO.lista}">
-                                <option value="${d.iddisciplina}"
-                                        <c:if test="${d.iddisciplina==responsavel.disciplina.iddisciplina}">
-                                            selected=""
-                                        </c:if> 
-                                        >
-                                    ${d.materia}</option>
-                                </c:forEach>
-                        </select>    
-                    </div>    
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-sm-8">
-                        <label for="usuario"> Nome de Responsável </label>
-                        <select name="idusuario" required="" class="form-control">
-                            <option value="">Selecine a opção</option>
-                            <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
-                            <c:forEach var="u" items="${uDAO.lista}">
-                                <option value="${u.idusuario}"
-                                    <c:if test="${u.idusuario==responsavel.usuario.idusuario}">
-                                        selected=""
-                                    </c:if> 
-                                >
-                                    ${u.nome}</option>
-                                </c:forEach>
-                        </select>    
-                    </div>    
-                </div>
+                            <option value="1">Ativo</option>
+                            <option value="2">Inativo</option>
+                        </c:if>
+                        <c:if test="${responsavel.status==1}">
+                            <option value="1" selected="">Ativo</option>
+                            <option value="2">Inativo</option>
+                        </c:if>
+                        <c:if test="${responsavel.status==2}">
+                            <option value="1">Ativo</option>
+                            <option value="2" selected="">Inativo</option>
+                        </c:if>
+                    </select>    
+                </div> 
 
                 <div class="row">
                     <button class="btn btn-success">Gravar</button>
