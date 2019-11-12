@@ -17,20 +17,20 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     public ArrayList<AlunoTurma> getLista() throws Exception {
         
         ArrayList<AlunoTurma> lista = new ArrayList<AlunoTurma>();
-        String sql = "SELECT at.*, a.aluno FROM aluno_turma at "
-                    + "INNER JOIN aluno a ON at.idaluno = a.idaluno ";
+        String sql = "SELECT ati.*, a.aluno FROM aluno_turma ati "
+                    + "INNER JOIN aluno a ON ati.idaluno = a.idaluno ";
         this.conectar();
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery(sql);
         while (rs.next()) {
             Aluno a = new Aluno();
-            a.setIdaluno(rs.getInt("at.idaluno"));
+            a.setIdaluno(rs.getInt("ati.idaluno"));
             a.setNome(rs.getString("a.nome"));
             AlunoTurma at = new AlunoTurma();
             at.setData(rs.getDate("at.data"));
-            at.setFrequencia(rs.getString("at.frequencia"));
+            at.setFrequencia(rs.getString("ati.frequencia"));
             TurmaDAO tDAO= new TurmaDAO();
-            at.setTurma(tDAO.getCarregaPorId(rs.getInt("at.idturma")));
+            at.setTurma(tDAO.getCarregaPorId(rs.getInt("ati.idturma")));
             at.setAluno(a);
             lista.add(at);
         }
@@ -40,29 +40,29 @@ public class AlunoTurmaDAO extends DataBaseDAO {
     }
 
     public AlunoTurma getCarregaPorId(int idaluno, int idturma) throws Exception {        
-        String sql = "SELECT at.*, a.aluno, t.turma FROM aluno_turma at "
-                + "INNER JOIN aluno a ON at.idaluno = a.idaluno "
-                + "INNER JOIN turma t ON at.idturma = t.idturma ";
+        String sql = "SELECT ati.*, a.aluno, t.turma FROM aluno_turma ati "
+                + "INNER JOIN aluno a ON ati.idaluno = a.idaluno "
+                + "INNER JOIN turma t ON ati.idturma = t.idturma ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idaluno);
         pstm.setInt(2, idturma);
         ResultSet rs = pstm.executeQuery();
-        AlunoTurma at = new AlunoTurma();
+        AlunoTurma ati = new AlunoTurma();
         if (rs.next()) {
-            at.setData(rs.getDate("at.data"));
-            at.setFrequencia(rs.getString("at.frequencia"));
+            ati.setData(rs.getDate("ati.data"));
+            ati.setFrequencia(rs.getString("ati.frequencia"));
             Aluno a = new Aluno();
-            a.setIdaluno(rs.getInt("at.idaluno"));
+            a.setIdaluno(rs.getInt("ati.idaluno"));
             a.setNome(rs.getString("a.nome"));
             Turma t = new Turma();            
-            t.setIdturma(rs.getInt("at.idturma"));
+            t.setIdturma(rs.getInt("ati.idturma"));
             t.setNome(rs.getString("t.nome"));
-            at.setTurma(t);
-            at.setAluno(a);
+            ati.setTurma(t);
+            ati.setAluno(a);
         }
         this.desconectar();
-        return at;
+        return ati;
 
     }
 
