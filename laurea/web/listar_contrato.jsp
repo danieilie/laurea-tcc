@@ -85,7 +85,7 @@
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
                                     <a class="btn btn-primary" href="listar_mensalidade.jsp">
-                                        <i class="glyphicon glyphicon-pencil"></i>
+                                        <i class="glyphicon glyphicon-eye-open"></i>
                                     </a>
                                     <button class="btn btn-danger" onclick="confirmarExclusao(${p.idcontrato}, '${p.nome}')" >
                                         <i class="glyphicon glyphicon-trash"></i>
