@@ -20,6 +20,13 @@
                 }
             }
         </script>
+        <script type="text/javascript">
+            function redirect(id, nome) {
+                if (confirm('Deseja realmente ver as mensalidades ' + nome + ' ?')) {
+                    location.href = 'gerenciar_mensalidade.do?acao=mensalidaVinculadaPorContrato&idcontrato=' + id;
+                }
+            }
+        </script>
 
     </head>
     <body class="body">
@@ -60,27 +67,32 @@
                 <jsp:useBean class="DAO.ContratoDAO" id="cDAO" />
                 <tbody>
                     <c:forEach var="c" items="${cDAO.lista}">
-                        <tr>
-                            <td>${c.idcontrato}</td>
-                            <td>${c.aluno.nome}</td>
-                            <td>${c.escola}</td>
-                            <td>${c.aluno.responsavel.nome}</td>
-                            <td>${c.datacontrato}</td>
-                            <td>${c.preco}</td>
-                            <td>${c.parcela}</td>
-                            <td>
-                                <c:if test="${c.status == 2}" > Pendente </c:if>
-                                <c:if test="${c.status == 1}" > Pago </c:if>
+                        <c:if test="${c.aluno.responsavel.usuario.idusuario==ulogado.idusuario || c.aluno.usuario.idusuario==ulogado.idusuario || ulogado.perfil.idperfil==1 || ulogado.perfil.idperfil==2}">
+                            <tr>
+                                <td>${c.idcontrato}</td>
+                                <td>${c.aluno.nome}</td>
+                                <td>${c.escola}</td>
+                                <td>${c.aluno.responsavel.nome}</td>
+                                <td>${c.datacontrato}</td>
+                                <td>${c.preco}</td>
+                                <td>${c.parcela}</td>
+                                <td>
+                                    <c:if test="${c.status == 1}" > Pendente </c:if>
+                                    <c:if test="${c.status == 0}" > Pago </c:if>
                                 </td>
                                 <td>
                                     <a class="btn btn-primary" href="gerenciar_contrato.do?acao=alterar&idcontrato=${p.idcontrato}">
-                                    <i class="glyphicon glyphicon-pencil"></i>
-                                </a>
-                                <button class="btn btn-danger" onclick="confirmarExclusao(${p.idcontrato}, '${p.nome}')" >
-                                    <i class="glyphicon glyphicon-trash"></i>
-                                </button>    
-                            </td>
-                        </tr>
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-primary" href="listar_mensalidade.jsp">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <button class="btn btn-danger" onclick="confirmarExclusao(${p.idcontrato}, '${p.nome}')" >
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </button>    
+                                </td>
+                            </tr>
+                        </c:if>  
                     </c:forEach>                    
                 </tbody>    
             </table>    

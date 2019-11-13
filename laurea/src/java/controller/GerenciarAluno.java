@@ -26,7 +26,7 @@ public class GerenciarAluno extends HttpServlet {
         try {
             Aluno a = new Aluno();
             AlunoDAO aDAO = new AlunoDAO();
-            if (acao.equals("alterar")) {
+            if (acao.equals("gravar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
                     a = aDAO.getCarregaPorId(idaluno);
                     if (a.getIdaluno() > 0) {

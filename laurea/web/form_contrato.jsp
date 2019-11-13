@@ -171,6 +171,7 @@
                     <br/>  
                     <div class="row">
                         <button class="btn btn-success">Gravar</button>
+                        <button class="btn btn-success">Ver mensalidade</button>
                         <a href="listar_contrato.jsp" class="btn btn-warning">Voltar</a>    
                     </div>    
                 </form>    

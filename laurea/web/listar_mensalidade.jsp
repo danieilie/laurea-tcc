@@ -60,21 +60,18 @@
                         </tr>
                     </tfoot>
 
-                    <jsp:useBean class="DAO.MensalidadeDAO" id="mDAO" />
+                    <jsp:useBean class="DAO.ContratoDAO" id="cDAO" />
                     <tbody>
-                        <c:forEach var="m" items="${mDAO.lista}">
-                            <%--<c:if test="${m.contrato.aluno.responsavel.nome }">--%>
+                        <c:forEach var="c" items="${cDAO.mensalidaVinculadaPorContrato(idcontrato)}">
                             <tr>
                                 <td style="text-align: center;">${c.contrato.idcontrato}</td>
-
                                 <td>${c.contrato.aluno.nome}</td>
                                 <td>${c.contrato.aluno.responsavel.nome}</td>
                                 <td>${m.valor}</td>
                                 <td>${m.datav}</td>
                                 <td>${m.datap}</td>
-
                                 <td>
-                                    <c:if test="${m.status == 2}" > Pendente </c:if>
+                                    <c:if test="${m.status == 0}" > Pendente </c:if>
                                     <c:if test="${m.status == 1}" > Pago </c:if>
                                     </td>
                                     <td>
@@ -84,7 +81,6 @@
 
                                 </td>
                             </tr>
-                            <%--</c:if>--%>    
                         </c:forEach>                    
                     </tbody>    
                 </table> 

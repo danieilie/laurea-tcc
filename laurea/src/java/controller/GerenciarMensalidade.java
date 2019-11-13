@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Contrato;
 import model.Mensalidade;
 import DAO.MensalidadeDAO;
+import DAO.ContratoDAO;
 import java.text.SimpleDateFormat;
 
 public class GerenciarMensalidade extends HttpServlet {
@@ -53,9 +54,7 @@ public class GerenciarMensalidade extends HttpServlet {
                 } else {
                     mensagem = "Acesso negado";
                 }
-
             }
-
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar o comando";
