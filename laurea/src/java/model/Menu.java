@@ -2,11 +2,8 @@ package model;
 
 public class Menu {
 
-    private int idmenu;
-    private String menu;
-    private String link;
-    private String icone;
-    private int exibir;
+    private int idmenu, exibir;
+    private String menu, link, icone;
 
     public Menu() {
     }
@@ -23,7 +20,7 @@ public class Menu {
     public String toString() {
         return getMenu() + getLink() + getIcone();
     }
-    
+
     public int getExibir() {
         return exibir;
     }

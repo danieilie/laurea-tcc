@@ -20,7 +20,7 @@ public class Atividade {
     public String toString() {
         return getNome() + getArquivo();
     }
-    
+
     public int getIdatividade() {
         return idatividade;
     }

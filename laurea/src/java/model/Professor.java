@@ -1,26 +1,28 @@
 package model;
 
 public class Professor {
-    private int idprofessor;
+
+    private int idprofessor, status;
     private String nome;
-    private Disciplina disciplina;
     private Usuario usuario;
+    private Disciplina disciplina;
 
     public Professor() {
     }
 
-    public Professor(int idprofessor, String nome, Disciplina disciplina, Usuario usuario) {
+    public Professor(int idprofessor, int status, String nome, Usuario usuario, Disciplina disciplina) {
         this.idprofessor = idprofessor;
+        this.status = status;
         this.nome = nome;
-        this.disciplina = disciplina;
         this.usuario = usuario;
+        this.disciplina = disciplina;
     }
 
     @Override
     public String toString() {
         return getNome();
     }
-    
+
     public int getIdprofessor() {
         return idprofessor;
     }
@@ -37,12 +39,12 @@ public class Professor {
         this.nome = nome;
     }
 
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public int getStatus() {
+        return status;
     }
 
-    public void setDisciplina(Disciplina disciplina) {
-        this.disciplina = disciplina;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public Usuario getUsuario() {
@@ -52,4 +54,13 @@ public class Professor {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public Disciplina getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(Disciplina disciplina) {
+        this.disciplina = disciplina;
+    }
+
 }

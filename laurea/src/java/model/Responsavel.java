@@ -1,15 +1,17 @@
 package model;
 
 public class Responsavel {
-    private int idresponsavel;
+
+    private int idresponsavel, status;
     private String nome, cpf, rg;
     private Usuario usuario;
 
     public Responsavel() {
     }
 
-    public Responsavel(int idresponsavel, String nome, String cpf, String rg, Usuario usuario) {
+    public Responsavel(int idresponsavel, int status, String nome, String cpf, String rg, Usuario usuario) {
         this.idresponsavel = idresponsavel;
+        this.status = status;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
@@ -20,6 +22,7 @@ public class Responsavel {
     public String toString() {
         return getNome() + getCpf() + getRg();
     }
+
     public int getIdresponsavel() {
         return idresponsavel;
     }
@@ -59,5 +62,13 @@ public class Responsavel {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-    
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
 }

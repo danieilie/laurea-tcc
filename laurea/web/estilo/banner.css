@@ -1,0 +1,13 @@
+.logo{
+    width: 250px;
+    height: 90px;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 20px;
+    border-right: 1px solid #CCC;
+    font-weight: bold;
+
+}
+.logo img{
+    max-width: 250px;
+}

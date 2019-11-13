@@ -6,23 +6,38 @@
     Usuario ulogado = GerenciarLogin.verificarAcesso(request, response);
     request.setAttribute("ulogado", ulogado);
 %>
-    <div class="pull-right">
-        Bem Vindo, 
-        <c:if test="${ulogado != null}">${ulogado.nome}</c:if>
-        <button><a href="gerenciar_login.do">Sair</a></button>
-    </div>
+<head>
+    <meta charset="utf-8"/>
 
-    <div class="menu">
-        <ul>
-            <c:if test="${ulogado != null && ulogado.perfil != null}">
-                <c:forEach var="menu" items="${ulogado.perfil.menus}">
-                    <c:if test="${menu.exibir == 1}">
-                          <li><a href="${menu.link}">${menu.menu}</a></li>                   
+    <link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
+</head>
+
+<div class="menu">
+
+    <div class="logo">
+        <img src="assets/img/logo/logo_menu.png"> 
+
+        <c:if test="${ulogado!=null}">${ulogado.nome}</c:if>
+
+        </div>
+
+    <c:if test="${ulogado != null && ulogado.perfil != null}">
+        <c:forEach var="menu" items="${ulogado.perfil.menus}">
+            <c:if test="${menu.exibir == 1}">
+                <a href="${menu.link}"><div class="menu_item" ><img src="assets/img/menu/painel.png">${menu.menu}</div></a>                  
                     </c:if>    
                 </c:forEach>
             </c:if>
-        </ul>
-    </div>   
-    <link rel="stylesheet" type="text/css" href="estilo/menu.css"/>
-    
-    
+    <a class="menu_item" href="gerenciar_login.do"> <div> <img src="assets/img/icone menu/sair.png"> Sair </div> </a>
+</div>   
+
+
+
+
+
+
+
+
+
+
+

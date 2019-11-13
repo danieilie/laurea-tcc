@@ -1,0 +1,460 @@
+/*font-family: 'Port Lligat Sans', sans-serif;
+font-family: 'Bubblegum Sans', cursive;
+font-family: 'Pontano Sans', sans-serif;*/
+
+/* GERAL */
+.tag{
+    font-size: 36px;
+    background-color: #E64C3C;
+    color: #FFF;
+    font-family: 'Port Lligat Sans', sans-serif;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-bottom-right-radius: 25px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+}
+
+/*HEADER - MENU*/
+body{
+    margin: 0; padding: 0;
+}
+.m-p{
+    margin: 0; padding: 0;
+}
+header{
+    background: #7DB0D7;
+    height: 150px;
+
+}
+.logo {
+    line-height: 150px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: 48px;
+    display: inline-block;
+    color: #FFF;
+}
+.logo a:hover{
+    color: #E64C3C;
+    text-decoration: none;
+    font-weight: bold;
+}
+nav{
+    float: right;
+    line-height: 150px;
+    height: 150px;
+}
+nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+nav ul li div{
+    color: #FFF;
+    font-family: 'Port Lligat Sans', sans-serif;
+    font-size: 18px;
+    margin: 0 10px;
+}
+nav ul li div h5{
+    border-radius: 5px;
+    padding: 5px;
+    border:2px solid #FFF;
+}
+nav ul li div h5:hover{
+    background-color: #FFF;
+    color: #E64C3C;
+    transition: all 250ms linear;
+    cursor: pointer;
+    font-weight: bold;
+
+}
+nav ul li a{
+    color: #FFF;
+    font-family: 'Port Lligat Sans', sans-serif;
+    font-size: 18px;
+
+
+}
+nav ul li a:hover{
+    color: #E64C3C;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+/*FIM HEADER - MENU*/
+
+
+/*INICIO*/
+#inicio{
+    padding-bottom: 50px;
+}
+#inicio div{
+    width: 100%;
+}
+.conteudo_inicio{
+    text-align: center;
+}
+.conteudo_inicio h1{
+    text-transform: uppercase;
+    font-family: 'Port Lligat Sans', sans-serif;
+    color:#105aa2;
+    font-size: 36px;
+}
+.conteudo_inicio h1:before,.conteudo_inicio h1:after{
+    content: "";
+    display: block;
+    width: 300px;
+    height: 3px;
+    background: #105aa2;
+    margin: 2px auto;
+}
+.conteudo_inicio p{
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.conteudo_inicio p span{
+    color: #105aa2;
+    font-weight: bold;
+}
+
+/*PRODUTOS*/
+#produtos{
+    background-color: #6890BA;
+    min-height: 500px;
+}
+
+.card_produto{
+    width: 300px;
+    height: 300px;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 50px 0;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+    color: #FFF;
+    padding: 10px;
+}
+.card_produto h5{
+    font-size: 14px;
+    font-family: 'Pontano Sans', sans-serif;
+}
+.card_produto h2{
+    font-family: 'Port Lligat Sans', sans-serif;
+}
+.card_produto h2:after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #FFF;
+}
+.card_produto p{
+    font-size: 18px;
+    font-family: 'Pontano Sans', sans-serif;
+    padding-top: 20px;
+}
+
+.item1{
+    background-image: url('../img/produtos/acompanhamento2.png');
+}
+.item2{
+    background-image: url('../img/produtos/agendamento2.png');
+}
+.item3{
+    background-image: url('../img/produtos/atividade2.png');
+}
+
+
+/*MATERIAS*/
+#materias{
+    background-color: #204571;
+    min-height: 950px;
+}
+.item{
+    margin: 0 auto;
+}
+.widget{
+    width: 300px;
+    text-align: center;
+    padding-top: 20px;
+    margin: 0;
+}
+.widget h2{
+    text-transform: uppercase;
+    padding-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+.widget_head{
+    height: 60px;
+    width: 300px;
+}
+.widget_body{
+    font-family: 'Port Lligat Sans', sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    background-color: #FFC469;
+    border-radius: 10px;
+    height: 300px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .2);
+}
+.widget_body p{
+    padding: 0px 20px;
+}
+.widget_body hr{
+    background-color: #7DB0D7;
+}
+
+/*font-family: 'Port Lligat Sans', sans-serif;
+font-family: 'Bubblegum Sans', cursive;
+font-family: 'Pontano Sans', sans-serif;*/
+
+/* SOBRE */
+#sobre{
+    background-color: #6890BA;
+    font-family: 'Port Lligat Sans', sans-serif;
+}
+.sobre_titulo{
+    text-align: center;
+    font-size: 36px;
+    color: #FFF;
+    padding: 20px ;
+}
+.sobre_titulo h1:after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #FFF;
+    margin: 2px auto;
+}
+.sobre_texto{
+    text-align: center;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 18px;
+}
+#sobre .container .row{
+    padding: 60px;
+}
+#sobre .container .row .col h1{
+
+    font-size: 36px;
+    color: #FFF;
+
+}
+#sobre .container .row .col h1::after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #FFF;
+    margin: 2px ;
+}
+#sobre .container .row .col ul{
+    color: #FFF;
+}
+#sobre .container .row .col ul li{
+    padding: 15px;
+    font-size: 24px;
+}
+
+
+/* CONTATO */
+#contato{
+    background-color: #204571;
+    color: #FFF;
+    font-size: 18px;
+    font-family: 'Pontano Sans', sans-serif;
+
+}
+#contato .row{
+    padding: 30px;
+}
+
+#contato ul li{ 
+    padding: 10px;
+}
+#contato ul li img{
+    margin-right: 5px;
+} 
+
+/*DEPOIMENTOS*/
+
+#depoimentos{
+    background-color: #7DB0D7;
+
+    font-family: 'Port Lligat Sans', sans-serif;
+}
+#depoimentos .tag{
+    width: 250px;
+}
+#depoimentos .row{
+    padding: 100px 0px;
+}
+.card_depoimento h4{
+    padding-left: 20px;
+    padding-top: 20px;
+    text-align: center;
+    align-items: center;
+}
+.card_depoimento_text{
+    font-style: italic;
+    font-size: 18px;
+    padding-top:10px;
+}
+
+
+/*FOOTER*/
+.footer{
+    height: 100px;
+    line-height: 100px;
+    background-image: url('../img/footer/aguia_footer2.png');
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.footer div{
+    line-height: 100px;
+}
+.redes_sociais{
+    width: 500px;
+    margin-right: 120px;
+    height: 100px;
+}
+.redes_sociais ul{
+    height: 60px;  
+}
+.redes_sociais ul li{
+    display: inline;
+
+}
+.redes_sociais ul li {
+    margin-right: 20px;
+}
+
+
+
+/*COPY*/
+
+.copy{
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #204571;
+    font-family: 'Pontano Sans', sans-serif;
+    font-size: 18px;
+    color: #FFF;
+}
+.copy .container{
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+
+
+
+/*ANIMAÇÃO DE ENTRADA*/
+[data-slide]{
+    position: relative;
+}
+[data-slide] > * {
+    position: absolute;
+    top: 0px;
+    opacity: 0;
+}
+[data-slide] > .active{
+    position: relative;
+    opacity: 1;
+    transition: opacity 500ms;
+}
+[data-anime] {
+    opacity: 0;
+}
+.anime {
+    opacity: 1;
+    transform: none;
+    transition: transform .8s, opacity .8s;
+}
+
+/* 7 CSS personalizado dependendo da animação desejada */
+.fadeInDown {
+    transform: translate3d(0,-20px,0);
+}
+.fadeInUp {
+    transform: translate3d(0,20px,0);
+}
+.fadeInRight {
+    transform: translate3d(20px,0,0);
+}
+.fadeInLeft {
+    transform: translate3d(-20px,0,0);
+}
+
+/*SIDE BAR FORMULARIO LOGIN*/
+
+#sidebar{
+
+    position: fixed;
+    width: 320px;
+    height: 100vh;
+    background:#FFF;
+    border: 3px solid #204571;
+    top: 0;
+    right: -320px;
+    transition: all 350ms linear;
+    text-align: center;
+    z-index: 10;
+}
+#sidebar img{
+    width: 100px;
+    padding: 0;
+    margin: 0;
+}
+#sidebar.active{
+    top: 0px;
+    right: 0px;
+}
+.login{
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+#sidebar button{
+    margin-right: 5px;
+}
+.arrow img{
+    padding-top: 30px;
+
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+    background-color:rgba(63,126,254,.9);
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+    background-color:rgba(63,126,254,.9);
+}
+.back-to-top img{
+    width:30px;
+}
+.back-to-top:hover{
+    background-color:#E64C3C;
+    color:white;
+}
+
+
+
+
+
+
+

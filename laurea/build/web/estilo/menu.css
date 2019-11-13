@@ -1,0 +1,59 @@
+.logo{
+    width: 250px;
+    height: 90px;
+    text-align: center;
+    font-size: 24px;
+    line-height: 70px;
+    border-right: 1px solid #CCC;
+    font-weight: bold;
+
+}
+.logo img{
+    max-width: 250px;
+}
+.menu{
+    width: 250px;
+    border-right: 1px solid #CCC;
+    float:left;
+    text-align: left;
+    font-size: 18px; 
+    color:#4F4F4F;
+    background-color: #FFF;
+    box-shadow: 2px 2px 4px rgba(0,0,0,.3);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.menu a{
+    text-decoration: none;
+    color:#4F4F4F;    
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+}
+.menu a img{
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+.menu div a:hover{
+    color:#204571;
+}
+.menu div{
+    padding: 6px;
+    padding-left: 20px;
+}
+
+.menu_item:hover{
+    border-left: 10px solid #E64C3C;
+    transition: 350ms all linear;
+    cursor: pointer;
+}
+.menu div{
+    border-bottom: 1px solid #CCC;
+}
+.table-responsive{
+    margin:0px 30px;
+}
+
+

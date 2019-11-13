@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Perfil {
+
     private int idperfil;
     private String perfil;
     private ArrayList<Menu> menus;
@@ -52,7 +53,5 @@ public class Perfil {
     public void setNaoMenus(ArrayList<Menu> naoMenus) {
         this.naoMenus = naoMenus;
     }
-    
-    
-    
+
 }
