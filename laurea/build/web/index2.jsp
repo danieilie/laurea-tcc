@@ -94,14 +94,10 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Responsáveis
-<<<<<<< Updated upstream
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
-=======
                             <span class="badge badge-primary badge-pill">
                                   <jsp:useBean class="DAO.ResponsavelDAO" id="rDAO" />
                                   <label>${fn:length(rDAO.lista)}</label>
->>>>>>> Stashed changes
+
                             </span>
                         </div>
                     </li>
