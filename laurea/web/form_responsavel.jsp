@@ -37,16 +37,16 @@
                     <select name="status" required="" class="form-control">
                         <c:if test="${responsavel.status==null}">
                             <option value="">Selecine a opção</option>
-                            <option value="1">Ativo</option>
-                            <option value="2">Inativo</option>
+                            <option value="0">Ativo</option>
+                            <option value="1">Inativo</option>
+                        </c:if>
+                        <c:if test="${responsavel.status==0}">
+                            <option value="0" selected="">Ativo</option>
+                            <option value="1">Inativo</option>
                         </c:if>
                         <c:if test="${responsavel.status==1}">
-                            <option value="1" selected="">Ativo</option>
-                            <option value="2">Inativo</option>
-                        </c:if>
-                        <c:if test="${responsavel.status==2}">
-                            <option value="1">Ativo</option>
-                            <option value="2" selected="">Inativo</option>
+                            <option value="0">Ativo</option>
+                            <option value="1" selected="">Inativo</option>
                         </c:if>
                     </select>    
                 </div> 
