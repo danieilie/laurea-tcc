@@ -41,7 +41,7 @@
                         <tr>
                             <th style="text-align: center;">ID</th>
                             <th>Nome</th>
-                            <th>Arquivo</th>
+                            <th style="text-align: center;">Arquivo</th>
                             <th>Disciplina</th>
 
                             <th style="text-align: center;">Excluir</th>
@@ -51,7 +51,7 @@
                         <tr>
                             <th style="text-align: center;">ID</th>
                             <th>Nome</th>
-                            <th>Arquivo</th>
+                            <th style="text-align: center;">Arquivo</th>
                             <th>Disciplina</th>
 
                             <th style="text-align: center;">Excluir</th>
@@ -65,8 +65,8 @@
                             <tr>
                                 <td style="text-align: center;">${at.idatividade}</td>
                                 <td>${at.nome}</td>
-                                <td> 
-                                    <a href="arquivos/${ati.arquivo}" download> Baixar
+                                <td style="text-align: center;"> 
+                                    <a href="arquivos/${ati.arquivo}" download> <img src="assets/img/lista/download.png">
                                         ${ati.arquivo}
                                     </a>
                                 </td>

@@ -1,8 +1,10 @@
+<%@page import="DAO.UsuarioDAO"%>
+<%@page import="model.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="controller.GerenciarLogin"%>
-<%@page import="DAO.UsuarioDAO"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -73,7 +75,8 @@
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Usuários
                             <span class="badge badge-primary badge-pill">
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                                 <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
+                                     <label>${fn:length(uDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -82,7 +85,8 @@
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Alunos
                             <span class="badge badge-primary badge-pill">
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                                  <jsp:useBean class="DAO.AlunoDAO" id="aDAO" />
+                                  <label>${fn:length(aDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -90,8 +94,14 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Responsáveis
+<<<<<<< Updated upstream
                             <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+=======
+                            <span class="badge badge-primary badge-pill">
+                                  <jsp:useBean class="DAO.ResponsavelDAO" id="rDAO" />
+                                  <label>${fn:length(rDAO.lista)}</label>
+>>>>>>> Stashed changes
                             </span>
                         </div>
                     </li>
@@ -137,6 +147,16 @@
                             Disciplinas
                             <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <img src="assets/img/status_do_sistema/livro.png">
+                            Menus
+                            <span class="badge badge-primary badge-pill">
+                                 <jsp:useBean class="DAO.MenuDAO" id="mDAO"/>
+                                 <label>${fn:length(mDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
