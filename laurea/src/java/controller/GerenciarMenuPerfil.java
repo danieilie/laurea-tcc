@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.MenuDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.PerfilDAO;
+import model.Menu;
 import model.Perfil;
 
 public class GerenciarMenuPerfil extends HttpServlet {
@@ -22,6 +24,8 @@ public class GerenciarMenuPerfil extends HttpServlet {
 
         try {
             PerfilDAO pDAO = new PerfilDAO();
+            MenuDAO mDAO = new MenuDAO();
+            Menu m = new Menu();
             Perfil p = new Perfil();
             if (acao.equals("gerenciar")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
@@ -54,7 +58,19 @@ public class GerenciarMenuPerfil extends HttpServlet {
                     mensagem = "Acesso Negado";
                 }
             }
-
+            
+            if (acao.equals("desativar")) {
+                if (GerenciarLogin.verificarPermissao(request, response)) {
+                    p.getMenus();
+                    if (mDAO.desativar(m)) {
+                        mensagem = "Desativado com sucesso!";
+                    } else {
+                        mensagem = "Erro ao desativar!";
+                    }
+                } else {
+                    mensagem = "Acesso negado";
+                }
+            }
         } catch (Exception e) {
             out.print(e);
             mensagem = "Erro ao executar";

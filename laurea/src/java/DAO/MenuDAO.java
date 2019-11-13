@@ -81,7 +81,7 @@ public class MenuDAO extends DataBaseDAO {
     public boolean desativar(Menu m) {
         try {
             this.conectar();
-            String sql = "UPDATE menu WHERE idmenu=?";
+            String sql = "UPDATE menu SET status=2 WHERE idmenu=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, m.getIdmenu());
             pstm.execute();
@@ -91,5 +91,5 @@ public class MenuDAO extends DataBaseDAO {
             System.out.println(e);
             return false;
         }
-    }
+    }  
 }

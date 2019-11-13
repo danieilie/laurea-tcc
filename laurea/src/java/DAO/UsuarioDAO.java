@@ -3,6 +3,7 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.Perfil;
 import model.Usuario;
 
 public class UsuarioDAO extends DataBaseDAO {
@@ -58,8 +59,33 @@ public class UsuarioDAO extends DataBaseDAO {
             System.out.println(e);
             return false;
         }
-
     }
+        
+//    public int qtdTotal(int idperfil) {
+//        
+//        Perfil p = new Perfil();
+//        String sql;
+//        if (idperfil == 0){           
+//            sql = "SELECT u.* FROM usuario u "; 
+//        }else{
+//            sql = "SELECT u.* FROM usuario u WHERE idperfil=? ";             
+//        }
+//        try{
+//            this.conectar();
+//            PreparedStatement pstm = conn.prepareStatement(sql);
+//            ResultSet rs = pstm.executeQuery();
+//            if ( idperfil > 0 ) {
+//                pstm.setInt(1, idperfil); 
+//                if (rs.next()) {
+//                   p.setIdperfil(rs.getInt("idperfil"));
+//                }
+//            this.desconectar();
+//            }
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
+//        return qtdTotal(idperfil);
+//    }
 
     public boolean desativar(Usuario u) {
         try {
@@ -122,4 +148,5 @@ public class UsuarioDAO extends DataBaseDAO {
             return null;
         }
     }
+
 }

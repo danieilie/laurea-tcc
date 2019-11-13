@@ -16,8 +16,7 @@
         <script type="text/javascript">
             function confirmarExclusao(idaluno, idturma, nomealuno, nometurma) {
                 if (confirm('Deseja realmente desvincular o(a) aluno(a) ' + nomealuno + ' da turma ' + nometurma + '?')) {
-                    location.href = 'gerenciar_aluno_turma.do?' +
-                            'acao=desvincular&idaluno=' + idaluno + '&idturma=' + idturma;
+                    location.href = 'gerenciar_aluno_turma.do?acao=desvincular&idaluno=' + idaluno + '&idturma=' + idturma;
                 }
             }
         </script>

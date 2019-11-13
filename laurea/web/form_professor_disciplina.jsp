@@ -1,5 +1,7 @@
-<%@page import="DAO.MenuDAO"%>
-<%@page import="model.Menu"%>
+<%@page import="DAO.ProfessorDAO"%>
+<%@page import="DAO.DisciplinaDAO"%>
+<%@page import="model.Professor"%>
+<%@page import="model.Disciplina"%>
 <%@page import="java.util.ArrayList"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -31,7 +33,6 @@
             <form action="gerenciar_professor_disciplina.do" method="POST" class="form">
                 <div class="form-group ">
                     <h2 class="titulo">Vincular disciplina ao professor</h2>
-
                 </div>
                 <input type="hidden" name="idprofessor" id="idprofessor" value="${professorv.idprofessor}"/>
                 <div class="row">

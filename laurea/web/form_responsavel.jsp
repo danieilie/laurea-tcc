@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css"/>
         <title>Láurea Reforço Escolar</title>
     </head>
-    <body>
+    <body class="body">
         <div class="container">
             <%@include file="banner.jsp" %>
             <%@include file="menu.jsp" %>
@@ -17,7 +17,7 @@
 
             <form action="gerenciar_responsavel.do" method="POST">
                 <input type="hidden" name="idresponsavel" id="idresponsavel" value="${responsavel.idresponsavel}"/>
-                <<div class="form-group">
+                <div class="form-group">
                     <label for="nome">Nome *</label>
                     <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" required="" maxlength="45" value="${responsavel.nome}" />
                 </div>

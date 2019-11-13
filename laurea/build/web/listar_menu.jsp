@@ -17,8 +17,8 @@
         <title>Listagem Menus</title>
         <script type="text/javascript">
             function confirmarExclusao(id, nome) {
-                if (confirm('Deseja realmente excluir o menu "' + nome + '" ?')) {
-                    location.href = 'gerenciar_menu.do?acao=excluir&idmenu=' + id;
+                if (confirm('Deseja realmente desativar o menu "' + nome + '" ?')) {
+                    location.href = 'gerenciar_menu.do?acao=desativar&idmenu=' + id;
                 }
             }
         </script>    
@@ -67,7 +67,7 @@
                                 <td>
                                     <c:if test="${m.exibir==1}">Sim</c:if>
                                     <c:if test="${m.exibir==2}">Não</c:if>
-                                    </td>
+                                </td>
                                     <td style="text-align: center;">
                                         <a class="icone_lista" title="Editar Menu" href="gerenciar_menu.do?acao=alterar&idmenu=${m.idmenu}">
                                         <img src="assets/img/lista/editar.png">

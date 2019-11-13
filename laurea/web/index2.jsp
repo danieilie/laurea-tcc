@@ -1,5 +1,5 @@
 <%@page import="java.util.ArrayList"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="controller.GerenciarLogin"%>
 <%@page import="DAO.UsuarioDAO"%>
@@ -90,7 +90,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Responsáveis
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Professores
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
@@ -108,7 +108,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/turma.png">
                             Turmas
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
@@ -117,7 +117,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/fatura.png">
                             Faturas
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
@@ -126,7 +126,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/livro.png">
                             Atividades
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
@@ -135,7 +135,7 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/livro.png">
                             Disciplinas
-                            <span class="badge badge-primary badge-pill">
+                            <span class="badge badge-primary badge-pill">                                
                                 <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
                             </span>
                         </div>
