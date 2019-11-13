@@ -42,30 +42,30 @@
                 <table class="table table-hover table-sm table-striped" id ="listaContrato">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th style="text-align: center;">ID</th>
                             <th>Aluno</th>
                             <th>Escola</th>
                             <th>Responsável</th>
                             <th>Data</th>
-                            <th>Valor Total</th>
-                            <th>Qtd. Parcelas</th>
+                            <th style="text-align: center;">Valor Total</th>
+                            <th style="text-align: center;">Qtd. Parcelas</th>
                             <th>Status</th>
-                            <th>Opções</th>
-                            <th>Excluir</th>
+                            <th style="text-align: center;">Parcelas</th>
+                            <th style="text-align: center;">Excluir</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
+                            <th style="text-align: center;">ID</th>
                             <th>Aluno</th>
                             <th>Escola</th>
                             <th>Responsável</th>
                             <th>Data</th>
-                            <th>Valor Total</th>
-                            <th>Qtd. Parcelas</th>
+                            <th style="text-align: center;">Valor Total</th>
+                            <th style="text-align: center;">Qtd. Parcelas</th>
                             <th>Status</th>
-                            <th>Opções</th>
-                            <th>Excluir</th>
+                            <th style="text-align: center;">Parcelas</th>
+                            <th style="text-align: center;">Excluir</th>
                         </tr>
                     </tfoot>
 
@@ -74,24 +74,24 @@
                         <c:forEach var="c" items="${cDAO.lista}">
                             <c:if test="${c.aluno.responsavel.usuario.idusuario==ulogado.idusuario || c.aluno.usuario.idusuario==ulogado.idusuario || ulogado.perfil.idperfil==1 || ulogado.perfil.idperfil==2}">
                                 <tr>
-                                    <td>${c.idcontrato}</td>
+                                    <td style="text-align: center;">${c.idcontrato}</td>
                                     <td>${c.aluno.nome}</td>
                                     <td>${c.escola}</td>
                                     <td>${c.aluno.responsavel.nome}</td>
                                     <td>${c.datacontrato}</td>
-                                    <td>${c.preco}</td>
-                                    <td>${c.parcela}</td>
-                                    <td>
+                                    <td style="text-align: center;">${c.preco}</td>
+                                    <td style="text-align: center;">${c.parcela}</td>
+                                    <td style="text-align: center;">
                                         <c:if test="${c.status == 1}" > Pendente </c:if>
                                         <c:if test="${c.status == 0}" > Pago </c:if>
                                         </td>
 
-                                        <td>
-                                            <a class="btn btn-primary" href="listar_mensalidade.jsp">
-                                                <i class="glyphicon glyphicon-eye-open"></i>
+                                        <td style="text-align: center;">
+                                            <a class="icone_lista" href="listar_mensalidade.jsp">
+                                                <img src="assets/img/lista/visualizar.png">
                                             </a>
                                         </td>
-                                        <td>
+                                        <td style="text-align: center;">
                                             <button class="deletar icone_lista" onclick="confirmarExclusao(${p.idcontrato}, '${p.nome}')" >
                                             <img src="assets/img/lista/deletar.png">
                                         </button>    
