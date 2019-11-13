@@ -15,7 +15,7 @@ public class TurmaDAO extends DataBaseDAO {
 
         ArrayList<Turma> lista = new ArrayList<Turma>();
         String sql = "SELECT t.*, p.nome, p.status FROM turma t "
-                + "INNER JOIN professor p ON p.idprofessor = t.idprofessor ";
+                    + "INNER JOIN professor p ON p.idprofessor = t.idprofessor ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -63,7 +63,7 @@ public class TurmaDAO extends DataBaseDAO {
 
         Turma t = new Turma();
         String sql = "SELECT t.*, p.idprofessor FROM turma t "
-                + "INNER JOIN professor p ON p.idprofessor = t.idprofessor WHERE t.idturma=?";
+                    + "INNER JOIN professor p ON p.idprofessor = t.idprofessor WHERE t.idturma=?";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idturma);

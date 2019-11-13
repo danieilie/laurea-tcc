@@ -15,7 +15,7 @@ public class ResponsavelDAO extends DataBaseDAO {
 
         ArrayList<Responsavel> lista = new ArrayList<Responsavel>();
         String sql = "SELECT r.*, u.nome FROM responsavel r "
-                + "INNER JOIN usuario u ON r.idusuario = u.idusuario ";
+                    + "INNER JOIN usuario u ON r.idusuario = u.idusuario ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
@@ -85,31 +85,10 @@ public class ResponsavelDAO extends DataBaseDAO {
         return r;
     }
 
-    public Responsavel getCarregaPorIdResponsavel(int idresponsavel) throws Exception {
-
-        Responsavel r = new Responsavel();
-        String sql = "SELECT r.* FROM responsavel r WHERE r.idresponsavel=?";
-        this.conectar();
-        PreparedStatement pstm = conn.prepareStatement(sql);
-        pstm.setInt(1, idresponsavel);
-        ResultSet rs = pstm.executeQuery();
-        if (rs.next()) {
-            r.setIdresponsavel(rs.getInt("r.idresponsavel"));
-            r.setNome(rs.getString("r.nome"));
-            r.setCpf(rs.getString("r.cpf"));
-            r.setRg(rs.getString("r.rg"));
-            r.setStatus(rs.getInt("r.status"));
-            UsuarioDAO uDAO = new UsuarioDAO();
-            r.setUsuario(uDAO.getCarregaPorId(rs.getInt("r.idusuario")));
-        }
-        this.desconectar();
-        return r;
-    }
-
     public boolean desativar(Responsavel r) {
         try {
             this.conectar();
-            String sql = "UPDATE responsavel AND status=1 WHERE idresponsavel=?";
+            String sql = "UPDATE responsavel AND status=2 WHERE idresponsavel=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, r.getIdresponsavel());
             pstm.execute();
@@ -120,5 +99,26 @@ public class ResponsavelDAO extends DataBaseDAO {
             return false;
         }
     }
+
+//    public Responsavel getCarregaPorIdResponsavel(int idresponsavel) throws Exception {
+//
+//        Responsavel r = new Responsavel();
+//        String sql = "SELECT r.* FROM responsavel r WHERE r.idresponsavel=?";
+//        this.conectar();
+//        PreparedStatement pstm = conn.prepareStatement(sql);
+//        pstm.setInt(1, idresponsavel);
+//        ResultSet rs = pstm.executeQuery();
+//        if (rs.next()) {
+//            r.setIdresponsavel(rs.getInt("r.idresponsavel"));
+//            r.setNome(rs.getString("r.nome"));
+//            r.setCpf(rs.getString("r.cpf"));
+//            r.setRg(rs.getString("r.rg"));
+//            r.setStatus(rs.getInt("r.status"));
+//            UsuarioDAO uDAO = new UsuarioDAO();
+//            r.setUsuario(uDAO.getCarregaPorId(rs.getInt("r.idusuario")));
+//        }
+//        this.desconectar();
+//        return r;
+//    }
 
 }

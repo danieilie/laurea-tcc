@@ -38,7 +38,6 @@ public class DisciplinaDAO extends DataBaseDAO {
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1, d.getMateria());
-
             if (d.getIddisciplina() > 0) {
                 pstm.setInt(2, d.getIddisciplina());
             }

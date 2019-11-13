@@ -132,7 +132,7 @@ public class ContratoDAO extends DataBaseDAO {
     public boolean desativar(Contrato c) {
         try {
             this.conectar();
-            String sql = "UPDATE contrato SET status=1 WHERE idcontrato=? ";
+            String sql = "UPDATE contrato SET status=2 WHERE idcontrato=? ";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1, c.getIdcontrato());
             pstm.execute();

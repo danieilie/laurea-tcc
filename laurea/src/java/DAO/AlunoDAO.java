@@ -55,16 +55,16 @@ public class AlunoDAO extends DataBaseDAO {
                 sql = "UPDATE aluno SET nome=?, datanasc=?, cpf=?, rg=?, status=?, idresponsavel=?, idusuario=? WHERE idaluno=? ";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, a.getNome());
+            pstm.setDate(2, new Date(a.getDatanasc().getTime()));
+            pstm.setString(3, a.getCpf());
+            pstm.setString(4, a.getRg());
+            pstm.setInt(5, a.getStatus());
+            pstm.setInt(6, a.getResponsavel().getIdresponsavel());
+            pstm.setInt(7, a.getUsuario().getIdusuario());
             if (a.getIdaluno() > 0) {
-                pstm.setInt(1, a.getIdaluno());
+                pstm.setInt(8, a.getIdaluno());
             }
-            pstm.setString(2, a.getNome());
-            pstm.setDate(3, new Date(a.getDatanasc().getTime()));
-            pstm.setString(4, a.getCpf());
-            pstm.setString(5, a.getRg());
-            pstm.setInt(6, a.getStatus());
-            pstm.setInt(7, a.getResponsavel().getIdresponsavel());
-            pstm.setInt(8, a.getUsuario().getIdusuario());
             pstm.execute();
             this.desconectar();
             return true;

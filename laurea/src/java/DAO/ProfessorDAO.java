@@ -16,7 +16,7 @@ public class ProfessorDAO extends DataBaseDAO {
 
         ArrayList<Professor> lista = new ArrayList<Professor>();
         String sql = "SELECT p.*, u.nome FROM professor p "
-                + "INNER JOIN usuario u ON p.idusuario = u.idusuario";
+                    + "INNER JOIN usuario u ON p.idusuario = u.idusuario";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();

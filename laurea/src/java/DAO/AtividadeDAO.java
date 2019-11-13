@@ -13,42 +13,40 @@ public class AtividadeDAO extends DataBaseDAO {
     public ArrayList<Atividade> getLista() throws Exception {
 
         ArrayList<Atividade> lista = new ArrayList<Atividade>();
-        String sql = "SELECT a.* FROM atividade a ";
+        String sql = "SELECT atv.* FROM atividade atv ";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         ResultSet rs = pstm.executeQuery();
         while (rs.next()) {
-            Atividade a = new Atividade();
-            a.setIdatividade(rs.getInt("a.idatividade"));
-            a.setNome(rs.getString("a.nome"));
-            a.setArquivo(rs.getString("a.arquivo"));
+            Atividade atv = new Atividade();
+            atv.setIdatividade(rs.getInt("atv.idatividade"));
+            atv.setNome(rs.getString("atv.nome"));
+            atv.setArquivo(rs.getString("atv.arquivo"));
             DisciplinaDAO dDAO = new DisciplinaDAO();
-            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("a.iddisciplina")));
-            lista.add(a);
+            atv.setDisciplina(dDAO.getCarregaPorId(rs.getInt("atv.iddisciplina")));
+            lista.add(atv);
         }
         this.desconectar();
         return lista;
     }
 
-    public boolean gravar(Atividade ati) {
+    public boolean gravar(Atividade atv) {
 
         try {
             String sql;
             this.conectar();
 
-            if (ati.getIdatividade() == 0) {
+            if (atv.getIdatividade() == 0) {
                 sql = "INSERT INTO atividade (nome, arquivo, iddisciplina) VALUES (?, ?, ?)";
             } else {
                 sql = "UPDATE atividade SET nome=?, arquivo=?, iddisciplina=? WHERE idatividade=?";
             }
             PreparedStatement pstm = conn.prepareStatement(sql);
-
-            pstm.setString(1, ati.getNome());
-            pstm.setString(2, ati.getArquivo());
-            pstm.setInt(3, ati.getDisciplina().getIddisciplina());
-
-            if (ati.getIdatividade() > 0) {
-                pstm.setInt(4, ati.getIdatividade());
+            pstm.setString(1, atv.getNome());
+            pstm.setString(2, atv.getArquivo());
+            pstm.setInt(3, atv.getDisciplina().getIddisciplina());
+            if (atv.getIdatividade() > 0) {
+                pstm.setInt(4, atv.getIdatividade());
             }
             pstm.execute();
             this.desconectar();
@@ -63,12 +61,12 @@ public class AtividadeDAO extends DataBaseDAO {
 
     }
 
-    public boolean excluir(Atividade a) {
+    public boolean excluir(Atividade atv) {
         try {
             this.conectar();
             String sql = "DELETE FROM atividade WHERE atividade.idatividade=?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, a.getIdatividade());
+            pstm.setInt(1, atv.getIdatividade());
             pstm.execute();
             this.desconectar();
             return true;
@@ -80,8 +78,8 @@ public class AtividadeDAO extends DataBaseDAO {
 
     public Atividade getCarregaPorId(int idatividade) throws Exception {
 
-        Atividade a = new Atividade();
-        String sql = "SELECT a.* FROM atividade a WHERE a.idatividade=?";
+        Atividade atv= new Atividade();
+        String sql = "SELECT a.* FROM atividade at WHERE at.idatividade=?";
         //renomeando a tabela atividade para a
         //u.* seleciona todos os campos
         //INNER JOIN pega todas as colunas especificadas das tabelas e junta através das chaves(id).
@@ -90,14 +88,14 @@ public class AtividadeDAO extends DataBaseDAO {
         pstm.setInt(1, idatividade);
         ResultSet rs = pstm.executeQuery();
         if (rs.next()) {
-            a.setIdatividade(rs.getInt("a.idatividade"));
-            a.setNome(rs.getString("a.nome"));
-            a.setArquivo(rs.getString("a.arquivo"));
+            atv.setIdatividade(rs.getInt("atv.idatividade"));
+            atv.setNome(rs.getString("atv.nome"));
+            atv.setArquivo(rs.getString("atv.arquivo"));
             DisciplinaDAO dDAO = new DisciplinaDAO();
-            a.setDisciplina(dDAO.getCarregaPorId(rs.getInt("a.idatividade")));
+            atv.setDisciplina(dDAO.getCarregaPorId(rs.getInt("atv.idatividade")));
         }
         this.desconectar();
-        return a;
+        return atv;
     }
 
 }

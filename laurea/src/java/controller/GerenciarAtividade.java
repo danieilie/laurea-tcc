@@ -22,12 +22,12 @@ public class GerenciarAtividade extends HttpServlet {
         String acao = request.getParameter("acao");
         
         try {
-            Atividade ati = new Atividade();
-            AtividadeDAO atiDAO = new AtividadeDAO();
+            Atividade atv = new Atividade();
+            AtividadeDAO atvDAO = new AtividadeDAO();
             if (acao.equals("excluir")) {
                 if (GerenciarLogin.verificarPermissao(request, response)) {
-                    ati.setIdatividade(idatividade);
-                    if (atiDAO.excluir(ati)) {
+                    atv.setIdatividade(idatividade);
+                    if (atvDAO.excluir(atv)) {
                         mensagem = "Excluído com sucesso!";
                     } else {
                         mensagem = "Erro ao excluir!";
@@ -58,23 +58,23 @@ public class GerenciarAtividade extends HttpServlet {
             String iddisciplina = up.getForm().get("disciplina").toString();
             String mensagem = "";
 
-            Atividade ati = new Atividade();
+            Atividade atv = new Atividade();
             if (!idatividade.isEmpty()) {
-                ati.setIdatividade(Integer.parseInt(idatividade));
+                atv.setIdatividade(Integer.parseInt(idatividade));
             }
             try {
-                AtividadeDAO atiDAO = new AtividadeDAO();
+                AtividadeDAO atvDAO = new AtividadeDAO();
                 if (nome.isEmpty()) {
                     mensagem = "Campos obrigatórios deverão ser preenchidos";
                 } else {
-                    ati.setNome(nome);
+                    atv.setNome(nome);
                     if (!up.getFiles().isEmpty()) {
-                        ati.setArquivo(up.getFiles().get(0));
+                        atv.setArquivo(up.getFiles().get(0));
                     }
                     Disciplina di = new Disciplina();
                     di.setIddisciplina(Integer.parseInt(iddisciplina));
-                    ati.setDisciplina(di);
-                    if (atiDAO.gravar(ati)) {
+                    atv.setDisciplina(di);
+                    if (atvDAO.gravar(atv)) {
                         mensagem = "Gravado com sucesso";
                     } else {
                         mensagem = "Erro ao gravar no banco";

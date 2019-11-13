@@ -132,8 +132,7 @@ public class PerfilDAO extends DataBaseDAO {
 
         ArrayList<Menu> lista = new ArrayList<Menu>();
         String sql = "SELECT m.* FROM menu as m WHERE m.idmenu "
-                + "NOT IN (SELECT mp.idmenu FROM menu_perfil as mp WHERE mp.idperfil=? )";
-
+                    + "NOT IN (SELECT mp.idmenu FROM menu_perfil as mp WHERE mp.idperfil=? )";
         this.conectar();
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setInt(1, idperfil);
