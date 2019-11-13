@@ -3,24 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarResponsavel.java</file>
-            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/UsuarioDAO.java</file>
-            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarLogin.java</file>
-            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/web/index2.jsp</file>
-=======
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_mensalidade.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_atividade.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_menu.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/form_menu.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/index2.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/src/java/DAO/UsuarioDAO.java</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/listar_usuario.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/form_usuario.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/assets/css/estilo_form.css</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/form_disciplina.jsp</file>
-            <file>file:/C:/xampp/htdocs/laurea-tcc/laurea-tcc/laurea/web/form_menu_perfil.jsp</file>
->>>>>>> Stashed changes
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/web/form_usuario.jsp</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/web/listar_professor.jsp</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/controller/GerenciarProfessor.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/src/java/DAO/ProfessorDAO.java</file>
+            <file>file:/D:/Usuário/Julia/Documents/laurea-tcc/laurea/web/form_professor_disciplina.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -75,8 +75,8 @@
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Usuários
                             <span class="badge badge-primary badge-pill">
-                                 <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
-                                     <label>${fn:length(uDAO.lista)}</label>
+                                <jsp:useBean class="DAO.UsuarioDAO" id="uDAO"/>
+                                <label>${fn:length(uDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -85,8 +85,8 @@
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Alunos
                             <span class="badge badge-primary badge-pill">
-                                  <jsp:useBean class="DAO.AlunoDAO" id="aDAO" />
-                                  <label>${fn:length(aDAO.lista)}</label>
+                                <jsp:useBean class="DAO.AlunoDAO" id="aDAO" />
+                                <label>${fn:length(aDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -95,9 +95,8 @@
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Responsáveis
                             <span class="badge badge-primary badge-pill">
-                                  <jsp:useBean class="DAO.ResponsavelDAO" id="rDAO" />
-                                  <label>${fn:length(rDAO.lista)}</label>
-
+                                <jsp:useBean class="DAO.ResponsavelDAO" id="rDAO" />
+                                <label>${fn:length(rDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -105,8 +104,9 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/usuario.png">
                             Professores
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            <span class="badge badge-primary badge-pill">
+                                <jsp:useBean class="DAO.ProfessorDAO" id="pDAO" />                                
+                                <label>${fn:length(pDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -151,8 +151,8 @@
                             <img src="assets/img/status_do_sistema/livro.png">
                             Menus
                             <span class="badge badge-primary badge-pill">
-                                 <jsp:useBean class="DAO.MenuDAO" id="mDAO"/>
-                                 <label>${fn:length(mDAO.lista)}</label>
+                                <jsp:useBean class="DAO.MenuDAO" id="mDAO"/>
+                                <label>${fn:length(mDAO.lista)}</label>
                             </span>
                         </div>
                     </li>

@@ -56,7 +56,7 @@
                             <td>${pro.idprofessor}</td>
                             <td>${pro.nome}</td>
                             <td>${pro.disciplina}</td>
-                            <td>${pro.idusuario}</td>
+                            <td>${pro.usuario.idusuario}</td>
                             <td>
                                 <a class="btn btn-primary" href="gerenciar_professor.do?acao=alterar&idprofessor=${pro.idprofessor}">
                                     <i class="glyphicon glyphicon-pencil"></i>
