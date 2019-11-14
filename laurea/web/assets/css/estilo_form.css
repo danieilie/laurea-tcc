@@ -9,7 +9,7 @@
 h2:after{
     content: "";
     display: block;
-    width: 10%;
+    width: 30px;
     height: 3px;
     background: #105aa2;
     margin: 2px;
@@ -19,8 +19,8 @@ h2:after{
 }
 .form{
     margin: 0 auto;
-    width: 400px;
-    padding-top: 10px;  
+    width: 90%;
+    padding-top: 10px; 
 }
 .campo_obrigatorio{
     line-height: 14px;

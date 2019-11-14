@@ -23,7 +23,7 @@
                 </div>
                 <input type="hidden" name="iddisciplina" id="iddisciplina" value="${disciplina.iddisciplina}"/>
 
-                <div class="form-group">
+                <div class="col-md-4 mb-3">
                     <label for="materia">Matéria</label>
                     <select name="materia" required="" class="form-control">
                         <option class="" value="" selected="">Escolha a Matéria</option>
@@ -38,7 +38,7 @@
                     </select>                                
 
                 </div>       
-                <div class="form-group">
+                <div class="col-md-4 mb-3">
                     <button class="btn btn-primary">Gravar</button>
                     <a href="listar_disciplina.jsp" class="btn btn-outline-dark">Voltar</a> 
                 </div>   

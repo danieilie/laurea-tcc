@@ -21,13 +21,13 @@
 
                 </div>
                 <input type="hidden" name="idperfil" id="idperfil" value="${perfil.idperfil}"/>
-                <div class="form-group">
+                <div class="col-md-4 mb-3">
 
                     <label for="perfil">Perfil</label>
                     <input type="text" class="form-control" id="perfil" name="perfil" required="" maxlength="45" value="${perfil.perfil}"/>
 
                 </div>    
-                <div class="form-group">
+                <div class="col-md-4 mb-3">
                     <button class="btn btn-primary">Gravar</button>
                     <a href="listar_perfil.jsp" class="btn btn-outline-dark">Voltar</a>    
                 </div>    

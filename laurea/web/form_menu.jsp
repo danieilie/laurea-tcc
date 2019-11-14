@@ -23,24 +23,24 @@
                     <div class="campo_obrigatorio">* campos de preenchimento obrigatório</div>
                 </div>
                 <input type="hidden" name="idmenu" id="idmenu" value="${menu.idmenu}"/>
-                <div class="form-group ">
+                <div class="col-md-4 mb-3 ">
 
                     <label for="menu">Menu*</label>
                     <input type="text" class="form-control" id="menu" name="menu" required="" maxlength="45" value="${menu.menu}"/>
 
                 </div>    
-                <div class="form-group ">
+                <div class="col-md-4 mb-3 ">
 
                     <label for="link">Link*</label>
                     <input type="text" class="form-control" id="link" name="link" required="" maxlength="45" value="${menu.link}"/>
 
                 </div>   
-                <div class="form-group ">
+                <div class="col-md-4 mb-3 ">
                     <label for="icone">Icone</label>
                     <input type="text" class="form-control" id="icone" name="icone" maxlength="45" value="${menu.icone}"/>
 
                 </div> 
-                <div class="form-group ">
+                <div class="col-md-4 mb-3 ">
                     <label for="exibir">Exibir*</label>
                     <select name="exibir" required="" class="form-control">
                         <c:if test="${menu.exibir==null}">
@@ -59,7 +59,7 @@
                     </select>    
 
                 </div>    
-                <div class="form-group ">
+                <div class="col-md-4 mb-3">
                     <button class="btn btn-primary">Gravar</button>
                     <a href="listar_menu.jsp" class="btn btn-outline-dark">Voltar</a>    
                 </div>    
