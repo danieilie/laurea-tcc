@@ -114,8 +114,9 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/turma.png">
                             Turmas
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            <span class="badge badge-primary badge-pill"> 
+                                <jsp:useBean class="DAO.TurmaDAO" id="tDAO" />
+                                <label>${fn:length(tDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -123,8 +124,9 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/fatura.png">
                             Faturas
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            <span class="badge badge-primary badge-pill">
+                                <jsp:useBean class="DAO.MensalidadeDAO" id="meDAO" />
+                                <label>${fn:length(meDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -132,8 +134,9 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/livro.png">
                             Atividades
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            <span class="badge badge-primary badge-pill">
+                                <jsp:useBean class="DAO.AtividadeDAO" id="atDAO" />                                
+                                <label>${fn:length(atDAO.lista)}</label>
                             </span>
                         </div>
                     </li>
@@ -141,8 +144,9 @@
                         <div class="d-flex justify-content-between">
                             <img src="assets/img/status_do_sistema/livro.png">
                             Disciplinas
-                            <span class="badge badge-primary badge-pill">                                
-                                <label>${fn:length(UsuarioDAO.lista.idusuario)}</label>
+                            <span class="badge badge-primary badge-pill">  
+                                <jsp:useBean class="DAO.DisciplinaDAO" id="dDAO" />
+                                <label>${fn:length(dDAO.lista)}</label>
                             </span>
                         </div>
                     </li>

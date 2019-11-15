@@ -29,8 +29,6 @@ public class ProfessorDAO extends DataBaseDAO {
             u.setIdusuario(rs.getInt("p.idusuario"));
             u.setNome(rs.getString("u.nome"));
             p.setUsuario(u);
-            DisciplinaDAO dDAO = new DisciplinaDAO();
-            p.setDisciplina(dDAO.getCarregaPorId(rs.getInt("p.iddisciplina")));
             lista.add(p);
         }
         this.desconectar();

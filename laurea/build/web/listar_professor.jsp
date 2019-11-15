@@ -37,7 +37,7 @@
                             <tr>
                                 <th style="text-align: center;">ID</th>
                                 <th>Nome</th>
-                                <th>Disciplinas</th>                               
+                                <th>Status</th>                               
                                 <th style="text-align: center;">Editar</th>
                                 <th style="text-align: center;">Excluir</th>
                             </tr>
@@ -46,7 +46,7 @@
                             <tr>
                                 <th style="text-align: center;">ID</th>
                                 <th>Nome</th>
-                                <th>Disciplinas</th>                                
+                                <th>Status</th>                                 
                                 <th style="text-align: center;">Editar</th>
                                 <th style="text-align: center;">Excluir</th>
                             </tr>
@@ -58,7 +58,10 @@
                                 <tr>
                                     <td style="text-align: center;">${pro.idprofessor}</td>
                                     <td>${pro.nome}</td>
-                                    <td>${pro.disciplina}</td>
+                                    <td>
+                                        <c:if test="${pro.status == 1}" > Ativado </c:if>
+                                        <c:if test="${pro.status == 2}" > Desativado </c:if>
+                                    </td>
                                     <td style="text-align: center;">
                                         <a class="icone_lista" href="gerenciar_professor.do?acao=alterar&idprofessor=${pro.idprofessor}">
                                             <img src="assets/img/lista/editar.png">
